@@ -1,37 +1,29 @@
 # PROGRESS.md — Status Step SIMAHA Offline
 
-Acuan: `README.md` (PRD) + `CLAUDE.md` (aturan & rumus). Diperbarui tiap akhir step.
-Hasil cek terakhir: `flutter analyze` bersih, `flutter test` 55/55 lolos (14 Okt 2026).
+Acuan: PRD + `CLAUDE.md` (aturan & rumus domain). Diperbarui setiap akhir step.
 
-- [x] **Step 0 — Setup proyek.** Flutter 3.47.2 stable. Struktur `lib/{core,domain,data,presentation}`,
-  `test/`. `flutter pub get` OK. Aturan + rumus disalin ke `CLAUDE.md` (plus catatan deviasi).
-  Asumsi: proyek tidak dibuat ulang — repo existing dipakai; dependensi UI ditunda (lihat CLAUDE.md poin 5).
-- [x] **Step 1 — Fondasi, database, keamanan.** Drift + SQLCipher (kunci di secure storage),
-  setup PIN master, login PIN + lockout eskalasi, auto-lock, RBAC 5 peran di service + UI.
-- [x] **Step 2 — Data master & mahasiswa.** CRUD + validasi (NIM unik, email, HP),
-  soft delete + trash + restore, FTS5, filter, pagination. Seeder 100 mahasiswa.
-- [x] **Step 3 — Mesin akademik (logika).** `grades.dart`: nilai akhir, konversi huruf,
-  IPS/IPK (MK diulang nilai terbaik, SKS=0 -> 0.00), batas SKS. Unit test lolos.
-  UI: detail nilai per mahasiswa ada; halaman entri KRS massal BELUM.
-- [x] **Step 4 — Presensi (logika).** `qr_token.dart`: HMAC-SHA256/30 dtk, jendela ±1,
-  rekap hadir. Unit test lolos. UI sesi + QR + scan BELUM.
-- [x] **Step 5 — Analitik & peringatan (logika).** `risk_score.dart` + level Aman/Waspada/Kritis.
-  Unit test lolos. UI dashboard grafik + catatan bimbingan BELUM.
-- [x] **Step 6 — Backup & impor (logika).** `backup_service.dart` (AES-GCM + checksum,
-  password salah/file rusak ditolak), `sync_merge.dart` (LWW), `csv_preview.dart`.
-  Unit test lolos. UI backup/restore/impor BELUM.
-- [ ] **Step 7 — Sinkronisasi antar-perangkat.** Merge LWW + sync_log ada; transport berkas
-  + layar tinjau konflik BELUM.
-- [x] **Step 8 — Asisten cerdas (logika).** `intent_parser.dart` + `NoopLlm` (tanpa nama/NIM).
-  Unit test lolos. UI chat BELUM.
-- [ ] **Step 9 — Notifikasi lokal.** `local_notify.dart` masih Noop; paket
-  flutter_local_notifications belum dipasang.
-- [ ] **Step 10 — Pengaturan & bahasa.** Halaman pengaturan + tema gelap/terang ada;
-  bobot nilai/ambang risiko belum bisa diubah di UI; l10n EN belum.
-- [x] **Step 11 — Testing & kualitas.** 55 unit test lolos (14 file), `flutter analyze` bersih.
-- [ ] **Step 12 — Uji performa 10.000.** Seeder berparameter ada; uji 10.000 + target
-  pencarian ≤500 ms BELUM dijalankan.
-- [ ] **Step 13 — Dokumentasi & laporan.** README (PRD + status + cara jalan) ada;
-  laporan .docx Tahap 1 BELUM.
-- [ ] **Step 14 — Finalisasi & demo.** Hapus tombol darurat "Masuk langsung tanpa PIN",
-  build APK release ≤50 MB, checklist black-box per FR, demo.
+- [x] **Step 0: Konteks, struktur proyek, dependensi**
+  - Flutter 3.47.2, Dart 3.13.2 stable
+  - Struktur folder dibentuk: `lib/{core,domain,data,services,presentation}`, `test/`, `integration_test/`
+  - Dependensi lengkap terpasang di `pubspec.yaml`
+  - `CLAUDE.md` dan `PROGRESS.md` diinisialisasi
+- [ ] **Step 1: Fondasi: tema, router, DB terenkripsi, skema penuh, seeder** (NFR-01, 09, 10, 11, 13)
+- [ ] **Step 2: Keamanan, akun, RBAC** (FR-01 s.d. FR-06, NFR-02, 04)
+- [ ] **Step 3: Data master + mahasiswa + pencarian/filter** (FR-07, 08, 09, 10, 11, 12)
+- [ ] **Step 4: Nilai, IPS/IPK** (FR-15, 16)
+- [ ] **Step 5: KRS + jadwal kuliah** (FR-13, 14, 18)
+- [ ] **Step 6: KHS, transkrip, ekspor PDF** (FR-17, 28)
+- [ ] **Step 7: Presensi QR dan manual, rekap** (FR-19, 20, 21, 22)
+- [ ] **Step 8: Dashboard, early warning, skor risiko, catatan bimbingan** (FR-23, 24, 25, 26)
+- [ ] **Step 9: Impor/ekspor data, audit log, tempat sampah** (FR-27, 28, 33, 09)
+- [ ] **Step 10: Backup dan restore terenkripsi** (FR-29, 30, NFR-03)
+- [ ] **Step 11: Sinkronisasi antar-perangkat + konflik** (FR-31, 32)
+- [ ] **Step 12: Notifikasi, mode gelap, bahasa, pengaturan** (FR-34, 35, 36)
+- [ ] **Step 13: Modul tambahan (opsional)** (13a s.d. 13h)
+- [ ] **Step 14: Pengujian dan finalisasi** (NFR-06, 07, 08, 12, 14)
+
+---
+
+### Catatan Asumsi & Status Saat Ini:
+- Step 0 selesai: semua dependensi yang disyaratkan telah berhasil dipasang dan di-resolve tanpa konflik.
+- Arsitektur SQLCipher menggunakan `package:sqlite3` dengan hook native-assets `source: sqlcipher` yang merupakan standar resmi terkini di Flutter/Dart untuk kompatibilitas lintas platform.
