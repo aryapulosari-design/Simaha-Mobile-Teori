@@ -13067,6 +13067,465 @@ class DokumenArsipCompanion extends UpdateCompanion<DokumenArsipRow> {
   }
 }
 
+class $SavedFiltersTable extends SavedFilters
+    with TableInfo<$SavedFiltersTable, SavedFilterRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SavedFiltersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _namaMeta = const VerificationMeta('nama');
+  @override
+  late final GeneratedColumn<String> nama = GeneratedColumn<String>(
+    'nama',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _kriteriaJsonMeta = const VerificationMeta(
+    'kriteriaJson',
+  );
+  @override
+  late final GeneratedColumn<String> kriteriaJson = GeneratedColumn<String>(
+    'kriteria_json',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _userIdMeta = const VerificationMeta('userId');
+  @override
+  late final GeneratedColumn<int> userId = GeneratedColumn<int>(
+    'user_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES users (id)',
+    ),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _deviceIdMeta = const VerificationMeta(
+    'deviceId',
+  );
+  @override
+  late final GeneratedColumn<String> deviceId = GeneratedColumn<String>(
+    'device_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    nama,
+    kriteriaJson,
+    userId,
+    createdAt,
+    updatedAt,
+    deviceId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'saved_filters';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<SavedFilterRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('nama')) {
+      context.handle(
+        _namaMeta,
+        nama.isAcceptableOrUnknown(data['nama']!, _namaMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_namaMeta);
+    }
+    if (data.containsKey('kriteria_json')) {
+      context.handle(
+        _kriteriaJsonMeta,
+        kriteriaJson.isAcceptableOrUnknown(
+          data['kriteria_json']!,
+          _kriteriaJsonMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_kriteriaJsonMeta);
+    }
+    if (data.containsKey('user_id')) {
+      context.handle(
+        _userIdMeta,
+        userId.isAcceptableOrUnknown(data['user_id']!, _userIdMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    if (data.containsKey('device_id')) {
+      context.handle(
+        _deviceIdMeta,
+        deviceId.isAcceptableOrUnknown(data['device_id']!, _deviceIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_deviceIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SavedFilterRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SavedFilterRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      nama: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}nama'],
+      )!,
+      kriteriaJson: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kriteria_json'],
+      )!,
+      userId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}user_id'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+      deviceId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}device_id'],
+      )!,
+    );
+  }
+
+  @override
+  $SavedFiltersTable createAlias(String alias) {
+    return $SavedFiltersTable(attachedDatabase, alias);
+  }
+}
+
+class SavedFilterRow extends DataClass implements Insertable<SavedFilterRow> {
+  final int id;
+  final String nama;
+  final String kriteriaJson;
+  final int? userId;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+  final String deviceId;
+  const SavedFilterRow({
+    required this.id,
+    required this.nama,
+    required this.kriteriaJson,
+    this.userId,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.deviceId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['nama'] = Variable<String>(nama);
+    map['kriteria_json'] = Variable<String>(kriteriaJson);
+    if (!nullToAbsent || userId != null) {
+      map['user_id'] = Variable<int>(userId);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    map['device_id'] = Variable<String>(deviceId);
+    return map;
+  }
+
+  SavedFiltersCompanion toCompanion(bool nullToAbsent) {
+    return SavedFiltersCompanion(
+      id: Value(id),
+      nama: Value(nama),
+      kriteriaJson: Value(kriteriaJson),
+      userId: userId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(userId),
+      createdAt: Value(createdAt),
+      updatedAt: Value(updatedAt),
+      deviceId: Value(deviceId),
+    );
+  }
+
+  factory SavedFilterRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SavedFilterRow(
+      id: serializer.fromJson<int>(json['id']),
+      nama: serializer.fromJson<String>(json['nama']),
+      kriteriaJson: serializer.fromJson<String>(json['kriteriaJson']),
+      userId: serializer.fromJson<int?>(json['userId']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+      deviceId: serializer.fromJson<String>(json['deviceId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'nama': serializer.toJson<String>(nama),
+      'kriteriaJson': serializer.toJson<String>(kriteriaJson),
+      'userId': serializer.toJson<int?>(userId),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+      'deviceId': serializer.toJson<String>(deviceId),
+    };
+  }
+
+  SavedFilterRow copyWith({
+    int? id,
+    String? nama,
+    String? kriteriaJson,
+    Value<int?> userId = const Value.absent(),
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    String? deviceId,
+  }) => SavedFilterRow(
+    id: id ?? this.id,
+    nama: nama ?? this.nama,
+    kriteriaJson: kriteriaJson ?? this.kriteriaJson,
+    userId: userId.present ? userId.value : this.userId,
+    createdAt: createdAt ?? this.createdAt,
+    updatedAt: updatedAt ?? this.updatedAt,
+    deviceId: deviceId ?? this.deviceId,
+  );
+  SavedFilterRow copyWithCompanion(SavedFiltersCompanion data) {
+    return SavedFilterRow(
+      id: data.id.present ? data.id.value : this.id,
+      nama: data.nama.present ? data.nama.value : this.nama,
+      kriteriaJson: data.kriteriaJson.present
+          ? data.kriteriaJson.value
+          : this.kriteriaJson,
+      userId: data.userId.present ? data.userId.value : this.userId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+      deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SavedFilterRow(')
+          ..write('id: $id, ')
+          ..write('nama: $nama, ')
+          ..write('kriteriaJson: $kriteriaJson, ')
+          ..write('userId: $userId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deviceId: $deviceId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    nama,
+    kriteriaJson,
+    userId,
+    createdAt,
+    updatedAt,
+    deviceId,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SavedFilterRow &&
+          other.id == this.id &&
+          other.nama == this.nama &&
+          other.kriteriaJson == this.kriteriaJson &&
+          other.userId == this.userId &&
+          other.createdAt == this.createdAt &&
+          other.updatedAt == this.updatedAt &&
+          other.deviceId == this.deviceId);
+}
+
+class SavedFiltersCompanion extends UpdateCompanion<SavedFilterRow> {
+  final Value<int> id;
+  final Value<String> nama;
+  final Value<String> kriteriaJson;
+  final Value<int?> userId;
+  final Value<DateTime> createdAt;
+  final Value<DateTime> updatedAt;
+  final Value<String> deviceId;
+  const SavedFiltersCompanion({
+    this.id = const Value.absent(),
+    this.nama = const Value.absent(),
+    this.kriteriaJson = const Value.absent(),
+    this.userId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.deviceId = const Value.absent(),
+  });
+  SavedFiltersCompanion.insert({
+    this.id = const Value.absent(),
+    required String nama,
+    required String kriteriaJson,
+    this.userId = const Value.absent(),
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    required String deviceId,
+  }) : nama = Value(nama),
+       kriteriaJson = Value(kriteriaJson),
+       createdAt = Value(createdAt),
+       updatedAt = Value(updatedAt),
+       deviceId = Value(deviceId);
+  static Insertable<SavedFilterRow> custom({
+    Expression<int>? id,
+    Expression<String>? nama,
+    Expression<String>? kriteriaJson,
+    Expression<int>? userId,
+    Expression<DateTime>? createdAt,
+    Expression<DateTime>? updatedAt,
+    Expression<String>? deviceId,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (nama != null) 'nama': nama,
+      if (kriteriaJson != null) 'kriteria_json': kriteriaJson,
+      if (userId != null) 'user_id': userId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (deviceId != null) 'device_id': deviceId,
+    });
+  }
+
+  SavedFiltersCompanion copyWith({
+    Value<int>? id,
+    Value<String>? nama,
+    Value<String>? kriteriaJson,
+    Value<int?>? userId,
+    Value<DateTime>? createdAt,
+    Value<DateTime>? updatedAt,
+    Value<String>? deviceId,
+  }) {
+    return SavedFiltersCompanion(
+      id: id ?? this.id,
+      nama: nama ?? this.nama,
+      kriteriaJson: kriteriaJson ?? this.kriteriaJson,
+      userId: userId ?? this.userId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deviceId: deviceId ?? this.deviceId,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (nama.present) {
+      map['nama'] = Variable<String>(nama.value);
+    }
+    if (kriteriaJson.present) {
+      map['kriteria_json'] = Variable<String>(kriteriaJson.value);
+    }
+    if (userId.present) {
+      map['user_id'] = Variable<int>(userId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (deviceId.present) {
+      map['device_id'] = Variable<String>(deviceId.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SavedFiltersCompanion(')
+          ..write('id: $id, ')
+          ..write('nama: $nama, ')
+          ..write('kriteriaJson: $kriteriaJson, ')
+          ..write('userId: $userId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('deviceId: $deviceId')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -13100,6 +13559,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   );
   late final $EdomJawabanTable edomJawaban = $EdomJawabanTable(this);
   late final $DokumenArsipTable dokumenArsip = $DokumenArsipTable(this);
+  late final $SavedFiltersTable savedFilters = $SavedFiltersTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -13131,6 +13591,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     edomPartisipasi,
     edomJawaban,
     dokumenArsip,
+    savedFilters,
   ];
 }
 
@@ -13251,6 +13712,24 @@ final class $$UsersTableReferences
     ).filter((f) => f.diunggahOleh.id.sqlEquals($_itemColumn<int>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_dokumenArsipRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$SavedFiltersTable, List<SavedFilterRow>>
+  _savedFiltersRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
+    db.savedFilters,
+    aliasName: 'users__id__saved_filters__user_id',
+  );
+
+  $$SavedFiltersTableProcessedTableManager get savedFiltersRefs {
+    final manager = $$SavedFiltersTableTableManager(
+      $_db,
+      $_db.savedFilters,
+    ).filter((f) => f.userId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_savedFiltersRefsTable($_db));
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: cache),
     );
@@ -13436,6 +13915,31 @@ class $$UsersTableFilterComposer extends Composer<_$AppDatabase, $UsersTable> {
           }) => $$DokumenArsipTableFilterComposer(
             $db: $db,
             $table: $db.dokumenArsip,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> savedFiltersRefs(
+    Expression<bool> Function($$SavedFiltersTableFilterComposer f) f,
+  ) {
+    final $$SavedFiltersTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.savedFilters,
+      getReferencedColumn: (t) => t.userId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$SavedFiltersTableFilterComposer(
+            $db: $db,
+            $table: $db.savedFilters,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -13683,6 +14187,31 @@ class $$UsersTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> savedFiltersRefs<T extends Object>(
+    Expression<T> Function($$SavedFiltersTableAnnotationComposer a) f,
+  ) {
+    final $$SavedFiltersTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.savedFilters,
+      getReferencedColumn: (t) => t.userId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$SavedFiltersTableAnnotationComposer(
+            $db: $db,
+            $table: $db.savedFilters,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$UsersTableTableManager
@@ -13704,6 +14233,7 @@ class $$UsersTableTableManager
             bool auditLogRefs,
             bool pengumumanRefs,
             bool dokumenArsipRefs,
+            bool savedFiltersRefs,
           })
         > {
   $$UsersTableTableManager(_$AppDatabase db, $UsersTable table)
@@ -13784,6 +14314,7 @@ class $$UsersTableTableManager
                 auditLogRefs = false,
                 pengumumanRefs = false,
                 dokumenArsipRefs = false,
+                savedFiltersRefs = false,
               }) {
                 return PrefetchHooks(
                   db: db,
@@ -13793,6 +14324,7 @@ class $$UsersTableTableManager
                     if (auditLogRefs) db.auditLog,
                     if (pengumumanRefs) db.pengumuman,
                     if (dokumenArsipRefs) db.dokumenArsip,
+                    if (savedFiltersRefs) db.savedFilters,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -13898,6 +14430,27 @@ class $$UsersTableTableManager
                               ),
                           typedResults: items,
                         ),
+                      if (savedFiltersRefs)
+                        await $_getPrefetchedData<
+                          UserRow,
+                          $UsersTable,
+                          SavedFilterRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$UsersTableReferences
+                              ._savedFiltersRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$UsersTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).savedFiltersRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.userId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -13924,6 +14477,7 @@ typedef $$UsersTableProcessedTableManager =
         bool auditLogRefs,
         bool pengumumanRefs,
         bool dokumenArsipRefs,
+        bool savedFiltersRefs,
       })
     >;
 typedef $$ProdiTableCreateCompanionBuilder = ProdiCompanion Function({
@@ -26650,6 +27204,355 @@ typedef $$DokumenArsipTableProcessedTableManager =
       DokumenArsipRow,
       PrefetchHooks Function({bool mahasiswaId, bool diunggahOleh})
     >;
+typedef $$SavedFiltersTableCreateCompanionBuilder =
+    SavedFiltersCompanion Function({
+      Value<int> id,
+      required String nama,
+      required String kriteriaJson,
+      Value<int?> userId,
+      required DateTime createdAt,
+      required DateTime updatedAt,
+      required String deviceId,
+    });
+typedef $$SavedFiltersTableUpdateCompanionBuilder =
+    SavedFiltersCompanion Function({
+      Value<int> id,
+      Value<String> nama,
+      Value<String> kriteriaJson,
+      Value<int?> userId,
+      Value<DateTime> createdAt,
+      Value<DateTime> updatedAt,
+      Value<String> deviceId,
+    });
+
+final class $$SavedFiltersTableReferences
+    extends BaseReferences<_$AppDatabase, $SavedFiltersTable, SavedFilterRow> {
+  $$SavedFiltersTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $UsersTable _userIdTable(_$AppDatabase db) =>
+      db.users.createAlias('saved_filters__user_id__users__id');
+
+  $$UsersTableProcessedTableManager? get userId {
+    final $_column = $_itemColumn<int>('user_id');
+    if ($_column == null) return null;
+    final manager = $$UsersTableTableManager(
+      $_db,
+      $_db.users,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_userIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$SavedFiltersTableFilterComposer
+    extends Composer<_$AppDatabase, $SavedFiltersTable> {
+  $$SavedFiltersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get nama => $composableBuilder(
+    column: $table.nama,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kriteriaJson => $composableBuilder(
+    column: $table.kriteriaJson,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$UsersTableFilterComposer get userId {
+    final $$UsersTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.userId,
+      referencedTable: $db.users,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UsersTableFilterComposer(
+            $db: $db,
+            $table: $db.users,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$SavedFiltersTableOrderingComposer
+    extends Composer<_$AppDatabase, $SavedFiltersTable> {
+  $$SavedFiltersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get nama => $composableBuilder(
+    column: $table.nama,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kriteriaJson => $composableBuilder(
+    column: $table.kriteriaJson,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get deviceId => $composableBuilder(
+    column: $table.deviceId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$UsersTableOrderingComposer get userId {
+    final $$UsersTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.userId,
+      referencedTable: $db.users,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UsersTableOrderingComposer(
+            $db: $db,
+            $table: $db.users,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$SavedFiltersTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SavedFiltersTable> {
+  $$SavedFiltersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get nama =>
+      $composableBuilder(column: $table.nama, builder: (column) => column);
+
+  GeneratedColumn<String> get kriteriaJson => $composableBuilder(
+    column: $table.kriteriaJson,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get deviceId =>
+      $composableBuilder(column: $table.deviceId, builder: (column) => column);
+
+  $$UsersTableAnnotationComposer get userId {
+    final $$UsersTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.userId,
+      referencedTable: $db.users,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UsersTableAnnotationComposer(
+            $db: $db,
+            $table: $db.users,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$SavedFiltersTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $SavedFiltersTable,
+          SavedFilterRow,
+          $$SavedFiltersTableFilterComposer,
+          $$SavedFiltersTableOrderingComposer,
+          $$SavedFiltersTableAnnotationComposer,
+          $$SavedFiltersTableCreateCompanionBuilder,
+          $$SavedFiltersTableUpdateCompanionBuilder,
+          (SavedFilterRow, $$SavedFiltersTableReferences),
+          SavedFilterRow,
+          PrefetchHooks Function({bool userId})
+        > {
+  $$SavedFiltersTableTableManager(_$AppDatabase db, $SavedFiltersTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SavedFiltersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SavedFiltersTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SavedFiltersTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> nama = const Value.absent(),
+                Value<String> kriteriaJson = const Value.absent(),
+                Value<int?> userId = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<String> deviceId = const Value.absent(),
+              }) => SavedFiltersCompanion(
+                id: id,
+                nama: nama,
+                kriteriaJson: kriteriaJson,
+                userId: userId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deviceId: deviceId,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String nama,
+                required String kriteriaJson,
+                Value<int?> userId = const Value.absent(),
+                required DateTime createdAt,
+                required DateTime updatedAt,
+                required String deviceId,
+              }) => SavedFiltersCompanion.insert(
+                id: id,
+                nama: nama,
+                kriteriaJson: kriteriaJson,
+                userId: userId,
+                createdAt: createdAt,
+                updatedAt: updatedAt,
+                deviceId: deviceId,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$SavedFiltersTable, SavedFilterRow>(table),
+                  $$SavedFiltersTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({userId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (userId) {
+                      state = state.withJoin(
+                        currentTable: table,
+                        currentColumn: table.userId,
+                        referencedTable: $$SavedFiltersTableReferences
+                            ._userIdTable(db),
+                        referencedColumn: $$SavedFiltersTableReferences
+                            ._userIdTable(db)
+                            .id,
+                      ) as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$SavedFiltersTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $SavedFiltersTable,
+      SavedFilterRow,
+      $$SavedFiltersTableFilterComposer,
+      $$SavedFiltersTableOrderingComposer,
+      $$SavedFiltersTableAnnotationComposer,
+      $$SavedFiltersTableCreateCompanionBuilder,
+      $$SavedFiltersTableUpdateCompanionBuilder,
+      (SavedFilterRow, $$SavedFiltersTableReferences),
+      SavedFilterRow,
+      PrefetchHooks Function({bool userId})
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -26705,4 +27608,6 @@ class $AppDatabaseManager {
       $$EdomJawabanTableTableManager(_db, _db.edomJawaban);
   $$DokumenArsipTableTableManager get dokumenArsip =>
       $$DokumenArsipTableTableManager(_db, _db.dokumenArsip);
+  $$SavedFiltersTableTableManager get savedFilters =>
+      $$SavedFiltersTableTableManager(_db, _db.savedFilters);
 }

@@ -395,3 +395,15 @@ class DokumenArsip extends Table {
   DateTimeColumn get updatedAt => dateTime()();
   TextColumn get deviceId => text()();
 }
+
+/// Filter tersimpan (FR-12) untuk pencarian cepat mahasiswa.
+@DataClassName('SavedFilterRow')
+class SavedFilters extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get nama => text()();
+  TextColumn get kriteriaJson => text()();
+  IntColumn get userId => integer().nullable().references(Users, #id)();
+  DateTimeColumn get createdAt => dateTime()();
+  DateTimeColumn get updatedAt => dateTime()();
+  TextColumn get deviceId => text()();
+}

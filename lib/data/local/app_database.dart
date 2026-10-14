@@ -90,13 +90,14 @@ END;
     EdomPartisipasi,
     EdomJawaban,
     DokumenArsip,
+    SavedFilters,
   ],
 )
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   /// Tables carrying sync columns (updated_at + device_id). AuditLog and
   /// SyncLog are append-only local logs excluded from sync deltas, so they
@@ -126,6 +127,7 @@ class AppDatabase extends _$AppDatabase {
     'edom_partisipasi',
     'edom_jawaban',
     'dokumen_arsip',
+    'saved_filters',
   ];
 
   @override
@@ -208,6 +210,9 @@ class AppDatabase extends _$AppDatabase {
           "VALUES ('syarat_sks_lulus', '144', "
           "strftime('%s','now'), 'seed');",
         );
+      }
+      if (from < 4) {
+        await m.createTable(savedFilters);
       }
       // Keep FTS/indexes idempotent for upgrades.
       await customStatement(kFtsTableDdl);

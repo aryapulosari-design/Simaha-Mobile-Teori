@@ -7,7 +7,15 @@ Acuan: PRD + `CLAUDE.md` (aturan & rumus domain). Diperbarui setiap akhir step.
   - Struktur folder dibentuk: `lib/{core,domain,data,services,presentation}`, `test/`, `integration_test/`
   - Dependensi lengkap terpasang di `pubspec.yaml`
   - `CLAUDE.md` dan `PROGRESS.md` diinisialisasi
-- [ ] **Step 1: Fondasi: tema, router, DB terenkripsi, skema penuh, seeder** (NFR-01, 09, 10, 11, 13)
+- [x] **Step 1: Fondasi: tema, router, DB terenkripsi, skema penuh, seeder** (NFR-01, 09, 10, 11, 13)
+  - Tema Material 3 konsisten (terang & gelap) di `AppTheme`
+  - 8 Komponen reusable di `lib/presentation/shared/widgets`: `AppScaffold`, `EmptyState`, `ErrorState`, `LoadingView`, `ConfirmDialog`, `SectionCard`, `StatusChip`, `AppTextField`
+  - `go_router` dengan `ShellRoute`, bottom navigation role-aware, rute placeholder `/setup`, `/lock` & `/login`, `/home`
+  - Database terenkripsi SQLCipher 256-bit dengan kunci acak di Keystore / `flutter_secure_storage`
+  - Skema lengkap 27 tabel (termasuk `SavedFilters`), foreign keys aktif (`PRAGMA foreign_keys = ON;`), transaksi multi-tabel
+  - Indeks dan FTS5 virtual table + triggers sinkronisasi otomatis
+  - Service pendukung: `DeviceIdService` (UUID v4 persisten), `Clock` abstraction (`SystemClock`, `FakeClock`), `AuditLogger` interface & `DbAuditLogger`, `SeedService` (isolate & transaksi)
+  - 69/69 test lulus, `flutter analyze` 0 issues
 - [ ] **Step 2: Keamanan, akun, RBAC** (FR-01 s.d. FR-06, NFR-02, 04)
 - [ ] **Step 3: Data master + mahasiswa + pencarian/filter** (FR-07, 08, 09, 10, 11, 12)
 - [ ] **Step 4: Nilai, IPS/IPK** (FR-15, 16)
@@ -26,4 +34,5 @@ Acuan: PRD + `CLAUDE.md` (aturan & rumus domain). Diperbarui setiap akhir step.
 
 ### Catatan Asumsi & Status Saat Ini:
 - Step 0 selesai: semua dependensi yang disyaratkan telah berhasil dipasang dan di-resolve tanpa konflik.
+- Step 1 selesai: fondasi UI, routing, database SQLCipher, skema lengkap, dan service pendukung telah terverifikasi dengan unit dan widget tests (69 passing tests, 0 analyzer issues).
 - Arsitektur SQLCipher menggunakan `package:sqlite3` dengan hook native-assets `source: sqlcipher` yang merupakan standar resmi terkini di Flutter/Dart untuk kompatibilitas lintas platform.

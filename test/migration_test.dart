@@ -93,9 +93,9 @@ void main() {
         .customSelect('PRAGMA user_version')
         .map((r) => r.read<int>('user_version'))
         .getSingle();
-    expect(version, 3);
+    expect(version, 4);
 
-    // v3 tables exist and carry sync columns + default pengaturan.
+    // v3 & v4 tables exist and carry sync columns + default pengaturan.
     for (final t in [
       'pengaturan',
       'pengumuman',
@@ -107,6 +107,7 @@ void main() {
       'edom_partisipasi',
       'edom_jawaban',
       'dokumen_arsip',
+      'saved_filters',
     ]) {
       final cols = await db
           .customSelect(

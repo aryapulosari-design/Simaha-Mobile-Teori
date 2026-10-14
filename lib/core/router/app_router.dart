@@ -26,15 +26,16 @@ GoRouter buildRouter({required String dbPath}) {
     redirect: (context, state) {
       final gate = gateListenable.value;
       final loc = state.uri.toString();
-      final isAuthPage = loc == '/setup' || loc == '/lock';
+      final isAuthPage = loc == '/setup' || loc == '/lock' || loc == '/login';
       if (gate == GateStatus.setup && loc != '/setup') return '/setup';
-      if (gate == GateStatus.lock && loc != '/lock') return '/lock';
+      if (gate == GateStatus.lock && !isAuthPage) return '/lock';
       if (gate == GateStatus.ok && isAuthPage) return '/';
       return null;
     },
     routes: [
       GoRoute(path: '/setup', builder: (context, state) => const SetupPage()),
       GoRoute(path: '/lock', builder: (context, state) => const LockPage()),
+      GoRoute(path: '/login', builder: (context, state) => const LockPage()),
       ShellRoute(
         builder: (context, state, child) => AppShell(child: child),
         routes: [
