@@ -1,0 +1,48 @@
+name: simaha
+description: "SIMAHA Offline — Sistem Informasi Manajemen Data Mahasiswa, offline-first, encrypted."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # --- Tahap A: fondasi ---
+  drift: ^2.35.1
+  sqlite3: ^3.7.0
+  flutter_riverpod: ^3.4.3
+  go_router: ^18.0.2
+  flutter_secure_storage: ^11.2.0
+  path_provider: ^2.1.6
+  path: ^1.9.1
+  cryptography: ^2.9.0
+  uuid: ^4.6.0
+  intl: ^0.20.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  drift_dev: ^2.35.1
+  build_runner: ^2.16.1
+  mocktail: ^1.0.5
+
+# Pin analyzer below 14.5: build_runner 2.16.1 uses
+# AnalysisOptionsImpl.contextFeatures which was removed in analyzer 14.5.
+# TODO(Tahap J): drop override once build_runner supports analyzer 14.5+.
+dependency_overrides:
+  analyzer: 14.0.0
+
+# SQLCipher via package:sqlite3 native-assets hooks.
+# sqlcipher_flutter_libs 0.7.0+eol is EOL/no-op, so we use the
+# built-in SQLCipher build from package:sqlite3 instead.
+# See https://pub.dev/packages/sqlite3 (doc/hook.md).
+hooks:
+  user_defines:
+    sqlite3:
+      source: sqlcipher
+
+flutter:
+  uses-material-design: true
