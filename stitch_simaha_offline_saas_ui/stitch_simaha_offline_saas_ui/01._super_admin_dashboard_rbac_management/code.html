@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-fixed-dim": "#c3c0ff", "outline-variant": "#bcc9c6", "on-tertiary": "#ffffff", "on-surface": "#0b1c30", "inverse-on-surface": "#eaf1ff", "secondary": "#565e74", "secondary-container": "#dae2fd", "on-surface-variant": "#3d4947", "outline": "#6d7a77", "on-tertiary-fixed": "#0f0069", "primary-container": "#008378", "surface-tint": "#006a61", "primary": "#00685f", "inverse-surface": "#213145", "tertiary": "#4b41e1", "on-secondary-fixed": "#131b2e", "surface-container-lowest": "#ffffff", "tertiary-container": "#645efb", "surface": "#f8f9ff", "surface-bright": "#f8f9ff", "on-primary-container": "#f4fffc", "on-error-container": "#93000a", "surface-container-highest": "#d3e4fe", "surface-container-low": "#eff4ff", "on-primary": "#ffffff", "inverse-primary": "#6bd8cb", "on-primary-fixed": "#00201d", "surface-container": "#e5eeff", "on-primary-fixed-variant": "#005049", "background": "#f8f9ff", "secondary-fixed": "#dae2fd", "on-secondary-container": "#5c647a", "on-secondary": "#ffffff", "primary-fixed": "#89f5e7", "error-container": "#ffdad6", "secondary-fixed-dim": "#bec6e0", "on-background": "#0b1c30", "on-tertiary-fixed-variant": "#3323cc", "tertiary-fixed": "#e2dfff", "on-tertiary-container": "#fffbff", "primary-fixed-dim": "#6bd8cb", "surface-dim": "#cbdbf5", "surface-container-high": "#dce9ff", "surface-variant": "#d3e4fe", "on-secondary-fixed-variant": "#3f465c", "on-error": "#ffffff", "error": "#ba1a1a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter": "0.75rem", "gutter-mobile": "0.5rem", "space-md": "0.75rem", "margin": "1.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-mobile": "1rem", "space-lg": "1rem", "space-xl": "1.5rem", "gutter-tablet": "0.75rem" }, "fontFamily": { "headline-sm": ["Plus Jakarta Sans"], "metric-display": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-md": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "label-code": ["JetBrains Mono"], "headline-lg": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "label-code-sm": ["JetBrains Mono"] }, "fontSize": { "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "metric-display": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "body-md": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "label-code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "-0.01em", "fontWeight": "500" }] } } } }</script><style>@layer base { html, body { width: 100vw; min-height: 100vh; margin: 0; padding: 0; } body { overscroll-behavior: none; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-28 px-margin-mobile flex flex-col justify-between py-space-xs"><div class="flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[20px]">account_balance</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">SIMAHA OFFLINE</span><span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-code-sm text-label-code-sm uppercase font-semibold">UIN</span></div><span class="font-label-code-sm text-label-code-sm text-primary font-medium flex items-center gap-0.5"><span>👑</span> SUPER ADMIN</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Search Commands" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">terminal</span></button><button aria-label="Notifications" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 ml-space-xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="flex items-center justify-between bg-surface-container-low px-space-sm py-1 rounded-lg"><div class="flex items-center gap-space-xs overflow-hidden"><span class="material-symbols-outlined text-[15px] text-primary shrink-0">lock</span><span class="font-label-code-sm text-label-code-sm text-on-surface truncate">SQLCipher AES-256 • Lokal • Node SMH-09A</span></div><div class="flex items-center gap-1.5 shrink-0 pl-space-xs"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase">Live</span></div></div></div></header><main class="flex flex-col relative w-full pt-28 pb-20 bg-surface flex-1"><div class="flex flex-col w-full px-margin-mobile pb-space-xl gap-space-md">
+<!-- 1. Top System Status Strip -->
+<section class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-sm flex flex-col gap-space-xs sm:flex-row sm:items-center sm:justify-between">
+<div class="flex items-center gap-space-xs flex-wrap">
+<div class="flex items-center gap-1.5 bg-surface-container-low px-space-xs py-1 rounded">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface font-semibold">Node ID: SMH-09A (Master Node)</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-code-sm text-label-code-sm font-semibold">
+        ● Aktif
+      </span>
+</div>
+<div class="flex items-center gap-space-md flex-wrap text-on-surface-variant font-label-code-sm text-label-code-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+<span>Uptime: <strong class="text-on-surface">14h 6j</strong></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">database</span>
+<span>14.8 MB SQLite / 1.290 Entities</span>
+</div>
+</div>
+</section>
+<!-- 2. Executive System Dashboard (2x2 Bento KPI Grid) -->
+<section class="grid grid-cols-2 gap-space-sm">
+<!-- Card 1: Total Mahasiswa -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Total Mahasiswa</span>
+<span class="px-1.5 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-code-sm text-label-code-sm font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>+8.4%
+        </span>
+</div>
+<div class="my-space-xs">
+<div class="font-metric-display text-metric-display text-on-surface tracking-tight">1,240</div>
+</div>
+<!-- Micro Sparkline SVG -->
+<div class="w-full h-6 pt-1">
+<svg class="w-full h-full stroke-primary fill-none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 100 24">
+<polyline points="0,18 15,16 30,19 45,12 60,14 75,8 90,9 100,3"></polyline>
+</svg>
+</div>
+</div>
+<!-- Card 2: Rata-rata IPK -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Rata-rata IPK</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Target: 3.25</span>
+</div>
+<div class="my-space-xs flex items-baseline gap-1.5">
+<div class="font-metric-display text-metric-display text-on-surface tracking-tight">3.42</div>
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+</div>
+<!-- Mini Grade Distribution Stacked Bar -->
+<div class="w-full">
+<div class="h-2 w-full rounded-full bg-surface-container-high overflow-hidden flex">
+<div class="h-full bg-primary" style="width: 55%" title="A: 55%"></div>
+<div class="h-full bg-primary-fixed-dim" style="width: 30%" title="B: 30%"></div>
+<div class="h-full bg-secondary-fixed" style="width: 12%" title="C: 12%"></div>
+<div class="h-full bg-error" style="width: 3%" title="D/E: 3%"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] text-on-surface-variant mt-1 font-label-code-sm">
+<span>A (55%)</span>
+<span>B (30%)</span>
+<span>C/D (15%)</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Peringatan Aktif (EWS) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Peringatan Aktif</span>
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+</div>
+<div class="my-space-xs">
+<div class="font-metric-display text-metric-display text-error tracking-tight">18</div>
+</div>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-code-sm text-label-code-sm">
+<span class="truncate">⚠️ 6 Kritis • 12 Waspada</span>
+</div>
+</div>
+<!-- Card 4: Status Backup -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Status Backup</span>
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="my-space-xs flex items-center gap-1.5">
+<div class="font-metric-display text-metric-display text-primary tracking-tight">Aman</div>
+</div>
+<div class="font-label-code-sm text-label-code-sm text-on-surface-variant flex items-center gap-1 truncate">
+<span class="material-symbols-outlined text-[13px] text-primary">history</span>
+<span>2 hari lalu • 4.2 MB</span>
+</div>
+</div>
+</section>
+<!-- 3. Student Status Donut Chart & Cohort Distribution Bento Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between gap-space-xs flex-wrap">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Status Mahasiswa &amp; Sebaran</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Telemetri registrasi semester genap</span>
+</div>
+<!-- Segmented Pill Control -->
+<div class="inline-flex p-0.5 rounded-lg bg-surface-container-high" role="tablist">
+<button class="px-space-sm py-1 rounded bg-surface-container-lowest text-on-surface font-label-code-sm text-label-code-sm font-semibold shadow-sm transition-all" id="tabStatusBtn" onclick="toggleMetricTab('status')">
+          Status
+        </button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant font-label-code-sm text-label-code-sm hover:text-on-surface transition-all" id="tabAngkatanBtn" onclick="toggleMetricTab('angkatan')">
+          Angkatan
+        </button>
+</div>
+</div>
+<!-- Status View Panel -->
+<div class="flex flex-col sm:flex-row items-center gap-space-lg" id="statusPanelView">
+<!-- Lightweight SVG Donut Chart -->
+<div class="relative w-36 h-36 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<!-- Background circle -->
+<circle class="stroke-surface-container-high" cx="18" cy="18" fill="transparent" r="14" stroke-width="4"></circle>
+<!-- Aktif: 87% (stroke-dasharray="76.5 100") -->
+<circle class="stroke-primary" cx="18" cy="18" fill="transparent" r="14" stroke-dasharray="76.5 100" stroke-dashoffset="0" stroke-linecap="round" stroke-width="4"></circle>
+<!-- Cuti: 5% (stroke-dasharray="4.4 100") offset = -76.5 -->
+<circle class="stroke-primary-fixed-dim" cx="18" cy="18" fill="transparent" r="14" stroke-dasharray="4.4 100" stroke-dashoffset="-76.5" stroke-width="4"></circle>
+<!-- Lulus: 6% (stroke-dasharray="5.3 100") offset = -80.9 -->
+<circle class="stroke-secondary" cx="18" cy="18" fill="transparent" r="14" stroke-dasharray="5.3 100" stroke-dashoffset="-80.9" stroke-width="4"></circle>
+<!-- Nonaktif: 2% (stroke-dasharray="1.8 100") offset = -86.2 -->
+<circle class="stroke-error" cx="18" cy="18" fill="transparent" r="14" stroke-dasharray="1.8 100" stroke-dashoffset="-86.2" stroke-width="4"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-none">1,240</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant text-[10px]">Total</span>
+</div>
+</div>
+<!-- Legend & Breakdowns -->
+<div class="grid grid-cols-2 gap-space-sm w-full">
+<div class="flex items-center gap-2 p-space-xs rounded bg-surface-container-low">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Aktif</span>
+<span class="font-label-code text-label-code text-on-surface font-semibold truncate">1,080 <span class="text-on-surface-variant font-normal">(87%)</span></span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-xs rounded bg-surface-container-low">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary-fixed-dim shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Cuti</span>
+<span class="font-label-code text-label-code text-on-surface font-semibold truncate">65 <span class="text-on-surface-variant font-normal">(5%)</span></span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-xs rounded bg-surface-container-low">
+<span class="w-2.5 h-2.5 rounded-sm bg-secondary shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Lulus</span>
+<span class="font-label-code text-label-code text-on-surface font-semibold truncate">75 <span class="text-on-surface-variant font-normal">(6%)</span></span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-space-xs rounded bg-surface-container-low">
+<span class="w-2.5 h-2.5 rounded-sm bg-error shrink-0"></span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Nonaktif</span>
+<span class="font-label-code text-label-code text-on-surface font-semibold truncate">20 <span class="text-on-surface-variant font-normal">(2%)</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Angkatan View Panel (Hidden initially) -->
+<div class="hidden flex-col gap-space-xs" id="angkatanPanelView">
+<div class="flex items-center justify-between text-body-sm text-on-surface">
+<span class="font-label-code-sm text-label-code-sm">2024 (Tahun 1)</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold">390 Mhs (31%)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary" style="width: 31%"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface pt-1">
+<span class="font-label-code-sm text-label-code-sm">2023 (Tahun 2)</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold">340 Mhs (27%)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary" style="width: 27%"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface pt-1">
+<span class="font-label-code-sm text-label-code-sm">2022 (Tahun 3)</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold">310 Mhs (25%)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary" style="width: 25%"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface pt-1">
+<span class="font-label-code-sm text-label-code-sm">2021 &amp; Lama</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold">200 Mhs (17%)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-secondary" style="width: 17%"></div>
+</div>
+</div>
+</section>
+<!-- 4. Debug Seeder Card (Dart Isolate Worker) -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-bold uppercase">Pengujian Beban Database (Isolate CLI)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface pt-0.5">Seeder 10.000 Data Dummy Mahasiswa &amp; Nilai</h3>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-label-code-sm text-label-code-sm font-mono shrink-0">
+        Worker: isolate_worker_#2
+      </span>
+</div>
+<!-- Progress & Telemetry -->
+<div class="flex flex-col gap-1.5 bg-surface-container-low p-space-sm rounded-lg">
+<div class="flex items-center justify-between font-label-code-sm text-label-code-sm">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          Memproses batch 6.800 / 10.000 di Isolate pool...
+        </span>
+<span class="font-bold text-primary font-label-code text-label-code" id="seederPercentText">68%</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary transition-all duration-300" id="seederProgressBar" style="width: 68%"></div>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant text-[11px] font-label-code-sm pt-0.5">
+<span>SQLite WAL Throughput: 1,420 txn/sec</span>
+<span>Memory Spike: +1.4MB</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-space-xs pt-1">
+<button class="flex-1 min-h-[36px] px-space-md rounded-lg bg-inverse-surface text-inverse-on-surface font-body-md text-body-md font-semibold hover:opacity-95 transition-all flex items-center justify-center gap-1.5 active:scale-[0.98]" id="runSeederBtn">
+<span class="material-symbols-outlined text-[17px] text-primary-fixed">bolt</span>
+<span>⚡ Jalankan Seeder Isolate</span>
+</button>
+<button class="min-h-[36px] px-space-md rounded-lg bg-surface-container-high text-on-surface font-body-md text-body-md font-medium hover:bg-surface-container-highest transition-all active:scale-[0.98]">
+        Hentikan
+      </button>
+</div>
+</section>
+<!-- 5. Manajemen Akun & RBAC Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between gap-space-xs flex-wrap">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Manajemen Akun &amp; Matriks Peran</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Hak akses lokal berbasis SQLite role-matrix</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-code-sm text-label-code-sm font-semibold">
+        5 Peran Aktif
+      </span>
+</div>
+<!-- User Rows List -->
+<div class="flex flex-col gap-space-xs">
+<!-- User 1: Super Admin -->
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-low gap-space-xs">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-body-sm shrink-0">
+              SA
+            </div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Super Admin</span>
+<span class="px-1 py-0.5 rounded bg-surface-container-highest font-label-code-sm text-label-code-sm text-on-surface-variant font-mono">usr_sa_01</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Terkait: Master Key • Hak Akses Root</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-code-sm text-label-code-sm font-semibold shrink-0">
+            ● Aktif Permanen
+          </span>
+</div>
+<div class="flex justify-end pt-1">
+<button class="px-space-sm py-1 rounded bg-surface-container text-on-surface font-label-code-sm text-label-code-sm font-semibold hover:bg-surface-container-high transition-colors">
+            Kelola Hak Akses
+          </button>
+</div>
+</div>
+<!-- User 2: Admin Akademik -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-body-sm shrink-0">
+            AK
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate">Admin Akademik (Operator BAK)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Staf Biro 12 Akun</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<!-- Toggle switch -->
+<button aria-label="Toggle status" class="w-9 h-5 rounded-full bg-primary relative p-0.5 transition-colors focus:outline-none">
+<span class="block w-4 h-4 rounded-full bg-surface-container-lowest translate-x-4 transition-transform shadow-xs"></span>
+</button>
+<button class="px-space-xs py-1 rounded bg-surface-container text-on-surface font-label-code-sm text-label-code-sm font-semibold hover:bg-surface-container-high transition-colors">
+            Reset PIN
+          </button>
+</div>
+</div>
+<!-- User 3: Dosen Wali -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold text-body-sm shrink-0">
+            RF
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate">Dosen Wali (Dr. Reza Fahlevi)</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-mono truncate">NIDN: 0412098801</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button aria-label="Toggle status" class="w-9 h-5 rounded-full bg-primary relative p-0.5 transition-colors focus:outline-none">
+<span class="block w-4 h-4 rounded-full bg-surface-container-lowest translate-x-4 transition-transform shadow-xs"></span>
+</button>
+<button class="px-space-xs py-1 rounded bg-surface-container text-on-surface font-label-code-sm text-label-code-sm font-semibold hover:bg-surface-container-high transition-colors">
+            Reset PIN
+          </button>
+</div>
+</div>
+<!-- User 4: Mahasiswa -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center font-bold text-body-sm shrink-0">
+            BS
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate">Mahasiswa (Budi Santoso)</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-mono truncate">NIM: 230605110042</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button aria-label="Toggle status" class="w-9 h-5 rounded-full bg-primary relative p-0.5 transition-colors focus:outline-none">
+<span class="block w-4 h-4 rounded-full bg-surface-container-lowest translate-x-4 transition-transform shadow-xs"></span>
+</button>
+<button class="px-space-xs py-1 rounded bg-surface-container text-on-surface font-label-code-sm text-label-code-sm font-semibold hover:bg-surface-container-high transition-colors">
+            Reset PIN
+          </button>
+</div>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex flex-col sm:flex-row gap-space-xs pt-1">
+<button class="flex-1 min-h-[36px] px-space-md rounded-lg bg-primary text-on-primary font-body-md text-body-md font-semibold hover:bg-surface-tint transition-all flex items-center justify-center gap-1 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Tambah Pengguna Baru</span>
+</button>
+<button class="min-h-[36px] px-space-sm rounded-lg bg-surface-container text-on-surface font-body-md text-body-md font-medium hover:bg-surface-container-high transition-all flex items-center justify-center gap-1 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[17px] text-secondary">vpn_key</span>
+<span>Pulihkan PIN Master</span>
+</button>
+</div>
+</section>
+<!-- 6. Tempat Sampah / Soft Delete Manager Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between gap-space-xs flex-wrap">
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Tempat Sampah / Soft Delete Manager</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tabel terisolasi dengan penanda flag is_deleted</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-code-sm text-label-code-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">alarm</span>
+        Auto-Purge 30 Hari
+      </span>
+</div>
+<!-- Segmented Filter Tabs -->
+<div class="inline-flex p-0.5 rounded-lg bg-surface-container-high gap-0.5 overflow-x-auto w-full">
+<button class="flex-1 py-1 px-space-xs rounded bg-surface-container-lowest text-on-surface font-label-code-sm text-label-code-sm font-semibold shadow-sm text-center truncate">
+        Mahasiswa (2)
+      </button>
+<button class="flex-1 py-1 px-space-xs rounded text-on-surface-variant font-label-code-sm text-label-code-sm hover:text-on-surface text-center truncate">
+        Mata Kuliah (1)
+      </button>
+<button class="flex-1 py-1 px-space-xs rounded text-on-surface-variant font-label-code-sm text-label-code-sm hover:text-on-surface text-center truncate">
+        Kelas (1)
+      </button>
+</div>
+<!-- Deleted Items List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Deleted Item Row 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate">Andi Firmansyah</span>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-mono">NIM: 220605110012</span>
+<span class="text-on-surface-variant text-[11px]">• Teknik Informatika</span>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-code-sm text-label-code-sm shrink-0">
+            Sisa: 22 hari
+          </span>
+</div>
+<div class="flex items-center justify-between pt-1 border-t-0 flex-wrap gap-space-xs">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Dihapus: 8 hari lalu</span>
+<div class="flex items-center gap-1.5">
+<button class="px-space-xs py-1 rounded bg-primary-fixed text-on-primary-fixed font-label-code-sm text-label-code-sm font-semibold hover:bg-primary-fixed-dim transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">replay</span>
+              Pulihkan
+            </button>
+<button class="px-space-xs py-1 rounded bg-error-container text-on-error-container font-label-code-sm text-label-code-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">delete_forever</span>
+              Hapus Permanen
+            </button>
+</div>
+</div>
+</div>
+<!-- Deleted Item Row 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex flex-col min-w-0">
+<span class="font-body-md text-body-md text-on-surface font-semibold truncate">Dewi Lestari</span>
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-mono">NIM: 210605110098</span>
+<span class="text-on-surface-variant text-[11px]">• Sistem Informasi</span>
+</div>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-code-sm text-label-code-sm shrink-0">
+            Sisa: 12 hari
+          </span>
+</div>
+<div class="flex items-center justify-between pt-1 border-t-0 flex-wrap gap-space-xs">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Dihapus: 18 hari lalu</span>
+<div class="flex items-center gap-1.5">
+<button class="px-space-xs py-1 rounded bg-primary-fixed text-on-primary-fixed font-label-code-sm text-label-code-sm font-semibold hover:bg-primary-fixed-dim transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">replay</span>
+              Pulihkan
+            </button>
+<button class="px-space-xs py-1 rounded bg-error-container text-on-error-container font-label-code-sm text-label-code-sm font-semibold hover:opacity-90 transition-opacity flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">delete_forever</span>
+              Hapus Permanen
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  function toggleMetricTab(tab) {
+    const statusBtn = document.getElementById('tabStatusBtn');
+    const angkatanBtn = document.getElementById('tabAngkatanBtn');
+    const statusView = document.getElementById('statusPanelView');
+    const angkatanView = document.getElementById('angkatanPanelView');
+
+    if (tab === 'status') {
+      statusBtn.className = 'px-space-sm py-1 rounded bg-surface-container-lowest text-on-surface font-label-code-sm text-label-code-sm font-semibold shadow-sm transition-all';
+      angkatanBtn.className = 'px-space-sm py-1 rounded text-on-surface-variant font-label-code-sm text-label-code-sm hover:text-on-surface transition-all';
+      statusView.classList.remove('hidden');
+      statusView.classList.add('flex');
+      angkatanView.classList.add('hidden');
+      angkatanView.classList.remove('flex');
+    } else {
+      angkatanBtn.className = 'px-space-sm py-1 rounded bg-surface-container-lowest text-on-surface font-label-code-sm text-label-code-sm font-semibold shadow-sm transition-all';
+      statusBtn.className = 'px-space-sm py-1 rounded text-on-surface-variant font-label-code-sm text-label-code-sm hover:text-on-surface transition-all';
+      statusView.classList.add('hidden');
+      statusView.classList.remove('flex');
+      angkatanView.classList.remove('hidden');
+      angkatanView.classList.add('flex');
+    }
+  }
+
+  // Seeder micro-interaction simulation
+  const runBtn = document.getElementById('runSeederBtn');
+  const progressBar = document.getElementById('seederProgressBar');
+  const percentText = document.getElementById('seederPercentText');
+
+  if (runBtn) {
+    runBtn.addEventListener('click', () => {
+      let current = 68;
+      runBtn.disabled = true;
+      runBtn.classList.add('opacity-75');
+      const timer = setInterval(() => {
+        current += 4;
+        if (current >= 100) {
+          current = 100;
+          clearInterval(timer);
+          runBtn.disabled = false;
+          runBtn.classList.remove('opacity-75');
+        }
+        progressBar.style.width = current + '%';
+        percentText.textContent = current + '%';
+      }, 120);
+    });
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-20 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[44px] py-1 transition-colors text-primary font-bold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">grid_view</span><span class="font-label-code-sm text-label-code-sm tracking-tight">Dashboard</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="akun-rbac" href="#"><span class="material-symbols-outlined text-[22px]">admin_panel_settings</span><span class="font-label-code-sm text-label-code-sm tracking-tight">Akun &amp; RBAC</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="backup-simaha" href="#"><span class="material-symbols-outlined text-[22px]">cloud_download</span><span class="font-label-code-sm text-label-code-sm tracking-tight">.simaha</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="sinkron-p2p" href="#"><span class="material-symbols-outlined text-[22px]">sync_alt</span><span class="font-label-code-sm text-label-code-sm tracking-tight">Sinkron P2P</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[56px] min-h-[44px] py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="audit-log" href="#"><span class="material-symbols-outlined text-[22px]">receipt_long</span><span class="font-label-code-sm text-label-code-sm tracking-tight">Audit Log</span></a></div></nav></body></html>

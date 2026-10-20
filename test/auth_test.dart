@@ -67,12 +67,13 @@ void main() {
     expect(ok.isOk, isTrue);
   });
 
-  test('5 wrong PINs lock 1 min, then doubles, capped 15 min', () async {
+  test('5 wrong PINs lock 30s, then doubles (60s, 120s), capped 15 min', () async {
     expect(AuthService.lockoutFor(4), Duration.zero);
-    expect(AuthService.lockoutFor(5), const Duration(minutes: 1));
-    expect(AuthService.lockoutFor(6), const Duration(minutes: 2));
-    expect(AuthService.lockoutFor(7), const Duration(minutes: 4));
-    expect(AuthService.lockoutFor(9), const Duration(minutes: 15));
+    expect(AuthService.lockoutFor(5), const Duration(seconds: 30));
+    expect(AuthService.lockoutFor(6), const Duration(seconds: 60));
+    expect(AuthService.lockoutFor(7), const Duration(seconds: 120));
+    expect(AuthService.lockoutFor(8), const Duration(seconds: 240));
+    expect(AuthService.lockoutFor(10), const Duration(minutes: 15));
     expect(AuthService.lockoutFor(20), const Duration(minutes: 15));
 
     final h = await _Harness.open();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:simaha/core/security/flag_secure.dart';
 import 'package:simaha/core/utils/result.dart';
 import 'package:simaha/presentation/providers/session_providers.dart';
 
@@ -75,30 +76,26 @@ class _SetupPageState extends ConsumerState<SetupPage> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [scheme.primary, scheme.tertiary],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24),
-              child: Container(
-                constraints: const BoxConstraints(maxWidth: 400),
+    return SecureScope(
+      child: Scaffold(
+        body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(color: scheme.surfaceContainerLow),
+          child: SafeArea(
+            child: Center(
+              child: SingleChildScrollView(
                 padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  color: scheme.surface,
-                  borderRadius: BorderRadius.circular(28),
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: 400),
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: scheme.surface,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: _recoveryCode == null
+                      ? _setupForm(context)
+                      : _recoveryView(context),
                 ),
-                child: _recoveryCode == null
-                    ? _setupForm(context)
-                    : _recoveryView(context),
               ),
             ),
           ),

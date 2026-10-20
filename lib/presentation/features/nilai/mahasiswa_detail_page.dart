@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simaha/data/local/app_database.dart';
+import 'package:simaha/presentation/features/academic/advising_section.dart';
 import 'package:simaha/domain/academic/grades.dart' as engine;
 import 'package:simaha/domain/academic/validations.dart';
+import 'package:simaha/domain/security/roles.dart';
+import 'package:simaha/presentation/providers/session_providers.dart';
 import 'package:simaha/presentation/providers/app_providers.dart';
 
 final _mhsProvider = FutureProvider.autoDispose.family<MahasiswaRow?, int>((
   ref,
   id,
 ) async {
-  final db = ref.watch(appDatabaseProvider);
-  return db.getMahasiswa(id);
+  final db = ref.watch(academicServiceProvider);
+  return db.student(id);
 });
 
 final _nilaiProvider = FutureProvider.autoDispose
     .family<List<KrsNilaiItem>, int>((ref, id) async {
-      final db = ref.watch(appDatabaseProvider);
-      return db.listNilaiMahasiswa(id);
+      final db = ref.watch(academicServiceProvider);
+      return db.grades(id);
     });
 
 final _syaratSksProvider = FutureProvider.autoDispose<int>((ref) async {
@@ -35,6 +38,9 @@ class MahasiswaDetailPage extends ConsumerWidget {
     final mhs = ref.watch(_mhsProvider(mahasiswaId));
     final nilai = ref.watch(_nilaiProvider(mahasiswaId));
     final syarat = ref.watch(_syaratSksProvider);
+    final role = ref.watch(sessionProvider).role;
+    final canEdit = role != null && canRole(role, Permission.manageNilai);
+    final canRegister = role != null && canRole(role, Permission.manageMaster);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detail Mahasiswa'),
@@ -51,11 +57,13 @@ class MahasiswaDetailPage extends ConsumerWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => _showTambah(context, ref),
-        icon: const Icon(Icons.add),
-        label: const Text('Tambah MK'),
-      ),
+      floatingActionButton: canRegister
+          ? FloatingActionButton.extended(
+              onPressed: () => _showTambah(context, ref),
+              icon: const Icon(Icons.add),
+              label: const Text('Tambah MK'),
+            )
+          : null,
       body: mhs.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Gagal memuat: $e')),
@@ -81,6 +89,17 @@ class MahasiswaDetailPage extends ConsumerWidget {
                   )
                   .toList();
               final ipk = engine.hitungIpk(courses);
+              final best = <String, engine.GradedCourse>{};
+              for (final course in courses) {
+                if (!best.containsKey(course.mkKode) ||
+                    course.bobot > best[course.mkKode]!.bobot) {
+                  best[course.mkKode] = course;
+                }
+              }
+              final sksDasar = best.values.fold<int>(
+                0,
+                (total, course) => total + course.sks,
+              );
               final lulus = engine.sksLulus(courses);
               final tempuh = courses.fold<int>(0, (s, c) => s + c.sks);
               final progres = engine.progresKelulusan(
@@ -92,16 +111,27 @@ class MahasiswaDetailPage extends ConsumerWidget {
                 children: [
                   _BioCard(m: m),
                   const SizedBox(height: 12),
-                  _RingkasanCard(
-                    ipk: ipk,
-                    sksTempuh: tempuh,
-                    sksLulus: lulus,
-                    syaratSks: syaratSks,
-                    progres: progres,
-                    statusAkademik: m.status,
-                  ),
+                  if (role != Role.dosenPengampu)
+                    _RingkasanCard(
+                      ipk: ipk,
+                      sksTempuh: tempuh,
+                      sksLulus: lulus,
+                      syaratSks: syaratSks,
+                      progres: progres,
+                      statusAkademik: m.status,
+                    ),
                   const SizedBox(height: 12),
-                  _SimulasiCard(ipk: ipk, sksLulus: lulus),
+                  if (role != Role.dosenPengampu)
+                    _SimulasiCard(ipk: ipk, sksDasar: sksDasar),
+                  if (role == Role.dosenPengampu)
+                    const Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Text(
+                          'Daftar ini hanya menampilkan nilai kelas yang Anda ampu.',
+                        ),
+                      ),
+                    ),
                   const SizedBox(height: 12),
                   Row(
                     children: [
@@ -118,7 +148,7 @@ class MahasiswaDetailPage extends ConsumerWidget {
                       child: Padding(
                         padding: EdgeInsets.all(20),
                         child: Text(
-                          'Belum ada KRS/nilai. Tekan "Tambah MK".',
+                          'Belum ada KRS atau nilai yang tersedia.',
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -127,9 +157,14 @@ class MahasiswaDetailPage extends ConsumerWidget {
                     for (final it in items)
                       _NilaiCard(
                         item: it,
-                        onEdit: () => _showEdit(context, ref, it),
-                        onDelete: () => _confirmHapus(context, ref, it),
+                        onEdit: canEdit
+                            ? () => _showEdit(context, ref, it)
+                            : null,
+                        onDelete: canRegister
+                            ? () => _confirmHapus(context, ref, it)
+                            : null,
                       ),
+                  AdvisingSection(studentId: mahasiswaId),
                 ],
               );
             },
@@ -162,7 +197,7 @@ class MahasiswaDetailPage extends ConsumerWidget {
     if (res == null || !context.mounted) return;
     try {
       await ref
-          .read(appDatabaseProvider)
+          .read(academicServiceProvider)
           .saveNilai(krsId: it.krsId, tugas: res.t, uts: res.u, uas: res.a);
       await _refresh(ref);
       if (context.mounted) {
@@ -186,10 +221,10 @@ class MahasiswaDetailPage extends ConsumerWidget {
   }
 
   Future<void> _showTambah(BuildContext context, WidgetRef ref) async {
-    final db = ref.read(appDatabaseProvider);
-    final opsi = await db.listKelasOptions();
+    final db = ref.read(academicServiceProvider);
+    final opsi = await db.classOptions();
     if (!context.mounted) return;
-    final diambil = (await db.listNilaiMahasiswa(mahasiswaId))
+    final diambil = (await db.grades(mahasiswaId))
         .map((e) => e.kelasId)
         .toSet();
     final tersedia = opsi.where((o) => !diambil.contains(o.kelasId)).toList();
@@ -206,7 +241,7 @@ class MahasiswaDetailPage extends ConsumerWidget {
     );
     if (res == null || !context.mounted) return;
     // Validasi batas SKS sederhana: total SKS + baru <= batas berbasis IPK.
-    final items = await db.listNilaiMahasiswa(mahasiswaId);
+    final items = await db.grades(mahasiswaId);
     final courses = items
         .where((e) => e.adaNilai)
         .map(
@@ -281,7 +316,7 @@ class MahasiswaDetailPage extends ConsumerWidget {
       ),
     );
     if (ok != true || !context.mounted) return;
-    await ref.read(appDatabaseProvider).deleteKrs(it.krsId);
+    await ref.read(academicServiceProvider).deleteKrs(it.krsId);
     await _refresh(ref);
   }
 }
@@ -428,9 +463,9 @@ class _Stat extends StatelessWidget {
 
 /// Simulasi IPK target (FR-36): input target + rencana SKS.
 class _SimulasiCard extends StatefulWidget {
-  const _SimulasiCard({required this.ipk, required this.sksLulus});
+  const _SimulasiCard({required this.ipk, required this.sksDasar});
   final double ipk;
-  final int sksLulus;
+  final int sksDasar;
 
   @override
   State<_SimulasiCard> createState() => _SimulasiCardState();
@@ -456,7 +491,7 @@ class _SimulasiCardState extends State<_SimulasiCard> {
       try {
         final r = engine.simulasiIpk(
           widget.ipk,
-          widget.sksLulus,
+          widget.sksDasar,
           rencana,
           target,
         );
@@ -520,8 +555,8 @@ class _NilaiCard extends StatelessWidget {
     required this.onDelete,
   });
   final KrsNilaiItem item;
-  final VoidCallback onEdit;
-  final VoidCallback onDelete;
+  final VoidCallback? onEdit;
+  final VoidCallback? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -582,17 +617,19 @@ class _NilaiCard extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                OutlinedButton.icon(
-                  onPressed: onEdit,
-                  icon: const Icon(Icons.edit_outlined, size: 16),
-                  label: const Text('Input / Edit'),
-                ),
+                if (onEdit != null)
+                  OutlinedButton.icon(
+                    onPressed: onEdit,
+                    icon: const Icon(Icons.edit_outlined, size: 16),
+                    label: const Text('Input / Edit'),
+                  ),
                 const SizedBox(width: 8),
-                OutlinedButton.icon(
-                  onPressed: onDelete,
-                  icon: const Icon(Icons.delete_outline, size: 16),
-                  label: const Text('Hapus'),
-                ),
+                if (onDelete != null)
+                  OutlinedButton.icon(
+                    onPressed: onDelete,
+                    icon: const Icon(Icons.delete_outline, size: 16),
+                    label: const Text('Hapus'),
+                  ),
               ],
             ),
           ],

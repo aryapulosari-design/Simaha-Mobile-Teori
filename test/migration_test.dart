@@ -93,7 +93,7 @@ void main() {
         .customSelect('PRAGMA user_version')
         .map((r) => r.read<int>('user_version'))
         .getSingle();
-    expect(version, 4);
+    expect(version, 5);
 
     // v3 & v4 tables exist and carry sync columns + default pengaturan.
     for (final t in [
@@ -187,4 +187,49 @@ void main() {
 
     await db.close();
   });
+  test(
+    'v4 to v5 preserves teacher and advisor accounts in separate profile slots',
+    () async {
+      final dir = await Directory.systemTemp.createTemp('simaha-v4-v5-');
+      final file = File.fromUri(dir.uri.resolve('upgrade.db'));
+      final key = DatabaseKeyManager.generateRawHexKey();
+      final initial = AppDatabase(
+        openEncryptedExecutor(file: file, rawHexKey: key),
+      );
+      await initial.customStatement(
+        "INSERT INTO users (id, username, role, pin_hash, salt, updated_at, device_id) VALUES (1, 'teacher', 'dosen_pengampu', 'hash', 'salt', 1, 'test'), (2, 'advisor', 'dosen_wali', 'hash', 'salt', 1, 'test')",
+      );
+      await initial.customStatement(
+        "INSERT INTO prodi (id, kode, nama, updated_at, device_id) VALUES (1, 'IF', 'Informatika', 1, 'test')",
+      );
+      await initial.customStatement(
+        "INSERT INTO dosens (id, nidn, nama, user_id, prodi_id, updated_at, device_id) VALUES (1, 'D1', 'Pengampu', 1, 1, 1, 'test'), (2, 'D2', 'Wali', 2, 1, 1, 'test')",
+      );
+      await initial.customStatement(
+        'ALTER TABLE dosens DROP COLUMN wali_user_id',
+      );
+      await initial.customStatement('PRAGMA user_version = 4');
+      await initial.close();
+      final upgraded = AppDatabase(
+        openEncryptedExecutor(file: file, rawHexKey: key),
+      );
+      try {
+        final teachers = await upgraded.listDosen();
+        final teacher = teachers.firstWhere((d) => d.id == 1);
+        final advisor = teachers.firstWhere((d) => d.id == 2);
+        expect(teacher.userId, 1);
+        expect(teacher.waliUserId, null);
+        expect(advisor.userId, null);
+        expect(advisor.waliUserId, 2);
+        expect((await upgraded.select(upgraded.users).get()).length, 2);
+        expect(
+          await upgraded.customSelect('PRAGMA foreign_key_check').get(),
+          isEmpty,
+        );
+      } finally {
+        await upgraded.close();
+        await dir.delete(recursive: true);
+      }
+    },
+  );
 }

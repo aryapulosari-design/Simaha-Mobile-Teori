@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simaha/data/local/app_database.dart';
 import 'package:simaha/domain/security/roles.dart';
 import 'package:simaha/presentation/providers/session_providers.dart';
+import 'package:simaha/presentation/providers/app_providers.dart';
 
 /// Super Admin account management (service layer enforces RBAC too).
 class UsersPage extends ConsumerWidget {
@@ -227,11 +228,14 @@ class _UserCard extends ConsumerWidget {
                   icon: const Icon(Icons.pin_outlined, size: 16),
                   label: const Text('Reset PIN'),
                 ),
-                OutlinedButton.icon(
-                  onPressed: () => _toggleBiometric(context, ref),
-                  icon: const Icon(Icons.fingerprint, size: 16),
-                  label: Text(user.biometricEnabled ? 'Bio: on' : 'Bio: off'),
-                ),
+                if (role == Role.mahasiswa ||
+                    role == Role.dosenPengampu ||
+                    role == Role.dosenWali)
+                  OutlinedButton.icon(
+                    onPressed: () => _linkProfile(context, ref),
+                    icon: const Icon(Icons.link_outlined, size: 16),
+                    label: const Text('Hubungkan profil'),
+                  ),
               ],
             ),
           ],
@@ -311,12 +315,114 @@ class _UserCard extends ConsumerWidget {
     }
   }
 
-  Future<void> _toggleBiometric(BuildContext context, WidgetRef ref) async {
-    // Any user may toggle their own flag; admins may set it for managed
-    // accounts (device itself must still support biometrics at unlock).
-    await ref
-        .read(authServiceProvider)
-        .setBiometricEnabled(userId: user.id, enabled: !user.biometricEnabled);
-    ref.invalidate(usersListProvider);
+  Future<void> _linkProfile(BuildContext context, WidgetRef ref) async {
+    final db = ref.read(appDatabaseProvider);
+    final isStudent = Role.fromStorage(user.role) == Role.mahasiswa;
+    final options = <({int id, String label})>[];
+    if (isStudent) {
+      for (final m in await db.pagedMahasiswa(limit: 100000)) {
+        if (m.userId == null || m.userId == user.id) {
+          options.add((id: m.id, label: [m.nim, m.nama].join(' ? ')));
+        }
+      }
+    } else {
+      for (final d in await db.listDosen()) {
+        final linkedId = Role.fromStorage(user.role) == Role.dosenWali
+            ? d.waliUserId
+            : d.userId;
+        if (linkedId == null || linkedId == user.id) {
+          options.add((id: d.id, label: [d.nidn, d.nama].join(' ? ')));
+        }
+      }
+    }
+    if (!context.mounted) return;
+    if (options.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Belum ada profil yang tersedia untuk dihubungkan.'),
+        ),
+      );
+      return;
+    }
+    String query = '';
+    final selected = await showDialog<int>(
+      context: context,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setState) => AlertDialog(
+          title: const Text('Hubungkan profil'),
+          content: SizedBox(
+            width: 440,
+            height: 380,
+            child: Column(
+              children: [
+                Text(
+                  'Pilih profil untuk menentukan data yang dapat diakses akun ini.',
+                  style: Theme.of(ctx).textTheme.bodySmall,
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'Cari profil',
+                    prefixIcon: Icon(Icons.search),
+                  ),
+                  onChanged: (value) =>
+                      setState(() => query = value.toLowerCase()),
+                ),
+                const SizedBox(height: 8),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      for (final item in options.where(
+                        (o) => o.label.toLowerCase().contains(query),
+                      ))
+                        ListTile(
+                          title: Text(item.label),
+                          onTap: () => Navigator.pop(ctx, item.id),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('Batal'),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (selected == null) return;
+    try {
+      final auth = ref.read(authServiceProvider);
+      if (isStudent) {
+        await auth.linkUserToMahasiswa(
+          actorId: selfId,
+          userId: user.id,
+          mahasiswaId: selected,
+        );
+      } else {
+        await auth.linkUserToDosen(
+          actorId: selfId,
+          userId: user.id,
+          dosenId: selected,
+        );
+      }
+      ref
+        ..invalidate(mahasiswaSearchProvider)
+        ..invalidate(dashboardCountsProvider);
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Profil berhasil dihubungkan.')),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('$e')));
+      }
+    }
   }
 }

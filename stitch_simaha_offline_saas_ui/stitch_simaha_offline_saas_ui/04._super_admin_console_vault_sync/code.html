@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><title>SIMAHA Offline</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary": "#00685f", "on-primary": "#ffffff", "secondary-fixed-dim": "#bec6e0", "tertiary": "#4b41e1", "on-tertiary": "#ffffff", "on-background": "#0b1c30", "inverse-surface": "#213145", "background": "#f8f9ff", "on-tertiary-fixed-variant": "#3323cc", "on-primary-fixed-variant": "#005049", "outline-variant": "#bcc9c6", "surface-container": "#e5eeff", "tertiary-fixed": "#e2dfff", "on-secondary-fixed": "#131b2e", "outline": "#6d7a77", "on-secondary-container": "#5c647a", "surface-container-lowest": "#ffffff", "surface-container-high": "#dce9ff", "primary-fixed-dim": "#6bd8cb", "on-tertiary-container": "#fffbff", "tertiary-fixed-dim": "#c3c0ff", "surface-dim": "#cbdbf5", "on-primary-container": "#f4fffc", "on-secondary": "#ffffff", "secondary": "#565e74", "surface-variant": "#d3e4fe", "inverse-primary": "#6bd8cb", "on-error-container": "#93000a", "error": "#ba1a1a", "on-secondary-fixed-variant": "#3f465c", "surface-tint": "#006a61", "surface-container-low": "#eff4ff", "error-container": "#ffdad6", "surface-bright": "#f8f9ff", "on-tertiary-fixed": "#0f0069", "secondary-container": "#dae2fd", "inverse-on-surface": "#eaf1ff", "surface": "#f8f9ff", "tertiary-container": "#645efb", "primary-fixed": "#89f5e7", "on-surface": "#0b1c30", "on-primary-fixed": "#00201d", "on-error": "#ffffff", "surface-container-highest": "#d3e4fe", "on-surface-variant": "#3d4947", "secondary-fixed": "#dae2fd" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.5rem", "gutter-mobile": "0.5rem", "margin-mobile": "1rem", "margin": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-lg": "1rem", "gutter": "0.75rem", "space-md": "0.75rem", "gutter-tablet": "0.75rem" }, "fontFamily": { "metric-display": ["Plus Jakarta Sans"], "label-code": ["JetBrains Mono"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "label-code-sm": ["JetBrains Mono"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"] }, "fontSize": { "metric-display": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-xs flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-xs min-w-0 flex-1"><button aria-label="Back" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container transition-colors shrink-0" onclick="history.back()"><span class="material-symbols-outlined text-[20px]">arrow_back</span></button><div class="flex flex-col min-w-0"><h1 class="font-headline-sm text-headline-sm text-on-surface truncate tracking-tight">Super Admin Console</h1><div class="flex items-center gap-1.5"><div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container text-on-secondary-container font-label-code-sm text-label-code-sm"><span class="material-symbols-outlined text-[11px] text-primary">lock</span><span class="truncate max-w-[130px]">SQLCipher AES-256</span></div></div></div></div><div class="flex items-center gap-space-xs shrink-0 pr-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-safe px-margin-mobile flex flex-col"><div class="flex flex-col w-full pb-10 gap-space-md">
+<!-- Node & Security Diagnostics Panel (Swiss Bento Hero) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase tracking-wider">Node Active</span>
+<span class="font-label-code text-label-code bg-surface-container px-2 py-0.5 rounded text-on-secondary-container">SMH-09A</span>
+</div>
+<a class="flex items-center gap-1 font-body-sm text-body-sm text-primary hover:underline" href="#audit-trail">
+<span>Audit Trail</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+<!-- Metrics Bento Row -->
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Database Size</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-metric-display text-headline-sm text-on-surface">14.8</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">MB</span>
+</div>
+<div class="flex items-center gap-1 mt-1 text-primary">
+<span class="material-symbols-outlined text-[13px]">lock</span>
+<span class="font-label-code-sm text-label-code-sm truncate">AES-256 Engine</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Entities Cached</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">1,290</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">records</span>
+</div>
+</div>
+<div class="flex items-center gap-1 font-label-code-sm text-label-code-sm text-on-secondary-container truncate pt-1">
+<span>1.2k Mhs</span> • <span>42 Dosen</span> • <span>8 Prodi</span>
+</div>
+</div>
+</div>
+</section>
+<!-- P2P Sync & Conflict Resolver Telemetry Bar -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">sync_alt</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">P2P Serverless Sync</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded-full font-medium">.simaha-sync v1</span>
+</div>
+<!-- Clock Drift Notice Pill -->
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0">schedule</span>
+<div class="min-w-0 flex-1">
+<p class="font-body-sm text-body-sm text-on-surface truncate">Selisih jam <span class="font-label-code-sm text-label-code-sm font-semibold">1.2 mnt</span></p>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant truncate">Lamport Logical Timestamp: Synced</p>
+</div>
+<span class="w-2 h-2 rounded-full bg-primary shrink-0"></span>
+</div>
+<!-- Delta Counter Tokens -->
+<div class="grid grid-cols-3 gap-space-xs text-center">
+<div class="bg-surface-container-low rounded-lg p-2">
+<span class="font-label-code text-label-code text-primary font-bold">+42</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">Baru</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2">
+<span class="font-label-code text-label-code text-secondary font-bold">~15</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">Diubah</span>
+</div>
+<div class="bg-error-container rounded-lg p-2 cursor-pointer transition-transform active:scale-95" onclick="document.getElementById('conflict-modal').classList.remove('hidden')">
+<span class="font-label-code text-label-code text-on-error-container font-bold">⚡ 2</span>
+<span class="block font-body-sm text-body-sm text-on-error-container font-medium underline">Konflik</span>
+</div>
+</div>
+<button class="w-full h-9 bg-surface-container hover:bg-surface-container-high text-on-surface font-body-md text-body-md rounded-lg flex items-center justify-center gap-1.5 transition-colors" onclick="document.getElementById('conflict-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[16px]">call_split</span>
+<span>Buka Diff Conflict Resolver</span>
+</button>
+</section>
+<!-- Backup & Atomic Restore Module -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Backup &amp; Atomic Restore</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm bg-error-container text-on-error-container px-2 py-0.5 rounded font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">warning</span>
+        2 hari lalu
+      </span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex justify-between items-center text-on-surface-variant font-label-code-sm text-label-code-sm">
+<span>Kriptografi</span>
+<span class="font-label-code text-label-code text-on-surface">AES-256-GCM</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-code-sm text-label-code-sm">
+<span>KDF Derivasi</span>
+<span class="font-label-code text-label-code text-on-surface">PBKDF2 (210k it)</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-code-sm text-label-code-sm">
+<span>Arsip Standar</span>
+<span class="font-label-code text-label-code text-primary font-medium">snapshot_09A.simaha</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-space-xs mt-1">
+<button class="h-9 bg-primary hover:bg-primary-container text-on-primary font-body-md text-body-md rounded-lg flex items-center justify-center gap-1.5 transition-all shadow-sm active:scale-95" id="btn-backup">
+<span class="material-symbols-outlined text-[16px]">archive</span>
+<span class="truncate">Buat Backup</span>
+</button>
+<button class="h-9 bg-surface-container hover:bg-surface-container-high text-on-surface font-body-md text-body-md rounded-lg flex items-center justify-center gap-1.5 transition-all active:scale-95" id="btn-restore">
+<span class="material-symbols-outlined text-[16px]">restore</span>
+<span class="truncate">Atomic Restore</span>
+</button>
+</div>
+</section>
+<!-- Master RBAC & Account Switcher -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">RBAC Management</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">5 Peran Terkonfigurasi Lokal</p>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container bg-surface-container px-2 py-0.5 rounded">Active Matrix</span>
+</div>
+<!-- Role List items -->
+<div class="flex flex-col gap-2">
+<!-- Role 1: Super Admin (Self) -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-tight">Super Admin</p>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant">ID: usr_sa_01</p>
+</div>
+</div>
+<span class="font-label-code-sm text-label-code-sm bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full font-semibold">Current Sesi</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Status Akses</span>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Aktif Permanen</span>
+</div>
+</div>
+</div>
+<!-- Role 2: Dosen Pengampu -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]">school</span>
+</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-tight">Dosen Pengampu</p>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant">Dr. Hendra (42 Akun)</p>
+</div>
+</div>
+<button class="px-2.5 py-1 bg-surface-container hover:bg-surface-container-high rounded text-on-surface font-body-sm text-body-sm font-medium flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-[14px]">switch_account</span>
+<span>Uji Peran</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-2">
+<button class="font-label-code-sm text-label-code-sm text-primary hover:underline flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">key</span> Reset PIN
+            </button>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Status</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1px] after:left-[2px] after:bg-white after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Role 3: Staf Akademik (BAK) -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]">badge</span>
+</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-tight">Staf Akademik</p>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant">Operator BAK (12 Akun)</p>
+</div>
+</div>
+<button class="px-2.5 py-1 bg-surface-container hover:bg-surface-container-high rounded text-on-surface font-body-sm text-body-sm font-medium flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-[14px]">switch_account</span>
+<span>Uji Peran</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="font-label-code-sm text-label-code-sm text-primary hover:underline flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">key</span> Reset PIN
+          </button>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Status</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1px] after:left-[2px] after:bg-white after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Role 4: Kaprodi / Verifikator -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]">domain_verification</span>
+</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface leading-tight">Kepala Program Studi</p>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant">8 Departemen</p>
+</div>
+</div>
+<button class="px-2.5 py-1 bg-surface-container hover:bg-surface-container-high rounded text-on-surface font-body-sm text-body-sm font-medium flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-[14px]">switch_account</span>
+<span>Uji Peran</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-1">
+<button class="font-label-code-sm text-label-code-sm text-primary hover:underline flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">key</span> Reset PIN
+          </button>
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Status</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-8 h-4 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[1px] after:left-[2px] after:bg-white after:rounded-full after:h-3.5 after:w-3.5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- System Tools Bento -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">System Tools</h2>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Maintenance CLI</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Seeder Tool -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-8 h-8 rounded bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-[18px]">dataset</span>
+</span>
+<div class="min-w-0">
+<p class="font-headline-sm text-headline-sm text-on-surface truncate">Seeder Isolate 10k</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Generate dummy mhs &amp; KRS testing</p>
+</div>
+</div>
+<button class="px-3 py-1 bg-primary text-on-primary font-body-sm text-body-sm font-semibold rounded shrink-0 hover:bg-primary-container active:scale-95 transition-all" id="btn-seed">
+          Run
+        </button>
+</div>
+<!-- Soft Delete Bin -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-8 h-8 rounded bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[18px]">delete_sweep</span>
+</span>
+<div class="min-w-0">
+<p class="font-headline-sm text-headline-sm text-on-surface truncate">Tempat Sampah (4)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Auto-purge dalam 30 hari</p>
+</div>
+</div>
+<button class="px-3 py-1 bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium rounded shrink-0 active:scale-95 transition-all">
+          Lihat
+        </button>
+</div>
+<!-- Immutable Audit Trail Explorer -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between" id="audit-trail">
+<div class="flex items-center gap-2 min-w-0">
+<span class="w-8 h-8 rounded bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shrink-0">
+<span class="material-symbols-outlined text-[18px]">history_toggle_off</span>
+</span>
+<div class="min-w-0">
+<p class="font-headline-sm text-headline-sm text-on-surface truncate">Immutable Audit Trail</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">JSON Diff log berstempel waktu</p>
+</div>
+</div>
+<button class="px-3 py-1 bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-medium rounded shrink-0 active:scale-95 transition-all" onclick="document.getElementById('audit-modal').classList.remove('hidden')">
+          Buka
+        </button>
+</div>
+</div>
+</section>
+<!-- Side-by-Side Conflict Diff Modal (Hidden by Default) -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4" id="conflict-modal">
+<div class="bg-surface-container-lowest w-full max-w-sm rounded-xl p-space-md shadow-xl flex flex-col gap-space-sm max-h-[751px] overflow-y-auto">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-[20px]">merge_type</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Conflict Diff [2/2]</h3>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('conflict-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="p-space-xs bg-surface-container rounded font-label-code-sm text-label-code-sm text-on-surface flex justify-between">
+<span>Tabel: nilai_komprehensif</span>
+<span class="text-error font-semibold">Conflict: Nilai Akhir</span>
+</div>
+<!-- Diff Comparison -->
+<div class="grid grid-cols-2 gap-2 text-left">
+<!-- Local Device -->
+<div class="bg-surface-container-low p-2 rounded flex flex-col gap-1">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[14px]">devices</span>
+<span class="font-label-code-sm text-label-code-sm font-bold">Perangkat Ini</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">NIM: 2021080104</span>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="font-label-code text-label-code text-on-surface">Nilai: <span class="text-primary font-bold">A (4.00)</span></span>
+<span class="block font-label-code-sm text-label-code-sm text-on-surface-variant mt-0.5">T: 14:20:11 (Local)</span>
+</div>
+<button class="w-full mt-1 py-1 bg-primary text-on-primary font-body-sm text-body-sm rounded font-medium hover:bg-primary-container">
+            Gunakan Ini
+          </button>
+</div>
+<!-- Peer Device -->
+<div class="bg-surface-container-low p-2 rounded flex flex-col gap-1">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[14px]">cast</span>
+<span class="font-label-code-sm text-label-code-sm font-bold">Dosen Pengampu</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">NIM: 2021080104</span>
+<div class="bg-surface-container-lowest p-1.5 rounded">
+<span class="font-label-code text-label-code text-on-surface">Nilai: <span class="text-tertiary font-bold">B+ (3.50)</span></span>
+<span class="block font-label-code-sm text-label-code-sm text-on-surface-variant mt-0.5">T: 14:21:05 (Peer)</span>
+</div>
+<button class="w-full mt-1 py-1 bg-tertiary text-on-tertiary font-body-sm text-body-sm rounded font-medium hover:bg-tertiary-container">
+            Gunakan Peer
+          </button>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Resolusi konflik menggunakan model <strong class="text-on-surface">Last-Write-Wins (LWW)</strong> berbasis Lamport Clock atau penetapan manual di atas.
+      </p>
+<button class="w-full h-8 bg-surface-container hover:bg-surface-container-high rounded text-on-surface font-body-sm text-body-sm font-semibold transition-colors" onclick="document.getElementById('conflict-modal').classList.add('hidden')">
+        Tutup &amp; Selesaikan Nanti
+      </button>
+</div>
+</div>
+<!-- Audit Trail JSON Diff Modal -->
+<div class="hidden fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-center justify-center p-4" id="audit-modal">
+<div class="bg-surface-container-lowest w-full max-w-sm rounded-xl p-space-md shadow-xl flex flex-col gap-space-sm max-h-[751px] overflow-y-auto">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">receipt_long</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Immutable Audit Log</h3>
+</div>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('audit-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="bg-surface-container-low p-2 rounded font-label-code-sm text-label-code-sm text-on-surface flex flex-col gap-1 overflow-x-auto">
+<span class="text-on-surface-variant">// Event ID: evt_9941a8</span>
+<pre class="font-label-code-sm text-label-code-sm text-on-surface leading-tight">{
+  "actor": "usr_sa_01",
+  "action": "CONFIG_UPDATE",
+  "timestamp": 1716912384,
+  "diff": {
+    "sync_mode": "P2P_MESH",
+    "encryption": "AES-GCM-256"
+  },
+  "hash": "e3b0c44298fc1c149..."
+}</pre>
+</div>
+<button class="w-full h-8 bg-primary text-on-primary rounded font-body-sm text-body-sm font-semibold hover:bg-primary-container transition-colors" onclick="document.getElementById('audit-modal').classList.add('hidden')">
+        Tutup
+      </button>
+</div>
+</div>
+<!-- Micro-interaction Notification Toast Placeholder -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-4 py-2 rounded-full font-body-sm text-body-sm shadow-xl flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none transform translate-y-2 z-50" id="toast">
+<span class="material-symbols-outlined text-[16px] text-primary-fixed">check_circle</span>
+<span id="toast-text">Tindakan Berhasil</span>
+</div>
+</div>
+<script>
+  // Simple toast trigger
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    const toastText = document.getElementById('toast-text');
+    toastText.innerText = msg;
+    toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
+    }, 2800);
+  }
+
+  document.getElementById('btn-backup')?.addEventListener('click', () => {
+    showToast('Snapshot .simaha berhasil dienkripsi PBKDF2');
+  });
+
+  document.getElementById('btn-restore')?.addEventListener('click', () => {
+    showToast('Snapshot diverifikasi. Siap Atomic Restore');
+  });
+
+  document.getElementById('btn-seed')?.addEventListener('click', () => {
+    showToast('Isolate sandbox 10.000 mahasiswa berhasil diisi');
+  });
+</script></main></body></html>

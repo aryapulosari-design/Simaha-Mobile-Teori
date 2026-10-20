@@ -47,10 +47,10 @@ class _MahasiswaFormPageState extends ConsumerState<MahasiswaFormPage> {
   }
 
   Future<void> _load() async {
-    final db = ref.read(appDatabaseProvider);
+    final db = ref.read(academicServiceProvider);
     final id = widget.mahasiswaId;
     if (id != null) {
-      final m = await db.getMahasiswa(id);
+      final m = await db.student(id);
       if (m != null && mounted) {
         _nim.text = m.nim;
         _nama.text = m.nama;
@@ -73,7 +73,7 @@ class _MahasiswaFormPageState extends ConsumerState<MahasiswaFormPage> {
       return;
     }
     setState(() => _saving = true);
-    final db = ref.read(appDatabaseProvider);
+    final db = ref.read(academicServiceProvider);
     try {
       if (widget.mahasiswaId == null) {
         await db.createMahasiswa(

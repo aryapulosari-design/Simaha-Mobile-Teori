@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>SIMAHA Offline</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-tertiary': '#ffffff', 'inverse-surface': '#213145', 'tertiary': '#4b41e1', 'error-container': '#ffdad6', 'primary': '#00685f', 'surface-container-highest': '#d3e4fe', 'on-primary-fixed-variant': '#005049', 'tertiary-fixed': '#e2dfff', 'on-primary-container': '#f4fffc', 'surface-container-high': '#dce9ff', 'on-secondary-fixed-variant': '#3f465c', 'surface-tint': '#006a61', 'primary-fixed': '#89f5e7', 'surface-variant': '#d3e4fe', 'surface-container-lowest': '#ffffff', 'secondary': '#565e74', 'on-tertiary-container': '#fffbff', 'tertiary-container': '#645efb', 'surface-container-low': '#eff4ff', 'on-secondary-fixed': '#131b2e', 'primary-container': '#008378', 'surface-container': '#e5eeff', 'on-background': '#0b1c30', 'outline-variant': '#bcc9c6', 'inverse-on-surface': '#eaf1ff', 'surface': '#f8f9ff', 'secondary-fixed': '#dae2fd', 'background': '#f8f9ff', 'error': '#ba1a1a', 'on-secondary': '#ffffff', 'outline': '#6d7a77', 'surface-bright': '#f8f9ff', 'secondary-fixed-dim': '#bec6e0', 'secondary-container': '#dae2fd', 'on-error': '#ffffff', 'on-primary-fixed': '#00201d', 'on-error-container': '#93000a', 'on-surface': '#0b1c30', 'primary-fixed-dim': '#6bd8cb', 'tertiary-fixed-dim': '#c3c0ff', 'on-primary': '#ffffff', 'surface-dim': '#cbdbf5', 'on-surface-variant': '#3d4947', 'on-tertiary-fixed-variant': '#3323cc', 'inverse-primary': '#6bd8cb', 'on-secondary-container': '#5c647a', 'on-tertiary-fixed': '#0f0069' }, borderRadius: { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, spacing: { 'space-md': '0.75rem', 'gutter-mobile': '0.5rem', 'space-lg': '1rem', 'space-xl': '1.5rem', 'gutter': '0.75rem', 'space-sm': '0.5rem', 'margin': '1.5rem', 'gutter-tablet': '0.75rem', 'space-xs': '0.25rem', 'margin-mobile': '1rem' }, fontFamily: { 'label-code': ['JetBrains Mono'], 'body-lg': ['Inter'], 'headline-md': ['Plus Jakarta Sans'], 'body-md': ['Inter'], 'metric-display': ['Plus Jakarta Sans'], 'label-code-sm': ['JetBrains Mono'], 'headline-sm': ['Plus Jakarta Sans'], 'body-sm': ['Inter'], 'headline-xl': ['Plus Jakarta Sans'], 'headline-xl-mobile': ['Plus Jakarta Sans'], 'headline-lg-mobile': ['Plus Jakarta Sans'], 'headline-lg': ['Plus Jakarta Sans'] }, fontSize: { 'label-code': ['12px', { lineHeight: '16px', letterSpacing: '-0.02em', fontWeight: '500' }], 'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '-0.01em', fontWeight: '400' }], 'headline-md': ['20px', { lineHeight: '28px', letterSpacing: '-0.02em', fontWeight: '600' }], 'body-md': ['13px', { lineHeight: '20px', letterSpacing: '0em', fontWeight: '400' }], 'metric-display': ['30px', { lineHeight: '36px', letterSpacing: '-0.03em', fontWeight: '700' }], 'label-code-sm': ['11px', { lineHeight: '14px', letterSpacing: '-0.01em', fontWeight: '500' }], 'headline-sm': ['16px', { lineHeight: '24px', letterSpacing: '-0.01em', fontWeight: '600' }], 'body-sm': ['12px', { lineHeight: '18px', letterSpacing: '0em', fontWeight: '400' }], 'headline-xl': ['32px', { lineHeight: '40px', letterSpacing: '-0.03em', fontWeight: '700' }], 'headline-xl-mobile': ['26px', { lineHeight: '34px', letterSpacing: '-0.025em', fontWeight: '700' }], 'headline-lg-mobile': ['22px', { lineHeight: '30px', letterSpacing: '-0.02em', fontWeight: '700' }], 'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.025em', fontWeight: '700' }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 500,'GRAD' 0,'opsz' 24;}</style></head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-24 px-margin-mobile flex flex-col justify-center gap-space-xs"><div class="flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-[20px]">hub</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">SIMAHA</span><span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-semibold">OFFLINE</span></div><span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Dashboard</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="flex items-center justify-between pt-0.5"><div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="font-label-code-sm text-label-code-sm font-semibold tracking-wider text-on-surface">MHS • UIN</span></div><div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined text-[13px] text-primary">lock</span><span class="font-label-code-sm text-label-code-sm font-medium">SQLCipher AES-256</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full px-margin-mobile pt-24 pb-28 bg-surface"><div class="flex flex-col w-full gap-space-lg">
+<!-- Interactive Filter Segment Control -->
+<div class="w-full bg-surface-container p-1 rounded-xl shadow-sm flex items-center justify-between">
+<div class="grid grid-cols-3 w-full gap-1" id="uikit-tab-group">
+<button class="uikit-tab-btn active py-2 rounded-lg font-headline-sm text-label-code text-on-surface bg-surface-container-lowest shadow-sm transition-all text-center" onclick="switchTab('all')">
+        Semua Kit
+      </button>
+<button class="uikit-tab-btn py-2 rounded-lg font-headline-sm text-label-code text-secondary hover:text-on-surface transition-all text-center" onclick="switchTab('core')">
+        Komponen Inti
+      </button>
+<button class="uikit-tab-btn py-2 rounded-lg font-headline-sm text-label-code text-secondary hover:text-on-surface transition-all text-center" onclick="switchTab('feedback')">
+        Feedback &amp; State
+      </button>
+</div>
+</div>
+<!-- Showcase Notice / Scope Telemetry -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse shrink-0"></span>
+<span class="font-label-code text-label-code text-on-surface truncate">lib/presentation/shared/widgets/</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container shrink-0">v2.4-offline</span>
+</div>
+<!-- COMPONENT 1: AppScaffold Header Preview (Bento Unit) -->
+<div class="uikit-item component-core flex flex-col gap-space-xs bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="font-label-code-sm text-label-code-sm text-secondary">01 • AppScaffold Preview</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">header.dart</span>
+</div>
+<!-- Nested Header Mockup -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-md font-bold text-on-surface truncate">UIN SGD Bandung</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">SIMAHA Engine</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<!-- Role Switcher -->
+<button class="flex items-center gap-1 bg-surface-container-highest px-2 py-1 rounded-lg text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="font-label-code-sm text-label-code-sm font-semibold">SUPER ADMIN</span>
+<span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+<!-- Encrypted Indicator -->
+<div class="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-surface-container-high text-primary">
+<span class="material-symbols-outlined text-[13px]">lock</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold">AES-256</span>
+</div>
+</div>
+</div>
+<!-- FLAG_SECURE Warning Ribbon -->
+<div class="bg-error-container text-on-error-container rounded-lg px-2.5 py-1.5 flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-error shrink-0">security</span>
+<p class="font-body-sm text-body-sm text-error font-medium truncate">
+<strong>FLAG_SECURE:</strong> Screenshot &amp; Screen Record Diblokir
+        </p>
+</div>
+</div>
+</div>
+<!-- COMPONENT 2: SectionCard Component -->
+<div class="uikit-item component-core flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-sm gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-secondary">02 • SectionCard Component</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">section_card.dart</span>
+</div>
+<!-- Active Implementation Card -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-md shadow-sm">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Ringkasan Akademik</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Data terenkripsi lokal (SQLite)</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-3 py-1.5 rounded-lg font-headline-sm text-body-sm font-semibold flex items-center gap-1 shrink-0 hover:bg-primary-container shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Kelola</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-lowest p-space-sm rounded-lg flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total Terdaftar</span>
+<span class="font-metric-display text-headline-lg-mobile text-on-surface">1.248</span>
+</div>
+<div class="bg-surface-container-lowest p-space-sm rounded-lg flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Rata-rata IPK</span>
+<span class="font-metric-display text-headline-lg-mobile text-primary">3.71</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COMPONENT 3: StatusChip Matrix -->
+<div class="uikit-item component-core flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-sm gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-secondary">03 • StatusChip Matrix</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">status_chip.dart</span>
+</div>
+<!-- Category: Mahasiswa -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-semibold">Status Mahasiswa</span>
+<div class="flex flex-wrap gap-2">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+<span class="font-label-code text-label-code-sm font-semibold">Aktif</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span>
+<span class="font-label-code text-label-code-sm font-semibold">Cuti</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary shrink-0"></span>
+<span class="font-label-code text-label-code-sm font-semibold">Lulus</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline shrink-0"></span>
+<span class="font-label-code text-label-code-sm font-semibold">Nonaktif</span>
+</div>
+</div>
+</div>
+<!-- Category: Risk Level -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-semibold">Risk Engine Score</span>
+<div class="flex flex-wrap gap-2">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed-dim/40 text-on-primary-fixed shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container shrink-0"></span>
+<span class="font-label-code text-label-code-sm font-semibold">Aman &lt;30</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></span>
+<span class="font-label-code text-label-code-sm font-semibold">Waspada 30-60</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error shrink-0"></span>
+<span class="font-label-code text-label-code-sm font-semibold">Kritis &gt;60</span>
+</div>
+</div>
+</div>
+<!-- Category: Presensi -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-semibold">Presensi Perkuliahan</span>
+<div class="grid grid-cols-4 gap-1.5">
+<div class="flex items-center justify-center gap-1 py-1 rounded-lg bg-surface-container-high text-on-surface shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-code-sm text-label-code-sm font-medium">Hadir</span>
+</div>
+<div class="flex items-center justify-center gap-1 py-1 rounded-lg bg-surface-container-high text-on-surface shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-code-sm text-label-code-sm font-medium">Izin</span>
+</div>
+<div class="flex items-center justify-center gap-1 py-1 rounded-lg bg-surface-container-high text-on-surface shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-label-code-sm text-label-code-sm font-medium">Sakit</span>
+</div>
+<div class="flex items-center justify-center gap-1 py-1 rounded-lg bg-error-container text-on-error-container shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="font-label-code-sm text-label-code-sm font-semibold">Alpa</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COMPONENT 4: AppTextField Validation States -->
+<div class="uikit-item component-core flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-sm gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-secondary">04 • AppTextField Validation</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">app_text_field.dart</span>
+</div>
+<!-- Input 1: Error State -->
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface flex items-center justify-between">
+<span>Nomor Induk Mahasiswa (NIM)</span>
+<span class="font-label-code-sm text-label-code-sm text-error">9 Digit (Kurang)</span>
+</label>
+<div class="relative flex items-center bg-error-container/30 rounded-lg p-2.5 shadow-sm">
+<input class="w-full bg-transparent font-label-code text-body-md text-error font-medium outline-none" readonly="" type="text" value="230605110"/>
+<span class="material-symbols-outlined text-[18px] text-error shrink-0">error</span>
+</div>
+<p class="font-body-sm text-label-code-sm text-error font-medium flex items-center gap-1 pt-0.5">
+<span class="material-symbols-outlined text-[14px]">cancel</span>
+<span>⛔ NIM wajib 12 digit angka</span>
+</p>
+</div>
+<!-- Input 2: Valid State -->
+<div class="flex flex-col gap-1">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface flex items-center justify-between">
+<span>Nomor WhatsApp / HP</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">Terverifikasi</span>
+</label>
+<div class="relative flex items-center bg-primary-fixed/20 rounded-lg p-2.5 shadow-sm">
+<input class="w-full bg-transparent font-label-code text-body-md text-on-surface font-medium outline-none" readonly="" type="text" value="+6281234567890"/>
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0">check_circle</span>
+</div>
+<p class="font-body-sm text-label-code-sm text-primary font-medium flex items-center gap-1 pt-0.5">
+<span class="material-symbols-outlined text-[14px]">check</span>
+<span>✓ Format +628 valid</span>
+</p>
+</div>
+</div>
+<!-- COMPONENT 5: EmptyState Component -->
+<div class="uikit-item component-feedback flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-sm gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-secondary">05 • EmptyState Component</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">empty_state.dart</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-xl flex flex-col items-center text-center gap-space-md shadow-sm">
+<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[32px]">folder_off</span>
+</div>
+<div class="flex flex-col gap-1 max-w-xs">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Belum Ada Data Mahasiswa</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Mulai dengan menambahkan mahasiswa baru atau impor berkas CSV terenkripsi.
+        </p>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-body-sm font-semibold px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>+ Tambah Mahasiswa</span>
+</button>
+</div>
+</div>
+<!-- COMPONENT 6: ErrorState Diagnostic Card -->
+<div class="uikit-item component-feedback flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-sm gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-secondary">06 • ErrorState Component</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">error_state.dart</span>
+</div>
+<div class="bg-error-container/40 rounded-xl p-space-md flex flex-col gap-space-md shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-error text-on-error flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 pb-0.5">
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-error text-on-error font-bold tracking-tight">ERR_SQLITE_CIPHER_KEY</span>
+<span class="font-label-code-sm text-label-code-sm text-error font-semibold">FATAL</span>
+</div>
+<p class="font-headline-sm text-body-md font-semibold text-on-surface">Gagal mendekripsi database SQLite lokal.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-0.5">Kunci enkripsi Master Key pada SecureStorage tidak cocok atau corrupt.</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-xs gap-space-sm">
+<button class="flex-1 bg-surface-container-lowest text-on-surface py-2 rounded-lg font-headline-sm text-body-sm font-semibold shadow-sm hover:bg-surface-container-low transition-colors">
+          Detail Log
+        </button>
+<button class="flex-1 bg-error text-on-error py-2 rounded-lg font-headline-sm text-body-sm font-semibold shadow-sm hover:bg-on-error-container transition-colors flex items-center justify-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+<span>↻ Coba Lagi</span>
+</button>
+</div>
+</div>
+</div>
+<!-- COMPONENT 7: LoadingView & Isolate Progress Bar -->
+<div class="uikit-item component-feedback flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-sm gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-secondary">07 • LoadingView Skeleton &amp; Isolate</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">loading_isolate.dart</span>
+</div>
+<!-- Shimmer Mock Item -->
+<div class="flex flex-col gap-space-sm">
+<div class="bg-surface-container-low rounded-xl p-space-md flex items-center justify-between animate-pulse">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest shrink-0"></div>
+<div class="flex flex-col gap-1.5 min-w-0">
+<div class="w-32 h-3.5 bg-surface-container-highest rounded"></div>
+<div class="w-20 h-2.5 bg-surface-container-highest rounded"></div>
+</div>
+</div>
+<div class="w-14 h-6 bg-surface-container-highest rounded-lg"></div>
+</div>
+<!-- Realtime Isolate Background Worker Progress Indicator -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Memproses 10.000 data di Isolate...</span>
+</div>
+<span class="font-label-code text-label-code text-primary font-bold">68%</span>
+</div>
+<!-- High Contrast Progress Track -->
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-300" style="width: 68%;"></div>
+</div>
+<div class="flex items-center justify-between font-label-code-sm text-label-code-sm text-on-surface-variant">
+<span>Batch: 6.800 / 10.000 row</span>
+<span>Worker: isolate_pool_#3</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COMPONENT 8: ConfirmDialog Preview Card -->
+<div class="uikit-item component-feedback flex flex-col bg-surface-container-lowest p-space-lg rounded-xl shadow-sm gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-secondary">08 • ConfirmDialog Component</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-on-surface-variant">confirm_dialog.dart</span>
+</div>
+<!-- Modal Elevation Sandbox -->
+<div class="bg-surface-container-low rounded-2xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-2xl bg-error-container text-error flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[26px]">delete_forever</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Hapus Permanen Data?</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Tindakan ini tidak dapat dibatalkan. Sebanyak <strong class="text-on-surface">12 data mahasiswa</strong> terpilih akan dihapus sepenuhnya dari enkripsi SQLCipher.
+          </p>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface font-headline-sm text-body-sm font-semibold shadow-sm hover:bg-surface-container-highest transition-colors">
+          Batal
+        </button>
+<button class="px-4 py-2 rounded-lg bg-error hover:bg-error-container hover:text-on-error-container text-on-error font-headline-sm text-body-sm font-semibold shadow-sm transition-all active:scale-95 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span>Hapus Permanen</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Design System Spec Footer Micro-telemetry -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-1 items-center justify-center text-center">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[15px]">verified_user</span>
+<span class="font-label-code text-label-code-sm font-semibold">SIMAHA OFFLINE DESIGN PATTERNS</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">High-density modern Swiss modular spec strictly bound to 0-border tokens.</span>
+</div>
+</div>
+<script>
+  function switchTab(category) {
+    const buttons = document.querySelectorAll('.uikit-tab-btn');
+    buttons.forEach(btn => {
+      btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+      btn.classList.add('text-secondary');
+    });
+
+    event.currentTarget.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+    event.currentTarget.classList.remove('text-secondary');
+
+    const coreItems = document.querySelectorAll('.component-core');
+    const feedbackItems = document.querySelectorAll('.component-feedback');
+
+    if (category === 'all') {
+      coreItems.forEach(el => el.classList.remove('hidden'));
+      feedbackItems.forEach(el => el.classList.remove('hidden'));
+    } else if (category === 'core') {
+      coreItems.forEach(el => el.classList.remove('hidden'));
+      feedbackItems.forEach(el => el.classList.add('hidden'));
+    } else if (category === 'feedback') {
+      coreItems.forEach(el => el.classList.add('hidden'));
+      feedbackItems.forEach(el => el.classList.remove('hidden'));
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[48px] min-h-[44px] px-2 py-1 gap-0.5 transition-colors text-primary font-semibold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-body-sm text-body-sm text-[11px]">Dashboard</span></a><a class="flex flex-col items-center justify-center min-w-[48px] min-h-[44px] px-2 py-1 gap-0.5 text-on-surface-variant transition-colors" data-path="krs-akademik" href="#"><span class="material-symbols-outlined text-[22px]">receipt_long</span><span class="font-body-sm text-body-sm text-[11px]">KRS / Nilai</span></a><a class="flex flex-col items-center justify-center min-w-[48px] min-h-[44px] px-2 py-1 gap-0.5 text-on-surface-variant transition-colors" data-path="jadwal-kuliah" href="#"><span class="material-symbols-outlined text-[22px]">calendar_today</span><span class="font-body-sm text-body-sm text-[11px]">Jadwal</span></a><a class="flex flex-col items-center justify-center min-w-[48px] min-h-[44px] px-2 py-1 gap-0.5 text-on-surface-variant transition-colors" data-path="sync-vault" href="#"><span class="material-symbols-outlined text-[22px]">sync_saved_locally</span><span class="font-body-sm text-body-sm text-[11px]">Vault Sync</span></a><a class="flex flex-col items-center justify-center min-w-[48px] min-h-[44px] px-2 py-1 gap-0.5 text-on-surface-variant transition-colors" data-path="pengaturan" href="#"><span class="material-symbols-outlined text-[22px]">tune</span><span class="font-body-sm text-body-sm text-[11px]">Setelan</span></a></div></nav></body></html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>SIMAHA Offline</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "inverse-surface": "#213145",
+        "on-secondary-container": "#5c647a",
+        "on-tertiary-fixed-variant": "#3323cc",
+        "surface-tint": "#006a61",
+        "surface-container": "#e5eeff",
+        "primary-fixed-dim": "#6bd8cb",
+        "error": "#ba1a1a",
+        "primary-container": "#008378",
+        "surface-bright": "#f8f9ff",
+        "on-tertiary": "#ffffff",
+        "secondary-fixed-dim": "#bec6e0",
+        "surface-container-highest": "#d3e4fe",
+        "tertiary-fixed": "#e2dfff",
+        "on-tertiary-container": "#fffbff",
+        "on-primary-fixed": "#00201d",
+        "on-surface-variant": "#3d4947",
+        "surface-dim": "#cbdbf5",
+        "error-container": "#ffdad6",
+        "tertiary-container": "#645efb",
+        "on-tertiary-fixed": "#0f0069",
+        "on-secondary-fixed-variant": "#3f465c",
+        "secondary-fixed": "#dae2fd",
+        "tertiary-fixed-dim": "#c3c0ff",
+        "surface-container-lowest": "#ffffff",
+        "on-surface": "#0b1c30",
+        "on-secondary": "#ffffff",
+        "surface-container-high": "#dce9ff",
+        "outline": "#6d7a77",
+        "on-secondary-fixed": "#131b2e",
+        "surface": "#f8f9ff",
+        "on-error": "#ffffff",
+        "secondary-container": "#dae2fd",
+        "on-primary-container": "#f4fffc",
+        "on-background": "#0b1c30",
+        "inverse-primary": "#6bd8cb",
+        "surface-variant": "#d3e4fe",
+        "primary": "#00685f",
+        "background": "#f8f9ff",
+        "on-primary-fixed-variant": "#005049",
+        "secondary": "#565e74",
+        "inverse-on-surface": "#eaf1ff",
+        "surface-container-low": "#eff4ff",
+        "tertiary": "#4b41e1",
+        "on-error-container": "#93000a",
+        "on-primary": "#ffffff",
+        "primary-fixed": "#89f5e7",
+        "outline-variant": "#bcc9c6"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-lg": "1rem",
+        "gutter": "0.75rem",
+        "margin-mobile": "1rem",
+        "gutter-tablet": "0.75rem",
+        "margin": "1.5rem",
+        "space-xs": "0.25rem",
+        "space-sm": "0.5rem",
+        "space-xl": "1.5rem",
+        "space-md": "0.75rem",
+        "gutter-mobile": "0.5rem"
+      },
+      "fontFamily": {
+        "headline-lg": ["Plus Jakarta Sans"],
+        "headline-xl-mobile": ["Plus Jakarta Sans"],
+        "headline-xl": ["Plus Jakarta Sans"],
+        "body-lg": ["Inter"],
+        "label-code-sm": ["JetBrains Mono"],
+        "headline-sm": ["Plus Jakarta Sans"],
+        "body-sm": ["Inter"],
+        "metric-display": ["Plus Jakarta Sans"],
+        "headline-md": ["Plus Jakarta Sans"],
+        "label-code": ["JetBrains Mono"],
+        "body-md": ["Inter"],
+        "headline-lg-mobile": ["Plus Jakarta Sans"]
+      },
+      "fontSize": {
+        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700"}],
+        "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.025em", "fontWeight": "700"}],
+        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+        "body-lg": ["15px", {"lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+        "label-code-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+        "headline-sm": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "body-sm": ["12px", {"lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400"}],
+        "metric-display": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+        "label-code": ["12px", {"lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+        "body-md": ["13px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+        "headline-lg-mobile": ["22px", {"lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+      }
+    }
+  }
+}</script><style>@layer base{html,body{width:100vw;min-height:100vh;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary-fixed"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-14 px-margin-mobile flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-xs min-w-0 flex-1"><div class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center shrink-0 shadow-[0_1px_4px_rgba(0,0,0,0.05)]"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">UIN</span></div><div class="flex items-center gap-1.5 px-2 py-1 rounded-full bg-surface-container-low max-w-[190px] truncate"><span class="text-[11px] leading-none shrink-0">🎓</span><span class="font-label-code-sm text-label-code-sm text-on-surface-variant truncate">230605110019 • Siti Aminah</span></div></div><div class="flex items-center gap-space-xs shrink-0"><div class="flex items-center gap-1 px-1.5 py-1 rounded bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[14px]">lock</span><span class="font-label-code-sm text-label-code-sm text-[10px] tracking-tight uppercase">SQLCipher</span><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span></div><button aria-label="Notifikasi" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-on-surface relative active:scale-95 transition-transform"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 pb-20 bg-surface"><div class="flex flex-col w-full px-margin-mobile pb-28 gap-space-md">
+<!-- Telemetry Context Bar -->
+<div class="w-full flex items-center justify-between py-2 mt-2">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="font-label-code-sm text-label-code-sm uppercase px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium">FR-13 • Smart KRS v2.4</span>
+<span class="text-outline-variant font-label-code-sm">•</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary truncate">Sem. Ganjil 2026/2027</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-code-sm text-label-code-sm font-semibold">Active Session</span>
+</div>
+</div>
+<!-- Bento Section 1: Quota & Academic Credit Authorization -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-primary/5 rounded-full pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-code-sm text-label-code-sm text-secondary uppercase tracking-wider">Perencanaan Kuota SKS</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">KRS Quota Planner</h2>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded-md bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold">IPS 3.85 Cumlaude</span>
+</div>
+</div>
+<!-- SKS Progress Metric Display -->
+<div class="grid grid-cols-2 gap-2 p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-secondary">Beban Terpilih</span>
+<div class="flex items-baseline gap-1 mt-0.5">
+<span class="font-metric-display text-metric-display text-primary font-bold">21</span>
+<span class="font-label-code text-label-code text-secondary font-medium">/ 24 SKS</span>
+</div>
+</div>
+<div class="flex flex-col items-end justify-center text-right">
+<span class="font-body-sm text-body-sm text-secondary">Sisa Kapasitas</span>
+<span class="font-label-code text-label-code text-on-surface font-semibold bg-surface-container-lowest px-2 py-0.5 rounded shadow-sm mt-0.5">3 SKS Tersedia</span>
+</div>
+</div>
+<!-- Visual Progress Bar -->
+<div class="flex flex-col gap-1">
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden p-0.5 flex items-center">
+<div class="h-full rounded-full bg-primary transition-all duration-500 ease-out" style="width: 87.5%;"></div>
+</div>
+<div class="flex justify-between items-center text-[10px]">
+<span class="font-label-code-sm text-label-code-sm text-secondary">87.5% Kuota Terpakai</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">Maks 24 SKS</span>
+</div>
+</div>
+<!-- Authorization Status & Dosen Wali Card -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-high/60 gap-space-sm">
+<div class="flex items-center gap-2.5 min-w-0">
+<div class="relative shrink-0">
+<div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-headline-sm font-bold shadow-xs">
+            HG
+          </div>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary-container shadow-xs"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm text-body-sm text-on-surface font-semibold truncate">Prof. Dr. Hendra Gunawan</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary truncate">Dosen Penasihat Akademik</span>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2 py-1 rounded bg-secondary-container text-on-secondary-fixed-variant shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-label-code-sm text-label-code-sm font-medium">Menunggu Otorisasi</span>
+</div>
+</div>
+</div>
+<!-- Segmented Navigation Pill Track -->
+<div class="w-full p-1 rounded-xl bg-surface-container flex items-center gap-1 shadow-inner">
+<button class="flex-1 py-1.5 px-2 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm font-semibold shadow-sm transition-all text-center flex items-center justify-center gap-1" id="tab-pilih" onclick="switchKrsTab('pilih')">
+<span class="material-symbols-outlined text-[16px] text-primary">view_timeline</span>
+<span>Pilih MK</span>
+</button>
+<button class="flex-1 py-1.5 px-2 rounded-lg text-secondary font-body-sm text-body-sm font-medium hover:text-on-surface transition-all text-center flex items-center justify-center gap-1" id="tab-jadwal" onclick="switchKrsTab('jadwal')">
+<span class="material-symbols-outlined text-[16px]">calendar_view_week</span>
+<span>Jadwal</span>
+</button>
+<button class="flex-1 py-1.5 px-2 rounded-lg text-secondary font-body-sm text-body-sm font-medium hover:text-on-surface transition-all text-center flex items-center justify-center gap-1" id="tab-ujian" onclick="switchKrsTab('ujian')">
+<span class="material-symbols-outlined text-[16px]">assignment_turned_in</span>
+<span>Ujian (UTS/UAS)</span>
+</button>
+</div>
+<!-- TAB PANEL 1: Course Selection & Validation Section -->
+<div class="flex flex-col gap-space-md" id="panel-pilih">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Daftar Rencana Kuliah</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-semibold">4 Matkul Ditinjau</span>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span class="font-body-sm text-body-sm font-medium">Filter SKS</span>
+</div>
+</div>
+<!-- Course Card 1: Selected / Valid -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-2 relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container-low text-secondary font-medium">IF301</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">3 SKS</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">Kelas A</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1 truncate">Kecerdasan Buatan</h3>
+</div>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-code-sm text-label-code-sm font-semibold shrink-0">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Terpilih
+        </span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-secondary py-1 font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">schedule</span>
+<span>Sen 08:00 - 10:30</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">meeting_room</span>
+<span class="truncate">Lab Riset 301</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 border-t-0 bg-surface-container-low/50 p-2 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-secondary">Kapasitas:</span>
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary" style="width: 91%;"></div>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface font-medium">32/35</span>
+</div>
+<button class="font-label-code-sm text-label-code-sm text-error font-medium hover:underline flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">delete</span> Hapus
+        </button>
+</div>
+</div>
+<!-- Course Card 2: Selected / Valid -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-2 relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container-low text-secondary font-medium">IF304</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">3 SKS</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">Kelas B</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1 truncate">Rekayasa Perangkat Lunak</h3>
+</div>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/15 text-primary-container font-label-code-sm text-label-code-sm font-semibold shrink-0">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Terpilih
+        </span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-secondary py-1 font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">schedule</span>
+<span>Sel 10:30 - 13:00</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">meeting_room</span>
+<span class="truncate">R. Teori 4.2</span>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 bg-surface-container-low/50 p-2 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-secondary">Kapasitas:</span>
+<div class="w-16 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary" style="width: 75%;"></div>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface font-medium">30/40</span>
+</div>
+<button class="font-label-code-sm text-label-code-sm text-error font-medium hover:underline flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">delete</span> Hapus
+        </button>
+</div>
+</div>
+<!-- Course Card 3: Validation Error (Schedule Conflict) -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-2 relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container-low text-secondary font-medium">IF305</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary font-semibold">3 SKS</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">Kelas A</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1 truncate">Keamanan Jaringan &amp; Kripto</h3>
+</div>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-error-container text-error font-label-code-sm text-label-code-sm font-bold shrink-0">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Jadwal Bentrok
+        </span>
+</div>
+<!-- Error Diagnostics Box -->
+<div class="p-2.5 rounded-lg bg-error-container/40 text-on-error-container flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+<span class="font-headline-sm text-body-sm text-error font-bold">Bentrok 60 Menit dengan IF301</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Tumpang tindih pada <span class="font-semibold text-on-surface">Senin 09:30-10:30</span>. Silakan beralih ke Kelas Paralel C (Rabu 13:00) atau batalkan pemilihan mata kuliah ini.
+        </p>
+<div class="flex items-center gap-2 mt-1">
+<button class="px-2.5 py-1.5 rounded-md bg-inverse-surface text-inverse-on-surface font-body-sm text-body-sm font-semibold flex items-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[15px]">swap_horiz</span> Cari Kelas Paralel
+          </button>
+<button class="px-2 py-1.5 rounded-md text-error hover:bg-error/10 font-body-sm text-body-sm font-medium transition-colors">
+            Batalkan
+          </button>
+</div>
+</div>
+</div>
+<!-- Course Card 4: Validation Error (Prerequisite Failed) -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-2 relative opacity-90 overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container-low text-secondary font-medium">IF402</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary font-semibold">3 SKS</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">Lanjutan</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-secondary font-bold mt-1 truncate">Deep Learning &amp; Neural Networks</h3>
+</div>
+<span class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-secondary font-label-code-sm text-label-code-sm font-bold shrink-0">
+<span class="material-symbols-outlined text-[14px]">lock</span> Prasyarat Belum Lulus
+        </span>
+</div>
+<!-- Locked Diagnostics Note -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">info</span>
+<span class="font-body-sm text-body-sm font-semibold">Prasyarat Wajib Kurikulum</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary leading-snug">
+          Memerlukan kelulusan minimal nilai <strong class="text-on-surface">C</strong> pada <code class="font-label-code-sm text-label-code-sm bg-surface-container px-1 py-0.5 rounded">IF301 Kecerdasan Buatan</code>. Sistem mengunci kartu ini secara otomatis.
+        </p>
+</div>
+</div>
+</div>
+<!-- TAB PANEL 2: Weekly Schedule (Integrated) -->
+<div class="hidden flex flex-col gap-space-sm" id="panel-jadwal">
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Matriks Jadwal Mingguan</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container-high font-semibold text-primary">Sesuai Rencana</span>
+</div>
+<!-- Timeline entries -->
+<div class="flex flex-col gap-2">
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="font-label-code-sm text-label-code-sm font-bold text-primary w-12 shrink-0 pt-0.5">SENIN</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm text-body-sm font-bold text-on-surface truncate">08:00 - 10:30 • Kecerdasan Buatan</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary truncate">Lab 301 • Kelas A (3 SKS)</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="font-label-code-sm text-label-code-sm font-bold text-primary w-12 shrink-0 pt-0.5">SELASA</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm text-body-sm font-bold text-on-surface truncate">10:30 - 13:00 • Rekayasa Perangkat Lunak</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary truncate">R. Teori 4.2 • Kelas B (3 SKS)</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5 p-2 rounded-lg bg-surface-container-low">
+<span class="font-label-code-sm text-label-code-sm font-bold text-primary w-12 shrink-0 pt-0.5">KAMIS</span>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm text-body-sm font-bold text-on-surface truncate">13:15 - 15:45 • Pemrograman Web Lanjut</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary truncate">Lab Software 1 • Kelas D (3 SKS)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB PANEL 3 / SECTION 4: Jadwal Ujian UTS/UAS Preview (Step 13c) -->
+<div class="flex flex-col gap-space-sm" id="panel-ujian">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Jadwal Ujian Terjadwal</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.5 rounded bg-surface-container text-primary font-bold">FR-18 • UTS</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-secondary">Verified Sync</span>
+</div>
+<!-- Exam Item 1 -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-2 relative">
+<div class="flex items-start justify-between">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-tertiary/10 text-tertiary font-bold uppercase">UTS MID-TERM</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary">Kursi: <strong class="text-on-surface font-semibold">B-14</strong></span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">Rekayasa Perangkat Lunak</h4>
+</div>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 text-secondary font-body-sm text-body-sm pt-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">event</span>
+<span class="font-medium text-on-surface">Sen, 17 Nov 2026</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">timer</span>
+<span>08:00 - 10:00 WIB</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">domain</span>
+<span>Ruang CBT 2</span>
+</div>
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[15px] text-outline">badge</span>
+<span class="truncate">Dr. Maya Safitri</span>
+</div>
+</div>
+</div>
+<!-- Exam Item 2 -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-2 relative">
+<div class="flex items-start justify-between">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-tertiary/10 text-tertiary font-bold uppercase">UTS MID-TERM</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary">Kursi: <strong class="text-on-surface font-semibold">A-08</strong></span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">Basis Data Lanjut</h4>
+</div>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 text-secondary font-body-sm text-body-sm pt-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">event</span>
+<span class="font-medium text-on-surface">Rab, 19 Nov 2026</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">timer</span>
+<span>13:00 - 15:00 WIB</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-outline">domain</span>
+<span>Ruang Lab DB</span>
+</div>
+<div class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[15px] text-outline">badge</span>
+<span class="truncate">Prof. Hendra G.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Summary & Approval Submission Bar -->
+<div class="fixed bottom-16 inset-x-0 z-40 px-margin-mobile">
+<div class="w-full max-w-md mx-auto rounded-xl bg-surface-container-lowest/95 backdrop-blur-md shadow-xl p-3 flex flex-col gap-2.5">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-body-md text-body-md text-on-surface font-bold">Total: 21 SKS</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary">(7 Mata Kuliah)</span>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="font-label-code-sm text-label-code-sm font-semibold">Validasi OK</span>
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-2">
+<button class="col-span-4 h-10 px-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-body-sm text-body-sm font-semibold flex items-center justify-center gap-1 active:scale-95 transition-transform" onclick="alert('Mengunduh Berkas KRS Rencana PDF (Digital Signature SHA-256)...')" type="button">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span class="truncate">Draft PDF</span>
+</button>
+<button class="col-span-8 h-10 px-3 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-body-sm text-body-sm font-bold flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-transform" onclick="alert('KRS Berhasil diajukan ke Dosen Wali Prof. Dr. Hendra Gunawan!')" type="button">
+<span class="truncate">Ajukan ke Dosen Wali</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function switchKrsTab(tabKey) {
+    const panels = {
+      'pilih': document.getElementById('panel-pilih'),
+      'jadwal': document.getElementById('panel-jadwal'),
+      'ujian': document.getElementById('panel-ujian')
+    };
+    const buttons = {
+      'pilih': document.getElementById('tab-pilih'),
+      'jadwal': document.getElementById('tab-jadwal'),
+      'ujian': document.getElementById('tab-ujian')
+    };
+
+    Object.keys(panels).forEach(key => {
+      if (key === tabKey) {
+        panels[key].classList.remove('hidden');
+        buttons[key].className = 'flex-1 py-1.5 px-2 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm font-semibold shadow-sm transition-all text-center flex items-center justify-center gap-1';
+      } else {
+        panels[key].classList.add('hidden');
+        buttons[key].className = 'flex-1 py-1.5 px-2 rounded-lg text-secondary font-body-sm text-body-sm font-medium hover:text-on-surface transition-all text-center flex items-center justify-center gap-1';
+      }
+    });
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.03)]" data-active-classes="text-primary font-semibold"><div class="flex items-center justify-around h-16 px-1"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="beranda" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">Beranda</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="krs-dan-jadwal" href="#"><span class="material-symbols-outlined text-[20px]">event_available</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">KRS &amp; Jadwal</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="presensi-qr" href="#"><span class="material-symbols-outlined text-[20px]">qr_code_scanner</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">Presensi QR</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="khs-dan-simulasi" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">KHS &amp; Simulasi</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="profil-dan-ekstra" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">Profil &amp; Ekstra</span></a></div></nav></body></html>

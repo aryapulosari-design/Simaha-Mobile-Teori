@@ -4,6 +4,9 @@
 sealed class AppFailure {
   const AppFailure(this.message);
   final String message;
+
+  @override
+  String toString() => message;
 }
 
 /// Database-related failure (open, migrate, query).

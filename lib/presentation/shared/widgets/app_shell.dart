@@ -1,99 +1,171 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simaha/core/security/flag_secure.dart';
 import 'package:simaha/domain/security/roles.dart';
 import 'package:simaha/presentation/providers/app_providers.dart';
 import 'package:simaha/presentation/providers/session_providers.dart';
 import 'package:simaha/presentation/shared/widgets/auto_lock_scope.dart';
 
-class _NavItem {
-  const _NavItem({
-    required this.route,
-    required this.label,
-    required this.icon,
-    required this.selectedIcon,
-    this.allowedRoles,
-  });
-
-  final String route;
-  final String label;
-  final IconData icon;
-  final IconData selectedIcon;
-  final Set<Role>? allowedRoles;
-}
-
-const List<_NavItem> _allNavItems = [
-  _NavItem(
-    route: '/',
-    label: 'Beranda',
-    icon: Icons.dashboard_outlined,
-    selectedIcon: Icons.dashboard,
-  ),
-  _NavItem(
-    route: '/settings',
-    label: 'Pengaturan',
-    icon: Icons.tune_outlined,
-    selectedIcon: Icons.tune,
-  ),
-  _NavItem(
-    route: '/db',
-    label: 'Database',
-    icon: Icons.storage_outlined,
-    selectedIcon: Icons.storage,
-    allowedRoles: {Role.superAdmin, Role.adminAkademik},
-  ),
-];
-
-/// Bottom-navigation shell with role-aware menu filtering (Step 1 & Step 2).
 class AppShell extends ConsumerWidget {
   const AppShell({super.key, required this.child});
-
   final Widget child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final location = GoRouterState.of(context).uri.toString();
-    final mode = ref.watch(themeModeProvider);
     final session = ref.watch(sessionProvider);
-    final userRole = session.role;
-
-    // Filter items based on active role if unlocked; otherwise show standard set.
-    final items = _allNavItems.where((item) {
-      if (item.allowedRoles == null || userRole == null) return true;
-      return item.allowedRoles!.contains(userRole);
-    }).toList();
-
-    var selectedIndex = 0;
-    for (var i = 0; i < items.length; i++) {
-      if (items[i].route == '/' && location == '/') {
-        selectedIndex = i;
-        break;
-      } else if (items[i].route != '/' && location.startsWith(items[i].route)) {
-        selectedIndex = i;
-        break;
-      }
-    }
-
-    return Scaffold(
-      body: AutoLockScope(child: child),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (i) => context.go(items[i].route),
-        destinations: items
-            .map(
-              (item) => NavigationDestination(
-                icon: Icon(item.icon),
-                selectedIcon: Icon(item.selectedIcon),
-                label: item.label,
-              ),
-            )
-            .toList(),
+    final role = session.role;
+    final scheme = Theme.of(context).colorScheme;
+    final location = GoRouterState.of(context).uri.path;
+    final destinations = [
+      (route: '/', label: 'Beranda', icon: Icons.space_dashboard_outlined),
+      (route: '/akademik', label: 'Akademik', icon: Icons.menu_book_outlined),
+      if (role == Role.superAdmin)
+        (
+          route: '/users',
+          label: 'Kelola akun',
+          icon: Icons.manage_accounts_outlined,
+        ),
+      if (role == Role.superAdmin || role == Role.adminAkademik)
+        (route: '/db', label: 'Database', icon: Icons.storage_outlined),
+      (route: '/settings', label: 'Pengaturan', icon: Icons.tune_outlined),
+    ];
+    final navLocation = location.startsWith('/kelas/') ? '/akademik' : location;
+    final index = destinations.indexWhere((d) => d.route == navLocation);
+    final selected = index < 0 ? 0 : index;
+    final isWide = MediaQuery.sizeOf(context).width >= 1000;
+    final themeButton = IconButton(
+      tooltip: 'Ganti tema',
+      onPressed: () => ref.read(themeModeProvider.notifier).toggle(),
+      icon: Icon(
+        Theme.of(context).brightness == Brightness.dark
+            ? Icons.light_mode_outlined
+            : Icons.dark_mode_outlined,
       ),
-      floatingActionButton: FloatingActionButton.small(
-        tooltip: 'Ganti tema terang/gelap (saat ini: $mode)',
-        onPressed: () => ref.read(themeModeProvider.notifier).toggle(),
-        child: Icon(
-          mode == ThemeMode.dark ? Icons.light_mode : Icons.dark_mode,
+    );
+    return SecureScope(
+      child: AutoLockScope(
+        child: Scaffold(
+          body: Row(
+            children: [
+              if (isWide)
+                Container(
+                  width: 244,
+                  decoration: BoxDecoration(
+                    color: scheme.surfaceContainerLowest,
+                    border: Border(
+                      right: BorderSide(color: scheme.outlineVariant),
+                    ),
+                  ),
+                  child: SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 16),
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: scheme.primary,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Icon(
+                                  Icons.school_outlined,
+                                  color: scheme.onPrimary,
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Text(
+                                'simaha',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'RUANG AKADEMIK',
+                            style: TextStyle(
+                              fontSize: 10,
+                              letterSpacing: 2,
+                              color: scheme.onSurfaceVariant,
+                            ),
+                          ),
+                          const SizedBox(height: 48),
+                          for (var i = 0; i < destinations.length; i++)
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 8),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: ListTile(
+                                  dense: true,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 4,
+                                  ),
+                                  selected: selected == i,
+                                  selectedTileColor: scheme.primaryContainer
+                                      .withValues(alpha: 0.55),
+                                  selectedColor: scheme.onPrimaryContainer,
+                                  leading: Icon(destinations[i].icon, size: 21),
+                                  title: Text(destinations[i].label),
+                                  onTap: () =>
+                                      context.go(destinations[i].route),
+                                ),
+                              ),
+                            ),
+                          const Spacer(),
+                          const Divider(),
+                          const SizedBox(height: 16),
+                          Text(
+                            session.user?.username ?? 'Akun lokal',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            role?.label ?? '',
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            children: [
+                              themeButton,
+                              const Spacer(),
+                              IconButton(
+                                tooltip: 'Ganti akun / kunci',
+                                onPressed: () =>
+                                    ref.read(sessionProvider.notifier).lock(),
+                                icon: const Icon(Icons.lock_outline),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              Expanded(child: child),
+            ],
+          ),
+          bottomNavigationBar: isWide
+              ? null
+              : NavigationBar(
+                  selectedIndex: selected,
+                  onDestinationSelected: (i) =>
+                      context.go(destinations[i].route),
+                  destinations: [
+                    for (final d in destinations)
+                      NavigationDestination(icon: Icon(d.icon), label: d.label),
+                  ],
+                ),
         ),
       ),
     );

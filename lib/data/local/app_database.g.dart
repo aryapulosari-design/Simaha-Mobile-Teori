@@ -1052,6 +1052,20 @@ class $DosensTable extends Dosens with TableInfo<$DosensTable, DosenRow> {
       'REFERENCES users (id)',
     ),
   );
+  static const VerificationMeta _waliUserIdMeta = const VerificationMeta(
+    'waliUserId',
+  );
+  @override
+  late final GeneratedColumn<int> waliUserId = GeneratedColumn<int>(
+    'wali_user_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES users (id)',
+    ),
+  );
   static const VerificationMeta _prodiIdMeta = const VerificationMeta(
     'prodiId',
   );
@@ -1094,6 +1108,7 @@ class $DosensTable extends Dosens with TableInfo<$DosensTable, DosenRow> {
     nidn,
     nama,
     userId,
+    waliUserId,
     prodiId,
     updatedAt,
     deviceId,
@@ -1133,6 +1148,15 @@ class $DosensTable extends Dosens with TableInfo<$DosensTable, DosenRow> {
       context.handle(
         _userIdMeta,
         userId.isAcceptableOrUnknown(data['user_id']!, _userIdMeta),
+      );
+    }
+    if (data.containsKey('wali_user_id')) {
+      context.handle(
+        _waliUserIdMeta,
+        waliUserId.isAcceptableOrUnknown(
+          data['wali_user_id']!,
+          _waliUserIdMeta,
+        ),
       );
     }
     if (data.containsKey('prodi_id')) {
@@ -1184,6 +1208,10 @@ class $DosensTable extends Dosens with TableInfo<$DosensTable, DosenRow> {
         DriftSqlType.int,
         data['${effectivePrefix}user_id'],
       ),
+      waliUserId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}wali_user_id'],
+      ),
       prodiId: attachedDatabase.typeMapping.read(
         DriftSqlType.int,
         data['${effectivePrefix}prodi_id'],
@@ -1210,6 +1238,7 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
   final String nidn;
   final String nama;
   final int? userId;
+  final int? waliUserId;
   final int prodiId;
   final DateTime updatedAt;
   final String deviceId;
@@ -1218,6 +1247,7 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
     required this.nidn,
     required this.nama,
     this.userId,
+    this.waliUserId,
     required this.prodiId,
     required this.updatedAt,
     required this.deviceId,
@@ -1230,6 +1260,9 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
     map['nama'] = Variable<String>(nama);
     if (!nullToAbsent || userId != null) {
       map['user_id'] = Variable<int>(userId);
+    }
+    if (!nullToAbsent || waliUserId != null) {
+      map['wali_user_id'] = Variable<int>(waliUserId);
     }
     map['prodi_id'] = Variable<int>(prodiId);
     map['updated_at'] = Variable<DateTime>(updatedAt);
@@ -1245,6 +1278,9 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
       userId: userId == null && nullToAbsent
           ? const Value.absent()
           : Value(userId),
+      waliUserId: waliUserId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(waliUserId),
       prodiId: Value(prodiId),
       updatedAt: Value(updatedAt),
       deviceId: Value(deviceId),
@@ -1261,6 +1297,7 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
       nidn: serializer.fromJson<String>(json['nidn']),
       nama: serializer.fromJson<String>(json['nama']),
       userId: serializer.fromJson<int?>(json['userId']),
+      waliUserId: serializer.fromJson<int?>(json['waliUserId']),
       prodiId: serializer.fromJson<int>(json['prodiId']),
       updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
       deviceId: serializer.fromJson<String>(json['deviceId']),
@@ -1274,6 +1311,7 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
       'nidn': serializer.toJson<String>(nidn),
       'nama': serializer.toJson<String>(nama),
       'userId': serializer.toJson<int?>(userId),
+      'waliUserId': serializer.toJson<int?>(waliUserId),
       'prodiId': serializer.toJson<int>(prodiId),
       'updatedAt': serializer.toJson<DateTime>(updatedAt),
       'deviceId': serializer.toJson<String>(deviceId),
@@ -1285,6 +1323,7 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
     String? nidn,
     String? nama,
     Value<int?> userId = const Value.absent(),
+    Value<int?> waliUserId = const Value.absent(),
     int? prodiId,
     DateTime? updatedAt,
     String? deviceId,
@@ -1293,6 +1332,7 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
     nidn: nidn ?? this.nidn,
     nama: nama ?? this.nama,
     userId: userId.present ? userId.value : this.userId,
+    waliUserId: waliUserId.present ? waliUserId.value : this.waliUserId,
     prodiId: prodiId ?? this.prodiId,
     updatedAt: updatedAt ?? this.updatedAt,
     deviceId: deviceId ?? this.deviceId,
@@ -1303,6 +1343,9 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
       nidn: data.nidn.present ? data.nidn.value : this.nidn,
       nama: data.nama.present ? data.nama.value : this.nama,
       userId: data.userId.present ? data.userId.value : this.userId,
+      waliUserId: data.waliUserId.present
+          ? data.waliUserId.value
+          : this.waliUserId,
       prodiId: data.prodiId.present ? data.prodiId.value : this.prodiId,
       updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
       deviceId: data.deviceId.present ? data.deviceId.value : this.deviceId,
@@ -1316,6 +1359,7 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
           ..write('nidn: $nidn, ')
           ..write('nama: $nama, ')
           ..write('userId: $userId, ')
+          ..write('waliUserId: $waliUserId, ')
           ..write('prodiId: $prodiId, ')
           ..write('updatedAt: $updatedAt, ')
           ..write('deviceId: $deviceId')
@@ -1324,8 +1368,16 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, nidn, nama, userId, prodiId, updatedAt, deviceId);
+  int get hashCode => Object.hash(
+    id,
+    nidn,
+    nama,
+    userId,
+    waliUserId,
+    prodiId,
+    updatedAt,
+    deviceId,
+  );
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -1334,6 +1386,7 @@ class DosenRow extends DataClass implements Insertable<DosenRow> {
           other.nidn == this.nidn &&
           other.nama == this.nama &&
           other.userId == this.userId &&
+          other.waliUserId == this.waliUserId &&
           other.prodiId == this.prodiId &&
           other.updatedAt == this.updatedAt &&
           other.deviceId == this.deviceId);
@@ -1344,6 +1397,7 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
   final Value<String> nidn;
   final Value<String> nama;
   final Value<int?> userId;
+  final Value<int?> waliUserId;
   final Value<int> prodiId;
   final Value<DateTime> updatedAt;
   final Value<String> deviceId;
@@ -1352,6 +1406,7 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
     this.nidn = const Value.absent(),
     this.nama = const Value.absent(),
     this.userId = const Value.absent(),
+    this.waliUserId = const Value.absent(),
     this.prodiId = const Value.absent(),
     this.updatedAt = const Value.absent(),
     this.deviceId = const Value.absent(),
@@ -1361,6 +1416,7 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
     required String nidn,
     required String nama,
     this.userId = const Value.absent(),
+    this.waliUserId = const Value.absent(),
     required int prodiId,
     required DateTime updatedAt,
     required String deviceId,
@@ -1374,6 +1430,7 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
     Expression<String>? nidn,
     Expression<String>? nama,
     Expression<int>? userId,
+    Expression<int>? waliUserId,
     Expression<int>? prodiId,
     Expression<DateTime>? updatedAt,
     Expression<String>? deviceId,
@@ -1383,6 +1440,7 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
       if (nidn != null) 'nidn': nidn,
       if (nama != null) 'nama': nama,
       if (userId != null) 'user_id': userId,
+      if (waliUserId != null) 'wali_user_id': waliUserId,
       if (prodiId != null) 'prodi_id': prodiId,
       if (updatedAt != null) 'updated_at': updatedAt,
       if (deviceId != null) 'device_id': deviceId,
@@ -1394,6 +1452,7 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
     Value<String>? nidn,
     Value<String>? nama,
     Value<int?>? userId,
+    Value<int?>? waliUserId,
     Value<int>? prodiId,
     Value<DateTime>? updatedAt,
     Value<String>? deviceId,
@@ -1403,6 +1462,7 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
       nidn: nidn ?? this.nidn,
       nama: nama ?? this.nama,
       userId: userId ?? this.userId,
+      waliUserId: waliUserId ?? this.waliUserId,
       prodiId: prodiId ?? this.prodiId,
       updatedAt: updatedAt ?? this.updatedAt,
       deviceId: deviceId ?? this.deviceId,
@@ -1424,6 +1484,9 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
     if (userId.present) {
       map['user_id'] = Variable<int>(userId.value);
     }
+    if (waliUserId.present) {
+      map['wali_user_id'] = Variable<int>(waliUserId.value);
+    }
     if (prodiId.present) {
       map['prodi_id'] = Variable<int>(prodiId.value);
     }
@@ -1443,6 +1506,7 @@ class DosensCompanion extends UpdateCompanion<DosenRow> {
           ..write('nidn: $nidn, ')
           ..write('nama: $nama, ')
           ..write('userId: $userId, ')
+          ..write('waliUserId: $waliUserId, ')
           ..write('prodiId: $prodiId, ')
           ..write('updatedAt: $updatedAt, ')
           ..write('deviceId: $deviceId')
@@ -13645,6 +13709,25 @@ final class $$UsersTableReferences
     );
   }
 
+  static MultiTypedResultKey<$DosensTable, List<DosenRow>> _waliAccountTable(
+    _$AppDatabase db,
+  ) => MultiTypedResultKey.fromTable(
+    db.dosens,
+    aliasName: 'users__id__dosens__wali_user_id',
+  );
+
+  $$DosensTableProcessedTableManager get waliAccount {
+    final manager = $$DosensTableTableManager(
+      $_db,
+      $_db.dosens,
+    ).filter((f) => f.waliUserId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_waliAccountTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
   static MultiTypedResultKey<$MahasiswaTable, List<MahasiswaRow>>
   _mahasiswaRefsTable(_$AppDatabase db) => MultiTypedResultKey.fromTable(
     db.mahasiswa,
@@ -13807,6 +13890,31 @@ class $$UsersTableFilterComposer extends Composer<_$AppDatabase, $UsersTable> {
       getCurrentColumn: (t) => t.id,
       referencedTable: $db.dosens,
       getReferencedColumn: (t) => t.userId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DosensTableFilterComposer(
+            $db: $db,
+            $table: $db.dosens,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> waliAccount(
+    Expression<bool> Function($$DosensTableFilterComposer f) f,
+  ) {
+    final $$DosensTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.dosens,
+      getReferencedColumn: (t) => t.waliUserId,
       builder:
           (
             joinBuilder, {
@@ -14088,6 +14196,31 @@ class $$UsersTableAnnotationComposer
     return f(composer);
   }
 
+  Expression<T> waliAccount<T extends Object>(
+    Expression<T> Function($$DosensTableAnnotationComposer a) f,
+  ) {
+    final $$DosensTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.dosens,
+      getReferencedColumn: (t) => t.waliUserId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$DosensTableAnnotationComposer(
+            $db: $db,
+            $table: $db.dosens,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
   Expression<T> mahasiswaRefs<T extends Object>(
     Expression<T> Function($$MahasiswaTableAnnotationComposer a) f,
   ) {
@@ -14229,6 +14362,7 @@ class $$UsersTableTableManager
           UserRow,
           PrefetchHooks Function({
             bool dosensRefs,
+            bool waliAccount,
             bool mahasiswaRefs,
             bool auditLogRefs,
             bool pengumumanRefs,
@@ -14310,6 +14444,7 @@ class $$UsersTableTableManager
           prefetchHooksCallback:
               ({
                 dosensRefs = false,
+                waliAccount = false,
                 mahasiswaRefs = false,
                 auditLogRefs = false,
                 pengumumanRefs = false,
@@ -14320,6 +14455,7 @@ class $$UsersTableTableManager
                   db: db,
                   explicitlyWatchedTables: [
                     if (dosensRefs) db.dosens,
+                    if (waliAccount) db.dosens,
                     if (mahasiswaRefs) db.mahasiswa,
                     if (auditLogRefs) db.auditLog,
                     if (pengumumanRefs) db.pengumuman,
@@ -14343,6 +14479,23 @@ class $$UsersTableTableManager
                           referencedItemsForCurrentItem:
                               (item, referencedItems) => referencedItems.where(
                                 (e) => e.userId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
+                      if (waliAccount)
+                        await $_getPrefetchedData<
+                          UserRow,
+                          $UsersTable,
+                          DosenRow
+                        >(
+                          currentTable: table,
+                          referencedTable: $$UsersTableReferences
+                              ._waliAccountTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$UsersTableReferences(db, table, p0).waliAccount,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.waliUserId == item.id,
                               ),
                           typedResults: items,
                         ),
@@ -14473,6 +14626,7 @@ typedef $$UsersTableProcessedTableManager =
       UserRow,
       PrefetchHooks Function({
         bool dosensRefs,
+        bool waliAccount,
         bool mahasiswaRefs,
         bool auditLogRefs,
         bool pengumumanRefs,
@@ -14971,6 +15125,7 @@ typedef $$DosensTableCreateCompanionBuilder = DosensCompanion Function({
   required String nidn,
   required String nama,
   Value<int?> userId,
+  Value<int?> waliUserId,
   required int prodiId,
   required DateTime updatedAt,
   required String deviceId,
@@ -14980,6 +15135,7 @@ typedef $$DosensTableUpdateCompanionBuilder = DosensCompanion Function({
   Value<String> nidn,
   Value<String> nama,
   Value<int?> userId,
+  Value<int?> waliUserId,
   Value<int> prodiId,
   Value<DateTime> updatedAt,
   Value<String> deviceId,
@@ -15000,6 +15156,23 @@ final class $$DosensTableReferences
       $_db.users,
     ).filter((f) => f.id.sqlEquals($_column));
     final item = $_typedResult.readTableOrNull(_userIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+
+  static $UsersTable _waliUserIdTable(_$AppDatabase db) =>
+      db.users.createAlias('dosens__wali_user_id__users__id');
+
+  $$UsersTableProcessedTableManager? get waliUserId {
+    final $_column = $_itemColumn<int>('wali_user_id');
+    if ($_column == null) return null;
+    final manager = $$UsersTableTableManager(
+      $_db,
+      $_db.users,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_waliUserIdTable($_db));
     if (item == null) return manager;
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: [item]),
@@ -15137,6 +15310,29 @@ class $$DosensTableFilterComposer
     final $$UsersTableFilterComposer composer = $composerBuilder(
       composer: this,
       getCurrentColumn: (t) => t.userId,
+      referencedTable: $db.users,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UsersTableFilterComposer(
+            $db: $db,
+            $table: $db.users,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$UsersTableFilterComposer get waliUserId {
+    final $$UsersTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.waliUserId,
       referencedTable: $db.users,
       getReferencedColumn: (t) => t.id,
       builder:
@@ -15337,6 +15533,29 @@ class $$DosensTableOrderingComposer
     return composer;
   }
 
+  $$UsersTableOrderingComposer get waliUserId {
+    final $$UsersTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.waliUserId,
+      referencedTable: $db.users,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UsersTableOrderingComposer(
+            $db: $db,
+            $table: $db.users,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
   $$ProdiTableOrderingComposer get prodiId {
     final $$ProdiTableOrderingComposer composer = $composerBuilder(
       composer: this,
@@ -15389,6 +15608,29 @@ class $$DosensTableAnnotationComposer
     final $$UsersTableAnnotationComposer composer = $composerBuilder(
       composer: this,
       getCurrentColumn: (t) => t.userId,
+      referencedTable: $db.users,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$UsersTableAnnotationComposer(
+            $db: $db,
+            $table: $db.users,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+
+  $$UsersTableAnnotationComposer get waliUserId {
+    final $$UsersTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.waliUserId,
       referencedTable: $db.users,
       getReferencedColumn: (t) => t.id,
       builder:
@@ -15547,6 +15789,7 @@ class $$DosensTableTableManager
           DosenRow,
           PrefetchHooks Function({
             bool userId,
+            bool waliUserId,
             bool prodiId,
             bool mahasiswaRefs,
             bool kelasRefs,
@@ -15571,6 +15814,7 @@ class $$DosensTableTableManager
                 Value<String> nidn = const Value.absent(),
                 Value<String> nama = const Value.absent(),
                 Value<int?> userId = const Value.absent(),
+                Value<int?> waliUserId = const Value.absent(),
                 Value<int> prodiId = const Value.absent(),
                 Value<DateTime> updatedAt = const Value.absent(),
                 Value<String> deviceId = const Value.absent(),
@@ -15579,6 +15823,7 @@ class $$DosensTableTableManager
                 nidn: nidn,
                 nama: nama,
                 userId: userId,
+                waliUserId: waliUserId,
                 prodiId: prodiId,
                 updatedAt: updatedAt,
                 deviceId: deviceId,
@@ -15589,6 +15834,7 @@ class $$DosensTableTableManager
                 required String nidn,
                 required String nama,
                 Value<int?> userId = const Value.absent(),
+                Value<int?> waliUserId = const Value.absent(),
                 required int prodiId,
                 required DateTime updatedAt,
                 required String deviceId,
@@ -15597,6 +15843,7 @@ class $$DosensTableTableManager
                 nidn: nidn,
                 nama: nama,
                 userId: userId,
+                waliUserId: waliUserId,
                 prodiId: prodiId,
                 updatedAt: updatedAt,
                 deviceId: deviceId,
@@ -15612,6 +15859,7 @@ class $$DosensTableTableManager
           prefetchHooksCallback:
               ({
                 userId = false,
+                waliUserId = false,
                 prodiId = false,
                 mahasiswaRefs = false,
                 kelasRefs = false,
@@ -15650,6 +15898,17 @@ class $$DosensTableTableManager
                                 ._userIdTable(db),
                             referencedColumn: $$DosensTableReferences
                                 ._userIdTable(db)
+                                .id,
+                          ) as T;
+                        }
+                        if (waliUserId) {
+                          state = state.withJoin(
+                            currentTable: table,
+                            currentColumn: table.waliUserId,
+                            referencedTable: $$DosensTableReferences
+                                ._waliUserIdTable(db),
+                            referencedColumn: $$DosensTableReferences
+                                ._waliUserIdTable(db)
                                 .id,
                           ) as T;
                         }
@@ -15771,6 +16030,7 @@ typedef $$DosensTableProcessedTableManager =
       DosenRow,
       PrefetchHooks Function({
         bool userId,
+        bool waliUserId,
         bool prodiId,
         bool mahasiswaRefs,
         bool kelasRefs,

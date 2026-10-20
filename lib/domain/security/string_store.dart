@@ -6,6 +6,21 @@ abstract class StringStore {
   Future<void> delete(String key);
 }
 
+/// Keeps demo recovery/session preferences separate from normal accounts.
+class NamespacedStringStore implements StringStore {
+  NamespacedStringStore(this.delegate, this.prefix);
+  final StringStore delegate;
+  final String prefix;
+
+  @override
+  Future<String?> read(String key) => delegate.read('$prefix$key');
+  @override
+  Future<void> write(String key, String value) =>
+      delegate.write('$prefix$key', value);
+  @override
+  Future<void> delete(String key) => delegate.delete('$prefix$key');
+}
+
 /// In-memory implementation for tests (and previews).
 class MemoryStore implements StringStore {
   final Map<String, String> _map = {};

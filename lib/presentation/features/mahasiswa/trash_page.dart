@@ -21,7 +21,7 @@ class _TrashPageState extends ConsumerState<TrashPage> {
   }
 
   void _reload() {
-    _future = ref.read(appDatabaseProvider).listTrashMahasiswa();
+    _future = ref.read(academicServiceProvider).trash();
   }
 
   @override
@@ -59,7 +59,7 @@ class _TrashPageState extends ConsumerState<TrashPage> {
                     trailing: TextButton(
                       onPressed: () async {
                         await ref
-                            .read(appDatabaseProvider)
+                            .read(academicServiceProvider)
                             .restoreMahasiswa(m.id);
                         ref
                           ..invalidate(dashboardCountsProvider)

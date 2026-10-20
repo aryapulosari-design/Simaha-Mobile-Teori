@@ -53,12 +53,8 @@ const Map<Role, Set<Permission>> rolePermissions = {
     Permission.viewAnalytics,
     Permission.backupRestore,
   },
-  Role.dosenPengampu: {Permission.manageNilai, Permission.viewAllMahasiswa},
-  Role.dosenWali: {
-    Permission.viewAllMahasiswa,
-    Permission.manageBimbingan,
-    Permission.viewAnalytics,
-  },
+  Role.dosenPengampu: {Permission.manageNilai},
+  Role.dosenWali: {Permission.manageBimbingan, Permission.viewAnalytics},
   Role.mahasiswa: {},
 };
 

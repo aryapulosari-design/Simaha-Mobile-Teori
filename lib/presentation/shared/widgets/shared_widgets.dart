@@ -1,3 +1,6 @@
+// SIMAHA Shared Widgets Library
+// Shared components for the offline academic workspace
+
 export 'app_scaffold.dart';
 export 'app_shell.dart';
 export 'app_text_field.dart';
@@ -9,3 +12,4 @@ export 'error_state.dart';
 export 'loading_view.dart';
 export 'section_card.dart';
 export 'status_chip.dart';
+export 'status_pill.dart';

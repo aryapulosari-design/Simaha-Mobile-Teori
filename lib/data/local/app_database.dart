@@ -97,7 +97,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
 
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 
   /// Tables carrying sync columns (updated_at + device_id). AuditLog and
   /// SyncLog are append-only local logs excluded from sync deltas, so they
@@ -214,6 +214,14 @@ class AppDatabase extends _$AppDatabase {
       if (from < 4) {
         await m.createTable(savedFilters);
       }
+      if (from < 5) {
+        await m.addColumn(dosens, dosens.waliUserId);
+        // Preserve older advisor accounts in their dedicated slot.
+        await customStatement(
+          "UPDATE dosens SET wali_user_id = user_id, user_id = NULL "
+          "WHERE user_id IN (SELECT id FROM users WHERE role = 'dosen_wali');",
+        );
+      }
       // Keep FTS/indexes idempotent for upgrades.
       await customStatement(kFtsTableDdl);
       await customStatement(kIdxMahasiswaAngkatanStatus);
@@ -242,6 +250,7 @@ class AppDatabase extends _$AppDatabase {
 
   Future<int> countMahasiswa({bool onlyActive = false}) {
     final q = selectOnly(mahasiswa)..addColumns([mahasiswa.id.count()]);
+    q.where(mahasiswa.isDeleted.equals(false));
     if (onlyActive) {
       q.where(mahasiswa.status.equals('aktif'));
     }
@@ -260,7 +269,7 @@ class AppDatabase extends _$AppDatabase {
     }
 
     final results = await Future.wait([
-      count(mahasiswa, mahasiswa.id),
+      countMahasiswa(),
       countMahasiswa(onlyActive: true),
       count(prodi, prodi.id),
       count(dosens, dosens.id),
@@ -616,12 +625,6 @@ class AppDatabase extends _$AppDatabase {
         updatedAt: Value(DateTime.now()),
       ),
     );
-    // Keluarkan dari indeks FTS agar tidak muncul di pencarian.
-    await customStatement(
-      "INSERT INTO mahasiswa_fts(mahasiswa_fts, rowid, nim, nama) "
-      'SELECT \'delete\', id, nim, nama FROM mahasiswa WHERE id = ?;',
-      [id],
-    );
   }
 
   Future<List<MahasiswaRow>> listTrashMahasiswa() =>
@@ -636,11 +639,6 @@ class AppDatabase extends _$AppDatabase {
         isDeleted: const Value(false),
         updatedAt: Value(DateTime.now()),
       ),
-    );
-    await customStatement(
-      "INSERT INTO mahasiswa_fts(rowid, nim, nama) "
-      'SELECT id, nim, nama FROM mahasiswa WHERE id = ?;',
-      [id],
     );
   }
 

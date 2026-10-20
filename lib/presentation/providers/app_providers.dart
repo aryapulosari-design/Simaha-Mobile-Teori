@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:simaha/data/local/app_database.dart';
+import 'package:simaha/data/services/academic_service.dart';
+import 'package:simaha/presentation/providers/session_providers.dart';
+
+final academicServiceProvider = Provider<AcademicService>((ref) {
+  return AcademicService(
+    ref.watch(appDatabaseProvider),
+    ref.watch(sessionProvider).user?.id,
+  );
+});
 
 // Overridden in main.dart after the encrypted DB is opened.
 final appDatabaseProvider = Provider<AppDatabase>((ref) {
@@ -9,8 +18,7 @@ final appDatabaseProvider = Provider<AppDatabase>((ref) {
 });
 
 final dashboardCountsProvider = FutureProvider((ref) async {
-  final db = ref.watch(appDatabaseProvider);
-  return db.dashboardCounts();
+  return ref.watch(academicServiceProvider).counts();
 });
 
 /// Search query state (Tahap A: FTS5 proof of <=500ms).
@@ -21,13 +29,11 @@ const int kMahasiswaPageStep = 20;
 final mahasiswaLimitProvider = StateProvider<int>((ref) => kMahasiswaPageStep);
 
 final mahasiswaSearchProvider = FutureProvider((ref) async {
-  final db = ref.watch(appDatabaseProvider);
+  final service = ref.watch(academicServiceProvider);
   final q = ref.watch(mahasiswaQueryProvider).trim();
   final limit = ref.watch(mahasiswaLimitProvider);
   final sw = Stopwatch()..start();
-  final rows = q.isEmpty
-      ? await db.pagedMahasiswa(limit: limit)
-      : await db.searchMahasiswaFts(q, limit: limit);
+  final rows = await service.students(query: q, limit: limit);
   sw.stop();
   return (rows: rows, elapsedMs: sw.elapsedMilliseconds, limit: limit);
 });

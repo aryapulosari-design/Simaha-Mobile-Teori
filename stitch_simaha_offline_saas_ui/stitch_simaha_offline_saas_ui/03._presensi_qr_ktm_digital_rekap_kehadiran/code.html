@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>SIMAHA Offline</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "inverse-surface": "#213145",
+        "on-secondary-container": "#5c647a",
+        "on-tertiary-fixed-variant": "#3323cc",
+        "surface-tint": "#006a61",
+        "surface-container": "#e5eeff",
+        "primary-fixed-dim": "#6bd8cb",
+        "error": "#ba1a1a",
+        "primary-container": "#008378",
+        "surface-bright": "#f8f9ff",
+        "on-tertiary": "#ffffff",
+        "secondary-fixed-dim": "#bec6e0",
+        "surface-container-highest": "#d3e4fe",
+        "tertiary-fixed": "#e2dfff",
+        "on-tertiary-container": "#fffbff",
+        "on-primary-fixed": "#00201d",
+        "on-surface-variant": "#3d4947",
+        "surface-dim": "#cbdbf5",
+        "error-container": "#ffdad6",
+        "tertiary-container": "#645efb",
+        "on-tertiary-fixed": "#0f0069",
+        "on-secondary-fixed-variant": "#3f465c",
+        "secondary-fixed": "#dae2fd",
+        "tertiary-fixed-dim": "#c3c0ff",
+        "surface-container-lowest": "#ffffff",
+        "on-surface": "#0b1c30",
+        "on-secondary": "#ffffff",
+        "surface-container-high": "#dce9ff",
+        "outline": "#6d7a77",
+        "on-secondary-fixed": "#131b2e",
+        "surface": "#f8f9ff",
+        "on-error": "#ffffff",
+        "secondary-container": "#dae2fd",
+        "on-primary-container": "#f4fffc",
+        "on-background": "#0b1c30",
+        "inverse-primary": "#6bd8cb",
+        "surface-variant": "#d3e4fe",
+        "primary": "#00685f",
+        "background": "#f8f9ff",
+        "on-primary-fixed-variant": "#005049",
+        "secondary": "#565e74",
+        "inverse-on-surface": "#eaf1ff",
+        "surface-container-low": "#eff4ff",
+        "tertiary": "#4b41e1",
+        "on-error-container": "#93000a",
+        "on-primary": "#ffffff",
+        "primary-fixed": "#89f5e7",
+        "outline-variant": "#bcc9c6"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-lg": "1rem",
+        "gutter": "0.75rem",
+        "margin-mobile": "1rem",
+        "gutter-tablet": "0.75rem",
+        "margin": "1.5rem",
+        "space-xs": "0.25rem",
+        "space-sm": "0.5rem",
+        "space-xl": "1.5rem",
+        "space-md": "0.75rem",
+        "gutter-mobile": "0.5rem"
+      },
+      "fontFamily": {
+        "headline-lg": ["Plus Jakarta Sans"],
+        "headline-xl-mobile": ["Plus Jakarta Sans"],
+        "headline-xl": ["Plus Jakarta Sans"],
+        "body-lg": ["Inter"],
+        "label-code-sm": ["JetBrains Mono"],
+        "headline-sm": ["Plus Jakarta Sans"],
+        "body-sm": ["Inter"],
+        "metric-display": ["Plus Jakarta Sans"],
+        "headline-md": ["Plus Jakarta Sans"],
+        "label-code": ["JetBrains Mono"],
+        "body-md": ["Inter"],
+        "headline-lg-mobile": ["Plus Jakarta Sans"]
+      },
+      "fontSize": {
+        "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700"}],
+        "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.025em", "fontWeight": "700"}],
+        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+        "body-lg": ["15px", {"lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+        "label-code-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+        "headline-sm": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "body-sm": ["12px", {"lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400"}],
+        "metric-display": ["30px", {"lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+        "label-code": ["12px", {"lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+        "body-md": ["13px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+        "headline-lg-mobile": ["22px", {"lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+      }
+    }
+  }
+}</script><style>@layer base{html,body{width:100vw;min-height:100vh;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary-fixed"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-14 px-margin-mobile flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-xs min-w-0 flex-1"><div class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center shrink-0 shadow-[0_1px_4px_rgba(0,0,0,0.05)]"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">UIN</span></div><div class="flex items-center gap-1.5 px-2 py-1 rounded-full bg-surface-container-low max-w-[190px] truncate"><span class="text-[11px] leading-none shrink-0">🎓</span><span class="font-label-code-sm text-label-code-sm text-on-surface-variant truncate">230605110019 • Siti Aminah</span></div></div><div class="flex items-center gap-space-xs shrink-0"><div class="flex items-center gap-1 px-1.5 py-1 rounded bg-surface-container text-on-surface-variant"><span class="material-symbols-outlined text-primary text-[14px]">lock</span><span class="font-label-code-sm text-label-code-sm text-[10px] tracking-tight uppercase">SQLCipher</span><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span></div><button aria-label="Notifikasi" class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-on-surface relative active:scale-95 transition-transform"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-14 pb-20 bg-surface"><div class="flex flex-col w-full px-margin-mobile pb-space-xl gap-space-md">
+<!-- Mode Switcher Pill -->
+<div class="w-full bg-surface-container-high p-1 rounded-xl flex items-center shadow-sm">
+<button class="flex-1 py-2 px-space-xs rounded-lg flex items-center justify-center gap-1.5 transition-all text-secondary hover:text-on-surface" id="btn-mode-scan" onclick="switchMode('scan')">
+<span class="material-symbols-outlined text-[18px]">qr_code_scanner</span>
+<span class="font-headline-sm text-body-sm font-semibold truncate">Pindai QR Dosen</span>
+</button>
+<button class="flex-1 py-2 px-space-xs rounded-lg flex items-center justify-center gap-1.5 transition-all bg-surface-container-lowest text-primary shadow-sm" id="btn-mode-ktm" onclick="switchMode('ktm')">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+<span class="font-headline-sm text-body-sm font-semibold truncate">QR Identitas / KTM</span>
+</button>
+</div>
+<!-- VIEW 1: Digital Student Identity Card (Active by Default) -->
+<section class="flex flex-col gap-space-md w-full" id="section-ktm">
+<!-- Premium Metallic Emerald Digital Card -->
+<div class="relative w-full rounded-2xl p-space-lg text-on-primary shadow-xl overflow-hidden bg-gradient-to-br from-[#003833] via-[#005850] to-[#002622]">
+<!-- Watermark Ornament & Grid Backdrop -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #89f5e7 1px, transparent 0); background-size: 16px 16px;"></div>
+<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-primary-fixed opacity-10 blur-2xl pointer-events-none"></div>
+<div class="absolute right-4 top-4 text-[#89f5e7]/20 select-none pointer-events-none">
+<span class="material-symbols-outlined text-[110px] leading-none">account_balance</span>
+</div>
+<!-- Card Header -->
+<div class="relative z-10 flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest/15 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed text-[20px]">school</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[11px] tracking-wider uppercase text-primary-fixed font-bold">UIN Maliki Malang</span>
+<span class="font-body-sm text-[10px] text-primary-fixed-dim/90 font-medium tracking-tight">KTM Elektronik &amp; Presensi Cerdas</span>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-container/80 backdrop-blur-sm text-[10px] font-label-code-sm text-primary-fixed font-semibold tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed animate-ping"></span>
+<span>AKTIF</span>
+</div>
+</div>
+<!-- Profile Bio Meta -->
+<div class="relative z-10 flex items-center gap-space-md pt-space-xs pb-space-md">
+<div class="relative shrink-0">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container-high/20 shadow-md">
+<img class="w-full h-full object-cover" data-alt="Warm and polite young Indonesian university female student wearing a neat pastel teal hijab and university blazer, smiling gently at camera, crisp natural lighting, editorial student ID portrait style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBATgES0W9XIms4zNDltjFDmDqYM2NvUZ1bQsJ35W4snDm11po1TCZ_TjSEf1B2D4vCHDOWMVmq06YxmDU128TulyPSIPy7xRpCSgGARqMoTpipRroGz1uBIuKKePGv_PzzHqmxph18-BmhKALZn2SAjbU1LuFesPqMbv6FxkPA-szjXCL9LQ69Bv0BsOIBlcyN2dQObRZV8BUZOTDsix50wQgjXwfP5DJLl0HNJDOAY74wDn5O4v50"/>
+</div>
+<div class="absolute -bottom-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shadow-sm">
+<span class="material-symbols-outlined text-[12px] font-bold">verified</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<h2 class="font-headline-md text-headline-sm text-on-primary truncate font-bold">Siti Aminah</h2>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-label-code-sm text-label-code-sm text-primary-fixed tracking-wide bg-surface-container-lowest/10 px-1.5 py-0.5 rounded">230605110019</span>
+<span class="text-[10px] text-primary-fixed-dim">• Angk. 2023</span>
+</div>
+<p class="font-body-sm text-[11px] text-primary-fixed-dim mt-1 truncate">S1 Teknik Informatika • Reguler A</p>
+</div>
+</div>
+<!-- Dynamic QR Code Sandbox -->
+<div class="relative z-10 bg-surface-container-lowest text-on-surface rounded-xl p-space-md flex flex-col items-center justify-center shadow-lg">
+<div class="relative w-44 h-44 flex items-center justify-center p-2 rounded-lg bg-surface-bright shadow-inner">
+<!-- Static SVG QR with dynamic center emblem -->
+<svg class="w-full h-full text-on-surface" fill="none" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f8f9ff" height="100" width="100"></rect>
+<!-- Corner Finder 1 -->
+<rect fill="currentColor" height="28" rx="4" width="28" x="8" y="8"></rect>
+<rect fill="#ffffff" height="20" rx="2" width="20" x="12" y="12"></rect>
+<rect fill="currentColor" height="12" rx="1" width="12" x="16" y="16"></rect>
+<!-- Corner Finder 2 -->
+<rect fill="currentColor" height="28" rx="4" width="28" x="64" y="8"></rect>
+<rect fill="#ffffff" height="20" rx="2" width="20" x="68" y="12"></rect>
+<rect fill="currentColor" height="12" rx="1" width="12" x="72" y="16"></rect>
+<!-- Corner Finder 3 -->
+<rect fill="currentColor" height="28" rx="4" width="28" x="8" y="64"></rect>
+<rect fill="#ffffff" height="20" rx="2" width="20" x="12" y="68"></rect>
+<rect fill="currentColor" height="12" rx="1" width="12" x="16" y="72"></rect>
+<!-- Pseudo QR Noise Matrix -->
+<rect fill="currentColor" height="6" rx="1" width="6" x="40" y="10"></rect>
+<rect fill="currentColor" height="6" rx="1" width="8" x="50" y="10"></rect>
+<rect fill="currentColor" height="12" rx="1" width="6" x="42" y="20"></rect>
+<rect fill="currentColor" height="6" rx="1" width="6" x="52" y="22"></rect>
+<rect fill="currentColor" height="6" rx="1" width="6" x="10" y="42"></rect>
+<rect fill="currentColor" height="6" rx="1" width="8" x="20" y="40"></rect>
+<rect fill="currentColor" height="10" rx="1" width="6" x="30" y="44"></rect>
+<rect fill="currentColor" height="6" rx="1" width="6" x="40" y="40"></rect>
+<rect fill="currentColor" height="6" rx="1" width="10" x="54" y="42"></rect>
+<rect fill="currentColor" height="6" rx="1" width="6" x="70" y="42"></rect>
+<rect fill="currentColor" height="6" rx="1" width="8" x="82" y="44"></rect>
+<rect fill="currentColor" height="6" rx="1" width="6" x="42" y="52"></rect>
+<rect fill="currentColor" height="6" rx="1" width="8" x="64" y="52"></rect>
+<rect fill="currentColor" height="6" rx="1" width="12" x="78" y="54"></rect>
+<rect fill="currentColor" height="8" rx="1" width="6" x="40" y="64"></rect>
+<rect fill="currentColor" height="6" rx="1" width="8" x="50" y="64"></rect>
+<rect fill="currentColor" height="6" rx="1" width="12" x="44" y="76"></rect>
+<rect fill="currentColor" height="10" rx="1" width="6" x="62" y="66"></rect>
+<rect fill="currentColor" height="6" rx="1" width="8" x="74" y="68"></rect>
+<rect fill="currentColor" height="8" rx="1" width="8" x="66" y="80"></rect>
+<rect fill="currentColor" height="6" rx="1" width="10" x="80" y="80"></rect>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest p-1 shadow flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">fingerprint</span>
+</div>
+</div>
+</div>
+<!-- HMAC Countdown Radial & Bar -->
+<div class="w-full flex items-center justify-between mt-3 px-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px] animate-spin" style="animation-duration: 6s;">autorenew</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Berganti dalam <strong class="font-label-code-sm text-primary font-bold" id="countdown-timer">19 detik</strong></span>
+</div>
+<span class="font-label-code-sm text-[10px] text-primary bg-primary-fixed/40 px-1.5 py-0.5 rounded uppercase font-semibold">Offline Token</span>
+</div>
+<!-- Token Hash Monospace String -->
+<div class="w-full mt-2 bg-surface-container-low px-2.5 py-1.5 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-1 min-w-0">
+<span class="material-symbols-outlined text-[13px] text-on-surface-variant">vpn_key</span>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant truncate">HMAC: 8f3b9a0c71e2...5c4a</span>
+</div>
+<button aria-label="Salin hash" class="shrink-0 text-primary hover:text-on-surface-variant p-0.5 active:scale-95" onclick="navigator.clipboard?.writeText('8f3b9a0c71e220240901e8ab5c4a'); alert('Token disalin!')">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Action Card Bottom Bar -->
+<div class="relative z-10 flex items-center gap-space-sm pt-space-md">
+<button class="flex-1 h-9 rounded-lg bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 backdrop-blur-md text-on-primary font-headline-sm text-body-sm flex items-center justify-center gap-1.5 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Simpan PNG</span>
+</button>
+<button class="flex-1 h-9 rounded-lg bg-primary-fixed hover:bg-primary-fixed-dim text-on-primary-fixed font-headline-sm text-body-sm font-semibold flex items-center justify-center gap-1.5 transition-all shadow-md active:scale-[0.98]">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>Cetak PDF KTA</span>
+</button>
+</div>
+</div>
+</section>
+<!-- VIEW 2: Scanner Simulation (Hidden toggleable or secondary container) -->
+<section class="flex flex-col gap-space-sm w-full hidden" id="section-scan">
+<div class="relative w-full h-64 rounded-2xl bg-inverse-surface overflow-hidden flex flex-col items-center justify-center text-inverse-on-surface shadow-md">
+<!-- Simulated Camera Feed Background -->
+<div class="absolute inset-0 opacity-40 bg-cover bg-center" data-alt="High-tech classroom podium view from a smartphone camera angle, blurry lecture whiteboard and computer terminal in background, dim lecture lighting, modern computer science lab" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdml9gR6mVA6pQbKsqWp0FYxVsHiDa44gpyVjKGNRLcMuVxH4EJT__FhbhMuzeX2PAmvAZP7oLC_9SODseubyCB55OI0ACTW49BRXaHm2SHgTvH65p-h_EftljnkAFohf0MqFMG5H8cvL5j_fQlo54W1DE6gY0t1-nuGXACMZLE682F34Y8v8mMvu16dFbFKMdOc2upTLS_eaUXU1Dhl3Ga87V2Okfya3pQARnZSc1lHNHEPW6F8Ws')"></div>
+<!-- Viewfinder Overlay Box -->
+<div class="relative w-48 h-48 rounded-xl bg-transparent flex flex-col justify-between p-2 shadow-[0_0_0_9999px_rgba(11,28,48,0.75)]">
+<!-- Laser Scanning Line -->
+<div class="w-full h-0.5 bg-primary-fixed shadow-[0_0_12px_#6bd8cb] animate-bounce"></div>
+<!-- Alignment Target Corners -->
+<div class="flex justify-between">
+<div class="w-5 h-5 rounded-tl-lg bg-primary-fixed"></div>
+<div class="w-5 h-5 rounded-tr-lg bg-primary-fixed"></div>
+</div>
+<div class="flex justify-between">
+<div class="w-5 h-5 rounded-bl-lg bg-primary-fixed"></div>
+<div class="w-5 h-5 rounded-br-lg bg-primary-fixed"></div>
+</div>
+</div>
+<div class="absolute bottom-3 flex items-center gap-1.5 bg-inverse-surface/80 px-3 py-1 rounded-full text-inverse-on-surface">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[16px]">center_focus_strong</span>
+<span class="font-body-sm text-[11px]">Arahkan kamera ke layar QR Dosen</span>
+</div>
+</div>
+<!-- Live Verified Attendance Toast Banner -->
+<div class="w-full bg-primary-container text-on-primary-container p-space-md rounded-xl shadow-md flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-body-sm font-bold text-on-primary-container">Presensi Berhasil Terverifikasi</span>
+<span class="font-label-code-sm text-[11px] text-primary-fixed">08:14 WIB</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-primary-container/90 mt-0.5">Kecerdasan Buatan (IF301) • Ruang Lab 3.02</p>
+<div class="flex items-center gap-1 mt-1 text-[10px] font-label-code-sm text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[12px]">security</span>
+<span>Digital Signature: RSA-2048 • Valid Offline</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recap & Attendance Threshold Section (FR-22) -->
+<section class="flex flex-col gap-space-sm w-full mt-1">
+<!-- Section Title & Status Formula Banner -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">fact_check</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rekap Kehadiran Semester Ini</h3>
+</div>
+<button class="px-2.5 py-1 rounded-lg bg-surface-container-high text-primary hover:bg-surface-container text-body-sm font-semibold flex items-center gap-1 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[15px]">add_circle</span>
+<span>Izin / Sakit</span>
+</button>
+</div>
+<!-- Formula & Metric Legend Bento Pill -->
+<div class="w-full bg-surface-container-lowest p-space-sm rounded-xl shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary">functions</span>
+<span class="font-label-code-sm text-[11px]">Rumus: (Sesi Hadir ÷ Total Sesi Selesai) × 100%</span>
+</div>
+<div class="grid grid-cols-3 gap-1 pt-1 text-center font-body-sm text-[10px]">
+<div class="bg-[#dcfce7] text-[#14532d] py-1 px-1 rounded-md font-semibold truncate">
+          ≥75% Aman UAS
+        </div>
+<div class="bg-[#fef9c3] text-[#713f12] py-1 px-1 rounded-md font-semibold truncate">
+          60-74% Waspada
+        </div>
+<div class="bg-error-container text-on-error-container py-1 px-1 rounded-md font-semibold truncate">
+          &lt;60% Gugur UAS
+        </div>
+</div>
+</div>
+<!-- Course Attendance Cards Stack -->
+<div class="flex flex-col gap-space-sm w-full">
+<!-- Course 1: Kecerdasan Buatan (100% - Aman) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-2.5 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">IF301 • 3 SKS</span>
+<h4 class="font-headline-sm text-body-lg text-on-surface font-semibold truncate">Kecerdasan Buatan</h4>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-[#dcfce7] text-[#14532d] font-headline-sm text-[11px] font-bold shrink-0">
+            Aman • Layak UAS
+          </span>
+</div>
+<div class="w-full flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="font-label-code-sm font-semibold text-on-surface">14 / 14 Sesi</span>
+<span class="font-headline-sm text-body-sm text-primary font-bold">100%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- Course 2: Basis Data Lanjut (92.8% - Aman) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-2.5 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">IF304 • 3 SKS</span>
+<h4 class="font-headline-sm text-body-lg text-on-surface font-semibold truncate">Basis Data Lanjut</h4>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-[#dcfce7] text-[#14532d] font-headline-sm text-[11px] font-bold shrink-0">
+            Aman • Layak UAS
+          </span>
+</div>
+<div class="w-full flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="font-label-code-sm font-semibold text-on-surface">13 / 14 Sesi (1 Izin)</span>
+<span class="font-headline-sm text-body-sm text-primary font-bold">92.8%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 92.8%;"></div>
+</div>
+</div>
+<!-- Course 3: Pemrograman Web (71.4% - Waspada) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-2.5 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">IF306 • 3 SKS</span>
+<h4 class="font-headline-sm text-body-lg text-on-surface font-semibold truncate">Pemrograman Web</h4>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-[#fef9c3] text-[#713f12] font-headline-sm text-[11px] font-bold shrink-0 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>Waspada • Butuh 1 Hadir</span>
+</span>
+</div>
+<div class="w-full flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="font-label-code-sm font-semibold text-on-surface">10 / 14 Sesi (2 Alpha)</span>
+<span class="font-headline-sm text-body-sm text-[#ca8a04] font-bold">71.4%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-[#eab308] rounded-full" style="width: 71.4%;"></div>
+</div>
+</div>
+<!-- Course 4: Fisika Dasar (57.1% - Kritis) -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-2.5 hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">MKU102 • 2 SKS</span>
+<h4 class="font-headline-sm text-body-lg text-on-surface font-semibold truncate">Fisika Dasar</h4>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-headline-sm text-[11px] font-bold shrink-0 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">block</span>
+<span>Kritis • Terancam Gugur</span>
+</span>
+</div>
+<div class="w-full flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="font-label-code-sm font-semibold text-error">8 / 14 Sesi (4 Alpha)</span>
+<span class="font-headline-sm text-body-sm text-error font-bold">57.1%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 57.1%;"></div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg flex items-center justify-between mt-1">
+<span class="text-[11px] text-error font-medium">Batas maksimal ketidakhadiran terlampaui. Segera temui Dosen Wali.</span>
+<button class="shrink-0 text-[11px] font-semibold text-primary underline ml-2">Konsultasi</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Simple UI Switcher between Scanner Mode and Identity KTM Mode
+  function switchMode(mode) {
+    const btnScan = document.getElementById('btn-mode-scan');
+    const btnKtm = document.getElementById('btn-mode-ktm');
+    const sectionScan = document.getElementById('section-scan');
+    const sectionKtm = document.getElementById('section-ktm');
+
+    if (mode === 'scan') {
+      sectionScan.classList.remove('hidden');
+      sectionKtm.classList.add('hidden');
+      btnScan.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      btnScan.classList.remove('text-secondary');
+      btnKtm.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      btnKtm.classList.add('text-secondary');
+    } else {
+      sectionScan.classList.add('hidden');
+      sectionKtm.classList.remove('hidden');
+      btnKtm.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      btnKtm.classList.remove('text-secondary');
+      btnScan.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+      btnScan.classList.add('text-secondary');
+    }
+  }
+
+  // Simulated 30s HMAC countdown cycle
+  let countdownSec = 19;
+  const timerEl = document.getElementById('countdown-timer');
+  setInterval(() => {
+    countdownSec--;
+    if (countdownSec <= 0) {
+      countdownSec = 30;
+    }
+    if (timerEl) {
+      timerEl.textContent = countdownSec + ' detik';
+    }
+  }, 1000);
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.03)]" data-active-classes="text-primary font-semibold"><div class="flex items-center justify-around h-16 px-1"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="beranda" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">Beranda</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="krs-dan-jadwal" href="#"><span class="material-symbols-outlined text-[20px]">event_available</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">KRS &amp; Jadwal</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 transition-colors text-primary font-semibold" data-path="presensi-qr" href="#"><span class="material-symbols-outlined text-[20px]">qr_code_scanner</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">Presensi QR</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="khs-dan-simulasi" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">KHS &amp; Simulasi</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[56px] h-11 text-secondary transition-colors hover:text-on-surface" data-path="profil-dan-ekstra" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-body-sm text-body-sm text-[11px] leading-tight">Profil &amp; Ekstra</span></a></div></nav></body></html>

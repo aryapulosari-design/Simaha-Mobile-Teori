@@ -58,8 +58,8 @@ class GradeBand {
 const double kRiskSafeMax = 30.0;
 const double kRiskWatchMax = 60.0;
 
-/// Auto-lock default (minutes). Configurable in Tahap H.
-const int kDefaultAutoLockMinutes = 5;
+/// Auto-lock default (minutes). Configurable in Settings.
+const int kDefaultAutoLockMinutes = 2;
 
 /// Max PIN failures before temporary lock (Tahap B enforces this).
 const int kMaxPinFailures = 5;

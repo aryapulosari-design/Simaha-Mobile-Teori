@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_blank" name="shell-type"/><title>SIMAHA Offline</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary": "#00685f", "on-primary": "#ffffff", "secondary-fixed-dim": "#bec6e0", "tertiary": "#4b41e1", "on-tertiary": "#ffffff", "on-background": "#0b1c30", "inverse-surface": "#213145", "background": "#f8f9ff", "on-tertiary-fixed-variant": "#3323cc", "on-primary-fixed-variant": "#005049", "outline-variant": "#bcc9c6", "surface-container": "#e5eeff", "tertiary-fixed": "#e2dfff", "on-secondary-fixed": "#131b2e", "outline": "#6d7a77", "on-secondary-container": "#5c647a", "surface-container-lowest": "#ffffff", "surface-container-high": "#dce9ff", "primary-fixed-dim": "#6bd8cb", "on-tertiary-container": "#fffbff", "tertiary-fixed-dim": "#c3c0ff", "surface-dim": "#cbdbf5", "on-primary-container": "#f4fffc", "on-secondary": "#ffffff", "secondary": "#565e74", "surface-variant": "#d3e4fe", "inverse-primary": "#6bd8cb", "on-error-container": "#93000a", "error": "#ba1a1a", "on-secondary-fixed-variant": "#3f465c", "surface-tint": "#006a61", "surface-container-low": "#eff4ff", "error-container": "#ffdad6", "surface-bright": "#f8f9ff", "on-tertiary-fixed": "#0f0069", "secondary-container": "#dae2fd", "inverse-on-surface": "#eaf1ff", "surface": "#f8f9ff", "tertiary-container": "#645efb", "primary-fixed": "#89f5e7", "on-surface": "#0b1c30", "on-primary-fixed": "#00201d", "on-error": "#ffffff", "surface-container-highest": "#d3e4fe", "on-surface-variant": "#3d4947", "secondary-fixed": "#dae2fd" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.5rem", "gutter-mobile": "0.5rem", "margin-mobile": "1rem", "margin": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-lg": "1rem", "gutter": "0.75rem", "space-md": "0.75rem", "gutter-tablet": "0.75rem" }, "fontFamily": { "metric-display": ["Plus Jakarta Sans"], "label-code": ["JetBrains Mono"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "label-code-sm": ["JetBrains Mono"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"] }, "fontSize": { "metric-display": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container pt-safe pb-safe"><main class="flex-1 w-full bg-surface flex flex-col"><div class="flex flex-col w-full pb-8">
+<!-- Minimal Ambient Background Decorative SVG Pattern -->
+<div class="w-full px-4 pt-1 pb-3 flex flex-col gap-3">
+<!-- Cryptographic Security Pill & Environment Context -->
+<div class="flex items-center justify-between py-1.5 px-3 bg-surface-container rounded-full shadow-sm">
+<div class="flex items-center gap-1.5 min-w-0">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface truncate">SQLCipher AES-256 Engine</span>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container">NODE SMH-09A</span>
+</div>
+</div>
+<!-- Stepper Navigation (3-Step First-Time Setup Wizard) -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">security_update_good</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Setup &amp; Pemulihan Vault</span>
+</div>
+<span class="font-label-code text-label-code text-primary bg-surface-container px-2 py-0.5 rounded-full" id="step-counter-text">Langkah 3/3</span>
+</div>
+<!-- Stepper Progress Segmented Bar -->
+<div class="grid grid-cols-3 gap-1.5 w-full">
+<div class="h-1.5 rounded-full bg-primary"></div>
+<div class="h-1.5 rounded-full bg-primary"></div>
+<div class="h-1.5 rounded-full bg-primary" id="bar-step-3"></div>
+</div>
+<!-- Step Labels Horizontal Track -->
+<div class="grid grid-cols-3 text-center gap-1 pt-0.5">
+<button class="flex flex-col items-center group text-left" onclick="switchWizardTab(1)" type="button">
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">1. Identitas</span>
+<span class="font-body-sm text-body-sm text-secondary truncate w-full text-center">Instansi PT</span>
+</button>
+<button class="flex flex-col items-center group text-left" onclick="switchWizardTab(2)" type="button">
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">2. Master PIN</span>
+<span class="font-body-sm text-body-sm text-secondary truncate w-full text-center">Kripto 6-Digit</span>
+</button>
+<button class="flex flex-col items-center group text-left" onclick="switchWizardTab(3)" type="button">
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">3. Vault Key</span>
+<span class="font-body-sm text-body-sm text-secondary truncate w-full text-center">Kunci Cadangan</span>
+</button>
+</div>
+<!-- Step 3 Interactive Vault Monospace Key Panel -->
+<div class="mt-1 flex flex-col gap-2.5 bg-inverse-surface text-inverse-on-surface p-3 rounded-lg shadow-inner" id="wizard-step-panel">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[16px]">key</span>
+<span class="font-headline-sm text-headline-sm text-inverse-on-surface">Master Recovery Key</span>
+</div>
+<button class="flex items-center gap-1 px-2 py-1 bg-surface-container/20 hover:bg-surface-container/30 text-primary-fixed-dim rounded transition-colors" id="copy-btn" onclick="copyMasterKey()">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span class="font-label-code-sm text-label-code-sm" id="copy-label">Salin</span>
+</button>
+</div>
+<div class="bg-on-background/60 p-2.5 rounded flex items-center justify-between">
+<span class="font-label-code text-label-code tracking-widest text-primary-fixed text-center w-full select-all font-semibold" id="vault-key-string">SMH9-4K2L-88PQ-77VA</span>
+</div>
+<label class="flex items-start gap-2 cursor-pointer pt-1">
+<input class="mt-0.5 h-4 w-4 rounded accent-primary cursor-pointer shrink-0" id="key-ack-check" onchange="toggleKeyAck(this)" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-surface-variant select-none">Saya sudah mencatat &amp; menyimpan Master Recovery Key ini di tempat aman fisik/offline.</span>
+</label>
+</div>
+</div>
+<!-- Active Login & Fast Role Switcher Section -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3">
+<!-- User Profile Card -->
+<div class="flex items-center justify-between bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center gap-2.5 min-w-0">
+<img class="w-10 h-10 rounded-full object-cover shrink-0 shadow-sm" data-alt="Close up modern minimalist vector-style circular avatar of an Indonesian university academic dean wearing formal navy attire with calm reassuring professional demeanor, soft geometric cyan lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDseO0OLSoZtpgEoNqJq4X-2kbSUHZzOuI9cIrXSEgJhTy9ga6IAH-ncFCccmkSwkxIHHiH6AB_7IUjWxya-v9WtEeKGUThjKO8HZlK6zSoHL95mc0Zzp8EPO7LAK14L2NP4Fz6MfO0_epu_BMJX068rbma9Ku8_1CNpMctlktCmc0Su_q_uOlQmCciR97iQA0OGa9DiVwOlhxarPZ3WNQMpBqZkwxiRQ3Lm65_DIyPToXj3Y_xlFdj"/>
+<div class="min-w-0 flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate" id="active-user-name">Dr. M. Reza Fahlevi</span>
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container truncate" id="active-user-role">Dosen Wali • NIDN: 0412098801</span>
+</div>
+</div>
+<button class="shrink-0 p-2 rounded-lg bg-surface-container hover:bg-surface-variant transition-colors flex items-center justify-center text-primary" onclick="triggerBiometric()" title="Masuk Biometrik" type="button">
+<span class="material-symbols-outlined text-[22px]">fingerprint</span>
+</button>
+</div>
+<!-- Lockout Status Banner Preview -->
+<div class="bg-secondary-container text-on-secondary-fixed p-2.5 rounded-lg flex items-center gap-2 text-left">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0">shield</span>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm font-semibold truncate">Kebijakan Zero-Trust Offline</span>
+<span class="font-label-code-sm text-label-code-sm text-primary">Aktif</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-secondary-container">5x PIN salah → Eksponensial Lock 30 detik (Zero-Leak)</span>
+</div>
+</div>
+<!-- PIN Input Slot Array -->
+<div class="flex flex-col items-center gap-2 pt-1">
+<div class="flex items-center justify-between w-full max-w-[260px] gap-2" id="pin-slots-container">
+<div class="w-9 h-11 rounded-lg bg-surface-container-low flex items-center justify-center font-metric-display text-metric-display text-primary shadow-sm" id="slot-0">•</div>
+<div class="w-9 h-11 rounded-lg bg-surface-container-low flex items-center justify-center font-metric-display text-metric-display text-primary shadow-sm" id="slot-1">•</div>
+<div class="w-9 h-11 rounded-lg bg-surface-container-low flex items-center justify-center font-metric-display text-metric-display text-primary shadow-sm" id="slot-2"></div>
+<div class="w-9 h-11 rounded-lg bg-surface-container-low flex items-center justify-center font-metric-display text-metric-display text-primary shadow-sm" id="slot-3"></div>
+<div class="w-9 h-11 rounded-lg bg-surface-container-low flex items-center justify-center font-metric-display text-metric-display text-primary shadow-sm" id="slot-4"></div>
+<div class="w-9 h-11 rounded-lg bg-surface-container-low flex items-center justify-center font-metric-display text-metric-display text-primary shadow-sm" id="slot-5"></div>
+</div>
+<span class="font-body-sm text-body-sm text-secondary" id="pin-feedback-msg">Masukkan 6-digit Master PIN Offline</span>
+</div>
+<!-- Tactile Numeric Keypad -->
+<div class="grid grid-cols-3 gap-1.5 w-full max-w-[290px] mx-auto pt-1">
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('1')" type="button">1</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('2')" type="button">2</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('3')" type="button">3</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('4')" type="button">4</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('5')" type="button">5</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('6')" type="button">6</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('7')" type="button">7</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('8')" type="button">8</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('9')" type="button">9</button>
+<button class="h-11 rounded-lg bg-surface-container hover:bg-surface-variant text-primary flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="triggerBiometric()" type="button">
+<span class="material-symbols-outlined text-[20px]">fingerprint</span>
+</button>
+<button class="h-11 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-headline-md text-headline-md flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressKey('0')" type="button">0</button>
+<button class="h-11 rounded-lg bg-surface-container hover:bg-surface-variant text-secondary flex items-center justify-center transition-transform active:scale-95 shadow-sm" onclick="pressBackspace()" type="button">
+<span class="material-symbols-outlined text-[20px]">backspace</span>
+</button>
+</div>
+<!-- Quick Action Buttons -->
+<div class="flex items-center gap-2 pt-1">
+<button class="flex-1 h-9 rounded-lg bg-primary hover:bg-on-primary-fixed-variant text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-1.5 shadow-sm transition-all" onclick="triggerBiometric()" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Buka Vault</span>
+</button>
+<button class="px-3 h-9 rounded-lg bg-surface-container hover:bg-surface-variant text-on-surface font-body-sm text-body-sm flex items-center justify-center gap-1 transition-colors" onclick="demoUnlock()" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">fast_forward</span>
+<span>Demo Bypass</span>
+</button>
+</div>
+</div>
+<!-- Connected Journey Quick-Jump Hub (Navigasi Antar Peran Terhubung) -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">hub</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Portal Navigasi Antar Peran</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container bg-surface-container px-2 py-0.5 rounded-full">5 Peran Terintegrasi</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+        Pilih peran di bawah untuk menguji alur kerja end-to-end tanpa kehilangan status enkripsi lokal.
+      </p>
+<!-- Role Bento Cards Grid -->
+<div class="flex flex-col gap-2">
+<!-- 1. Mahasiswa Card -->
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all flex flex-col gap-2 cursor-pointer shadow-sm" onclick="selectRole('Mahasiswa', 'NIM: 2201094012 • Teknik Informatika', 'Farhan Maulana')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-md bg-secondary-container text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">school</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Mahasiswa</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-primary font-medium">Uji Peran →</span>
+</div>
+<!-- Capability Pills -->
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">KRS Mandiri</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Presensi QR Offline</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">KHS &amp; Transkrip</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Kartu ID Mahasiswa</span>
+</div>
+</div>
+<!-- 2. Dosen Pengampu Card -->
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all flex flex-col gap-2 cursor-pointer shadow-sm" onclick="selectRole('Dosen Pengampu', 'NIDN: 0419087502 • Komputasi Sistem', 'Prof. Budi Santoso')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-md bg-secondary-container text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">co_present</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Dosen Pengampu</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-primary font-medium">Uji Peran →</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Daftar Kelas</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-primary px-2 py-0.5 rounded font-semibold shadow-sm">QR Generator 30s</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Input Nilai Mutu</span>
+</div>
+</div>
+<!-- 3. Dosen Wali (Active Highlight) Card -->
+<div class="p-3 rounded-lg bg-secondary-container/40 hover:bg-secondary-container transition-all flex flex-col gap-2 cursor-pointer shadow-sm" onclick="selectRole('Dosen Wali', 'NIDN: 0412098801 • Koordinator Angkatan', 'Dr. M. Reza Fahlevi')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-md bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px]">supervisor_account</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Dosen Wali (Aktif)</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-primary font-bold">Terpilih •</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-error px-2 py-0.5 rounded font-semibold shadow-sm">EWS 18 Kritis</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Advisee Risk Score</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Log Konseling</span>
+</div>
+</div>
+<!-- 4. Admin Akademik Card -->
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all flex flex-col gap-2 cursor-pointer shadow-sm" onclick="selectRole('Admin Akademik', 'NIP: 198402112009121003 • BAAK', 'Hj. Siti Aminah, S.Kom')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-md bg-secondary-container text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Admin Akademik</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-primary font-medium">Uji Peran →</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Master Data Mahasiswa</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">CSV Bulk Impor</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Buka Jadwal KRS</span>
+</div>
+</div>
+<!-- 5. Super Admin Card -->
+<div class="p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-all flex flex-col gap-2 cursor-pointer shadow-sm" onclick="selectRole('Super Admin', 'ID: ROOT-SEC-01 • Pusat Data Terdistribusi', 'Infra Root Operator')">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-md bg-secondary-container text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Super Admin</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-primary font-medium">Uji Peran →</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Backup .simaha</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Sync P2P Mesh</span>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-lowest text-on-surface px-2 py-0.5 rounded shadow-sm">Audit Trail JSON</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Telemetry & Status Bar -->
+<div class="flex items-center justify-between px-3 py-2 bg-surface-container rounded-lg text-secondary">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary">wifi_off</span>
+<span class="font-label-code-sm text-label-code-sm">Offline Air-Gapped Mode</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm">v3.4.1-rc2</span>
+</div>
+</div>
+</div>
+<script>
+  let enteredPin = '12';
+  const MAX_PIN = 6;
+
+  function renderPinSlots() {
+    for (let i = 0; i < MAX_PIN; i++) {
+      const slot = document.getElementById('slot-' + i);
+      if (slot) {
+        if (i < enteredPin.length) {
+          slot.innerText = '•';
+          slot.classList.add('bg-primary-container', 'text-on-primary-container');
+          slot.classList.remove('bg-surface-container-low', 'text-primary');
+        } else {
+          slot.innerText = '';
+          slot.classList.remove('bg-primary-container', 'text-on-primary-container');
+          slot.classList.add('bg-surface-container-low', 'text-primary');
+        }
+      }
+    }
+  }
+
+  function pressKey(num) {
+    if (enteredPin.length < MAX_PIN) {
+      enteredPin += num;
+      renderPinSlots();
+      if (enteredPin.length === MAX_PIN) {
+        checkPin();
+      }
+    }
+  }
+
+  function pressBackspace() {
+    if (enteredPin.length > 0) {
+      enteredPin = enteredPin.slice(0, -1);
+      renderPinSlots();
+    }
+  }
+
+  function checkPin() {
+    const feedback = document.getElementById('pin-feedback-msg');
+    if (enteredPin === '123456') {
+      feedback.innerText = '✓ Verifikasi Berhasil! Membuka database...';
+      feedback.className = 'font-body-sm text-body-sm text-primary font-semibold';
+      setTimeout(() => {
+        alert('Vault Berhasil Dibuka! Database SQLCipher AES-256 terdekripsi.');
+      }, 300);
+    } else {
+      feedback.innerText = 'Master PIN Salah. Percobaan 1/5 tersisa.';
+      feedback.className = 'font-body-sm text-body-sm text-error font-semibold';
+      setTimeout(() => {
+        enteredPin = '';
+        renderPinSlots();
+      }, 700);
+    }
+  }
+
+  function triggerBiometric() {
+    const feedback = document.getElementById('pin-feedback-msg');
+    feedback.innerText = 'Memindai sensor biometrik perangkat...';
+    feedback.className = 'font-body-sm text-body-sm text-primary';
+    setTimeout(() => {
+      enteredPin = '123456';
+      renderPinSlots();
+      checkPin();
+    }, 450);
+  }
+
+  function demoUnlock() {
+    enteredPin = '123456';
+    renderPinSlots();
+    checkPin();
+  }
+
+  function copyMasterKey() {
+    const key = document.getElementById('vault-key-string').innerText;
+    navigator.clipboard?.writeText(key).then(() => {
+      const label = document.getElementById('copy-label');
+      label.innerText = 'Tersalin!';
+      setTimeout(() => {
+        label.innerText = 'Salin';
+      }, 1800);
+    }).catch(() => {
+      const label = document.getElementById('copy-label');
+      label.innerText = 'Tersalin!';
+      setTimeout(() => {
+        label.innerText = 'Salin';
+      }, 1800);
+    });
+  }
+
+  function toggleKeyAck(chk) {
+    const btn = document.getElementById('copy-btn');
+    if (chk.checked) {
+      btn.classList.add('ring-2', 'ring-primary-fixed');
+    } else {
+      btn.classList.remove('ring-2', 'ring-primary-fixed');
+    }
+  }
+
+  function selectRole(roleTitle, details, name) {
+    const activeName = document.getElementById('active-user-name');
+    const activeRole = document.getElementById('active-user-role');
+    if (activeName && activeRole) {
+      activeName.innerText = name;
+      activeRole.innerHTML = roleTitle + ' &bull; ' + details;
+      const feedback = document.getElementById('pin-feedback-msg');
+      feedback.innerText = 'Role beralih ke ' + roleTitle + '. Masukkan PIN.';
+      feedback.className = 'font-body-sm text-body-sm text-primary';
+      enteredPin = '';
+      renderPinSlots();
+    }
+  }
+
+  function switchWizardTab(step) {
+    const counter = document.getElementById('step-counter-text');
+    const bar = document.getElementById('bar-step-3');
+    const panel = document.getElementById('wizard-step-panel');
+
+    if (counter) counter.innerText = 'Langkah ' + step + '/3';
+
+    if (step === 1) {
+      bar.classList.replace('bg-primary', 'bg-surface-container');
+      panel.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="font-headline-sm text-headline-sm text-inverse-on-surface">Identitas & Instansi</span>
+          <span class="font-label-code-sm text-label-code-sm text-primary-fixed-dim">ID: POL-5542</span>
+        </div>
+        <div class="text-body-sm text-surface-variant">Politeknik Negeri Media Digital &bull; Kampus Utama Offline. Mode Air-Gapped terotentikasi.</div>
+        <button type="button" onclick="switchWizardTab(2)" class="w-full mt-1 py-1.5 bg-primary text-on-primary rounded text-center font-headline-sm text-headline-sm">Lanjut ke Master PIN &rarr;</button>
+      `;
+    } else if (step === 2) {
+      bar.classList.replace('bg-primary', 'bg-surface-container');
+      panel.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="font-headline-sm text-headline-sm text-inverse-on-surface">Setup Master PIN 6-Digit</span>
+          <span class="font-label-code-sm text-label-code-sm text-primary-fixed-dim">Kriptografi PBKDF2</span>
+        </div>
+        <div class="text-body-sm text-surface-variant">PIN ini mengunci derivasi kunci AES-256 lokal tanpa pernah dikirimkan ke cloud.</div>
+        <button type="button" onclick="switchWizardTab(3)" class="w-full mt-1 py-1.5 bg-primary text-on-primary rounded text-center font-headline-sm text-headline-sm">Lanjut ke Vault Key &rarr;</button>
+      `;
+    } else {
+      bar.classList.replace('bg-surface-container', 'bg-primary');
+      panel.innerHTML = `
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-primary-fixed-dim text-[16px]">key</span>
+            <span class="font-headline-sm text-headline-sm text-inverse-on-surface">Master Recovery Key</span>
+          </div>
+          <button id="copy-btn" onclick="copyMasterKey()" class="flex items-center gap-1 px-2 py-1 bg-surface-container/20 hover:bg-surface-container/30 text-primary-fixed-dim rounded transition-colors">
+            <span class="material-symbols-outlined text-[14px]">content_copy</span>
+            <span class="font-label-code-sm text-label-code-sm" id="copy-label">Salin</span>
+          </button>
+        </div>
+        <div class="bg-on-background/60 p-2.5 rounded flex items-center justify-between">
+          <span class="font-label-code text-label-code tracking-widest text-primary-fixed text-center w-full select-all font-semibold" id="vault-key-string">SMH9-4K2L-88PQ-77VA</span>
+        </div>
+        <label class="flex items-start gap-2 cursor-pointer pt-1">
+          <input type="checkbox" id="key-ack-check" onchange="toggleKeyAck(this)" class="mt-0.5 h-4 w-4 rounded accent-primary cursor-pointer shrink-0">
+          <span class="font-body-sm text-body-sm text-surface-variant select-none">Saya sudah mencatat &amp; menyimpan Master Recovery Key ini di tempat aman fisik/offline.</span>
+        </label>
+      `;
+    }
+  }
+
+  // Initialize display
+  renderPinSlots();
+</script></main></body></html>

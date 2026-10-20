@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simaha/core/constants/app_constants.dart';
+import 'package:simaha/domain/security/roles.dart';
 import 'package:simaha/presentation/providers/app_providers.dart';
 import 'package:simaha/presentation/shared/widgets/dashboard_widgets.dart';
 
-/// Shows DB encryption facts for Tahap A verification (never shows the key).
+final _databaseCountsProvider = FutureProvider((ref) async {
+  await ref.watch(academicServiceProvider).require(Permission.manageMaster);
+  return ref.watch(appDatabaseProvider).dashboardCounts();
+});
+
+/// Shows DB encryption facts for penyimpanan lokal verification (never shows the key).
 class DbInfoPage extends ConsumerWidget {
   const DbInfoPage({super.key, required this.dbPath});
 
@@ -13,7 +19,7 @@ class DbInfoPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final counts = ref.watch(dashboardCountsProvider);
+    final counts = ref.watch(_databaseCountsProvider);
     final scheme = Theme.of(context).colorScheme;
 
     return Scaffold(
@@ -24,14 +30,7 @@ class DbInfoPage extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  scheme.tertiaryContainer,
-                  scheme.primaryContainer.withValues(alpha: 0.7),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+              color: scheme.surfaceContainerLow,
               borderRadius: BorderRadius.circular(24),
             ),
             child: Row(
@@ -180,7 +179,7 @@ class DbInfoPage extends ConsumerWidget {
           const SizedBox(height: 14),
           const SectionHeader(
             title: 'Cara verifikasi',
-            subtitle: 'Bukti enkripsi Tahap A',
+            subtitle: 'Bukti enkripsi penyimpanan lokal',
           ),
           const SizedBox(height: 10),
           const Card(

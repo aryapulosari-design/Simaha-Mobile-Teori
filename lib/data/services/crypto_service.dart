@@ -1,9 +1,7 @@
 // PBKDF2-HMAC-SHA256 PIN hashing (pure Dart, no Flutter import).
 // PRD chose PBKDF2 over Argon2 for Flutter stability.
-// Parameters: 16-byte random salt, 256-bit output, 210 000 iterations
-// (OWASP 2023 recommends >=600k for server HSM-backed logins; 210k keeps
-// unlock <1s on low-end Android 8 devices while staying far beyond brute
-// force for a 6-digit PIN combined with lockout + Keystore-held DB key).
+// Parameters: 16-byte random salt, 256-bit output, 100,000 iterations.
+// Runtime parameters are encoded in each hash so existing PINs remain valid.
 import 'dart:convert';
 import 'dart:math';
 

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>SIMAHA Offline</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary": "#00685f", "on-primary": "#ffffff", "secondary-fixed-dim": "#bec6e0", "tertiary": "#4b41e1", "on-tertiary": "#ffffff", "on-background": "#0b1c30", "inverse-surface": "#213145", "background": "#f8f9ff", "on-tertiary-fixed-variant": "#3323cc", "on-primary-fixed-variant": "#005049", "outline-variant": "#bcc9c6", "surface-container": "#e5eeff", "tertiary-fixed": "#e2dfff", "on-secondary-fixed": "#131b2e", "outline": "#6d7a77", "on-secondary-container": "#5c647a", "surface-container-lowest": "#ffffff", "surface-container-high": "#dce9ff", "primary-fixed-dim": "#6bd8cb", "on-tertiary-container": "#fffbff", "tertiary-fixed-dim": "#c3c0ff", "surface-dim": "#cbdbf5", "on-primary-container": "#f4fffc", "on-secondary": "#ffffff", "secondary": "#565e74", "surface-variant": "#d3e4fe", "inverse-primary": "#6bd8cb", "on-error-container": "#93000a", "error": "#ba1a1a", "on-secondary-fixed-variant": "#3f465c", "surface-tint": "#006a61", "surface-container-low": "#eff4ff", "error-container": "#ffdad6", "surface-bright": "#f8f9ff", "on-tertiary-fixed": "#0f0069", "secondary-container": "#dae2fd", "inverse-on-surface": "#eaf1ff", "surface": "#f8f9ff", "tertiary-container": "#645efb", "primary-fixed": "#89f5e7", "on-surface": "#0b1c30", "on-primary-fixed": "#00201d", "on-error": "#ffffff", "surface-container-highest": "#d3e4fe", "on-surface-variant": "#3d4947", "secondary-fixed": "#dae2fd" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.5rem", "gutter-mobile": "0.5rem", "margin-mobile": "1rem", "margin": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-lg": "1rem", "gutter": "0.75rem", "space-md": "0.75rem", "gutter-tablet": "0.75rem" }, "fontFamily": { "metric-display": ["Plus Jakarta Sans"], "label-code": ["JetBrains Mono"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "label-code-sm": ["JetBrains Mono"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"] }, "fontSize": { "metric-display": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-sm min-w-0 flex-1"><div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0 shadow-[0_2px_6px_rgba(0,104,95,0.2)]"><span class="material-symbols-outlined text-on-primary text-[20px]">account_balance</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface truncate tracking-tight">SIMAHA</span><button class="flex items-center text-on-surface-variant hover:text-on-surface transition-colors py-0.5 px-1 rounded hover:bg-surface-container-high"><span class="font-label-code-sm text-label-code-sm font-semibold uppercase text-primary">UIN</span><span class="material-symbols-outlined text-[16px] text-outline">arrow_drop_down</span></button></div><div class="flex items-center gap-1.5 mt-0.5"><div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container text-on-secondary-container font-label-code-sm text-label-code-sm"><span class="material-symbols-outlined text-[12px] text-primary">lock</span><span class="truncate max-w-[150px]">SQLCipher AES-256 • Offline</span></div></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-24 px-margin-mobile flex flex-col"><div class="flex flex-col w-full pb-10 space-y-4">
+<!-- Executive Header & System Identity Banner -->
+<section class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-primary text-on-primary font-label-code-sm text-label-code-sm tracking-wider font-semibold">
+            TOPOLOGI v4.8
+          </span>
+<span class="inline-flex items-center gap-1 text-primary font-label-code-sm text-label-code-sm">
+<span class="material-symbols-outlined text-[14px]">encrypted</span>
+            SQLCipher AES-256
+          </span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mt-1">
+          Peta Alur &amp; Integrasi 5 Peran
+        </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Arsitektur sinkronisasi lokal tanpa server internet (Offline-First Zero-Cloud Mesh) UIN Syarif Hidayatullah.
+        </p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-[24px]">hub</span>
+</div>
+</div>
+<!-- Telemetry Badges Strip -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-primary text-[18px]">cell_wifi</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container">Ad-hoc P2P Wi-Fi</span>
+<span class="font-label-code text-label-code font-semibold text-on-surface truncate">CRDT LWW Active</span>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified_user</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container">EDOM Privacy</span>
+<span class="font-label-code text-label-code font-semibold text-on-surface truncate">Zero-Knowledge Token</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Quick Switcher Segmented Bar -->
+<section class="bg-surface-container-lowest p-3 rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-2 px-1">
+<span class="font-label-code text-label-code font-semibold text-on-surface uppercase tracking-wider flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+        Simulasi Persona Aktif
+      </span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-medium bg-surface-container px-2 py-0.5 rounded" id="roleBadgeState">
+        Node: SMH-09A
+      </span>
+</div>
+<!-- Scrollable Persona Selector -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none" id="personaTabGroup">
+<button class="role-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-on-primary shadow-sm transition-all text-left" onclick="switchRole('mhs', this)">
+<span class="material-symbols-outlined text-[16px]">school</span>
+<span class="font-label-code text-label-code font-semibold">1. Mahasiswa</span>
+</button>
+<button class="role-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container transition-all text-left" onclick="switchRole('dosen', this)">
+<span class="material-symbols-outlined text-[16px]">co_present</span>
+<span class="font-label-code text-label-code font-semibold">2. Dosen MK</span>
+</button>
+<button class="role-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container transition-all text-left" onclick="switchRole('wali', this)">
+<span class="material-symbols-outlined text-[16px]">supervisor_account</span>
+<span class="font-label-code text-label-code font-semibold">3. Dosen Wali</span>
+</button>
+<button class="role-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container transition-all text-left" onclick="switchRole('admin', this)">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+<span class="font-label-code text-label-code font-semibold">4. Admin BAAK</span>
+</button>
+<button class="role-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container transition-all text-left" onclick="switchRole('super', this)">
+<span class="material-symbols-outlined text-[16px]">security</span>
+<span class="font-label-code text-label-code font-semibold">5. Super Admin</span>
+</button>
+</div>
+</section>
+<!-- Topology Architectural Bento Hero -->
+<section class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Topologi Sinkronisasi P2P Mesh</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">
+        Zero-Cloud Fabric
+      </span>
+</div>
+<!-- Visual Architecture Diagram Canvas -->
+<div class="bg-surface-container-low p-3.5 rounded-xl flex flex-col space-y-3">
+<!-- Upper Layer: Local Nodes & Consensus -->
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="p-2.5 rounded-lg bg-surface-container-lowest shadow-sm flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[20px] mb-1">storage</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold text-on-surface">SQLite Node</span>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant">SMH-09A (AES-256)</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest shadow-sm flex flex-col items-center">
+<span class="material-symbols-outlined text-tertiary text-[20px] mb-1">sync_alt</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold text-on-surface">Lamport Clock</span>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant">T = 184920.LWW</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest shadow-sm flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[20px] mb-1">lock_clock</span>
+<span class="font-label-code-sm text-label-code-sm font-semibold text-on-surface">HMAC-SHA256</span>
+<span class="font-label-code-sm text-[10px] text-on-surface-variant">Session Key 30s</span>
+</div>
+</div>
+<!-- Connector Pipeline -->
+<div class="flex items-center justify-between px-4 py-1.5 bg-surface-container rounded-lg">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface font-medium">mDNS Discovery</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[16px]">multiple_stop</span>
+<div class="flex items-center gap-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface font-medium">WPA3 Local Hotspot</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+</div>
+<!-- Protocol Guarantees -->
+<div class="flex items-center justify-between text-on-secondary-container font-label-code-sm text-label-code-sm px-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">check_circle</span> Tanpa Kuota Data
+        </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">check_circle</span> Anti Replay QR
+        </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">check_circle</span> WORM Audit Trail
+        </span>
+</div>
+</div>
+</section>
+<!-- Cross-Role Unified Data Flow Map -->
+<section class="bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary"></div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Alur Data Terpadu Tanpa Celah</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">Siklus Semester</span>
+</div>
+<!-- Stepper Pipeline -->
+<div class="flex flex-col space-y-2">
+<!-- Step 1 -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-code text-label-code font-bold shrink-0">1</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Master Data &amp; Kalender</span>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container bg-surface-container px-1.5 py-0.5 rounded">BAAK</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Admin memuat 142 kelas, kuota MK &amp; jadwal ruang via worker isolat DB.
+          </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-code text-label-code font-bold shrink-0">2</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Smart KRS &amp; Validasi Prasyarat</span>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container bg-surface-container px-1.5 py-0.5 rounded">Mahasiswa</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Maks 24 SKS, pencegahan bentrok otomatis offline &amp; submit paket KRS.
+          </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-code text-label-code font-bold shrink-0">3</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Otorisasi Kriptografis Wali</span>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container bg-surface-container px-1.5 py-0.5 rounded">Dosen Wali</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Tanda tangan digital SHA-256 memvalidasi rencana studi 32 mahasiswa bimbingan.
+          </p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-code text-label-code font-bold shrink-0">4</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Presensi QR &amp; Rekap Real-time</span>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container bg-surface-container px-1.5 py-0.5 rounded">Dosen MK</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Sesi QR token 30 detik; kehadiran &lt;75% mentrigger otomatis sinyal EWS ke Wali.
+          </p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-label-code text-label-code font-bold shrink-0">5</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Nilai Atomik, KHS &amp; WORM Audit</span>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container bg-surface-container px-1.5 py-0.5 rounded">Root Hub</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Kalkulasi IPK instan di perangkat siswa; immutable log mengunci perubahan nilai.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5 Distinct Role Cards (Matrix & Clarity) -->
+<div class="flex items-center justify-between pt-1">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Detail 5 Peran Terintegrasi</h2>
+<span class="font-label-code-sm text-label-code-sm text-primary font-medium">Ketuk kartu untuk fokus</span>
+</div>
+<!-- ROLE 1: MAHASISWA -->
+<article class="role-card bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3 transition-all duration-200" id="card-mhs">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-label-code text-label-code font-bold">
+          01
+        </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Mahasiswa</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-primary font-medium">Siti Aminah</span>
+</div>
+<span class="font-label-code text-label-code text-on-surface-variant">NIM: 11210910000042 • TI-6A</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">school</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col space-y-2">
+<span class="font-label-code-sm text-label-code-sm font-semibold uppercase tracking-wider text-on-secondary-container">Tanggung Jawab Utama</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+        Pengisian Smart KRS berkuota (24 SKS), validasi bentrok &amp; prasyarat otomatis, Presensi QR dinamis / KTM Digital offline, simulasi kelulusan &amp; target IPK, brankas ijazah terenkripsi, EDOM anonim zero-knowledge.
+      </p>
+</div>
+<!-- Linked Screens -->
+<div class="flex flex-col space-y-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">Layar Terhubung:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Beranda (SCR-10)</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Smart KRS (SCR-08)</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Presensi &amp; KTM (SCR-06)</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">KHS &amp; Simulator (SCR-04)</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Brankas (SCR-02)</span>
+</div>
+</div>
+<!-- Integration Hook -->
+<div class="flex items-center gap-2 pt-2 border-t border-surface-container text-primary font-label-code-sm text-label-code-sm">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Integrasi: KRS langsung ke Dosen Wali • Kehadiran memicu EWS real-time.</span>
+</div>
+</article>
+<!-- ROLE 2: DOSEN PENGAMPU -->
+<article class="role-card bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3 transition-all duration-200" id="card-dosen">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-label-code text-label-code font-bold">
+          02
+        </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Dosen Pengampu</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-primary font-medium">Dr. Aris Sudrajat</span>
+</div>
+<span class="font-label-code text-label-code text-on-surface-variant">NIP: 197804122003121002</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface text-[20px]">co_present</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col space-y-2">
+<span class="font-label-code-sm text-label-code-sm font-semibold uppercase tracking-wider text-on-secondary-container">Tanggung Jawab Utama</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+        Manajemen kelas mingguan (Senin-Sabtu), penyelenggara sesi Presensi QR Dinamis (30s HMAC token) + Mode B scanner terbalik, override dispensasi kehadiran, penilaian massal atomik (Tugas/UTS/UAS), evaluasi EDOM agregat.
+      </p>
+</div>
+<!-- Linked Screens -->
+<div class="flex flex-col space-y-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">Layar Terhubung:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Beranda Kelas &amp; EDOM (SCR-18)</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Presensi QR &amp; Rekap (SCR-16)</span>
+</div>
+</div>
+<!-- Integration Hook -->
+<div class="flex items-center gap-2 pt-2 border-t border-surface-container text-primary font-label-code-sm text-label-code-sm">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Integrasi: Nilai otomatis memutakhirkan KHS • Presensi &lt;75% otomatis pemicu EWS Wali.</span>
+</div>
+</article>
+<!-- ROLE 3: DOSEN WALI (ACADEMIC ADVISOR) -->
+<article class="role-card bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3 transition-all duration-200" id="card-wali">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-label-code text-label-code font-bold">
+          03
+        </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Dosen Wali (PA)</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-primary font-medium">Dr. M. Reza Fahlevi</span>
+</div>
+<span class="font-label-code text-label-code text-on-surface-variant">32 Mahasiswa Bimbingan Aktif</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface text-[20px]">supervisor_account</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col space-y-2">
+<span class="font-label-code-sm text-label-code-sm font-semibold uppercase tracking-wider text-on-secondary-container">Tanggung Jawab Utama</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+        Pemantauan 32 mahasiswa bimbingan, Early Warning System (EWS 18 insiden), Bedah Explainable AI Skor Risiko (R = 0.40 IPK + 0.30 Presensi + 0.20 Tren IPS + 0.10 SKS Tertinggal), pencatatan sesi konseling &amp; ekspor PDF resmi ISO 32000-1.
+      </p>
+</div>
+<!-- Linked Screens -->
+<div class="flex flex-col space-y-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">Layar Terhubung:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Ringkasan Wali &amp; Risiko Kritis (SCR-14)</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Pusat EWS &amp; Konseling (SCR-12)</span>
+</div>
+</div>
+<!-- Integration Hook -->
+<div class="flex items-center gap-2 pt-2 border-t border-surface-container text-primary font-label-code-sm text-label-code-sm">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Integrasi: Otorisasi KRS offline via SHA-256 • Menangani eskalasi presensi rendah.</span>
+</div>
+</article>
+<!-- ROLE 4: ADMIN AKADEMIK (BAAK) -->
+<article class="role-card bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3 transition-all duration-200" id="card-admin">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-label-code text-label-code font-bold">
+          04
+        </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Admin Akademik</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-surface-container text-primary font-medium">Biro BAAK</span>
+</div>
+<span class="font-label-code text-label-code text-on-surface-variant">TA 2026/2027 Ganjil • Operasional</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface text-[20px]">domain</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col space-y-2">
+<span class="font-label-code-sm text-label-code-sm font-semibold uppercase tracking-wider text-on-secondary-container">Tanggung Jawab Utama</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+        Kalender semester aktif, 5 Master Data Hub (Prodi, Dosen, MK, Tahun Ajaran, 142 Kelas), wizard impor data CSV 3-langkah via Isolate worker, deteksi bentrok ruang &amp; jadwal ujian UTS/UAS, penerbitan pengumuman kampus.
+      </p>
+</div>
+<!-- Linked Screens -->
+<div class="flex flex-col space-y-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">Layar Terhubung:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Workspace BAAK &amp; Dashboard (SCR-20)</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Master Data Importer (SCR-20)</span>
+</div>
+</div>
+<!-- Integration Hook -->
+<div class="flex items-center gap-2 pt-2 border-t border-surface-container text-primary font-label-code-sm text-label-code-sm">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Integrasi: Sumber referensi tunggal jadwal kelas bagi KRS Mahasiswa &amp; Dosen.</span>
+</div>
+</article>
+<!-- ROLE 5: SUPER ADMIN -->
+<article class="role-card bg-surface-container-lowest p-4 rounded-xl shadow-sm flex flex-col space-y-3 transition-all duration-200" id="card-super">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-label-code text-label-code font-bold">
+          05
+        </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Super Admin</span>
+<span class="font-label-code-sm text-label-code-sm px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-semibold">Master Key</span>
+</div>
+<span class="font-label-code text-label-code text-on-surface-variant">Root Security Authority • SMH-09A</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[20px]">security</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg flex flex-col space-y-2">
+<span class="font-label-code-sm text-label-code-sm font-semibold uppercase tracking-wider text-on-secondary-container">Tanggung Jawab Utama</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+        Pengawasan kesehatan sistem node (SMH-09A), RBAC matriks izin pengguna &amp; reset PIN master, manajemen soft delete 30 hari (Tempat Sampah), enkripsi backup atomik .simaha (PBKDF2-SHA256), resolusi konflik P2P Last-Write-Wins, dan Immutable WORM Audit Trail.
+      </p>
+</div>
+<!-- Linked Screens -->
+<div class="flex flex-col space-y-1.5">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">Layar Terhubung:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">Super Admin Dashboard &amp; RBAC (SCR-24)</span>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-on-surface">P2P Sync &amp; Audit Trail (SCR-22)</span>
+</div>
+</div>
+<!-- Integration Hook -->
+<div class="flex items-center gap-2 pt-2 border-t border-surface-container text-tertiary font-label-code-sm text-label-code-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Integrasi: Menjaga integritas basis data seluruh node tanpa single point of failure.</span>
+</div>
+</article>
+<!-- Node Health & Diagnostic Drawer Footer -->
+<section class="bg-surface-container p-3.5 rounded-xl flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Node Integrity Validated</span>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container">Hash: 7f8a92...e4b1 (WORM Verified)</span>
+</div>
+</div>
+<span class="font-label-code-sm text-label-code-sm px-2 py-1 bg-surface-container-lowest text-primary font-bold rounded">
+      READY
+    </span>
+</section>
+</div>
+<script>
+  function switchRole(roleId, btnElement) {
+    // Reset all buttons
+    const buttons = document.querySelectorAll('#personaTabGroup .role-btn');
+    buttons.forEach(btn => {
+      btn.className = 'role-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container transition-all text-left';
+    });
+
+    // Set active button
+    btnElement.className = 'role-btn shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-on-primary shadow-sm transition-all text-left';
+
+    // Update Telemetry Badge Text
+    const badge = document.getElementById('roleBadgeState');
+    if (badge) {
+      const labels = {
+        'mhs': 'Node: SMH-09A (Mahasiswa)',
+        'dosen': 'Node: SMH-09A (Dosen Pengampu)',
+        'wali': 'Node: SMH-09A (Dosen PA)',
+        'admin': 'Node: SMH-09A (BAAK Workspace)',
+        'super': 'Node: SMH-09A (Root Master)'
+      };
+      badge.textContent = labels[roleId] || 'Node: SMH-09A';
+    }
+
+    // Scroll smoothly to selected card and highlight briefly
+    const targetCard = document.getElementById('card-' + roleId);
+    if (targetCard) {
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      targetCard.classList.add('ring-2', 'ring-primary');
+      setTimeout(() => {
+        targetCard.classList.remove('ring-2', 'ring-primary');
+      }, 1400);
+    }
+  }
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-xs flex items-center justify-around"><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="beranda-mahasiswa" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-code-sm text-label-code-sm mt-0.5">Beranda</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="krs-dan-ujian" href="#"><span class="material-symbols-outlined text-[22px]">article</span><span class="font-label-code-sm text-label-code-sm mt-0.5">KRS</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="presensi-qr-mandiri" href="#"><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm -mt-2"><span class="material-symbols-outlined text-[22px]">qr_code_scanner</span></div><span class="font-label-code-sm text-label-code-sm mt-0.5">Presensi</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="khs-dan-transkrip" href="#"><span class="material-symbols-outlined text-[22px]">analytics</span><span class="font-label-code-sm text-label-code-sm mt-0.5">KHS</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="kartu-id-dan-vault" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-code-sm text-label-code-sm mt-0.5">ID Vault</span></a></div></nav></body></html>

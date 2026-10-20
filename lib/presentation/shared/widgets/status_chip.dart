@@ -66,6 +66,28 @@ class StatusChip extends StatelessWidget {
         ic = Icons.info_outline;
     }
 
+    if (theme.brightness == Brightness.dark) {
+      fg = switch (key) {
+        'aktif' ||
+        'hadir' ||
+        'aman' ||
+        'disetujui' ||
+        'lulus' => Colors.green.shade200,
+        'cuti' ||
+        'izin' ||
+        'waspada' ||
+        'draft' ||
+        'menunggu' => Colors.amber.shade200,
+        'sakit' => Colors.orange.shade200,
+        'alpa' ||
+        'nonaktif' ||
+        'kritis' ||
+        'ditolak' ||
+        'do' ||
+        'batal' => Colors.red.shade200,
+        _ => theme.colorScheme.onSurfaceVariant,
+      };
+    }
     if (backgroundColor != null) bg = backgroundColor!;
     if (foregroundColor != null) fg = foregroundColor!;
 

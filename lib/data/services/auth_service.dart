@@ -13,30 +13,61 @@ import 'package:simaha/core/utils/result.dart';
 import 'package:simaha/data/local/app_database.dart';
 import 'package:simaha/data/services/crypto_service.dart';
 import 'package:simaha/domain/security/roles.dart';
+import 'package:simaha/domain/security/login_account.dart';
 import 'package:simaha/domain/security/string_store.dart';
+import 'package:simaha/services/audit/audit_logger.dart';
 
 class AuthService {
   AuthService({
     required this._db,
     required this._crypto,
     required this._store,
+    AuditLogger? auditLogger,
     DateTime Function()? clock,
-  }) : _now = clock ?? DateTime.now;
+  }) : _logger = auditLogger ?? const NoopAuditLogger(),
+       _now = clock ?? DateTime.now;
 
   final AppDatabase _db;
   final CryptoService _crypto;
   final StringStore _store;
+  final AuditLogger _logger;
   final DateTime Function() _now;
 
   static const String _recoveryHashKey = 'simaha_recovery_hash';
   static const String _recoveryUsedKey = 'simaha_recovery_used';
 
-  /// Escalating lockout: 5 fails -> 1 min, then doubling, max 15 min.
+  /// Local login chooser; selecting a role never authenticates the account.
+  /// Only display information is exposed before the PIN has been verified.
+  Future<List<LoginAccount>> listLoginAccounts() async {
+    final rows = await _db
+        .customSelect(
+          'SELECT u.id, u.username, u.role, COALESCE('
+          '(SELECT m.nama FROM mahasiswa m WHERE m.user_id = u.id '
+          'AND m.is_deleted = 0 ORDER BY m.id LIMIT 1), '
+          '(SELECT d.nama FROM dosens d WHERE (d.user_id = u.id OR d.wali_user_id = u.id) ORDER BY d.id LIMIT 1), '
+          'u.username) AS display_name FROM users u '
+          'WHERE u.is_active = 1 ORDER BY u.username, u.id',
+          readsFrom: {_db.users, _db.mahasiswa, _db.dosens},
+        )
+        .get();
+    return rows
+        .map(
+          (row) => LoginAccount(
+            id: row.read<int>('id'),
+            username: row.read<String>('username'),
+            displayName: row.read<String>('display_name'),
+            role: Role.fromStorage(row.read<String>('role')),
+          ),
+        )
+        .toList();
+  }
+
+  /// Escalating lockout: 5 fails -> 30s, then doubling (60s, 120s, ...), max 15 min.
   static Duration lockoutFor(int failedAttempts) {
     if (failedAttempts < kMaxPinFailures) return Duration.zero;
     final shift = failedAttempts - kMaxPinFailures;
-    final seconds = 60 * (1 << shift.clamp(0, 4));
-    return Duration(seconds: seconds.clamp(60, 900));
+    final seconds = 30 * (1 << shift.clamp(0, 5));
+    return Duration(seconds: seconds.clamp(30, 900));
   }
 
   Future<bool> isSetupRequired() async {
@@ -72,6 +103,12 @@ class AuthService {
     final codeHash = await _crypto.hashPin(code);
     await _store.write(_recoveryHashKey, codeHash.encode());
     await _store.delete(_recoveryUsedKey);
+    await _logger.log(
+      aksi: 'CREATE',
+      entitas: 'USER',
+      entitasId: 'superadmin',
+      sesudah: 'Setup Super Admin',
+    );
     return code;
   }
 
@@ -90,6 +127,13 @@ class AuthService {
     final now = _now();
     if (user.lockedUntil != null && now.isBefore(user.lockedUntil!)) {
       final left = user.lockedUntil!.difference(now);
+      await _logger.log(
+        aksi: 'LOGIN_FAIL',
+        entitas: 'USER',
+        entitasId: username,
+        userId: user.id,
+        sesudah: 'Percobaan login saat akun masih terkunci',
+      );
       return Err(AuthFailure('Terkunci. Coba lagi dalam ${_fmt(left)}.'));
     }
     bool ok;
@@ -106,6 +150,13 @@ class AuthService {
           lockedUntil: Value(null),
         ),
       );
+      await _logger.log(
+        aksi: 'LOGIN',
+        entitas: 'USER',
+        entitasId: username,
+        userId: user.id,
+        sesudah: 'Login berhasil',
+      );
       return Ok(user);
     }
     final fails = user.failedAttempts + 1;
@@ -115,6 +166,15 @@ class AuthService {
         failedAttempts: Value(fails),
         lockedUntil: Value(lock == Duration.zero ? null : now.add(lock)),
       ),
+    );
+    await _logger.log(
+      aksi: 'LOGIN_FAIL',
+      entitas: 'USER',
+      entitasId: username,
+      userId: user.id,
+      sesudah: lock == Duration.zero
+          ? 'PIN salah ($fails gagal)'
+          : 'Terkunci ${_fmt(lock)}',
     );
     if (lock == Duration.zero) {
       final left = kMaxPinFailures - fails;
@@ -185,7 +245,7 @@ class AuthService {
     final hashed = await _crypto.hashPin(pin);
     final parsed = PinHash.parse(hashed.encode());
     try {
-      return await _db
+      final id = await _db
           .into(_db.users)
           .insert(
             UsersCompanion.insert(
@@ -197,6 +257,14 @@ class AuthService {
               deviceId: 'admin',
             ),
           );
+      await _logger.log(
+        aksi: 'CREATE',
+        entitas: 'USER',
+        entitasId: clean,
+        userId: actorId,
+        sesudah: 'Peran: ${role.label}',
+      );
+      return id;
     } catch (_) {
       throw const ValidationFailure('Username sudah dipakai.');
     }
@@ -223,6 +291,13 @@ class AuthService {
     await (_db.update(_db.users)..where((t) => t.id.equals(targetId))).write(
       UsersCompanion(isActive: Value(active)),
     );
+    await _logger.log(
+      aksi: 'UPDATE',
+      entitas: 'USER',
+      entitasId: '$targetId',
+      userId: actorId,
+      sesudah: 'Status aktif diubah: $active',
+    );
   }
 
   Future<void> resetPin({
@@ -243,6 +318,13 @@ class AuthService {
         lockedUntil: const Value(null),
       ),
     );
+    await _logger.log(
+      aksi: 'RESET_PIN',
+      entitas: 'USER',
+      entitasId: '$targetId',
+      userId: actorId,
+      sesudah: 'PIN di-reset oleh admin',
+    );
   }
 
   Future<void> setBiometricEnabled({
@@ -254,36 +336,110 @@ class AuthService {
     );
   }
 
+  /// A profile belongs to one account. Re-linking never steals another account's data.
+  Future<void> linkUserToMahasiswa({
+    required int actorId,
+    required int userId,
+    required int mahasiswaId,
+  }) async {
+    final actor = await _actorOrThrow(actorId);
+    _require(Role.fromStorage(actor.role), Permission.manageUsers);
+    final target = await findUser(userId);
+    if (target == null || target.role != Role.mahasiswa.storageKey) {
+      throw const ValidationFailure('Pilih akun mahasiswa.');
+    }
+    await _db.transaction(() async {
+      final profile = await _db.getMahasiswa(mahasiswaId);
+      if (profile == null || profile.isDeleted) {
+        throw const ValidationFailure('Profil mahasiswa tidak tersedia.');
+      }
+      if (profile.userId != null && profile.userId != userId) {
+        throw const ValidationFailure(
+          'Profil sudah terhubung dengan akun lain.',
+        );
+      }
+      await (_db.update(_db.mahasiswa)..where((m) => m.userId.equals(userId)))
+          .write(const MahasiswaCompanion(userId: Value(null)));
+      await (_db.update(
+        _db.mahasiswa,
+      )..where((m) => m.id.equals(mahasiswaId))).write(
+        MahasiswaCompanion(userId: Value(userId), updatedAt: Value(_now())),
+      );
+    });
+    await _logger.log(
+      aksi: 'LINK_PROFILE',
+      entitas: 'USER',
+      entitasId: '$userId',
+      userId: actorId,
+      sesudah: 'Profil mahasiswa dihubungkan',
+    );
+  }
+
+  Future<void> linkUserToDosen({
+    required int actorId,
+    required int userId,
+    required int dosenId,
+  }) async {
+    final actor = await _actorOrThrow(actorId);
+    _require(Role.fromStorage(actor.role), Permission.manageUsers);
+    final target = await findUser(userId);
+    if (target == null ||
+        !{
+          Role.dosenPengampu.storageKey,
+          Role.dosenWali.storageKey,
+        }.contains(target.role)) {
+      throw const ValidationFailure('Pilih akun dosen.');
+    }
+    await _db.transaction(() async {
+      final profile = await (_db.select(
+        _db.dosens,
+      )..where((d) => d.id.equals(dosenId))).getSingleOrNull();
+      if (profile == null) {
+        throw const ValidationFailure('Profil dosen tidak tersedia.');
+      }
+      final asWali = target.role == Role.dosenWali.storageKey;
+      final linkedId = asWali ? profile.waliUserId : profile.userId;
+      if (linkedId != null && linkedId != userId) {
+        throw const ValidationFailure(
+          'Profil pada peran ini sudah terhubung dengan akun lain.',
+        );
+      }
+      if (asWali) {
+        await (_db.update(_db.dosens)..where((d) => d.userId.equals(userId)))
+            .write(const DosensCompanion(userId: Value(null)));
+        await (_db.update(_db.dosens)
+              ..where((d) => d.waliUserId.equals(userId)))
+            .write(const DosensCompanion(waliUserId: Value(null)));
+        await (_db.update(
+          _db.dosens,
+        )..where((d) => d.id.equals(dosenId))).write(
+          DosensCompanion(waliUserId: Value(userId), updatedAt: Value(_now())),
+        );
+      } else {
+        await (_db.update(_db.dosens)..where((d) => d.userId.equals(userId)))
+            .write(const DosensCompanion(userId: Value(null)));
+        await (_db.update(
+          _db.dosens,
+        )..where((d) => d.id.equals(dosenId))).write(
+          DosensCompanion(userId: Value(userId), updatedAt: Value(_now())),
+        );
+      }
+    });
+    await _logger.log(
+      aksi: 'LINK_PROFILE',
+      entitas: 'USER',
+      entitasId: '$userId',
+      userId: actorId,
+      sesudah: 'Profil dosen dihubungkan',
+    );
+  }
+
   Future<UserRow?> findUser(int id) =>
       (_db.select(_db.users)..where((t) => t.id.equals(id))).getSingleOrNull();
 
   Future<UserRow?> findByUsername(String username) => (_db.select(
     _db.users,
   )..where((t) => t.username.equals(username.trim()))).getSingleOrNull();
-
-  /// DEV ONLY (dipakai saat bypass sandi aktif): pastikan ada 1 user per
-  /// peran agar bisa "masuk sebagai" tanpa PIN. PIN dev '123456'.
-  /// Jangan dipakai di build production.
-  Future<UserRow> ensureDevUser(Role role) async {
-    final username = 'dev_${role.storageKey}';
-    final existing = await findByUsername(username);
-    if (existing != null) return existing;
-    final hashed = await _crypto.hashPin('123456');
-    final parsed = PinHash.parse(hashed.encode());
-    final id = await _db
-        .into(_db.users)
-        .insert(
-          UsersCompanion.insert(
-            username: username,
-            role: role.storageKey,
-            pinHash: hashed.encode(),
-            salt: _b64(parsed.salt),
-            updatedAt: _now(),
-            deviceId: 'dev',
-          ),
-        );
-    return (await findUser(id))!;
-  }
 
   /// Clears failures/lock (used after biometric success or admin reset).
   Future<void> clearFailures(int userId) async {

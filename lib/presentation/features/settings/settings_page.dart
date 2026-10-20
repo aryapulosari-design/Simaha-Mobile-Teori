@@ -55,7 +55,7 @@ class SettingsPage extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Default Tahap A',
+                        'Ruang kerja Anda',
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           fontSize: 16,
@@ -63,7 +63,7 @@ class SettingsPage extends ConsumerWidget {
                       ),
                       SizedBox(height: 2),
                       Text(
-                        'PIN, lockout, auto-lock, dan RBAC aktif. '
+                        'Data dan akun tersimpan di perangkat ini. '
                         'Ganti akun via Kunci + masuk PIN akun lain.',
                         style: TextStyle(fontSize: 12, height: 1.45),
                       ),
@@ -107,15 +107,11 @@ class SettingsPage extends ConsumerWidget {
           ),
           const SizedBox(height: 18),
           const SectionHeader(
-            title: 'Kelulusan (FR-37/51)',
+            title: 'Kelulusan',
             subtitle: 'Syarat SKS — bisa diubah, tersimpan di database',
           ),
           const SizedBox(height: 10),
-          _Group(
-            children: [
-              const _SyaratSksTile(),
-            ],
-          ),
+          _Group(children: [const _SyaratSksTile()]),
           const SizedBox(height: 18),
           const SectionHeader(
             title: 'Akademik',
@@ -150,10 +146,7 @@ class SettingsPage extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 18),
-          const SectionHeader(
-            title: 'Keamanan',
-            subtitle: 'Kunci otomatis & notifikasi',
-          ),
+          const SectionHeader(title: 'Keamanan', subtitle: 'Perlindungan sesi'),
           const SizedBox(height: 10),
           _Group(
             children: [
@@ -166,13 +159,13 @@ class SettingsPage extends ConsumerWidget {
               _Tile(
                 icon: Icons.pin_outlined,
                 title: 'PIN salah',
-                subtitle: 'Kunci sementara bertahap 1-15 menit',
+                subtitle: 'Kunci sementara bertahap 30 detik?15 menit',
                 trailing: 'maks $kMaxPinFailures×',
               ),
               const _Tile(
                 icon: Icons.fingerprint,
                 title: 'Biometrik',
-                subtitle: 'Opsional berikutnya (butuh plugin local_auth)',
+                subtitle: 'Belum tersedia',
                 trailing: 'PIN',
               ),
             ],
@@ -193,7 +186,7 @@ class SettingsPage extends ConsumerWidget {
               _Tile(
                 icon: Icons.language_outlined,
                 title: 'Bahasa',
-                subtitle: 'Indonesia (EN menyusul via l10n)',
+                subtitle: 'Indonesia',
                 trailing: 'ID',
               ),
             ],
@@ -295,7 +288,10 @@ class _SyaratSksTile extends ConsumerWidget {
       title: 'Syarat SKS lulus',
       subtitle: 'Dipakai progres kelulusan & status',
       trailing: label,
-      onTap: syarat.hasValue
+      onTap:
+          syarat.hasValue &&
+              ref.watch(sessionProvider).role != null &&
+              canRole(ref.watch(sessionProvider).role!, Permission.manageMaster)
           ? () async {
               final db = ref.read(appDatabaseProvider);
               final cur = await db.getSyaratSksLulus();
@@ -318,8 +314,7 @@ class _SyaratSksTile extends ConsumerWidget {
                       child: const Text('Batal'),
                     ),
                     FilledButton(
-                      onPressed: () =>
-                          Navigator.pop(ctx, ctrl.text.trim()),
+                      onPressed: () => Navigator.pop(ctx, ctrl.text.trim()),
                       child: const Text('Simpan'),
                     ),
                   ],
@@ -333,7 +328,9 @@ class _SyaratSksTile extends ConsumerWidget {
                 );
                 return;
               }
-              await db.setSetting('syarat_sks_lulus', '$n');
+              await ref
+                  .read(academicServiceProvider)
+                  .setSetting('syarat_sks_lulus', '$n');
               ref.invalidate(_syaratSksProvider);
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(

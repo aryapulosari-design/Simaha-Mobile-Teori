@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>SIMAHA Offline</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary": "#00685f", "on-primary": "#ffffff", "secondary-fixed-dim": "#bec6e0", "tertiary": "#4b41e1", "on-tertiary": "#ffffff", "on-background": "#0b1c30", "inverse-surface": "#213145", "background": "#f8f9ff", "on-tertiary-fixed-variant": "#3323cc", "on-primary-fixed-variant": "#005049", "outline-variant": "#bcc9c6", "surface-container": "#e5eeff", "tertiary-fixed": "#e2dfff", "on-secondary-fixed": "#131b2e", "outline": "#6d7a77", "on-secondary-container": "#5c647a", "surface-container-lowest": "#ffffff", "surface-container-high": "#dce9ff", "primary-fixed-dim": "#6bd8cb", "on-tertiary-container": "#fffbff", "tertiary-fixed-dim": "#c3c0ff", "surface-dim": "#cbdbf5", "on-primary-container": "#f4fffc", "on-secondary": "#ffffff", "secondary": "#565e74", "surface-variant": "#d3e4fe", "inverse-primary": "#6bd8cb", "on-error-container": "#93000a", "error": "#ba1a1a", "on-secondary-fixed-variant": "#3f465c", "surface-tint": "#006a61", "surface-container-low": "#eff4ff", "error-container": "#ffdad6", "surface-bright": "#f8f9ff", "on-tertiary-fixed": "#0f0069", "secondary-container": "#dae2fd", "inverse-on-surface": "#eaf1ff", "surface": "#f8f9ff", "tertiary-container": "#645efb", "primary-fixed": "#89f5e7", "on-surface": "#0b1c30", "on-primary-fixed": "#00201d", "on-error": "#ffffff", "surface-container-highest": "#d3e4fe", "on-surface-variant": "#3d4947", "secondary-fixed": "#dae2fd" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.5rem", "gutter-mobile": "0.5rem", "margin-mobile": "1rem", "margin": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-lg": "1rem", "gutter": "0.75rem", "space-md": "0.75rem", "gutter-tablet": "0.75rem" }, "fontFamily": { "metric-display": ["Plus Jakarta Sans"], "label-code": ["JetBrains Mono"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "label-code-sm": ["JetBrains Mono"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"] }, "fontSize": { "metric-display": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-sm min-w-0 flex-1"><div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0 shadow-[0_2px_6px_rgba(0,104,95,0.2)]"><span class="material-symbols-outlined text-on-primary text-[20px]">account_balance</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface truncate tracking-tight">SIMAHA</span><button class="flex items-center text-on-surface-variant hover:text-on-surface transition-colors py-0.5 px-1 rounded hover:bg-surface-container-high"><span class="font-label-code-sm text-label-code-sm font-semibold uppercase text-primary">UIN</span><span class="material-symbols-outlined text-[16px] text-outline">arrow_drop_down</span></button></div><div class="flex items-center gap-1.5 mt-0.5"><div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container text-on-secondary-container font-label-code-sm text-label-code-sm"><span class="material-symbols-outlined text-[12px] text-primary">lock</span><span class="truncate max-w-[150px]">SQLCipher AES-256 • Offline</span></div></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-24 px-margin-mobile flex flex-col"><div class="flex flex-col w-full gap-space-md">
+<!-- Interactive Local State & Audio-haptic Mock Script -->
+<script>
+    function triggerVaultHaptic() {
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate([15, 30, 20]);
+      }
+      const toast = document.getElementById('hub-toast');
+      if (toast) {
+        toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        }, 2600);
+      }
+    }
+
+    let qrSecs = 24;
+    setInterval(() => {
+      const el = document.getElementById('qr-countdown');
+      if (el) {
+        qrSecs = qrSecs > 1 ? qrSecs - 1 : 30;
+        el.innerText = 'Sisa ' + qrSecs + 's';
+      }
+    }, 1000);
+  </script>
+<!-- 1. Top Greeting Card with Student Telemetry & Role Switcher -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="relative w-12 h-12 rounded-full overflow-hidden shrink-0 shadow-sm bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a cheerful Indonesian male university student named Budi wearing a dark emerald polo shirt on a clean modern university campus with soft natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl55pnHCecivIuWYrz4U40-jRgTMtbwbaYbnhRQnkr0jMzM2kVDaClZRzk9ebG_dK_RTxzFE2QMp_qVnPwQ_sVxXVMUaafuGEXZQykHUJooqZNsUar5GV7ltrqdGfDjqjDnbdbjlOIloQb3z6yUQNJw33g7vDYSsm3JKcBP84gnzcH-r6A8HOD-3jToUe_vL2iBCsAQZc4g_FQxoCo8SVjm1FLQneHdbY-7M0yuJUxIwK7M3K5HxuD"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-primary ring-2 ring-surface-container-lowest" title="Offline SQLite Active"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h1 class="font-headline-sm text-headline-sm text-on-surface truncate font-bold">Budi Santoso</h1>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-code-sm text-label-code-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              Aktif
+            </span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-code text-label-code mt-0.5">
+<span class="truncate">NIM: 230605110042</span>
+<span>•</span>
+<span class="truncate">T. Informatika Sem 5</span>
+</div>
+</div>
+</div>
+<!-- Quick Role Switcher Pill -->
+<button class="shrink-0 flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high transition-all shadow-sm active:scale-95 text-on-surface font-body-sm text-body-sm font-medium">
+<span>🎓 Mahasiswa</span>
+<span class="material-symbols-outlined text-[16px] text-outline">unfold_more</span>
+</button>
+</div>
+<!-- Telemetry Sub-ribbon -->
+<div class="flex items-center justify-between pt-space-xs mt-1 bg-surface-container-low rounded-lg px-space-sm py-1.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Status Risiko Studi:</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">Aman (Risk 18/100)</span>
+</div>
+<div class="flex items-center gap-1 text-on-secondary-container font-label-code-sm text-label-code-sm">
+<span class="material-symbols-outlined text-[13px] text-primary">sync</span>
+<span>Local Sync 2m ago</span>
+</div>
+</div>
+</section>
+<!-- 2. Personal KPI Bento Matrix (Ramotion 2x2 Clean Minimalist Data Tiles) -->
+<section class="grid grid-cols-2 gap-gutter-mobile">
+<!-- KPI 1: IPK Kumulatif with Mini Sparkline -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm font-medium">IPK Kumulatif</span>
+<span class="material-symbols-outlined text-[18px] text-primary">auto_graph</span>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-1.5">
+<span class="font-metric-display text-metric-display text-on-surface">3.74</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">/ 4.00</span>
+</div>
+<div class="flex items-center justify-between text-on-secondary-container mt-1">
+<span class="font-label-code-sm text-label-code-sm">Target: 3.80</span>
+<!-- Inline Micro Sparkline SVG -->
+<svg class="w-16 h-4 text-primary overflow-visible" fill="none" viewbox="0 0 60 16">
+<path d="M2 13 L14 10 L26 12 L38 6 L50 7 L58 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<circle class="fill-primary" cx="58" cy="2" r="2.5"></circle>
+</svg>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 mt-1 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 93.5%;"></div>
+</div>
+</div>
+<!-- KPI 2: IPS Semester Lalu with Delta -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm font-medium">IPS Sem. Lalu</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">trending_up</span>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-1.5">
+<span class="font-metric-display text-metric-display text-on-surface">3.85</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container text-primary font-label-code-sm text-label-code-sm font-bold">
+            +0.12
+          </span>
+</div>
+<div class="flex items-center justify-between text-on-secondary-container mt-1">
+<span class="font-label-code-sm text-label-code-sm">Beban: 22 SKS</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">Predikat: Pujian</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 mt-1 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 96%;"></div>
+</div>
+</div>
+<!-- KPI 3: SKS Lulus & Degree Progress -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm font-medium">Progres Kelulusan</span>
+<span class="material-symbols-outlined text-[18px] text-primary">school</span>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-1.5">
+<span class="font-metric-display text-metric-display text-on-surface">114</span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">/ 144 SKS</span>
+</div>
+<div class="flex items-center justify-between text-on-secondary-container mt-1">
+<span class="font-label-code-sm text-label-code-sm">79% Terpenuhi</span>
+<span class="font-label-code-sm text-label-code-sm">Sisa 30 SKS</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 mt-1 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 79%;"></div>
+</div>
+</div>
+<!-- KPI 4: Tingkat Kehadiran -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span class="font-body-sm text-body-sm font-medium">Presensi Kuliah</span>
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="my-space-xs">
+<div class="flex items-baseline gap-1.5">
+<span class="font-metric-display text-metric-display text-on-surface">94.2%</span>
+<span class="material-symbols-outlined text-[16px] text-primary">sentiment_very_satisfied</span>
+</div>
+<div class="flex items-center justify-between text-on-secondary-container mt-1">
+<span class="font-label-code-sm text-label-code-sm">Alpha: 0 Sesi</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">Memenuhi Syarat</span>
+</div>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1 mt-1 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 94.2%;"></div>
+</div>
+</div>
+</section>
+<!-- 3. Today's Urgent Class & Live Attendance Bento Banner -->
+<section class="bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-xl p-space-md shadow-md flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-center justify-between z-10">
+<div class="inline-flex items-center gap-1.5 bg-surface-container-lowest/15 backdrop-blur-md px-2.5 py-0.5 rounded-full text-on-primary font-label-code-sm text-label-code-sm uppercase tracking-wider font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary-fixed animate-ping"></span>
+        Sesi Presensi Aktif Sekarang
+      </div>
+<span class="font-label-code-sm text-label-code-sm text-primary-fixed-dim bg-on-primary/10 px-2 py-0.5 rounded">Lab Komputer 301</span>
+</div>
+<div class="z-10 flex flex-col gap-0.5">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-on-primary">Kecerdasan Buatan (IF301)</h2>
+<p class="font-body-md text-body-md text-on-primary/80 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 08:00 - 10:30 WIB
+        <span class="mx-1">•</span>
+<span class="truncate">Dr. Aris Sudrajat, M.Kom</span>
+</p>
+</div>
+<div class="z-10 pt-space-xs flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-on-primary/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px] text-on-primary">qr_code_scanner</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-code-sm text-label-code-sm text-on-primary font-medium">Batas Presensi: 08:25 WIB</span>
+<span class="font-label-code-sm text-label-code-sm text-primary-fixed-dim">Metode HMAC Token Valid</span>
+</div>
+</div>
+<button class="px-3.5 py-2 rounded-lg bg-surface-container-lowest text-primary font-headline-sm text-body-md font-bold hover:bg-surface-bright active:scale-95 shadow-sm transition-all flex items-center gap-1 shrink-0" onclick="triggerVaultHaptic()">
+<span>Presensi</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Subtle visual background decoration -->
+<div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-on-primary/5 pointer-events-none"></div>
+</section>
+<!-- 4. Connected Action Cards (Alur Utama Terhubung) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-0.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">hub</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Alur Utama Terhubung</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant uppercase tracking-wider">Fast Lane</span>
+</div>
+<div class="grid grid-cols-1 gap-gutter-mobile">
+<!-- Card A: Smart KRS Quota Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col gap-space-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">assignment_turned_in</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Smart KRS Ganjil 2024</h3>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-on-secondary-container font-label-code-sm text-label-code-sm">Sem 5</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Jatah SKS: <strong class="text-on-surface font-semibold">24 SKS</strong> • Terpilih: <strong class="text-primary font-semibold">18 SKS</strong> (Sisa 6)</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-code-sm text-label-code-sm font-semibold shrink-0">
+            Siap Validasi
+          </span>
+</div>
+<!-- Progress SKS Bar -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-code-sm text-label-code-sm text-on-surface-variant">
+<span>Dosen Wali: Prof. Dr. Hendra Gunawan</span>
+<span class="font-medium text-primary">75% Quota</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-outline">lock_clock</span> Batas KRS: 14 Hari Lagi
+          </span>
+<button class="flex items-center gap-1 text-primary hover:text-on-primary-fixed-variant font-body-sm text-body-sm font-semibold active:translate-x-0.5 transition-all" onclick="triggerVaultHaptic()">
+<span>Kelola KRS &amp; Jadwal</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card B: Presensi QR Mandiri (Reverse-HMAC) Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[22px]">qr_code_2</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Presensi QR Mandiri</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Reverse-HMAC Offline Generator</p>
+</div>
+</div>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container text-tertiary font-bold" id="qr-countdown">
+            Sisa 24s
+          </span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">security</span>
+<div class="flex flex-col">
+<span class="font-label-code-sm text-label-code-sm text-on-surface font-semibold">HMAC-SHA256 Token</span>
+<span class="font-label-code-sm text-label-code-sm text-outline truncate max-w-[190px]">8f3b9a0c71e2... (Valid Offline)</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary text-on-primary font-body-sm text-body-sm font-semibold hover:bg-on-primary-fixed-variant active:scale-95 shadow-sm transition-all flex items-center gap-1" onclick="triggerVaultHaptic()">
+<span>Buka QR</span>
+<span class="material-symbols-outlined text-[16px]">qr_code</span>
+</button>
+</div>
+</div>
+<!-- Dual Action Tiles: Card C (Hasil Studi/Transkrip) & Card D (ID Vault & Dokumen) -->
+<div class="grid grid-cols-2 gap-gutter-mobile">
+<!-- Card C: Hasil Studi & KHS -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1">Transkrip &amp; KHS</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cetak PDF berstempel kriptografis.</p>
+</div>
+<button class="w-full flex items-center justify-between pt-2 border-t border-transparent text-primary hover:text-on-primary-fixed-variant font-body-sm text-body-sm font-semibold" onclick="triggerVaultHaptic()">
+<span>Lihat KHS</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card D: Digital Student Card & Dokumen Vault -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-1">KTM &amp; Vault</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">KTA Digital NFC &amp; brankas ijazah aman.</p>
+</div>
+<button class="w-full flex items-center justify-between pt-2 border-t border-transparent text-tertiary hover:text-on-tertiary-fixed-variant font-body-sm text-body-sm font-semibold" onclick="triggerVaultHaptic()">
+<span>ID Vault</span>
+<span class="material-symbols-outlined text-[16px]">lock_open</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Academic Announcements & Campus Ticker -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">campaign</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Warta Akademik &amp; Pengumuman</h3>
+</div>
+<button class="font-body-sm text-body-sm text-primary font-semibold hover:underline">Semua (4)</button>
+</div>
+<!-- Announcement Item 1 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">library_books</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-1">
+<h4 class="font-headline-sm text-body-md font-semibold text-on-surface truncate">Jadwal Ujian Tengah Semester (UTS)</h4>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container shrink-0">Hari ini</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">
+          Draft jadwal pelaksanaan UTS Semester Ganjil 2024 telah diunggah ke repositori offline.
+        </p>
+</div>
+</div>
+<!-- Announcement Item 2 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-1">
+<h4 class="font-headline-sm text-body-md font-semibold text-on-surface truncate">Beasiswa Prestasi Akademik UIN</h4>
+<span class="font-label-code-sm text-label-code-sm text-on-secondary-container shrink-0">Kemarin</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1 mt-0.5">
+          Pendaftaran dibuka bagi mahasiswa dengan capaian IPK kumulatif minimal 3.70.
+        </p>
+</div>
+</div>
+</section>
+<!-- Interactive Feedback Toast -->
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 pointer-events-none opacity-0 translate-y-4 transition-all duration-300 z-50" id="hub-toast">
+<span class="material-symbols-outlined text-primary-fixed text-[18px]">check_circle</span>
+<span class="font-body-sm text-body-sm font-medium">Akses terverifikasi via SQLCipher Local Store</span>
+</div>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-xs flex items-center justify-around"><a aria-current="page" class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] transition-all text-primary font-semibold" data-path="beranda-mahasiswa" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-code-sm text-label-code-sm mt-0.5">Beranda</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="krs-dan-ujian" href="#"><span class="material-symbols-outlined text-[22px]">article</span><span class="font-label-code-sm text-label-code-sm mt-0.5">KRS</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="presensi-qr-mandiri" href="#"><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm -mt-2"><span class="material-symbols-outlined text-[22px]">qr_code_scanner</span></div><span class="font-label-code-sm text-label-code-sm mt-0.5">Presensi</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="khs-dan-transkrip" href="#"><span class="material-symbols-outlined text-[22px]">analytics</span><span class="font-label-code-sm text-label-code-sm mt-0.5">KHS</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="kartu-id-dan-vault" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-code-sm text-label-code-sm mt-0.5">ID Vault</span></a></div></nav></body></html>

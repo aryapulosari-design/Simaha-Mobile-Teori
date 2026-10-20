@@ -45,6 +45,9 @@ class Dosens extends Table {
   TextColumn get nidn => text().unique()();
   TextColumn get nama => text()();
   IntColumn get userId => integer().nullable().references(Users, #id)();
+  // A lecturer may teach and advise with distinct, role-scoped accounts.
+  @ReferenceName('waliAccount')
+  IntColumn get waliUserId => integer().nullable().references(Users, #id)();
   IntColumn get prodiId => integer().references(Prodi, #id)();
   // Sync delta (Tahap I): every record carries updated_at + device_id.
   // Required, no default: every writer must stamp explicitly so sync

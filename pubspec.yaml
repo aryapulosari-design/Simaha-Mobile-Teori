@@ -20,7 +20,7 @@ dependencies:
   cryptography: ^2.9.0
   uuid: ^4.6.0
   intl: ^0.20.3
-  local_auth: ^3.0.2
+  # local_auth: ^3.0.2  # Temporarily disabled - C++ coroutine deprecation issue in local_auth_windows
   fl_chart: ^1.2.0
   qr_flutter: ^4.1.0
   mobile_scanner: ^7.4.2

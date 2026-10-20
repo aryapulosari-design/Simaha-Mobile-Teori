@@ -23,7 +23,8 @@ class SeedStats {
 
 /// Public entry: seeds only when DB is empty. Idempotent.
 Future<SeedStats?> ensureSeeded(AppDatabase db) async {
-  final existing = await db.countMahasiswa();
+  final existing = await (db.selectOnly(db.mahasiswa)..addColumns([db.mahasiswa.id.count()]))
+      .map((r) => r.read(db.mahasiswa.id.count()) ?? 0).getSingle();
   if (existing > 0) return null;
   return seedDatabase(db);
 }

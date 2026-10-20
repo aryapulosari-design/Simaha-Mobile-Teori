@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>SIMAHA Offline</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary": "#00685f", "on-primary": "#ffffff", "secondary-fixed-dim": "#bec6e0", "tertiary": "#4b41e1", "on-tertiary": "#ffffff", "on-background": "#0b1c30", "inverse-surface": "#213145", "background": "#f8f9ff", "on-tertiary-fixed-variant": "#3323cc", "on-primary-fixed-variant": "#005049", "outline-variant": "#bcc9c6", "surface-container": "#e5eeff", "tertiary-fixed": "#e2dfff", "on-secondary-fixed": "#131b2e", "outline": "#6d7a77", "on-secondary-container": "#5c647a", "surface-container-lowest": "#ffffff", "surface-container-high": "#dce9ff", "primary-fixed-dim": "#6bd8cb", "on-tertiary-container": "#fffbff", "tertiary-fixed-dim": "#c3c0ff", "surface-dim": "#cbdbf5", "on-primary-container": "#f4fffc", "on-secondary": "#ffffff", "secondary": "#565e74", "surface-variant": "#d3e4fe", "inverse-primary": "#6bd8cb", "on-error-container": "#93000a", "error": "#ba1a1a", "on-secondary-fixed-variant": "#3f465c", "surface-tint": "#006a61", "surface-container-low": "#eff4ff", "error-container": "#ffdad6", "surface-bright": "#f8f9ff", "on-tertiary-fixed": "#0f0069", "secondary-container": "#dae2fd", "inverse-on-surface": "#eaf1ff", "surface": "#f8f9ff", "tertiary-container": "#645efb", "primary-fixed": "#89f5e7", "on-surface": "#0b1c30", "on-primary-fixed": "#00201d", "on-error": "#ffffff", "surface-container-highest": "#d3e4fe", "on-surface-variant": "#3d4947", "secondary-fixed": "#dae2fd" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xl": "1.5rem", "gutter-mobile": "0.5rem", "margin-mobile": "1rem", "margin": "1.5rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "space-lg": "1rem", "gutter": "0.75rem", "space-md": "0.75rem", "gutter-tablet": "0.75rem" }, "fontFamily": { "metric-display": ["Plus Jakarta Sans"], "label-code": ["JetBrains Mono"], "headline-xl-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-xl": ["Plus Jakarta Sans"], "label-code-sm": ["JetBrains Mono"], "headline-md": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Inter"] }, "fontSize": { "metric-display": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code": ["12px", { "lineHeight": "16px", "letterSpacing": "-0.02em", "fontWeight": "500" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "headline-lg-mobile": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-sm min-w-0 flex-1"><div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shrink-0 shadow-[0_2px_6px_rgba(0,104,95,0.2)]"><span class="material-symbols-outlined text-on-primary text-[20px]">account_balance</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface truncate tracking-tight">SIMAHA</span><button class="flex items-center text-on-surface-variant hover:text-on-surface transition-colors py-0.5 px-1 rounded hover:bg-surface-container-high"><span class="font-label-code-sm text-label-code-sm font-semibold uppercase text-primary">UIN</span><span class="material-symbols-outlined text-[16px] text-outline">arrow_drop_down</span></button></div><div class="flex items-center gap-1.5 mt-0.5"><div class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container text-on-secondary-container font-label-code-sm text-label-code-sm"><span class="material-symbols-outlined text-[12px] text-primary">lock</span><span class="truncate max-w-[150px]">SQLCipher AES-256 • Offline</span></div></div></div></div><div class="flex items-center gap-space-xs shrink-0"><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors relative"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface"></span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 w-full bg-surface pt-16 pb-24 px-margin-mobile flex flex-col"><div class="flex flex-col w-full gap-space-md">
+<!-- SaaS Telemetry Breadcrumb -->
+<section class="flex items-center justify-between px-space-xs py-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<a class="flex items-center gap-1 font-label-code-sm text-label-code-sm hover:text-primary transition-colors" data-path="beranda-mahasiswa" href="#">
+<span class="material-symbols-outlined text-[15px]">arrow_back</span>
+<span>Beranda</span>
+</a>
+<span class="text-outline-variant font-label-code-sm text-label-code-sm">•</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">KRS Planner v2.4</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-secondary-container font-label-code-sm text-label-code-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span>Live Sync AES</span>
+</div>
+</section>
+<!-- Bento Unit 1: Quota Planner & Academic Telemetry -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div>
+<p class="font-label-code-sm text-label-code-sm text-outline uppercase tracking-wider">Perencanaan Semester Ganjil 2024/2025</p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mt-0.5">KRS Quota Planner</h1>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded bg-secondary-container text-on-secondary-fixed font-label-code-sm text-label-code-sm">
+        Fakultas Sains &amp; Tek
+      </span>
+</div>
+<!-- Telemetry Metric Cards -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">IPS Semester Lalu</span>
+<div class="flex items-baseline gap-1.5 mt-1">
+<span class="font-metric-display text-metric-display text-on-surface">3.85</span>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">Cumlaude</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-outline mt-0.5">SKS Maks: 24 SKS</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Beban Terambil</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="font-metric-display text-metric-display text-primary">18</span>
+<span class="font-headline-sm text-headline-sm text-outline">/ 24</span>
+<span class="font-label-code-sm text-label-code-sm text-outline ml-auto">Sisa 6</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden mt-1.5">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 75%"></div>
+</div>
+</div>
+</div>
+<!-- Dosen Wali Authorization Bar -->
+<div class="flex items-center gap-space-sm bg-surface-container p-space-sm rounded-lg">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-code-sm text-label-code-sm text-outline uppercase tracking-wider">Status Otorisasi</p>
+<p class="font-body-sm text-body-sm font-medium text-on-surface truncate">Menunggu Persetujuan Dosen Wali Dr. Aris Sudrajat</p>
+</div>
+<span class="font-label-code-sm text-label-code-sm px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">
+        Review Stage
+      </span>
+</div>
+</section>
+<!-- Bento Unit 2: Interactive Weekly Conflict Matrix Preview -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_view_week</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Weekly Conflict Matrix</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-outline">08:00 - 17:00 WIB</span>
+</div>
+<!-- Matrix Tab Day Selector (Mobile Dense UI) -->
+<div class="flex items-center gap-1 overflow-x-auto pb-1" id="day-tabs">
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary font-label-code-sm text-label-code-sm font-semibold shrink-0" data-day="senin">Sen (1)</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface-variant font-label-code-sm text-label-code-sm shrink-0" data-day="selasa">Sel (1)</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface-variant font-label-code-sm text-label-code-sm shrink-0" data-day="rabu">Rab (1)</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface-variant font-label-code-sm text-label-code-sm shrink-0" data-day="kamis">Kam (0)</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface-variant font-label-code-sm text-label-code-sm shrink-0" data-day="jumat">Jum (0)</button>
+<button class="px-3 py-1.5 rounded bg-surface-container text-on-surface-variant font-label-code-sm text-label-code-sm shrink-0" data-day="sabtu">Sab (0)</button>
+</div>
+<!-- Time Block Projection Area -->
+<div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-2">
+<!-- Slot 08:00 - 10:30 -->
+<div class="flex gap-space-sm items-start">
+<div class="w-14 shrink-0 font-label-code-sm text-label-code-sm text-outline pt-1 text-right">08:00</div>
+<div class="flex-1 bg-primary text-on-primary p-2.5 rounded-lg shadow-sm flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code font-bold">IF301</span>
+<span class="font-label-code-sm text-label-code-sm bg-on-primary/20 px-1.5 py-0.5 rounded">Lab 301</span>
+</div>
+<p class="font-body-sm text-body-sm font-semibold">Kecerdasan Buatan (3 SKS)</p>
+<p class="font-label-code-sm text-label-code-sm text-on-primary/80">08:00 - 10:30 • Kuota Aman</p>
+</div>
+</div>
+<!-- Bentrok Overlap Visual Representation on Senin -->
+<div class="flex gap-space-sm items-start">
+<div class="w-14 shrink-0 font-label-code-sm text-label-code-sm text-error pt-1 text-right">09:30</div>
+<div class="flex-1 bg-error-container text-on-error-container p-2.5 rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code font-bold text-error">OVERLAP CONFLICT</span>
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+</div>
+<p class="font-body-sm text-body-sm font-semibold">IF305 Keamanan Jaringan bersinggungan 60 menit dengan IF301</p>
+<span class="font-label-code-sm text-label-code-sm text-error font-medium">Harap ganti kelas paralel atau batalkan</span>
+</div>
+</div>
+<!-- Slot 13:00 - Free -->
+<div class="flex gap-space-sm items-start">
+<div class="w-14 shrink-0 font-label-code-sm text-label-code-sm text-outline pt-1 text-right">13:00</div>
+<div class="flex-1 bg-surface-container p-2.5 rounded-lg text-on-secondary-container flex items-center justify-between">
+<span class="font-body-sm text-body-sm">Slot Kosong Tersedia</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">13:00 - 17:00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Unit 3: Connected Course Cards with Dynamic Status Badges -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Mata Kuliah Semester Ini</h2>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">Filter: Terpilih &amp; Konflik</span>
+</div>
+<!-- Selected Course 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code font-semibold px-2 py-0.5 rounded bg-surface-container text-on-secondary-container">IF301</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">3 SKS</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-code-sm text-label-code-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span> Terpilih
+        </span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Kecerdasan Buatan</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dosen: Prof. Herman Wicaksono, M.Kom</p>
+</div>
+<div class="flex items-center justify-between pt-1 font-label-code-sm text-label-code-sm text-outline">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> Sen 08:00 - 10:30</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">meeting_room</span> Lab Komputer 301</span>
+</div>
+</article>
+<!-- Selected Course 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code font-semibold px-2 py-0.5 rounded bg-surface-container text-on-secondary-container">IF304</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">3 SKS</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-code-sm text-label-code-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span> Terpilih
+        </span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rekayasa Perangkat Lunak</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dosen: Dr. Maya Safitri, M.T.</p>
+</div>
+<div class="flex items-center justify-between pt-1 font-label-code-sm text-label-code-sm text-outline">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> Sel 10:30 - 13:00</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">meeting_room</span> R. Teori 4.2</span>
+</div>
+</article>
+<!-- Selected Course 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code font-semibold px-2 py-0.5 rounded bg-surface-container text-on-secondary-container">IF308</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">3 SKS</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary text-on-primary font-label-code-sm text-label-code-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span> Terpilih
+        </span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Basis Data Lanjut</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dosen: Ir. Fahmi Alamsyah, M.Cs</p>
+</div>
+<div class="flex items-center justify-between pt-1 font-label-code-sm text-label-code-sm text-outline">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> Rab 13:00 - 15:30</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">meeting_room</span> Lab Database 204</span>
+</div>
+</article>
+<!-- Conflict Card (Error Warning) -->
+<article class="bg-error-container/40 rounded-xl p-space-md shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code font-semibold px-2 py-0.5 rounded bg-surface-container-lowest text-error">IF305</span>
+<span class="font-label-code-sm text-label-code-sm text-error font-medium">3 SKS</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-error text-on-error font-label-code-sm text-label-code-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Bentrok Jadwal
+        </span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Keamanan Jaringan</h3>
+<p class="font-body-sm text-body-sm text-error font-medium mt-0.5">⚡ Senin 09:30 beririsan 60 mnt dengan IF301</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-code-sm text-label-code-sm text-outline">Sen 09:30 - 12:00 • Lab Cyber 1</span>
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-error font-label-code-sm text-label-code-sm font-semibold shadow-sm hover:bg-error hover:text-on-error transition-colors">
+          Cari Kelas Paralel
+        </button>
+</div>
+</article>
+<!-- Prerequisite Blocked Card -->
+<article class="bg-surface-container rounded-xl p-space-md shadow-sm flex flex-col gap-2 opacity-85">
+<div class="flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-label-code text-label-code font-semibold px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">IF402</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">3 SKS</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-highest text-outline font-label-code-sm text-label-code-sm font-semibold">
+<span class="material-symbols-outlined text-[14px]">block</span> Prasyarat Gagal
+        </span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Deep Learning &amp; Neural Nets</h3>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">⛔ Prasyarat: Nilai final IF301 belum terpenuhi di KHS</p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-code-sm text-label-code-sm text-outline">Kam 08:00 - 10:30 • R. Teori 3.1</span>
+<span class="font-label-code-sm text-label-code-sm text-outline italic">Terkunci Otomatis</span>
+</div>
+</article>
+</section>
+<!-- Sticky Bottom Submission Bar (Docked right above tab navigation) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md shadow-lg flex flex-col gap-space-sm mt-space-xs sticky bottom-16 z-40">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-code-sm text-label-code-sm text-outline uppercase tracking-wider">Total Beban Terverifikasi</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-primary font-bold">18 SKS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">• 6 Mata Kuliah</span>
+</div>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-body-sm text-body-sm font-medium hover:bg-surface-container-high transition-colors" id="pdf-preview-btn">
+<span class="material-symbols-outlined text-[18px] text-primary">print</span>
+<span>Lembar PDF</span>
+</button>
+</div>
+<div class="flex gap-space-xs">
+<button class="flex-1 h-10 px-4 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-sm transition-all active:scale-[0.98]" id="submit-krs-btn">
+<span>Ajukan KRS ke Dosen Wali</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Live Validation Toast Notification Placeholder -->
+<div class="hidden items-center justify-between px-3 py-2 rounded bg-secondary-container text-on-secondary-fixed font-label-code-sm text-label-code-sm" id="live-toast">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">cloud_done</span>
+<span>Draft terenkripsi SQLCipher tersimpan lokal.</span>
+</span>
+<button class="text-on-secondary-fixed/70 hover:text-on-secondary-fixed" onclick="document.getElementById('live-toast').classList.add('hidden')">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+</section>
+<!-- Micro-interaction Logic -->
+<script>
+    (function () {
+      const submitBtn = document.getElementById('submit-krs-btn');
+      const toast = document.getElementById('live-toast');
+      const pdfBtn = document.getElementById('pdf-preview-btn');
+
+      if (submitBtn && toast) {
+        submitBtn.addEventListener('click', function () {
+          toast.classList.remove('hidden');
+          toast.classList.add('flex');
+          submitBtn.innerHTML = '<span>Mengirimkan Otorisasi...</span>';
+          setTimeout(() => {
+            submitBtn.innerHTML = '<span>✓ Terkirim ke Dr. Aris</span>';
+            submitBtn.classList.replace('bg-primary', 'bg-surface-container-highest');
+            submitBtn.classList.replace('text-on-primary', 'text-on-surface-variant');
+          }, 1200);
+        });
+      }
+
+      if (pdfBtn) {
+        pdfBtn.addEventListener('click', function () {
+          alert('Mencetak Pratinjau KRS Digital (NIM: 1227050081 - Format PDF UIN Standard)...');
+        });
+      }
+    })();
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.05)]" data-active-classes="text-primary font-semibold"><div class="h-16 px-space-xs flex items-center justify-around"><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="beranda-mahasiswa" href="#"><span class="material-symbols-outlined text-[22px]">dashboard</span><span class="font-label-code-sm text-label-code-sm mt-0.5">Beranda</span></a><a aria-current="page" class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] transition-all text-primary font-semibold" data-path="krs-dan-ujian" href="#"><span class="material-symbols-outlined text-[22px]">article</span><span class="font-label-code-sm text-label-code-sm mt-0.5">KRS</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="presensi-qr-mandiri" href="#"><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm -mt-2"><span class="material-symbols-outlined text-[22px]">qr_code_scanner</span></div><span class="font-label-code-sm text-label-code-sm mt-0.5">Presensi</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="khs-dan-transkrip" href="#"><span class="material-symbols-outlined text-[22px]">analytics</span><span class="font-label-code-sm text-label-code-sm mt-0.5">KHS</span></a><a class="flex-1 flex flex-col items-center justify-center h-full min-h-[44px] text-on-surface-variant hover:text-on-surface transition-all" data-path="kartu-id-dan-vault" href="#"><span class="material-symbols-outlined text-[22px]">badge</span><span class="font-label-code-sm text-label-code-sm mt-0.5">ID Vault</span></a></div></nav></body></html>
