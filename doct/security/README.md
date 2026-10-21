@@ -39,4 +39,7 @@ Dokumentasi ini mencatat perilaku kode dan bukti tes. Tidak menyatakan aplikasi 
 
 ## Ruang demo yang diminta untuk pengujian
 
-Flag SIMAHA_DEMO=true membuka simaha_demo.db berisi akun contoh dengan PIN awal publik 123456. Tombol Masuk akun demo memanggil verifikasi PIN akun yang dipilih; tidak menetapkan role dari pilihan UI. Mode biasa tetap memakai PIN yang dibuat saat setup. Preferensi dan recovery demo menggunakan NamespacedStringStore agar kode pemulihan ruang biasa tidak dikonsumsi dari ruang demo. Seeder idempoten mempertahankan perubahan dan tidak dijalankan terhadap database biasa.
+Flag SIMAHA_DEMO=true membuka simaha_demo_50.db berisi 62 akun sintetis dengan PIN awal publik 123456. Tombol demo tetap memverifikasi PIN. Demo memakai DemoStore pada berkas preferensi tersendiri, tanpa membuka secure storage produksi. Kunci acak SQLCipher demo disimpan bersama preferensi untuk demonstrasi; perlindungannya tidak setara mode biasa dan tidak boleh dipakai untuk data nyata. Mode biasa tetap memakai kunci platform dan PIN setup. File demo lama tidak ditimpa.
+
+
+Pada desktop terkelola yang membatasi folder Documents, variabel lingkungan SIMAHA_DEMO_DIRECTORY dapat diarahkan ke folder kerja yang dapat ditulis. Override ini hanya berlaku pada mode demo. Pembukaan ulang data produksi lama dan pemulihan kode lama belum diverifikasi setelah temuan DPAPI.

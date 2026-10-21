@@ -1,8 +1,10 @@
+> Pembaruan 21 Oktober 2026: lihat bagian fitur baru di bawah; uraian fondasi lama yang terkait telah digantikan.
+
 # Fitur dan alur penggunaan
 
 ## Demo terhubung
 
-[Jalankan ruang demo](../demo/README.md) untuk langsung memakai lima role. Semua akun sudah mempunyai data: 5 dosen, 10 mahasiswa, 5 kelas, 50 KRS/nilai, 150 presensi, dan 10 catatan bimbingan awal. PIN awal 123456.
+[Jalankan ruang demo](../demo/README.md) untuk langsung memakai lima role. Semua akun sudah mempunyai data: 5 dosen, 50 mahasiswa, 5 kelas, 250 KRS/nilai, 750 presensi, dan 50 catatan bimbingan awal. PIN awal 123456.
 
 ## Yang sudah dapat digunakan
 
@@ -59,18 +61,28 @@ Foto belum memiliki pemilih/unggah. Master prodi/dosen/MK/tahun ajaran/kelas ber
 
 | Modul | Yang ada | Yang belum tersedia |
 |---|---|---|
-| QR presensi | HMAC, token 30 detik, verifikasi ±1 interval, fungsi rekap, tabel | Sesi dosen, tampilan/pemindai QR, penyimpanan dan halaman rekap |
-| Presensi manual | Tabel | Input hadir/izin/sakit/alpa dan rekap persisten |
-| Risiko | Skor dan level aman/waspada/kritis | Integrasi data, layar risiko, tindak lanjut |
+| QR presensi | HMAC dan token pada domain | Sesi/pemindai QR belum dihubungkan; rekap serta input manual sudah tersedia |
+| Presensi manual | Sesi kelas, pilihan hadir/izin/sakit/alpa, simpan dan rekap | Pemindai QR belum tersedia |
+| Risiko | Ringkasan IPK, kehadiran, tren IPS dan skor transparan | Target SKS tertinggal dan notifikasi belum terhubung |
 | CSV | Parser/preview/validasi baris | File picker, UI preview, commit ke DB |
-| Excel/PDF | Dependensi | Import Excel, ekspor CSV/Excel, template KHS/transkrip |
+| Excel/PDF | PDF hasil studi dapat disimpan | Impor Excel, ekspor CSV/Excel dan KHS per semester belum tersedia |
 | Backup `.simaha` | Enkripsi/dekripsi bytes AES-GCM dan checksum | Snapshot database, picker/share, restore atomik, pemulihan key |
 | Sinkronisasi | Merge last-write-wins dan hasil konflik | Paket delta, pertukaran/penerapan data, log UI |
 | Asisten | Parser intent dan template ringkasan | Halaman tanya jawab dan query DB sesuai scope |
 | LLM | Interface dan fallback `NoopLlm` | Model/provider nyata |
 | Notifikasi | Interface dan `NoopNotifications` di memori | Plugin nyata, izin, penjadwalan, trigger akademik |
-| Pengumuman/agenda/ujian/prestasi/EDOM/arsip | Schema tabel | Service, layar, validasi, pengujian alur |
+| Agenda/ujian/prestasi/EDOM/arsip | Schema tabel | Layar dan alur belum tersedia; pengumuman sudah dapat diterbitkan/dibaca |
 
 Audit log saat ini mencatat sejumlah aksi autentikasi serta pengaitan profil dan penambahan catatan bimbingan. Belum seluruh perubahan mahasiswa/nilai dan belum ada halaman pembaca audit.
 
 Lihat [matriks lengkap FR/NFR](../audit/README.md).
+
+## Fitur terintegrasi 21 Oktober 2026
+
+- Dashboard Stitch berbeda untuk tiap role dengan metrik dari data yang diotorisasi, jadwal dan tautan aksi.
+- Pengampu/admin menambah pertemuan dan mencatat presensi manual. Status dapat diperbaiki tanpa duplikasi; mahasiswa dan wali membaca rekap sesuai lingkupnya.
+- Admin menerbitkan/menghapus pengumuman; seluruh akun aktif dapat membacanya.
+- Mahasiswa/wali/admin melihat insight studi dan IPS berdasarkan semester yang tersedia. Skor risiko memakai rumus domain; komponen SKS tertinggal nol karena target semester belum ditetapkan. Data kosong ditandai belum tersedia.
+- Mahasiswa/wali/admin dapat menyimpan PDF ringkasan hasil studi lokal. Pengampu tidak mendapat transkrip kumulatif. Dokumen bukan transkrip resmi kampus.
+- Super Admin membaca 100 aktivitas audit terakhir. Pencatatan mutasi akademik belum seluruhnya lengkap.
+- Font dibundel offline dan paket/izin untuk fitur yang belum dipakai dihapus agar build lebih bersih.

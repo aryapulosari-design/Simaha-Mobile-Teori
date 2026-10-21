@@ -18,28 +18,28 @@ extension RoleGuide on Role {
       'Membuat akun, memilih role, mengaktifkan/nonaktifkan akun lain, dan reset PIN.',
       'Menghubungkan akun mahasiswa serta akun pengampu/wali dengan profil.',
       'Mengelola seluruh mahasiswa, KRS, nilai, sampah, dan syarat SKS.',
-      'Melihat kelas, dosen, peserta, jadwal, rekap kehadiran, dan catatan bimbingan.',
+      'Mengelola pengumuman dan presensi, membaca audit, insight studi serta bimbingan.',
     ],
     Role.adminAkademik => [
       'Menambah, mengubah, mengarsipkan, dan memulihkan mahasiswa.',
       'Menambah/menghapus KRS serta memasukkan atau memperbaiki nilai.',
       'Melihat seluruh kelas, dosen, peserta, jadwal, dan rekap kehadiran.',
-      'Mengubah syarat SKS kelulusan dan melihat informasi database.',
+      'Menerbitkan pengumuman, mengelola presensi, mengubah syarat SKS dan melihat database.',
     ],
     Role.dosenPengampu => [
       'Melihat mata kuliah, jadwal, dan daftar mahasiswa di kelas sendiri.',
       'Mengisi/mengubah nilai tugas, UTS, dan UAS di kelas yang diampu.',
-      'Melihat rekap kehadiran mahasiswa pada kelas sendiri.',
+      'Menambah pertemuan, mencatat presensi manual, dan melihat rekap kelas sendiri.',
     ],
     Role.dosenWali => [
       'Melihat profil, KRS, nilai, dan IPK mahasiswa bimbingan.',
       'Melihat kelas dan rekap kehadiran yang diikuti mahasiswa bimbingan.',
-      'Menulis catatan bimbingan dan rencana tindak lanjut.',
+      'Menulis bimbingan, memeriksa insight studi, dan menyimpan PDF hasil studi bimbingan.',
     ],
     Role.mahasiswa => [
       'Melihat profil, KRS, jadwal, nilai, IPK, dan progres studi sendiri.',
       'Mencoba simulasi target IPK.',
-      'Melihat rekap kehadiran dan membaca catatan dosen wali sendiri.',
+      'Melihat kehadiran, membaca pengumuman serta catatan wali, dan menyimpan PDF hasil studi.',
     ],
   };
 

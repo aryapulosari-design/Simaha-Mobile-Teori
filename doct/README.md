@@ -29,3 +29,7 @@ Dokumentasi implementasi per **20 Oktober 2026**. Folder ini bernama `doct` sesu
 **Implementasi belum memenuhi semua kebutuhan PRD.** Aplikasi saat ini merupakan fondasi pengelolaan mahasiswa dan nilai dengan lima role lokal. Dependency, tabel, dan mockup bukan bukti bahwa suatu fitur sudah selesai.
 
 README utama dan dokumen implementasi di folder ini menjelaskan kondisi aktual. PRD asli dipertahankan sebagai target. `PROGRESS.md`, `todo.md`, serta folder referensi Stitch menyimpan konteks pengerjaan terdahulu dan tidak menggantikan [audit](audit/README.md).
+
+## Luaran Tahap 4 dan 5
+
+[Laporan, hasil pengujian, temuan/perbaikan, formulir calon pengguna, bahan presentasi dan naskah demonstrasi](laporan/README.md). Dataset demonstrasi diperbarui menjadi 50 mahasiswa dan 5 dosen yang saling terhubung.

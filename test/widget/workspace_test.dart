@@ -1,7 +1,10 @@
-import 'dart:io';
-import 'dart:convert';
+import 'package:simaha/presentation/providers/campus_providers.dart';
 
-import 'package:flutter/services.dart';
+import 'workspace_fixture.dart';
+import 'academic_preview_helpers.dart';
+
+import 'dart:io';
+
 
 import 'dart:ui' as ui;
 
@@ -40,31 +43,7 @@ class _Session extends SessionNotifier {
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  setUpAll(() async {
-    final icons = FontLoader('MaterialIcons')
-      ..addFont(rootBundle.load('fonts/MaterialIcons-Regular.otf'));
-    await icons.load();
-    if (const bool.fromEnvironment('WRITE_PREVIEWS')) {
-      final configFile = File('.dart_tool/package_config.json');
-      final config =
-          jsonDecode(await configFile.readAsString()) as Map<String, dynamic>;
-      final pkg = (config['packages'] as List).firstWhere(
-        (p) => p['name'] == 'flutter',
-      );
-      final rootUri = configFile.absolute.uri.resolve(pkg['rootUri'] as String);
-      final root = Directory.fromUri(rootUri).parent.parent.path;
-      final font = File(
-        '$root/engine/src/flutter/txt/third_party/fonts/Roboto-Regular.ttf',
-      );
-      if (await font.exists()) {
-        final loader = FontLoader('Roboto')
-          ..addFont(
-            Future.value(ByteData.sublistView(await font.readAsBytes())),
-          );
-        await loader.load();
-      }
-    }
-  });
+  setUpAll(loadAcademicPreviewFonts);
   final rows = List.generate(
     demoStudents.length,
     (i) => MahasiswaRow(
@@ -160,13 +139,16 @@ void main() {
       final container = ProviderContainer(
         overrides: [
           sessionProvider.overrideWith(() => _Session(scene.role)),
+          workspaceOverviewProvider.overrideWith(
+            (ref) async => workspaceFixture(scene.role),
+          ),
           dashboardCountsProvider.overrideWith(
             (ref) async => (
               total: scene.role == Role.mahasiswa
                   ? 1
                   : scene.role == Role.dosenWali
-                  ? 2
-                  : 10,
+                  ? 10
+                  : 50,
               aktif: scene.role == Role.mahasiswa
                   ? 1
                   : scene.role == Role.dosenWali
@@ -180,7 +162,7 @@ void main() {
               rows: scene.role == Role.mahasiswa
                   ? rows.take(1).toList()
                   : scene.role == Role.dosenWali
-                  ? rows.take(2).toList()
+                  ? rows.where((m) => (m.id - 1) % 10 < 2).toList()
                   : rows,
               elapsedMs: 8,
               limit: 20,

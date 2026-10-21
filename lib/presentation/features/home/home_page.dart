@@ -3,11 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simaha/data/local/app_database.dart';
-import 'package:simaha/presentation/features/academic/role_guide_page.dart';
+import 'package:simaha/core/config/app_runtime.dart';
 import 'package:simaha/domain/security/roles.dart';
+import 'package:simaha/presentation/features/home/widgets/student_row.dart';
+import 'package:simaha/presentation/features/home/widgets/workspace_dashboard.dart';
 import 'package:simaha/presentation/providers/app_providers.dart';
+import 'package:simaha/presentation/providers/campus_providers.dart';
 import 'package:simaha/presentation/providers/session_providers.dart';
+import 'package:simaha/presentation/shared/widgets/bento_card.dart';
 import 'package:simaha/presentation/shared/widgets/shared_widgets.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -35,44 +38,33 @@ class _HomePageState extends ConsumerState<HomePage> {
   void _refresh() {
     ref
       ..invalidate(dashboardCountsProvider)
-      ..invalidate(mahasiswaSearchProvider);
+      ..invalidate(mahasiswaSearchProvider)
+      ..invalidate(workspaceOverviewProvider)
+      ..invalidate(announcementsProvider);
   }
 
   @override
   Widget build(BuildContext context) {
-    final role = ref.watch(sessionProvider).role;
+    final session = ref.watch(sessionProvider);
+    final role = session.role;
     final canManage = role != null && canRole(role, Permission.manageMaster);
-    final counts = ref.watch(dashboardCountsProvider);
-    final search = ref.watch(mahasiswaSearchProvider);
-    final scheme = Theme.of(context).colorScheme;
-    final text = Theme.of(context).textTheme;
+    final t = Theme.of(context);
     final wide = MediaQuery.sizeOf(context).width >= 700;
     final title = switch (role) {
-      Role.mahasiswa => 'Perjalanan akademik Anda.',
-      Role.dosenPengampu => 'Ruang kelas Anda.',
-      Role.dosenWali => 'Tumbuh bersama mahasiswa.',
-      _ => 'Akademik, lebih tertata.',
-    };
-    final description = switch (role) {
-      Role.mahasiswa =>
-        'Profil, hasil studi, dan rencana berikutnya dalam satu tempat.',
-      Role.dosenPengampu =>
-        'Pantau mahasiswa dan kelola nilai di kelas yang Anda ampu.',
-      Role.dosenWali =>
-        'Kenali perkembangan akademik mahasiswa bimbingan Anda.',
-      _ => 'Kelola data mahasiswa dengan rapi, langsung dari perangkat Anda.',
+      Role.mahasiswa => 'Perjalanan studi Anda',
+      Role.dosenPengampu => 'Ruang mengajar',
+      Role.dosenWali => 'Pendampingan akademik',
+      Role.superAdmin => 'Pusat kendali akademik',
+      _ => 'Administrasi akademik',
     };
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          wide ? 'Beranda / Ringkasan' : 'simaha',
-          style: text.titleMedium,
-        ),
+        title: const Text('SIMAHA / Beranda'),
         actions: [
           IconButton(
             tooltip: 'Ganti tema',
-            icon: const Icon(Icons.contrast_outlined),
             onPressed: () => ref.read(themeModeProvider.notifier).toggle(),
+            icon: const Icon(Icons.contrast_outlined),
           ),
           IconButton(
             tooltip: 'Muat ulang',
@@ -82,7 +74,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           IconButton(
             tooltip: 'Ganti akun / kunci',
             onPressed: () => ref.read(sessionProvider.notifier).lock(),
-            icon: const Icon(Icons.lock_outline),
+            icon: const Icon(Icons.switch_account_outlined),
           ),
           const SizedBox(width: 8),
         ],
@@ -93,164 +85,86 @@ class _HomePageState extends ConsumerState<HomePage> {
           await ref.read(mahasiswaSearchProvider.future);
         },
         child: ListView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          padding: EdgeInsets.symmetric(
-            horizontal: wide ? 36 : 20,
-            vertical: 24,
-          ),
+          padding: EdgeInsets.all(wide ? 24 : 16),
           children: [
             Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 1120),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Wrap(
-                      spacing: 10,
+                      spacing: 8,
                       runSpacing: 8,
-                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
-                        Text(
-                          'RUANG KERJA',
-                          style: TextStyle(
-                            fontSize: 10,
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.w700,
-                            color: scheme.onSurfaceVariant,
-                          ),
+                        ContextTag(
+                          role?.label.toUpperCase() ?? 'RUANG AKADEMIK',
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: scheme.primaryContainer.withValues(
-                              alpha: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: Text(
-                            role?.label ?? 'Akun lokal',
-                            style: TextStyle(
-                              color: scheme.onPrimaryContainer,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                        ContextTag(
+                          AppRuntime.isDemo
+                              ? 'DEMO • 50 MAHASISWA'
+                              : 'PERANGKAT LOKAL',
+                          icon: Icons.circle_outlined,
+                        ),
+                        const ContextTag(
+                          'Tersedia offline',
+                          icon: Icons.wifi_off_outlined,
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 20),
                     Text(
                       title,
-                      style: wide ? text.headlineLarge : text.headlineMedium,
+                      style: wide
+                          ? t.textTheme.headlineLarge
+                          : t.textTheme.headlineMedium,
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
                     Text(
-                      description,
-                      style: text.bodyMedium?.copyWith(
-                        color: scheme.onSurfaceVariant,
+                      'Selamat datang, ${session.user?.username ?? ''}. Semua aktivitas studi terhubung di satu ruang.',
+                      style: t.textTheme.bodyMedium?.copyWith(
+                        color: t.colorScheme.onSurfaceVariant,
                       ),
                     ),
-                    const SizedBox(height: 28),
-                    const RolePurposeCard(),
+                    const SizedBox(height: 16),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        OutlinedButton.icon(
+                          onPressed: () => context.push('/panduan-peran'),
+                          icon: const Icon(Icons.help_outline, size: 17),
+                          label: const Text('Semua fungsi peran'),
+                        ),
+                        TextButton.icon(
+                          onPressed: () =>
+                              ref.read(sessionProvider.notifier).lock(),
+                          icon: const Icon(
+                            Icons.switch_account_outlined,
+                            size: 17,
+                          ),
+                          label: const Text('Ganti akun'),
+                        ),
+                      ],
+                    ),
                     const SizedBox(height: 24),
-                    counts.when(
-                      data: (c) => LayoutBuilder(
-                        builder: (context, box) {
-                          final columns = box.maxWidth < 480 ? 1 : 3;
-                          final width =
-                              (box.maxWidth - (columns - 1) * 12) / columns;
-                          return Wrap(
-                            spacing: 12,
-                            runSpacing: 12,
-                            children: [
-                              SizedBox(
-                                width: width,
-                                child: StatCard(
-                                  label: role == Role.mahasiswa
-                                      ? 'Profil terhubung'
-                                      : 'Mahasiswa dalam lingkup Anda',
-                                  value: '${c.total}',
-                                  icon: Icons.people_outline,
-                                ),
-                              ),
-                              SizedBox(
-                                width: width,
-                                child: StatCard(
-                                  label: 'Status aktif',
-                                  value: '${c.aktif}',
-                                  icon: Icons.check_circle_outline,
-                                ),
-                              ),
-                              SizedBox(
-                                width: width,
-                                child: StatCard(
-                                  label: 'Program studi',
-                                  value: '${c.prodi}',
-                                  icon: Icons.account_balance_outlined,
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                      loading: () => const LinearProgressIndicator(),
-                      error: (e, _) => ErrorState(
-                        message: 'Ringkasan belum dapat dimuat. $e',
-                        onRetry: _refresh,
-                      ),
-                    ),
+                    const WorkspaceDashboard(),
                     const SizedBox(height: 28),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 18,
-                        vertical: 14,
-                      ),
-                      decoration: BoxDecoration(
-                        color: scheme.surfaceContainerLow,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.shield_outlined,
-                            color: scheme.primary,
-                            size: 20,
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Text(
-                              'Tersimpan di perangkat ini. Tetap tersedia tanpa internet.',
-                              style: text.bodySmall,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Icon(
-                            Icons.wifi_off_outlined,
-                            size: 18,
-                            color: scheme.onSurfaceVariant,
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 36),
                     Wrap(
                       alignment: WrapAlignment.spaceBetween,
-                      runSpacing: 16,
-                      spacing: 24,
+                      spacing: 16,
+                      runSpacing: 12,
                       crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         SizedBox(
-                          width: wide ? 350 : null,
+                          width: wide ? 340 : null,
                           child: SectionHeader(
                             title: role == Role.mahasiswa
-                                ? 'Data akademik saya'
+                                ? 'Profil akademik saya'
+                                : role == Role.dosenWali
+                                ? 'Mahasiswa bimbingan'
                                 : 'Direktori mahasiswa',
-                            subtitle: role == Role.mahasiswa
-                                ? 'Buka profil untuk melihat hasil studi.'
-                                : 'Cari profil dan buka rincian akademiknya.',
+                            subtitle: 'Buka profil untuk melihat hasil studi dan informasi terkait.',
                           ),
                         ),
                         if (canManage)
@@ -280,17 +194,17 @@ class _HomePageState extends ConsumerState<HomePage> {
                           ),
                       ],
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 16),
                     TextField(
                       controller: _search,
                       decoration: InputDecoration(
                         hintText: 'Cari nama atau NIM',
-                        prefixIcon: const Icon(Icons.search, size: 21),
+                        prefixIcon: const Icon(Icons.search),
                         suffixIcon: _search.text.isEmpty
                             ? null
                             : IconButton(
                                 tooltip: 'Bersihkan pencarian',
-                                icon: const Icon(Icons.close, size: 18),
+                                icon: const Icon(Icons.close),
                                 onPressed: () {
                                   _debounce?.cancel();
                                   _search.clear();
@@ -298,10 +212,6 @@ class _HomePageState extends ConsumerState<HomePage> {
                                           .read(mahasiswaQueryProvider.notifier)
                                           .state =
                                       '';
-                                  ref
-                                          .read(mahasiswaLimitProvider.notifier)
-                                          .state =
-                                      kMahasiswaPageStep;
                                   setState(() {});
                                 },
                               ),
@@ -320,256 +230,73 @@ class _HomePageState extends ConsumerState<HomePage> {
                         );
                       },
                     ),
-                    const SizedBox(height: 16),
-                    search.when(
-                      data: (result) => Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          if (result.rows.isEmpty)
-                            EmptyState(
-                              title: _search.text.isEmpty
-                                  ? 'Belum ada data terhubung'
-                                  : 'Pencarian belum menemukan hasil',
-                              message: _search.text.isEmpty
-                                  ? (canManage
-                                        ? 'Mulai dengan menambahkan mahasiswa.'
-                                        : 'Hubungi Super Admin untuk menghubungkan akun dengan profil Anda.')
-                                  : 'Coba nama atau NIM yang lain.',
-                              icon: Icons.person_search_outlined,
-                            )
-                          else
-                            Card(
-                              child: Column(
-                                children: [
-                                  if (wide)
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 20,
-                                        vertical: 14,
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              'MAHASISWA',
-                                              style: text.labelSmall?.copyWith(
-                                                letterSpacing: 1.3,
-                                                color: scheme.onSurfaceVariant,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 110,
-                                            child: Text(
-                                              'ANGKATAN',
-                                              style: text.labelSmall?.copyWith(
-                                                letterSpacing: 1.3,
-                                                color: scheme.onSurfaceVariant,
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: canManage ? 140 : 100,
-                                            child: Text(
-                                              'STATUS',
-                                              style: text.labelSmall?.copyWith(
-                                                letterSpacing: 1.3,
-                                                color: scheme.onSurfaceVariant,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  for (
-                                    var i = 0;
-                                    i < result.rows.length;
-                                    i++
-                                  ) ...[
-                                    if (i > 0 || wide) const Divider(),
-                                    _StudentRow(
-                                      student: result.rows[i],
-                                      wide: wide,
-                                      canManage: canManage,
-                                      refresh: _refresh,
-                                    ),
-                                  ],
-                                ],
-                              ),
-                            ),
-                          const SizedBox(height: 16),
-                          if (result.rows.length >= result.limit)
-                            OutlinedButton.icon(
-                              onPressed: () =>
-                                  ref
-                                          .read(mahasiswaLimitProvider.notifier)
-                                          .state =
-                                      result.limit + kMahasiswaPageStep,
-                              icon: const Icon(Icons.expand_more),
-                              label: const Text('Muat lebih banyak'),
-                            ),
-                          if (result.rows.isNotEmpty)
-                            Padding(
-                              padding: const EdgeInsets.only(top: 12),
-                              child: Text(
+                    const SizedBox(height: 12),
+                    ref
+                        .watch(mahasiswaSearchProvider)
+                        .when(
+                          loading: () => const LinearProgressIndicator(),
+                          error: (e, _) =>
+                              ErrorState(message: '$e', onRetry: _refresh),
+                          data: (result) => Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              if (result.rows.isEmpty)
+                                const EmptyState(
+                                  title: 'Belum ada data yang sesuai',
+                                  message: 'Coba nama atau NIM lain. Untuk akun baru, minta Super Admin menghubungkan profil.',
+                                )
+                              else
+                                Card(
+                                  child: Column(
+                                    children: [
+                                      for (
+                                        var i = 0;
+                                        i < result.rows.length;
+                                        i++
+                                      ) ...[
+                                        if (i > 0) const Divider(),
+                                        StudentRow(
+                                          student: result.rows[i],
+                                          wide: wide,
+                                          canManage: canManage,
+                                          refresh: _refresh,
+                                        ),
+                                      ],
+                                    ],
+                                  ),
+                                ),
+                              const SizedBox(height: 12),
+                              if (result.rows.length >= result.limit)
+                                OutlinedButton.icon(
+                                  onPressed: () =>
+                                      ref
+                                              .read(
+                                                mahasiswaLimitProvider.notifier,
+                                              )
+                                              .state =
+                                          result.limit + kMahasiswaPageStep,
+                                  icon: const Icon(Icons.expand_more),
+                                  label: const Text('Muat lebih banyak'),
+                                ),
+                              Text(
                                 'Menampilkan ${result.rows.length} mahasiswa sesuai akses Anda.',
-                                style: text.bodySmall,
+                                style: t.textTheme.bodySmall,
                               ),
-                            ),
-                        ],
-                      ),
-                      loading: () => const Padding(
-                        padding: EdgeInsets.all(32),
-                        child: Center(child: CircularProgressIndicator()),
-                      ),
-                      error: (e, _) => ErrorState(
-                        message: 'Pencarian belum dapat dimuat. $e',
-                        onRetry: _refresh,
-                      ),
-                    ),
-                    const SizedBox(height: 36),
+                            ],
+                          ),
+                        ),
+                    const SizedBox(height: 32),
                     const Divider(),
                     const SizedBox(height: 16),
                     Text(
-                      'SIMAHA OFFLINE   /   Ruang untuk setiap langkah akademik.',
-                      style: text.bodySmall,
+                      'SIMAHA OFFLINE  /  Data akademik dalam kendali Anda.',
+                      style: t.textTheme.bodySmall,
                     ),
                     const SizedBox(height: 20),
                   ],
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _StudentRow extends ConsumerWidget {
-  const _StudentRow({
-    required this.student,
-    required this.wide,
-    required this.canManage,
-    required this.refresh,
-  });
-  final MahasiswaRow student;
-  final bool wide;
-  final bool canManage;
-  final VoidCallback refresh;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final scheme = Theme.of(context).colorScheme;
-    final name = student.nama.trim();
-    return InkWell(
-      onTap: () => context.push('/mahasiswa/${student.id}'),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: wide ? 20 : 14, vertical: 16),
-        child: Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: scheme.surfaceContainerLow,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                name.isEmpty ? '?' : name[0].toUpperCase(),
-                style: TextStyle(
-                  color: scheme.primary,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    student.nama,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.w600),
-                  ),
-                  Text(
-                    wide ? student.nim : '${student.nim} · ${student.angkatan}',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 8),
-            if (wide)
-              SizedBox(
-                width: 110,
-                child: Text(
-                  '${student.angkatan}',
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-              ),
-            StatusChip(label: student.status),
-            if (canManage)
-              PopupMenuButton<String>(
-                tooltip: 'Aksi mahasiswa',
-                itemBuilder: (_) => const [
-                  PopupMenuItem(value: 'edit', child: Text('Edit profil')),
-                  PopupMenuItem(
-                    value: 'delete',
-                    child: Text('Pindahkan ke sampah'),
-                  ),
-                ],
-                onSelected: (action) async {
-                  if (action == 'edit') {
-                    final ok = await context.push<bool>(
-                      '/mahasiswa/${student.id}/edit',
-                    );
-                    if (ok == true) refresh();
-                    return;
-                  }
-                  final confirmed = await showDialog<bool>(
-                    context: context,
-                    builder: (ctx) => AlertDialog(
-                      title: Text('Hapus ${student.nama}?'),
-                      content: const Text(
-                        'Data akan dipindahkan ke tempat sampah dan dapat dipulihkan.',
-                      ),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(ctx, false),
-                          child: const Text('Batal'),
-                        ),
-                        FilledButton(
-                          onPressed: () => Navigator.pop(ctx, true),
-                          child: const Text('Pindahkan'),
-                        ),
-                      ],
-                    ),
-                  );
-                  if (confirmed != true) return;
-                  try {
-                    await ref
-                        .read(academicServiceProvider)
-                        .softDeleteMahasiswa(student.id);
-                    refresh();
-                  } catch (e) {
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text('$e')));
-                    }
-                  }
-                },
-              )
-            else
-              const Padding(
-                padding: EdgeInsets.only(left: 8),
-                child: Icon(Icons.chevron_right, size: 18),
-              ),
           ],
         ),
       ),

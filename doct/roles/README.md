@@ -12,7 +12,7 @@ Cara termudah memahami role adalah [mencoba akun demo yang sudah terisi](../demo
 - Membaca catatan bimbingan dan dapat menambah catatan pada profil yang sudah mempunyai wali.
 - Membuka informasi database. Tidak dapat menonaktifkan dirinya sendiri.
 
-**Demo:** `superadmin` → 10 mahasiswa, 5 dosen, 5 kelas, dan 22 akun yang sudah terhubung.
+**Demo:** `superadmin` → 50 mahasiswa, 5 dosen, 5 kelas, dan 62 akun yang sudah terhubung.
 
 ## 2. Admin Akademik — administrasi studi seluruh mahasiswa
 
@@ -22,17 +22,17 @@ Cara termudah memahami role adalah [mencoba akun demo yang sudah terisi](../demo
 - Melihat ringkasan IPK/SKS/simulasi mahasiswa, mengubah syarat SKS, serta membuka informasi database.
 - Tidak mengelola akun, reset PIN, dan hubungan akun/profil. Catatan bimbingan dibatasi untuk wali, mahasiswa terkait, dan Super Admin.
 
-**Demo:** `akademik` → seluruh 10 mahasiswa dan lima kelas.
+**Demo:** `akademik` → seluruh 50 mahasiswa dan lima kelas.
 
 ## 3. Dosen Pengampu — menilai mata kuliah yang diampu
 
 - Melihat kelas/mata kuliah sendiri, jadwal, ruangan, dan seluruh peserta kelasnya.
 - Melihat serta mengubah nilai tugas, UTS, dan UAS pada mata kuliah tersebut.
-- Melihat rekap kehadiran kelas sendiri.
+- Melihat rekap kehadiran kelas sendiri serta menambah pertemuan dan mengisi presensi manual.
 - Tidak mengubah nilai kelas dosen lain, KRS, biodata mahasiswa, pengaturan akademik, atau akun.
 - Tidak membaca/menulis catatan bimbingan melalui role Pengampu.
 
-**Demo:** `pengampu.rahma` → Algoritma berisi seluruh 10 mahasiswa. Rahma hanya dapat mengubah nilai Algoritma, sedangkan Basis Data dikelola `pengampu.budi`. Dosen lainnya masing-masing mempunyai satu mata kuliah dan 10 peserta yang sama.
+**Demo:** `pengampu.rahma` → Algoritma berisi seluruh 50 mahasiswa. Rahma hanya dapat mengubah nilai Algoritma, sedangkan Basis Data dikelola `pengampu.budi`. Dosen lainnya masing-masing mempunyai satu mata kuliah dan 50 peserta yang sama.
 
 ## 4. Dosen Wali — pendamping studi mahasiswa bimbingan
 
@@ -41,7 +41,7 @@ Cara termudah memahami role adalah [mencoba akun demo yang sudah terisi](../demo
 - Menulis catatan bimbingan dan tindak lanjut; membaca riwayat catatan yang tersimpan.
 - Tidak mengubah nilai, KRS, biodata, akun, atau syarat SKS.
 
-**Demo:** `wali.rahma` → Alya dan Arif; `wali.budi` → Bima dan Bunga; setiap wali mempunyai dua mahasiswa. Profil Rahma ini adalah orang yang sama dengan Pengampu Rahma, dengan akun dan kewenangan berbeda.
+**Demo:** `wali.rahma` → Alya dan Arif; `wali.budi` → Bima dan Bunga; setiap wali mempunyai sepuluh mahasiswa. Profil Rahma ini adalah orang yang sama dengan Pengampu Rahma, dengan akun dan kewenangan berbeda.
 
 ## 5. Mahasiswa — memantau studi sendiri
 
@@ -82,4 +82,8 @@ Penegakan ada pada AuthService/AcademicService, router, dan UI. Memilih role pad
 
 ## Yang masih belum tersedia
 
-CRUD master melalui form, validasi KRS penuh per semester, input presensi manual/QR, KHS/transkrip PDF, backup/restore aplikasi, sinkronisasi, risiko otomatis, notifikasi nyata, dan asisten belum menjadi alur lengkap. Lihat [audit](../audit/README.md); keberadaan permission atau tabel tidak membuat modul tersebut selesai.
+CRUD master melalui form, validasi KRS penuh per semester, presensi QR, KHS per semester dan transkrip resmi PDF, backup/restore aplikasi, sinkronisasi, risiko otomatis, notifikasi nyata, dan asisten belum menjadi alur lengkap. Lihat [audit](../audit/README.md); keberadaan permission atau tabel tidak membuat modul tersebut selesai.
+
+## Penambahan fitur pada versi kandidat
+
+Semua role membaca pengumuman. Super Admin dan Admin Akademik menerbitkan/menghapus pengumuman serta mengelola presensi seluruh kelas; Pengampu hanya kelas sendiri. Wali, Mahasiswa dan admin melihat insight studi sesuai lingkupnya dan menyimpan PDF hasil studi lokal. Super Admin mempunyai halaman audit 100 aktivitas terakhir. Jumlah bimbingan tiap dosen kini 10 mahasiswa; daftar lengkap ada pada panduan demo.

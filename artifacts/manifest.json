@@ -1,0 +1,34 @@
+{
+  "project": "SIMAHA Offline",
+  "version": "1.1.0+2",
+  "status": "release candidate demo; signed with debug certificate",
+  "architecture": "arm64-v8a",
+  "minAndroidApi": 26,
+  "demo": true,
+  "studentCount": 50,
+  "lecturerCount": 5,
+  "accountCount": 62,
+  "files": [
+    {
+      "path": "artifacts/SIMAHA-1.1.0-rc-demo-arm64.apk",
+      "bytes": 25795174,
+      "sha256": "88e1876962814387374183e87a0880c20220ab47c711bba9be4bb8d182be0b81"
+    }
+  ],
+  "limitations": [
+    "No real user-study results yet",
+    "No Android physical-device test recorded",
+    "Production signing not configured",
+    "Remaining PRD gaps are documented"
+  ],
+  "android": {
+    "applicationId": "id.ac.uin.simaha",
+    "versionName": "1.1.0",
+    "versionCode": 2002,
+    "minSdk": 26,
+    "targetSdk": 36,
+    "compileSdk": 36,
+    "signatureScheme": "v2",
+    "certificate": "Android Debug"
+  }
+}

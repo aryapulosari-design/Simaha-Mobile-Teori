@@ -1,0 +1,29 @@
+apksigner.bat : WARNING: A restricted method in java.lang.System has been called
+At line:2 char:1
++ & 'C:/Users/Arya/AppData/Local/Android/Sdk/build-tools/36.0.0/apksign ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: A rest...has been called:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+WARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module 
+(file:/C:/Users/Arya/AppData/Local/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 7ab437b54e90794080bb1cd4834065f951128d7e6990f6c39917c29d97b05a41
+Signer #1 certificate SHA-1 digest: a2439ab4dc087fef64dc66624deb0a5dcec579df
+Signer #1 certificate MD5 digest: 5a4a93debe424f65c233f23899be272e
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: 3fe7859468b885290931ac034b45408c9c6ac125c8370fae23c111c191b1c8eb
+Signer #1 public key SHA-1 digest: 38c11ea6fc2816d3e4f46efda79473db87f0f107
+Signer #1 public key MD5 digest: 3582560cd5856777e8e7f515430f65ce

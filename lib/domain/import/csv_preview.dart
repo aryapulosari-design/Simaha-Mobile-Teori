@@ -19,10 +19,7 @@ class CsvRowResult {
 
 /// Hasil pratinjau: header + baris valid/invalid.
 class CsvPreview {
-  const CsvPreview({
-    required this.headers,
-    required this.rows,
-  });
+  const CsvPreview({required this.headers, required this.rows});
 
   final List<String> headers;
   final List<CsvRowResult> rows;
@@ -75,8 +72,9 @@ CsvPreview previewCsv(String content, {int maxRows = 500}) {
   if (lines.isEmpty) {
     throw const FormatException('Berkas CSV kosong.');
   }
-  final headers =
-      _splitCsvLine(lines.first).map((h) => h.toLowerCase()).toList();
+  final headers = _splitCsvLine(lines.first)
+      .map((h) => h.toLowerCase())
+      .toList();
   if (!headers.contains('nim') || !headers.contains('nama')) {
     throw const FormatException('Header wajib memuat nim dan nama.');
   }

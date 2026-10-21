@@ -205,6 +205,18 @@ class AcademicClassPage extends ConsumerWidget {
                     Text(
                       '${detail.info.day}, ${detail.info.start} - ${detail.info.end} / ${detail.info.room}',
                     ),
+                    const SizedBox(height: 16),
+                    if (role == Role.superAdmin ||
+                        role == Role.adminAkademik ||
+                        role == Role.dosenPengampu)
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: FilledButton.icon(
+                          onPressed: () => context.push('/presensi/$classId'),
+                          icon: const Icon(Icons.fact_check_outlined),
+                          label: const Text('Kelola presensi'),
+                        ),
+                      ),
                     const SizedBox(height: 24),
                     Text(
                       role == Role.mahasiswa

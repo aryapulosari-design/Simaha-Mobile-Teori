@@ -38,7 +38,7 @@ String? validatePhone(String noHp) {
 
 String? validateNilaiAngka(String raw) {
   final v = double.tryParse(raw.trim().replaceAll(',', '.'));
-  if (v == null) return 'Harus angka 0-100.';
+  if (v == null || !v.isFinite) return 'Harus angka 0-100.';
   if (v < 0 || v > 100) return 'Harus 0-100.';
   return null;
 }

@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-21",
+  "platform": "Windows",
+  "mode": "demo",
+  "loginPage": true,
+  "bootError": false,
+  "bootSplash": false,
+  "expectedStudents": 50,
+  "expectedLecturers": 5,
+  "expectedClasses": 5,
+  "observedStartupLog": "total=50 aktif=50 prodi=1 dosen=5 kelas=5",
+  "inspection": "Flutter debug widget tree and process startup; not a complete interactive user test"
+}

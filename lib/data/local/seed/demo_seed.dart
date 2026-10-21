@@ -55,6 +55,46 @@ const demoStudents = [
   (slug: 'dewi', name: 'Dewi Anggraini'),
   (slug: 'eka', name: 'Eka Wulandari'),
   (slug: 'fajar', name: 'Fajar Hidayat'),
+  (slug: 'gilang', name: 'Gilang Ramadhan'),
+  (slug: 'hana', name: 'Hana Safitri'),
+  (slug: 'ilham', name: 'Ilham Akbar'),
+  (slug: 'intan', name: 'Intan Permata'),
+  (slug: 'joko', name: 'Joko Wibowo'),
+  (slug: 'karina', name: 'Karina Putri'),
+  (slug: 'luthfi', name: 'Luthfi Hakim'),
+  (slug: 'maya', name: 'Maya Salsabila'),
+  (slug: 'naufal', name: 'Naufal Rizki'),
+  (slug: 'nisa', name: 'Nisa Azzahra'),
+  (slug: 'oki', name: 'Oki Setiawan'),
+  (slug: 'putri', name: 'Putri Amelia'),
+  (slug: 'qori', name: 'Qori Annisa'),
+  (slug: 'rafi', name: 'Rafi Prakoso'),
+  (slug: 'rani', name: 'Rani Puspita'),
+  (slug: 'rizal', name: 'Rizal Firmansyah'),
+  (slug: 'salma', name: 'Salma Aulia'),
+  (slug: 'satria', name: 'Satria Nugraha'),
+  (slug: 'sinta', name: 'Sinta Maharani'),
+  (slug: 'taufik', name: 'Taufik Hidayat'),
+  (slug: 'tiara', name: 'Tiara Kirana'),
+  (slug: 'umar', name: 'Umar Faruq'),
+  (slug: 'vania', name: 'Vania Maharani'),
+  (slug: 'wahyu', name: 'Wahyu Saputra'),
+  (slug: 'winda', name: 'Winda Kartika'),
+  (slug: 'yoga', name: 'Yoga Pratama'),
+  (slug: 'zahra', name: 'Zahra Nabila'),
+  (slug: 'zaki', name: 'Zaki Maulana'),
+  (slug: 'adnan', name: 'Adnan Fikri'),
+  (slug: 'aisha', name: 'Aisha Humaira'),
+  (slug: 'bagas', name: 'Bagas Firmansyah'),
+  (slug: 'bella', name: 'Bella Aprilia'),
+  (slug: 'daniel', name: 'Daniel Wijaya'),
+  (slug: 'dina', name: 'Dina Rahmawati'),
+  (slug: 'farhan', name: 'Farhan Hadi'),
+  (slug: 'fitri', name: 'Fitri Nuraini'),
+  (slug: 'galih', name: 'Galih Pranata'),
+  (slug: 'hasna', name: 'Hasna Khairunnisa'),
+  (slug: 'irfan', name: 'Irfan Kurniawan'),
+  (slug: 'jihan', name: 'Jihan Amalia'),
 ];
 
 List<({String username, Role role})> get demoAccounts => [
@@ -71,7 +111,7 @@ List<({String username, Role role})> get demoAccounts => [
 /// Only called for the explicitly selected demo database. Atomic and idempotent:
 /// restarting preserves edits made while exploring roles.
 Future<void> ensureDemoSeeded(AppDatabase db, {DateTime? referenceDate}) async {
-  if (await db.getSetting('demo_dataset_version') == '1') return;
+  if (await db.getSetting('demo_dataset_version') == '2') return;
   final existing = await db
       .customSelect('SELECT COUNT(*) AS n FROM users')
       .getSingle();
@@ -184,7 +224,7 @@ Future<void> ensureDemoSeeded(AppDatabase db, {DateTime? referenceDate}) async {
     final studentIds = <int>[];
     for (var i = 0; i < demoStudents.length; i++) {
       final student = demoStudents[i];
-      final dosen = dosenIds[i ~/ 2];
+      final dosen = dosenIds[(i % 10) ~/ 2];
       final id = await db
           .into(db.mahasiswa)
           .insert(
@@ -203,7 +243,7 @@ Future<void> ensureDemoSeeded(AppDatabase db, {DateTime? referenceDate}) async {
           );
       studentIds.add(id);
       for (var j = 0; j < classIds.length; j++) {
-        final score = baseScores[i] + (j % 3) * 2;
+        final score = baseScores[i % baseScores.length] + (j % 3) * 2;
         await db.addKrsNilai(
           mahasiswaId: id,
           kelasId: classIds[j],
@@ -218,11 +258,11 @@ Future<void> ensureDemoSeeded(AppDatabase db, {DateTime? referenceDate}) async {
             CatatanBimbinganCompanion.insert(
               mahasiswaId: id,
               dosenId: dosen,
-              isi: baseScores[i] < 70
+              isi: baseScores[i % baseScores.length] < 70
                   ? 'Evaluasi awal semester: perlu pendampingan pada latihan dan konsistensi belajar.'
                   : 'Rencana studi 15 SKS telah ditinjau. Mahasiswa mengikuti lima mata kuliah semester ini.',
               tindakLanjut: Value(
-                baseScores[i] < 70
+                baseScores[i % baseScores.length] < 70
                     ? 'Kerjakan latihan tambahan dan jadwalkan bimbingan pekan depan.'
                     : 'Pertahankan kehadiran dan selesaikan tugas mingguan tepat waktu.',
               ),
@@ -269,7 +309,16 @@ Future<void> ensureDemoSeeded(AppDatabase db, {DateTime? referenceDate}) async {
         }
       }
     }
-    await db.setSetting('demo_dataset_version', '1');
+    for (final notice in [
+      (title: 'Selamat datang di semester Gasal', body: 'Periksa jadwal dan lima mata kuliah Anda. Hubungi dosen wali untuk mendiskusikan rencana studi.', category: 'akademik'),
+      (title: 'Bimbingan akademik pekan ini', body: 'Mahasiswa dapat membaca arahan wali pada profil masing-masing. Siapkan daftar pertanyaan sebelum pertemuan.', category: 'bimbingan'),
+    ]) {
+      await db.into(db.pengumuman).insert(PengumumanCompanion.insert(
+        judul: notice.title, isi: notice.body, kategori: Value(notice.category),
+        dibuatOleh: Value(userIds['akademik']), updatedAt: now, deviceId: 'demo',
+      ));
+    }
+    await db.setSetting('demo_dataset_version', '2');
     await db.setSetting('demo_label', 'Kelas Informatika · 2026/2027 Gasal');
     await db
         .into(db.auditLog)
@@ -279,7 +328,7 @@ Future<void> ensureDemoSeeded(AppDatabase db, {DateTime? referenceDate}) async {
             aksi: 'SEED_DEMO',
             entitas: 'DEMO',
             sesudah: const Value(
-              '22 akun, 5 dosen, 10 mahasiswa, 5 kelas, 50 KRS/nilai, 15 pertemuan, 150 presensi, 10 catatan bimbingan.',
+              '62 akun, 5 dosen, 50 mahasiswa, 5 kelas, 250 KRS/nilai, 15 pertemuan, 750 presensi, 50 catatan bimbingan.',
             ),
             waktu: now,
           ),

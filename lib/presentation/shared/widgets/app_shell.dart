@@ -28,12 +28,19 @@ class AppShell extends ConsumerWidget {
         ),
       if (role == Role.superAdmin || role == Role.adminAkademik)
         (route: '/db', label: 'Database', icon: Icons.storage_outlined),
+      (route: '/pengumuman', label: 'Warta', icon: Icons.campaign_outlined),
       (route: '/settings', label: 'Pengaturan', icon: Icons.tune_outlined),
     ];
-    final navLocation = location.startsWith('/kelas/') ? '/akademik' : location;
+    final navLocation =
+        location.startsWith('/kelas/') || location.startsWith('/presensi/')
+        ? '/akademik'
+        : location;
+    final isWide = MediaQuery.sizeOf(context).width >= 1000;
+    if (!isWide) {
+      destinations.removeWhere((d) => d.route == '/db' || d.route == '/users');
+    }
     final index = destinations.indexWhere((d) => d.route == navLocation);
     final selected = index < 0 ? 0 : index;
-    final isWide = MediaQuery.sizeOf(context).width >= 1000;
     final themeButton = IconButton(
       tooltip: 'Ganti tema',
       onPressed: () => ref.read(themeModeProvider.notifier).toggle(),
@@ -73,13 +80,13 @@ class AppShell extends ConsumerWidget {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Icon(
-                                  Icons.school_outlined,
+                                  Icons.account_balance_outlined,
                                   color: scheme.onPrimary,
                                 ),
                               ),
                               const SizedBox(width: 12),
                               Text(
-                                'simaha',
+                                'SIMAHA',
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineSmall,
@@ -95,7 +102,7 @@ class AppShell extends ConsumerWidget {
                               color: scheme.onSurfaceVariant,
                             ),
                           ),
-                          const SizedBox(height: 48),
+                          const SizedBox(height: 32),
                           for (var i = 0; i < destinations.length; i++)
                             Padding(
                               padding: const EdgeInsets.only(bottom: 8),

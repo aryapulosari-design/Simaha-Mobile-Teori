@@ -238,7 +238,7 @@ class _LockPageState extends ConsumerState<LockPage> {
                 constraints: const BoxConstraints(maxWidth: 460),
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: scheme.surface,
+                  color: scheme.surfaceContainerLowest,
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: scheme.outlineVariant),
                 ),
@@ -262,7 +262,7 @@ class _LockPageState extends ConsumerState<LockPage> {
                         const SizedBox(width: 12),
                         Expanded(
                           child: Text(
-                            'simaha',
+                            'SIMAHA',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: text.headlineSmall,
@@ -288,7 +288,7 @@ class _LockPageState extends ConsumerState<LockPage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Text(
-                          'RUANG DEMO\n5 dosen / 10 mahasiswa / 5 mata kuliah\nPIN awal semua akun: 123456',
+                          'RUANG DEMO\n5 dosen / 50 mahasiswa / 5 mata kuliah\nPIN awal semua akun: 123456',
                         ),
                       ),
                       const SizedBox(height: 20),

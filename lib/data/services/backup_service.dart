@@ -33,10 +33,7 @@ class BackupService {
   List<int> _nonce() => List<int>.generate(12, (_) => _random.nextInt(256));
 
   /// Enkripsi [plain] dengan [password]. Kembalikan bytes JSON (.simaha).
-  Future<List<int>> encryptBackup(
-    List<int> plain,
-    String password,
-  ) async {
+  Future<List<int>> encryptBackup(List<int> plain, String password) async {
     if (password.length < 6) {
       throw ArgumentError('Password backup minimal 6 karakter.');
     }
@@ -61,10 +58,7 @@ class BackupService {
   }
 
   /// Dekripsi bytes .simaha dengan [password]. Throw jika salah/rusak.
-  Future<List<int>> decryptBackup(
-    List<int> fileBytes,
-    String password,
-  ) async {
+  Future<List<int>> decryptBackup(List<int> fileBytes, String password) async {
     late final Map<String, dynamic> payload;
     try {
       payload = jsonDecode(utf8.decode(fileBytes)) as Map<String, dynamic>;
@@ -91,11 +85,7 @@ class BackupService {
     late final List<int> plain;
     try {
       plain = await AesGcm.with256bits().decrypt(
-        SecretBox(
-          cipherBytes,
-          nonce: nonce,
-          mac: Mac(macBytes),
-        ),
+        SecretBox(cipherBytes, nonce: nonce, mac: Mac(macBytes)),
         secretKey: key,
       );
     } catch (_) {

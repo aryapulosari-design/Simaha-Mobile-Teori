@@ -22,8 +22,8 @@ void main() {
       deltaIps: -1.0,
       sksTertinggal: 30,
     );
-    // 0.4*100 + 0.3*60 + 0.2*100 + 0.1*100 = 88
-    expect(s, closeTo(88, 1e-9));
+    // 0.4*100 + 0.3*100 + 0.2*100 + 0.1*100 = 100
+    expect(s, closeTo(100, 1e-9));
     expect(levelRisiko(s), RiskLevel.kritis);
     expect(perluPerhatian(s), isTrue);
   });

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Quiet academic workspace: evergreen, warm paper, and precise typography.
+/// Stitch reference: cool canvas, white bento cards, teal and indigo.
 class AppTheme {
   AppTheme._();
   static ThemeData get light => _build(Brightness.light);
@@ -9,30 +9,37 @@ class AppTheme {
   static ThemeData _build(Brightness brightness) {
     final dark = brightness == Brightness.dark;
     final scheme = ColorScheme.fromSeed(
-      seedColor: const Color(0xFF235B49),
+      seedColor: const Color(0xFF00685F),
       brightness: brightness,
-      primary: dark ? const Color(0xFF97D5B8) : const Color(0xFF235B49),
-      onPrimary: dark ? const Color(0xFF10382A) : Colors.white,
-      surface: dark ? const Color(0xFF171E1B) : const Color(0xFFFCFCF9),
-      onSurface: dark ? const Color(0xFFE6ECE7) : const Color(0xFF202C26),
+      primary: dark ? const Color(0xFF6BD8CB) : const Color(0xFF00685F),
+      tertiary: dark ? const Color(0xFFC3C0FF) : const Color(0xFF4B41E1),
+      primaryContainer: dark
+          ? const Color(0xFF164D49)
+          : const Color(0xFFDDF5F0),
+      onPrimaryContainer: dark
+          ? const Color(0xFF89F5E7)
+          : const Color(0xFF005049),
+      onPrimary: dark ? const Color(0xFF003D37) : Colors.white,
+      surface: dark ? const Color(0xFF101B2C) : const Color(0xFFF8F9FF),
+      onSurface: dark ? const Color(0xFFEAF1FF) : const Color(0xFF0B1C30),
       onSurfaceVariant: dark
-          ? const Color(0xFFB0BEB4)
-          : const Color(0xFF617068),
-      outlineVariant: dark ? const Color(0xFF36423B) : const Color(0xFFE0E5DF),
-      surfaceContainerLowest: dark ? const Color(0xFF1D2721) : Colors.white,
+          ? const Color(0xFFB9C4D5)
+          : const Color(0xFF626D80),
+      outlineVariant: dark ? const Color(0xFF29384F) : const Color(0xFFE7ECF4),
+      surfaceContainerLowest: dark ? const Color(0xFF162338) : Colors.white,
       surfaceContainerLow: dark
-          ? const Color(0xFF222D26)
-          : const Color(0xFFF2F4EE),
+          ? const Color(0xFF1D2E46)
+          : const Color(0xFFEFF4FF),
     );
     final base = ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
       brightness: brightness,
-      fontFamily: 'Roboto',
+      fontFamily: 'Inter',
     );
     final text = base.textTheme.copyWith(
       headlineLarge: TextStyle(
-        fontSize: 36,
+        fontSize: 32,
         height: 1.15,
         fontWeight: FontWeight.w700,
         letterSpacing: -1.2,
@@ -70,13 +77,27 @@ class AppTheme {
         color: scheme.onSurfaceVariant,
       ),
     );
-    final resolvedText = text.apply(fontFamily: 'Roboto');
+    final resolvedText = text.apply(fontFamily: 'Inter');
+    final styledText = resolvedText.copyWith(
+      headlineLarge: resolvedText.headlineLarge?.copyWith(
+        fontFamily: 'PlusJakartaSans',
+      ),
+      headlineMedium: resolvedText.headlineMedium?.copyWith(
+        fontFamily: 'PlusJakartaSans',
+      ),
+      headlineSmall: resolvedText.headlineSmall?.copyWith(
+        fontFamily: 'PlusJakartaSans',
+      ),
+      titleLarge: resolvedText.titleLarge?.copyWith(
+        fontFamily: 'PlusJakartaSans',
+      ),
+    );
     final border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(color: scheme.outlineVariant),
     );
     return base.copyWith(
-      textTheme: resolvedText,
+      textTheme: styledText,
       scaffoldBackgroundColor: scheme.surface,
       appBarTheme: AppBarTheme(
         centerTitle: false,
@@ -93,7 +114,7 @@ class AppTheme {
         elevation: 0,
         color: scheme.surfaceContainerLowest,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: scheme.outlineVariant),
         ),
       ),

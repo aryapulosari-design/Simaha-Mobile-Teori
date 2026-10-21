@@ -56,7 +56,7 @@ class RolePurposeCard extends ConsumerWidget {
             if (AppRuntime.isDemo) ...[
               const SizedBox(height: 12),
               Text(
-                'DEMO: 5 dosen, 10 mahasiswa, 5 kelas. Semua akun sudah terhubung.',
+                'DEMO: 5 dosen, 50 mahasiswa, 5 kelas. Semua akun sudah terhubung.',
                 style: theme.textTheme.bodySmall,
               ),
             ],
@@ -110,7 +110,7 @@ class RoleGuidePage extends ConsumerWidget {
                             ),
                             const SizedBox(height: 12),
                             const Text(
-                              'Lima dosen masing-masing mengajar satu mata kuliah untuk seluruh 10 mahasiswa. Tiap dosen juga membimbing dua mahasiswa melalui akun Wali. PIN awal semua akun: 123456.',
+                              'Lima dosen masing-masing mengajar satu mata kuliah untuk seluruh 50 mahasiswa. Tiap dosen juga membimbing sepuluh mahasiswa melalui akun Wali. PIN awal semua akun: 123456.',
                             ),
                           ],
                         ),

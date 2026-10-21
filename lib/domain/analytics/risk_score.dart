@@ -23,34 +23,23 @@ class RiskWeights {
 enum RiskLevel { aman, waspada, kritis }
 
 /// IPK 4.0 -> 0 risiko, IPK 0 -> 100. Piecewise transparan.
-double fIpk(double ipk) {
-  if (ipk >= 3.5) return 0;
-  if (ipk >= 3.0) return 20;
-  if (ipk >= 2.5) return 40;
-  if (ipk >= 2.0) return 70;
-  return 100;
-}
+double fIpk(double ipk) => ((3.0 - ipk) / 1.5 * 100).clamp(0.0, 100.0);
 
 /// Kehadiran 100% -> 0 risiko, 0% -> 100.
 double fPresensi(double persenHadir) {
   final p = persenHadir.clamp(0.0, 100.0);
-  return 100.0 - p;
+  return ((90 - p) / 40 * 100).clamp(0.0, 100.0);
 }
 
 /// Tren IPS: delta = ipsSekarang - ipsSemesterLalu.
 /// Naik/tetap -> 0; turun sedikit -> 40; turun sedang -> 70; anjlok -> 100.
-double fTrenIps(double delta) {
-  if (delta >= 0) return 0;
-  if (delta >= -0.3) return 40;
-  if (delta >= -0.7) return 70;
-  return 100;
-}
+double fTrenIps(double delta) => (-delta * 100).clamp(0.0, 100.0);
 
 /// SKS tertinggal dari target (mis. target 20/semester).
 /// 0 tertinggal -> 0; >=24 SKS -> 100 (linear di antaranya).
 double fSksTertinggal(int sksTertinggal) {
   if (sksTertinggal <= 0) return 0;
-  return (sksTertinggal / 24 * 100).clamp(0.0, 100.0);
+  return (sksTertinggal / 20 * 100).clamp(0.0, 100.0);
 }
 
 double hitungSkorRisiko({

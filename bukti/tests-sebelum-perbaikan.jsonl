@@ -1,0 +1,358 @@
+{"protocolVersion":"0.1.1","runnerVersion":null,"pid":17352,"type":"start","time":0}
+{"suite":{"id":0,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/academic_access_test.dart"},"type":"suite","time":1}
+{"test":{"id":1,"name":"loading C:/File Arya/uin S1/simaha/test/academic_access_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":3}
+{"suite":{"id":2,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/academic_constants_test.dart"},"type":"suite","time":17}
+{"test":{"id":3,"name":"loading C:/File Arya/uin S1/simaha/test/academic_constants_test.dart","suiteID":2,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":17}
+{"suite":{"id":4,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/academic_engine_test.dart"},"type":"suite","time":18}
+{"test":{"id":5,"name":"loading C:/File Arya/uin S1/simaha/test/academic_engine_test.dart","suiteID":4,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":19}
+{"suite":{"id":6,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/auth_flow_test.dart"},"type":"suite","time":20}
+{"test":{"id":7,"name":"loading C:/File Arya/uin S1/simaha/test/auth_flow_test.dart","suiteID":6,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":20}
+{"suite":{"id":8,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/auth_test.dart"},"type":"suite","time":22}
+{"test":{"id":9,"name":"loading C:/File Arya/uin S1/simaha/test/auth_test.dart","suiteID":8,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":22}
+{"suite":{"id":10,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/crypto_test.dart"},"type":"suite","time":23}
+{"test":{"id":11,"name":"loading C:/File Arya/uin S1/simaha/test/crypto_test.dart","suiteID":10,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":24}
+{"suite":{"id":12,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/csv_notify_test.dart"},"type":"suite","time":25}
+{"test":{"id":13,"name":"loading C:/File Arya/uin S1/simaha/test/csv_notify_test.dart","suiteID":12,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":26}
+{"suite":{"id":14,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/demo_workspace_test.dart"},"type":"suite","time":32}
+{"test":{"id":15,"name":"loading C:/File Arya/uin S1/simaha/test/demo_workspace_test.dart","suiteID":14,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":33}
+{"count":23,"time":43,"type":"allSuites"}
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":35379}
+{"group":{"id":16,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":15,"line":null,"column":null,"url":null},"type":"group","time":35390}
+{"test":{"id":17,"name":"both administrators see all current students","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":168,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":35393}
+{"testID":3,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":35580}
+{"group":{"id":18,"suiteID":2,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":3,"line":null,"column":null,"url":null},"type":"group","time":35582}
+{"test":{"id":19,"name":"grade bands cover 0-100 with exact PRD weights","suiteID":2,"groupIDs":[18],"metadata":{"skip":false,"skipReason":null},"line":8,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_constants_test.dart"},"type":"testStart","time":35587}
+{"testID":19,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":35768}
+{"test":{"id":20,"name":"SKS caps follow PRD IPS thresholds","suiteID":2,"groupIDs":[18],"metadata":{"skip":false,"skipReason":null},"line":34,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_constants_test.dart"},"type":"testStart","time":35770}
+{"testID":20,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":35787}
+{"test":{"id":21,"name":"Result sealed type pattern matching works","suiteID":2,"groupIDs":[18],"metadata":{"skip":false,"skipReason":null},"line":53,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_constants_test.dart"},"type":"testStart","time":35789}
+{"testID":21,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":35824}
+{"suite":{"id":22,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/encryption_test.dart"},"type":"suite","time":36029}
+{"test":{"id":23,"name":"loading C:/File Arya/uin S1/simaha/test/encryption_test.dart","suiteID":22,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":36029}
+{"testID":5,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":36306}
+{"group":{"id":24,"suiteID":4,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":9,"line":null,"column":null,"url":null},"type":"group","time":36307}
+{"test":{"id":25,"name":"hitungNilaiAkhir default weights 30/30/40","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":7,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36307}
+{"testID":25,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36398}
+{"test":{"id":26,"name":"hitungNilaiAkhir rejects bad weights and range","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":11,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36399}
+{"testID":26,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36419}
+{"test":{"id":27,"name":"konversiHuruf follows grade bands","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":20,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36420}
+{"testID":27,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36433}
+{"test":{"id":28,"name":"batasSks follows IPS thresholds","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":30,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36434}
+{"testID":28,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36447}
+{"test":{"id":29,"name":"hitungIpk uses best grade for repeats","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":38,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36448}
+{"testID":29,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36462}
+{"test":{"id":30,"name":"simulasiIpk detects unreachable target","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":67,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36463}
+{"testID":30,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36489}
+{"test":{"id":31,"name":"progresKelulusan and estimasiSisaSemester","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":76,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36496}
+{"testID":31,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36512}
+{"test":{"id":32,"name":"validators accept valid and reject invalid input","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":86,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36514}
+{"testID":32,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36526}
+{"test":{"id":33,"name":"jadwalUjianBentrok detects overlap only same date","suiteID":4,"groupIDs":[24],"metadata":{"skip":false,"skipReason":null},"line":95,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_engine_test.dart"},"type":"testStart","time":36527}
+{"testID":33,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36539}
+{"suite":{"id":34,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/intent_parser_test.dart"},"type":"suite","time":36656}
+{"test":{"id":35,"name":"loading C:/File Arya/uin S1/simaha/test/intent_parser_test.dart","suiteID":34,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":36656}
+{"testID":17,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":36885}
+{"test":{"id":36,"name":"student scope applies to directory, counts, direct ID, and search","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":175,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":36886}
+{"testID":36,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":37095}
+{"test":{"id":37,"name":"unlinked accounts and missing sessions never inherit global access","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":187,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":37096}
+{"testID":37,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":37265}
+{"test":{"id":38,"name":"teacher can only read and grade their own classes","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":198,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":37266}
+{"testID":38,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":37460}
+{"test":{"id":39,"name":"wali sees only advisees and cannot change grades","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":209,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":37461}
+{"testID":39,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":37596}
+{"test":{"id":40,"name":"non-administrators cannot mutate students, trash, or settings","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":218,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":37596}
+{"testID":40,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":37790}
+{"test":{"id":41,"name":"account deactivation is rechecked on each service request","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":248,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":37791}
+{"testID":41,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":37940}
+{"test":{"id":42,"name":"delete and restore keep FTS and dashboard counts consistent","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":254,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":37941}
+{"testID":42,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":38142}
+{"test":{"id":43,"name":"scores reject NaN, infinity, and out of range at application boundary","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":268,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":38143}
+{"testID":43,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":38346}
+{"test":{"id":44,"name":"profile linking requires superadmin and cannot steal an occupied profile","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":282,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":38347}
+{"testID":44,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":38497}
+{"test":{"id":45,"name":"a teacher cannot link a different profile through the service","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":310,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":38498}
+{"testID":45,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":38618}
+{"test":{"id":46,"name":"FTS special characters are treated as input instead of query syntax","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":323,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":38620}
+{"testID":7,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":38634}
+{"group":{"id":47,"suiteID":6,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":2,"line":null,"column":null,"url":null},"type":"group","time":38635}
+{"test":{"id":48,"name":"PIN benar membuka sesi","suiteID":6,"groupIDs":[47],"metadata":{"skip":false,"skipReason":null},"line":42,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/auth_flow_test.dart"},"type":"testStart","time":38635}
+{"testID":46,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":38750}
+{"test":{"id":49,"name":"archived students do not cause seeding to run again","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":333,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":38751}
+{"testID":49,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":38877}
+{"test":{"id":50,"name":"login picker exposes active account names and uses linked profiles","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":340,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":38878}
+{"testID":50,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":39024}
+{"test":{"id":51,"name":"one lecturer can have teaching and advising accounts without duplicate profiles","suiteID":0,"groupIDs":[16],"metadata":{"skip":false,"skipReason":null},"line":368,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/academic_access_test.dart"},"type":"testStart","time":39025}
+{"testID":9,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":39073}
+{"group":{"id":52,"suiteID":8,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":6,"line":null,"column":null,"url":null},"type":"group","time":39074}
+{"test":{"id":53,"name":"setup creates superadmin + recovery code shown once","suiteID":8,"groupIDs":[52],"metadata":{"skip":false,"skipReason":null},"line":51,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/auth_test.dart"},"type":"testStart","time":39074}
+{"testID":51,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":39197}
+{"suite":{"id":54,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/migration_test.dart"},"type":"suite","time":39280}
+{"test":{"id":55,"name":"loading C:/File Arya/uin S1/simaha/test/migration_test.dart","suiteID":54,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":39281}
+{"testID":11,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":39573}
+{"group":{"id":56,"suiteID":10,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":39573}
+{"test":{"id":57,"name":"hash then verify succeeds; wrong PIN fails","suiteID":10,"groupIDs":[56],"metadata":{"skip":false,"skipReason":null},"line":6,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/crypto_test.dart"},"type":"testStart","time":39574}
+{"testID":13,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":39946}
+{"group":{"id":58,"suiteID":12,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":3,"line":null,"column":null,"url":null},"type":"group","time":39947}
+{"test":{"id":59,"name":"preview validasi per baris + lapor error","suiteID":12,"groupIDs":[58],"metadata":{"skip":false,"skipReason":null},"line":7,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/csv_notify_test.dart"},"type":"testStart","time":39948}
+{"testID":57,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40033}
+{"test":{"id":60,"name":"salts are random: same PIN gives different hashes","suiteID":10,"groupIDs":[56],"metadata":{"skip":false,"skipReason":null},"line":14,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/crypto_test.dart"},"type":"testStart","time":40034}
+{"testID":59,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40044}
+{"test":{"id":61,"name":"header tanpa nim/nama ditolak","suiteID":12,"groupIDs":[58],"metadata":{"skip":false,"skipReason":null},"line":24,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/csv_notify_test.dart"},"type":"testStart","time":40045}
+{"testID":61,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40058}
+{"test":{"id":62,"name":"NoopNotifications menyimpan tanpa plugin","suiteID":12,"groupIDs":[58],"metadata":{"skip":false,"skipReason":null},"line":29,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/csv_notify_test.dart"},"type":"testStart","time":40059}
+{"testID":62,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40072}
+{"suite":{"id":63,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/qr_token_test.dart"},"type":"suite","time":40136}
+{"test":{"id":64,"name":"loading C:/File Arya/uin S1/simaha/test/qr_token_test.dart","suiteID":63,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":40136}
+{"testID":48,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40161}
+{"test":{"id":65,"name":"PIN salah menampilkan pesan, sesi tetap terkunci","suiteID":6,"groupIDs":[47],"metadata":{"skip":false,"skipReason":null},"line":68,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/auth_flow_test.dart"},"type":"testStart","time":40161}
+{"testID":60,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40371}
+{"test":{"id":66,"name":"malformed hash throws FormatException","suiteID":10,"groupIDs":[56],"metadata":{"skip":false,"skipReason":null},"line":23,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/crypto_test.dart"},"type":"testStart","time":40372}
+{"testID":66,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40391}
+{"test":{"id":67,"name":"recovery code format XXXX-XXXX-XXXX, unambiguous chars","suiteID":10,"groupIDs":[56],"metadata":{"skip":false,"skipReason":null},"line":28,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/crypto_test.dart"},"type":"testStart","time":40392}
+{"testID":67,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40410}
+{"suite":{"id":68,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/risk_score_test.dart"},"type":"suite","time":40496}
+{"test":{"id":69,"name":"loading C:/File Arya/uin S1/simaha/test/risk_score_test.dart","suiteID":68,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":40496}
+{"testID":53,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40560}
+{"test":{"id":70,"name":"5 wrong PINs lock 30s, then doubles (60s, 120s), capped 15 min","suiteID":8,"groupIDs":[52],"metadata":{"skip":false,"skipReason":null},"line":70,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/auth_test.dart"},"type":"testStart","time":40561}
+{"testID":65,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":40701}
+{"suite":{"id":71,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/seed_test.dart"},"type":"suite","time":40782}
+{"test":{"id":72,"name":"loading C:/File Arya/uin S1/simaha/test/seed_test.dart","suiteID":71,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":40782}
+{"testID":70,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":41598}
+{"test":{"id":73,"name":"unknown username gives same message as wrong PIN","suiteID":8,"groupIDs":[52],"metadata":{"skip":false,"skipReason":null},"line":102,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/auth_test.dart"},"type":"testStart","time":41599}
+{"testID":73,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":42223}
+{"test":{"id":74,"name":"recovery code works once, then rejected","suiteID":8,"groupIDs":[52],"metadata":{"skip":false,"skipReason":null},"line":115,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/auth_test.dart"},"type":"testStart","time":42223}
+{"testID":74,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":43271}
+{"test":{"id":75,"name":"RBAC: only superadmin manages users; self-deactivation blocked","suiteID":8,"groupIDs":[52],"metadata":{"skip":false,"skipReason":null},"line":135,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/auth_test.dart"},"type":"testStart","time":43271}
+{"testID":75,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":44243}
+{"test":{"id":76,"name":"RBAC matrix matches PRD 5 roles","suiteID":8,"groupIDs":[52],"metadata":{"skip":false,"skipReason":null},"line":220,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/auth_test.dart"},"type":"testStart","time":44243}
+{"testID":76,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":44253}
+{"suite":{"id":77,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/stage4_regression_test.dart"},"type":"suite","time":44327}
+{"test":{"id":78,"name":"loading C:/File Arya/uin S1/simaha/test/stage4_regression_test.dart","suiteID":77,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":44327}
+{"testID":15,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":47422}
+{"group":{"id":79,"suiteID":14,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":14,"line":null,"column":null,"url":null},"type":"group","time":47423}
+{"test":{"id":80,"name":"(setUpAll)","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":26,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":47424}
+{"testID":23,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":47692}
+{"group":{"id":81,"suiteID":22,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":47693}
+{"test":{"id":82,"name":"encrypted DB round-trips with correct key","suiteID":22,"groupIDs":[81],"metadata":{"skip":false,"skipReason":null},"line":11,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/encryption_test.dart"},"type":"testStart","time":47694}
+{"testID":35,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":48158}
+{"group":{"id":83,"suiteID":34,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":48159}
+{"test":{"id":84,"name":"contoh PRD: angkatan + IPK bawah","suiteID":34,"groupIDs":[83],"metadata":{"skip":false,"skipReason":null},"line":6,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/intent_parser_test.dart"},"type":"testStart","time":48160}
+{"testID":84,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":48290}
+{"test":{"id":85,"name":"deteksi intent hitung / ringkas / presensi","suiteID":34,"groupIDs":[83],"metadata":{"skip":false,"skipReason":null},"line":13,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/intent_parser_test.dart"},"type":"testStart","time":48291}
+{"testID":85,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":48303}
+{"test":{"id":86,"name":"ekstraksi prodi + status","suiteID":34,"groupIDs":[83],"metadata":{"skip":false,"skipReason":null},"line":26,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/intent_parser_test.dart"},"type":"testStart","time":48305}
+{"testID":86,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":48337}
+{"test":{"id":87,"name":"template + NoopLlm tanpa nama/NIM","suiteID":34,"groupIDs":[83],"metadata":{"skip":false,"skipReason":null},"line":32,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/intent_parser_test.dart"},"type":"testStart","time":48338}
+{"testID":87,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":48354}
+{"suite":{"id":88,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/sync_backup_test.dart"},"type":"suite","time":48431}
+{"test":{"id":89,"name":"loading C:/File Arya/uin S1/simaha/test/sync_backup_test.dart","suiteID":88,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":48431}
+{"testID":82,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":49040}
+{"test":{"id":90,"name":"opening encrypted DB with wrong key fails","suiteID":22,"groupIDs":[81],"metadata":{"skip":false,"skipReason":null},"line":39,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/encryption_test.dart"},"type":"testStart","time":49041}
+{"testID":55,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":49174}
+{"group":{"id":91,"suiteID":54,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":49175}
+{"test":{"id":92,"name":"upgrade v1 -> v3 preserves rows and adds sync columns","suiteID":54,"groupIDs":[91],"metadata":{"skip":false,"skipReason":null},"line":62,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/migration_test.dart"},"type":"testStart","time":49176}
+Shell: 2026-10-21 08:28:56.498: ERROR CORE sqlcipher_page_cipher: hmac check failed for pgno=1
+Shell: 2026-10-21 08:28:56.499: ERROR CORE sqlite3Codec: error decrypting page 1 data: 1
+Shell: 2026-10-21 08:28:56.499: ERROR CORE sqlcipher_codec_ctx_set_error: 1 lock=0
+{"testID":90,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":49695}
+{"test":{"id":93,"name":"raw open without PRAGMA key cannot read tables","suiteID":22,"groupIDs":[81],"metadata":{"skip":false,"skipReason":null},"line":79,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/encryption_test.dart"},"type":"testStart","time":49696}
+{"testID":64,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":49816}
+{"group":{"id":94,"suiteID":63,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":3,"line":null,"column":null,"url":null},"type":"group","time":49817}
+{"test":{"id":95,"name":"token stabil dalam 1 interval, beda antar interval","suiteID":63,"groupIDs":[94],"metadata":{"skip":false,"skipReason":null},"line":6,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/qr_token_test.dart"},"type":"testStart","time":49818}
+{"testID":95,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":49964}
+{"test":{"id":96,"name":"verifikasi ok dalam jendela +/-1, tolak di luar & secret salah","suiteID":63,"groupIDs":[94],"metadata":{"skip":false,"skipReason":null},"line":28,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/qr_token_test.dart"},"type":"testStart","time":49966}
+{"testID":96,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":50000}
+{"test":{"id":97,"name":"rekap persentase hadir","suiteID":63,"groupIDs":[94],"metadata":{"skip":false,"skipReason":null},"line":87,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/qr_token_test.dart"},"type":"testStart","time":50003}
+{"testID":97,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":50024}
+{"suite":{"id":98,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/unit/step1_foundation_test.dart"},"type":"suite","time":50125}
+{"test":{"id":99,"name":"loading C:/File Arya/uin S1/simaha/test/unit/step1_foundation_test.dart","suiteID":98,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":50125}
+{"testID":93,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":50218}
+{"test":{"id":100,"name":"generated key is 64 lowercase hex chars","suiteID":22,"groupIDs":[81],"metadata":{"skip":false,"skipReason":null},"line":112,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/encryption_test.dart"},"type":"testStart","time":50219}
+{"testID":100,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":50233}
+{"suite":{"id":101,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/widget/academic_pages_test.dart"},"type":"suite","time":50323}
+{"test":{"id":102,"name":"loading C:/File Arya/uin S1/simaha/test/widget/academic_pages_test.dart","suiteID":101,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":50324}
+{"testID":92,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":50736}
+{"test":{"id":103,"name":"fresh v3 database exposes sync columns with defaults","suiteID":54,"groupIDs":[91],"metadata":{"skip":false,"skipReason":null},"line":131,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/migration_test.dart"},"type":"testStart","time":50737}
+{"testID":69,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":51004}
+{"group":{"id":104,"suiteID":68,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":51005}
+{"test":{"id":105,"name":"mahasiswa ideal -> skor 0 Aman","suiteID":68,"groupIDs":[104],"metadata":{"skip":false,"skipReason":null},"line":6,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/risk_score_test.dart"},"type":"testStart","time":51006}
+{"testID":105,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":51088}
+{"test":{"id":106,"name":"mahasiswa kritis -> skor >60 Kritis","suiteID":68,"groupIDs":[104],"metadata":{"skip":false,"skipReason":null},"line":18,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/risk_score_test.dart"},"type":"testStart","time":51089}
+{"testID":106,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":51103}
+{"test":{"id":107,"name":"batas level 30 dan 60","suiteID":68,"groupIDs":[104],"metadata":{"skip":false,"skipReason":null},"line":31,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/risk_score_test.dart"},"type":"testStart","time":51104}
+{"testID":107,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":51115}
+{"test":{"id":108,"name":"bobot tidak 1.0 ditolak","suiteID":68,"groupIDs":[104],"metadata":{"skip":false,"skipReason":null},"line":38,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/risk_score_test.dart"},"type":"testStart","time":51116}
+{"testID":108,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":51135}
+{"suite":{"id":109,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/widget/login_picker_test.dart"},"type":"suite","time":51237}
+{"test":{"id":110,"name":"loading C:/File Arya/uin S1/simaha/test/widget/login_picker_test.dart","suiteID":109,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":51238}
+{"testID":72,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":51313}
+{"group":{"id":111,"suiteID":71,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":51314}
+{"test":{"id":112,"name":"seed creates 100 mahasiswa + academic data","suiteID":71,"groupIDs":[111],"metadata":{"skip":false,"skipReason":null},"line":23,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/seed_test.dart"},"type":"testStart","time":51315}
+{"testID":103,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":51342}
+{"test":{"id":113,"name":"FTS operator query falls back to LIKE instead of throwing","suiteID":54,"groupIDs":[91],"metadata":{"skip":false,"skipReason":null},"line":163,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/migration_test.dart"},"type":"testStart","time":51343}
+{"testID":113,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":51803}
+{"test":{"id":114,"name":"v4 to v5 preserves teacher and advisor accounts in separate profile slots","suiteID":54,"groupIDs":[91],"metadata":{"skip":false,"skipReason":null},"line":190,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/migration_test.dart"},"type":"testStart","time":51804}
+{"testID":89,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":52024}
+{"group":{"id":115,"suiteID":88,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":3,"line":null,"column":null,"url":null},"type":"group","time":52025}
+{"test":{"id":116,"name":"LWW: yang lebih baru menang, seri deviceId terbesar","suiteID":88,"groupIDs":[115],"metadata":{"skip":false,"skipReason":null},"line":9,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/sync_backup_test.dart"},"type":"testStart","time":52026}
+{"testID":116,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52102}
+{"test":{"id":117,"name":"merge idempoten + catat konflik","suiteID":88,"groupIDs":[115],"metadata":{"skip":false,"skipReason":null},"line":42,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/sync_backup_test.dart"},"type":"testStart","time":52103}
+{"testID":117,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52127}
+{"test":{"id":118,"name":"backup round-trip; password salah & modifikasi ditolak","suiteID":88,"groupIDs":[115],"metadata":{"skip":false,"skipReason":null},"line":70,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/sync_backup_test.dart"},"type":"testStart","time":52128}
+{"testID":78,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":52230}
+{"group":{"id":119,"suiteID":77,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":6,"line":null,"column":null,"url":null},"type":"group","time":52231}
+{"test":{"id":120,"name":"demo preferences persist independently and serialize concurrent writes","suiteID":77,"groupIDs":[119],"metadata":{"skip":false,"skipReason":null},"line":11,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/stage4_regression_test.dart"},"type":"testStart","time":52231}
+{"testID":114,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52429}
+{"testID":118,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52433}
+{"suite":{"id":121,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/widget/secure_scope_test.dart"},"type":"suite","time":52517}
+{"test":{"id":122,"name":"loading C:/File Arya/uin S1/simaha/test/widget/secure_scope_test.dart","suiteID":121,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":52518}
+{"suite":{"id":123,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/widget/step1_widgets_test.dart"},"type":"suite","time":52535}
+{"test":{"id":124,"name":"loading C:/File Arya/uin S1/simaha/test/widget/step1_widgets_test.dart","suiteID":123,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":52535}
+{"testID":120,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52548}
+{"test":{"id":125,"name":"corrupt demo preferences fail without overwriting stored data","suiteID":77,"groupIDs":[119],"metadata":{"skip":false,"skipReason":null},"line":34,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/stage4_regression_test.dart"},"type":"testStart","time":52560}
+{"testID":125,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52616}
+{"test":{"id":126,"name":"missing study data is explicit and does not create risk warnings","suiteID":77,"groupIDs":[119],"metadata":{"skip":false,"skipReason":null},"line":51,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/stage4_regression_test.dart"},"type":"testStart","time":52617}
+{"testID":126,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52637}
+{"test":{"id":127,"name":"semester history, repeated-course GPA and passed credits use academic rules","suiteID":77,"groupIDs":[119],"metadata":{"skip":false,"skipReason":null},"line":65,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/stage4_regression_test.dart"},"type":"testStart","time":52638}
+{"testID":127,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52658}
+{"test":{"id":128,"name":"risk normalization matches approved formulas","suiteID":77,"groupIDs":[119],"metadata":{"skip":false,"skipReason":null},"line":97,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/stage4_regression_test.dart"},"type":"testStart","time":52659}
+{"testID":128,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52670}
+{"test":{"id":129,"name":"non-finite numeric input rejected by validator and grade engine","suiteID":77,"groupIDs":[119],"metadata":{"skip":false,"skipReason":null},"line":103,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/stage4_regression_test.dart"},"type":"testStart","time":52670}
+{"testID":129,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":52690}
+{"suite":{"id":130,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart"},"type":"suite","time":52778}
+{"test":{"id":131,"name":"loading C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart","suiteID":130,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":52779}
+{"testID":99,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":52956}
+{"group":{"id":132,"suiteID":98,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":7,"line":null,"column":null,"url":null},"type":"group","time":52957}
+{"group":{"id":133,"suiteID":98,"parentID":132,"name":"Step 1: Database Encryption & Security","metadata":{"skip":false,"skipReason":null},"testCount":3,"line":49,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"group","time":52958}
+{"test":{"id":134,"name":"Step 1: Database Encryption & Security DB opens with key and stores encrypted data unreadable by raw SQLite","suiteID":98,"groupIDs":[132,133],"metadata":{"skip":false,"skipReason":null},"line":50,"column":5,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"testStart","time":52958}
+{"testID":112,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":53582}
+{"test":{"id":135,"name":"ensureSeeded is idempotent","suiteID":71,"groupIDs":[111],"metadata":{"skip":false,"skipReason":null},"line":41,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/seed_test.dart"},"type":"testStart","time":53582}
+{"testID":134,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":53982}
+{"test":{"id":136,"name":"Step 1: Database Encryption & Security Foreign key enforcement is active (PRAGMA foreign_keys = ON)","suiteID":98,"groupIDs":[132,133],"metadata":{"skip":false,"skipReason":null},"line":82,"column":5,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"testStart","time":53983}
+{"testID":136,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":54421}
+{"test":{"id":137,"name":"Step 1: Database Encryption & Security CRUD on SavedFilters table works properly","suiteID":98,"groupIDs":[132,133],"metadata":{"skip":false,"skipReason":null},"line":106,"column":5,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"testStart","time":54422}
+{"testID":135,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":54732}
+{"test":{"id":138,"name":"FTS5 search <= 500ms and finds by NIM fragment","suiteID":71,"groupIDs":[111],"metadata":{"skip":false,"skipReason":null},"line":52,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/seed_test.dart"},"type":"testStart","time":54733}
+{"testID":137,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":54896}
+{"group":{"id":139,"suiteID":98,"parentID":132,"name":"Step 1: Core Services & Abstractions","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":147,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"group","time":54897}
+{"test":{"id":140,"name":"Step 1: Core Services & Abstractions Clock abstraction returns current time and allows advancing in FakeClock","suiteID":98,"groupIDs":[132,139],"metadata":{"skip":false,"skipReason":null},"line":148,"column":5,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"testStart","time":54898}
+{"testID":140,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":54917}
+{"test":{"id":141,"name":"Step 1: Core Services & Abstractions DeviceIdService generates persistent UUID v4 and caches it","suiteID":98,"groupIDs":[132,139],"metadata":{"skip":false,"skipReason":null},"line":161,"column":5,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"testStart","time":54918}
+{"testID":141,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":54942}
+{"test":{"id":142,"name":"Step 1: Core Services & Abstractions DbAuditLogger writes structured audit records to database","suiteID":98,"groupIDs":[132,139],"metadata":{"skip":false,"skipReason":null},"line":179,"column":5,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"testStart","time":54943}
+{"testID":142,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":55399}
+{"test":{"id":143,"name":"Step 1: Core Services & Abstractions SeedService populates dummy data in atomic transaction","suiteID":98,"groupIDs":[132,139],"metadata":{"skip":false,"skipReason":null},"line":219,"column":5,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/unit/step1_foundation_test.dart"},"type":"testStart","time":55400}
+{"testID":138,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":55703}
+{"test":{"id":144,"name":"pagination returns stable pages","suiteID":71,"groupIDs":[111],"metadata":{"skip":false,"skipReason":null},"line":76,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/seed_test.dart"},"type":"testStart","time":55704}
+{"testID":143,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":56143}
+{"suite":{"id":145,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/widget_test.dart"},"type":"suite","time":56222}
+{"test":{"id":146,"name":"loading C:/File Arya/uin S1/simaha/test/widget_test.dart","suiteID":145,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":56223}
+{"testID":144,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":56480}
+dart.exe : lib/presentation/features/campus/export_study_button.dart:21:37: Error: Member not found: 'platform'.
+At line:111 char:1
++ & 'C:/flutter_windows_3.47.2-stable/src/flutter/bin/cache/dart-sdk/bi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (lib/presentatio...nd: 'platform'.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+      final path = await FilePicker.platform.saveFile(
+                                    ^^^^^^^^
+{"testID":102,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":69233}
+{"group":{"id":147,"suiteID":101,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":6,"line":null,"column":null,"url":null},"type":"group","time":69234}
+{"test":{"id":148,"name":"(setUpAll)","suiteID":101,"groupIDs":[147],"metadata":{"skip":false,"skipReason":null},"line":42,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/academic_pages_test.dart"},"type":"testStart","time":69235}
+{"testID":148,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":69369}
+{"test":{"id":149,"name":"teacher workspace shows linked lecturer, course, roster size, and schedule","suiteID":101,"groupIDs":[147],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":104,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/academic_pages_test.dart"},"type":"testStart","time":69370}
+{"testID":131,"error":"Failed to load \"C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart\":\nCompilation failed for testPath=C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: lib/presentation/features/campus/export_study_button.dart:21:37: Error: Member not found: 'platform'.\n      final path = await FilePicker.platform.saveFile(\n                                    ^^^^^^^^\n.","stackTrace":"","isFailure":false,"type":"error","time":69822}
+{"testID":131,"result":"error","skipped":false,"hidden":false,"type":"testDone","time":69823}
+{"testID":110,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":70283}
+{"group":{"id":150,"suiteID":109,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":7,"line":null,"column":null,"url":null},"type":"group","time":70284}
+{"test":{"id":151,"name":"(setUpAll)","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":25,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/login_picker_test.dart"},"type":"testStart","time":70285}
+{"testID":151,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":70398}
+{"test":{"id":152,"name":"five roles are selectable with no username typing; empty roles cannot log in","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":97,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/login_picker_test.dart"},"type":"testStart","time":70399}
+{"testID":122,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":71113}
+{"group":{"id":153,"suiteID":121,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":1,"line":null,"column":null,"url":null},"type":"group","time":71114}
+{"test":{"id":154,"name":"overlapping secure routes stay protected until the last scope closes","suiteID":121,"groupIDs":[153],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":7,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/secure_scope_test.dart"},"type":"testStart","time":71114}
+{"testID":124,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":71898}
+{"group":{"id":155,"suiteID":123,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":7,"line":null,"column":null,"url":null},"type":"group","time":71899}
+{"test":{"id":156,"name":"AppScaffold renders title and body with theme","suiteID":123,"groupIDs":[155],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":7,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/step1_widgets_test.dart"},"type":"testStart","time":71899}
+{"testID":149,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":73316}
+{"test":{"id":157,"name":"student class detail shows personal grade and attendance","suiteID":101,"groupIDs":[147],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":119,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/academic_pages_test.dart"},"type":"testStart","time":73317}
+{"testID":154,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":73345}
+{"testID":157,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":73654}
+{"test":{"id":158,"name":"student can read advisor notes without a write button","suiteID":101,"groupIDs":[147],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":147,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/academic_pages_test.dart"},"type":"testStart","time":73655}
+{"testID":158,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":73886}
+{"test":{"id":159,"name":"wali can validate and save a note for the selected student","suiteID":101,"groupIDs":[147],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":165,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/academic_pages_test.dart"},"type":"testStart","time":73887}
+{"testID":156,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":74478}
+{"test":{"id":160,"name":"EmptyState displays icon, message, and triggers action","suiteID":123,"groupIDs":[155],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":22,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/step1_widgets_test.dart"},"type":"testStart","time":74479}
+{"testID":160,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":75147}
+{"test":{"id":161,"name":"ErrorState displays error and triggers retry","suiteID":123,"groupIDs":[155],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":46,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/step1_widgets_test.dart"},"type":"testStart","time":75148}
+{"testID":161,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":75287}
+{"test":{"id":162,"name":"LoadingView displays message and progress indicator","suiteID":123,"groupIDs":[155],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":67,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/step1_widgets_test.dart"},"type":"testStart","time":75287}
+{"testID":162,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":75421}
+{"test":{"id":163,"name":"StatusChip renders appropriate colors and icon","suiteID":123,"groupIDs":[155],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":80,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/step1_widgets_test.dart"},"type":"testStart","time":75422}
+{"testID":152,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":75467}
+{"test":{"id":164,"name":"last account restores the role and selected name","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":118,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/login_picker_test.dart"},"type":"testStart","time":75468}
+{"testID":163,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":75551}
+{"test":{"id":165,"name":"AppTextField handles input, validation, and obscure toggle","suiteID":123,"groupIDs":[155],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":100,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/step1_widgets_test.dart"},"type":"testStart","time":75552}
+{"testID":164,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":76133}
+{"test":{"id":166,"name":"switching accounts clears partial PIN and uses the selected account for verification","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":135,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/login_picker_test.dart"},"type":"testStart","time":76134}
+{"testID":159,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":76379}
+{"test":{"id":167,"name":"teaching role never requests or renders private advising notes","suiteID":101,"groupIDs":[147],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":225,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/academic_pages_test.dart"},"type":"testStart","time":76380}
+{"testID":167,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":76497}
+{"test":{"id":168,"name":"all role functions remain readable on a narrow screen with large text","suiteID":101,"groupIDs":[147],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":239,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/academic_pages_test.dart"},"type":"testStart","time":76498}
+{"testID":165,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":76947}
+{"test":{"id":169,"name":"SectionCard renders header and child","suiteID":123,"groupIDs":[155],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":126,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/step1_widgets_test.dart"},"type":"testStart","time":76948}
+{"testID":169,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":77100}
+{"testID":168,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":77174}
+{"test":{"id":170,"name":"(tearDownAll)","suiteID":101,"groupIDs":[147],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":77174}
+{"testID":170,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":77185}
+lib/presentation/features/campus/export_study_button.dart:21:37: Error: Member not found: 'platform'.
+      final path = await FilePicker.platform.saveFile(
+                                    ^^^^^^^^
+{"testID":166,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":79285}
+{"test":{"id":171,"name":"selecting a role still needs a valid PIN and unlocks the verified user","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":161,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/login_picker_test.dart"},"type":"testStart","time":79286}
+{"testID":146,"error":"Failed to load \"C:/File Arya/uin S1/simaha/test/widget_test.dart\":\nCompilation failed for testPath=C:/File Arya/uin S1/simaha/test/widget_test.dart: lib/presentation/features/campus/export_study_button.dart:21:37: Error: Member not found: 'platform'.\n      final path = await FilePicker.platform.saveFile(\n                                    ^^^^^^^^\n.","stackTrace":"","isFailure":false,"type":"error","time":79619}
+{"testID":146,"result":"error","skipped":false,"hidden":false,"type":"testDone","time":79620}
+{"testID":171,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":80646}
+{"test":{"id":172,"name":"failed account loading can be retried","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":190,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/login_picker_test.dart"},"type":"testStart","time":80647}
+{"testID":172,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":81003}
+{"test":{"id":173,"name":"role and account chooser fits a narrow screen with enlarged text","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":206,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/login_picker_test.dart"},"type":"testStart","time":81004}
+{"testID":173,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":81551}
+{"test":{"id":174,"name":"demo shortcut is mode-specific and verifies the selected account PIN","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":221,"root_column":3,"root_url":"file:///C:/File%20Arya/uin%20S1/simaha/test/widget/login_picker_test.dart"},"type":"testStart","time":81552}
+{"testID":174,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":82084}
+{"test":{"id":175,"name":"(tearDownAll)","suiteID":109,"groupIDs":[150],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":82084}
+{"testID":175,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":82091}
+{"testID":80,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":134424}
+{"test":{"id":176,"name":"compact demo has complete links and exact initial counts","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":44,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":134425}
+{"testID":176,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":134498}
+{"test":{"id":177,"name":"all 62 demo accounts can log in with the documented PIN and their real role","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":73,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":134505}
+{"testID":177,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":218774}
+{"test":{"id":178,"name":"five lecturers each teach all 50 students but own exactly one distinct class","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":84,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":218775}
+{"testID":178,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":219039}
+{"test":{"id":179,"name":"same five lecturer profiles advise ten students each using separate wali accounts","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":103,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":219040}
+{"testID":179,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":219154}
+{"test":{"id":180,"name":"each student has five courses, only their own attendance, and readable advising","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":120,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":219155}
+{"testID":180,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":221223}
+{"test":{"id":181,"name":"a grade update is shared by teacher, student, wali, and academic admin","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":141,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":221225}
+{"testID":181,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":221351}
+{"test":{"id":182,"name":"wali notes reach the right student and are denied to unrelated accounts","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":183,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":221352}
+{"testID":182,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":221406}
+{"test":{"id":183,"name":"administrators see all classes and students, and demo seeding preserves edits","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":234,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":221408}
+{"testID":183,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":221507}
+{"test":{"id":184,"name":"demo recovery cannot consume the normal workspace recovery code","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":266,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":221508}
+{"testID":184,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":221585}
+{"test":{"id":185,"name":"manual attendance reaches student and wali, rejects unrelated teacher and invalid status","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":295,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":221586}
+{"testID":185,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":221928}
+{"test":{"id":186,"name":"announcements persist across roles and only administrators publish","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":343,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":221929}
+{"testID":186,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":222025}
+{"test":{"id":187,"name":"insights respect role scopes and teacher does not receive cumulative GPA","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":370,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":222026}
+{"testID":187,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":222146}
+{"test":{"id":188,"name":"PDF export is real PDF bytes and denies cross-student and teacher access","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":387,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":222147}
+{"testID":188,"messageType":"print","message":"Helvetica has no Unicode support see https://github.com/DavBfr/dart_pdf/wiki/Fonts-Management","type":"print","time":222748}
+{"testID":188,"messageType":"print","message":"Helvetica-Bold has no Unicode support see https://github.com/DavBfr/dart_pdf/wiki/Fonts-Management","type":"print","time":222749}
+{"testID":188,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":222750}
+{"test":{"id":189,"name":"audit trail is restricted to Super Admin","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":404,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":222751}
+{"testID":189,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":222766}
+{"test":{"id":190,"name":"(tearDownAll)","suiteID":14,"groupIDs":[79],"metadata":{"skip":false,"skipReason":null},"line":40,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/demo_workspace_test.dart"},"type":"testStart","time":222767}
+{"testID":190,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":222779}
+{"success":false,"type":"done","time":222877}

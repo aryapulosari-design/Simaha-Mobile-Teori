@@ -1,0 +1,42 @@
+00:00 +0: loading C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart
+00:00 +0: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: (setUpAll)
+00:00 +0: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +1: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +2: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +3: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +4: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +5: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +6: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +7: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +8: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +9: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:02 +10: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:04 +11: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:05 +12: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:05 +13: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:05 +14: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:05 +15: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:06 +16: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:08 +17: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:08 +18: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:09 +19: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:09 +20: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:09 +21: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-admin-akademik: dashboard fits and respects role actions
+00:09 +22: C:/File Arya/uin S1/simaha/test/widget/login_picker_test.dart: switching accounts clears partial PIN and uses the selected account for verification
+00:09 +23: C:/File Arya/uin S1/simaha/test/widget/login_picker_test.dart: switching accounts clears partial PIN and uses the selected account for verification
+00:09 +24: C:/File Arya/uin S1/simaha/test/widget/login_picker_test.dart: switching accounts clears partial PIN and uses the selected account for verification
+00:10 +25: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-pengampu: dashboard fits and respects role actions
+00:11 +26: C:/File Arya/uin S1/simaha/test/widget/login_picker_test.dart: selecting a role still needs a valid PIN and unlocks the verified user
+00:11 +27: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-wali: dashboard fits and respects role actions
+00:12 +28: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-wali: dashboard fits and respects role actions
+00:12 +29: C:/File Arya/uin S1/simaha/test/widget/login_picker_test.dart: role and account chooser fits a narrow screen with enlarged text
+00:12 +30: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: role-mahasiswa: dashboard fits and respects role actions
+00:13 +31: C:/File Arya/uin S1/simaha/test/widget/login_picker_test.dart: demo shortcut is mode-specific and verifies the selected account PIN
+00:13 +32: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: desktop-light: dashboard fits and respects role actions
+00:15 +33: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: mobile-light: dashboard fits and respects role actions
+00:16 +34: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: mobile-dark: dashboard fits and respects role actions
+00:17 +35: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: mobile-large-text: dashboard fits and respects role actions
+00:17 +36: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: tablet: dashboard fits and respects role actions
+00:18 +37: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: restricted deep links redirect and theme changes preserve current route
+00:19 +38: C:/File Arya/uin S1/simaha/test/widget/workspace_test.dart: (tearDownAll)
+00:19 +38: All tests passed!

@@ -34,18 +34,18 @@ class AppSpacing {
 
   // Elevation Shadows (simplified for Flutter)
   static List<BoxShadow> get cardShadow => [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.03),
-          blurRadius: 6,
-          offset: const Offset(0, 2),
-        ),
-      ];
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.03),
+      blurRadius: 6,
+      offset: const Offset(0, 2),
+    ),
+  ];
 
   static List<BoxShadow> get cardHoverShadow => [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.06),
-          blurRadius: 16,
-          offset: const Offset(0, 6),
-        ),
-      ];
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.06),
+      blurRadius: 16,
+      offset: const Offset(0, 6),
+    ),
+  ];
 }

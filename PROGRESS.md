@@ -404,3 +404,16 @@ test/
 | 🟢 Rendah | README.md update | Step 14 |
 
 > Checkpoint 20 Oktober 2026: pekerjaan ditunda atas permintaan pengguna. Detail implementasi tersimpan dan prioritas lanjutan: [doct/LANJUT_BESOK.md](doct/LANJUT_BESOK.md). Desain Stitch dan verifikasi jendela Windows belum selesai.
+
+## Pembaruan 21 Oktober 2026
+
+- Mengikuti arah visual folder Stitch: canvas kebiruan, kartu putih, teal/indigo, tiga font lokal berlisensi OFL dan ikon launcher konsisten.
+- Memisahkan HomePage, komponen bento, baris mahasiswa, layanan insight, pengumuman/presensi, ekspor PDF dan inisialisasi penyimpanan.
+- Memperbarui demo menjadi 50 mahasiswa, 5 dosen, 5 kelas, 62 akun. Tiap pengampu mengajar 50 mahasiswa dan tiap wali membimbing 10 mahasiswa. Data lama tidak ditimpa.
+- Menghubungkan presensi manual, pengumuman, PDF hasil studi lokal, insight dan IPS per semester tersedia, serta pembaca audit terbatas.
+- Memperbaiki normalisasi risiko, validasi nilai non-finite, kompatibilitas file picker dan bootstrap demo pada direktori terkelola.
+- Melepas dependensi/izin platform yang belum dipakai dan menjalankan tes/build Flutter berurutan.
+- Menyusun laporan Tahap 4 dan Tahap 5 dengan identitas tiga anggota, tabel tes aktual, temuan, formulir calon pengguna, bahan presentasi dan naskah video.
+- Uji calon pengguna belum dilaksanakan. Lima puluh mahasiswa demo tidak dihitung sebagai responden. Video demonstrasi nyata dan demonstrasi langsung belum dilaksanakan. Status seluruh PRD tetap mengikuti audit.
+
+Laporan PDF akhir telah dirender menjadi 11 halaman dan seluruh halaman diperiksa secara visual. Suite akhir 136 tes lulus, 38 regresi UI/domain terkait lulus, analyzer bersih, APK ARM64 kandidat 24,6 MiB berhasil dibangun dan apksigner verify lulus. Build Windows berhasil; smoke test mencapai halaman login dengan 50 mahasiswa dan tanpa BootError. Bukti tersedia pada bukti/ serta doct/laporan/.

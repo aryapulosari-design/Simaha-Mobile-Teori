@@ -4,13 +4,7 @@
 // Level 3 (LLM) di belakang [LlmProvider], default [NoopLlm] nonaktif;
 // hanya data agregat/anonim yang boleh keluar (tanpa nama/NIM).
 
-enum AssistIntent {
-  cariMahasiswa,
-  hitung,
-  ringkas,
-  presensi,
-  takDikenal,
-}
+enum AssistIntent { cariMahasiswa, hitung, ringkas, presensi, takDikenal }
 
 /// Filter terstruktur hasil parse (dipakai QueryBuilder Drift di UI).
 class AssistQuery {
@@ -45,7 +39,9 @@ int? _extractAngkatan(String t) {
 
 double? _extractIpkBawah(String t) {
   for (final re in [
-    RegExp(r'ipk\s*(?:di\s*bawah|dibawah|kurang\s*dari|<\s*)\s*(\d(?:[.,]\d+)?)'),
+    RegExp(
+      r'ipk\s*(?:di\s*bawah|dibawah|kurang\s*dari|<\s*)\s*(\d(?:[.,]\d+)?)',
+    ),
     RegExp(r'ipk\s*<\s*(\d(?:[.,]\d+)?)'),
   ]) {
     final m = re.firstMatch(t);
@@ -104,9 +100,8 @@ AssistQuery parsePertanyaan(String raw) {
     r'\b(presensi|kehadiran|hadir|bolos|alpha|alpa|izin|sakit)\b',
   ).hasMatch(t)) {
     intent = AssistIntent.presensi;
-  } else if (RegExp(
-    r'\b(mahasiswa|mhs|nim|nama|angkatan|prodi|ipk)\b',
-  ).hasMatch(t)) {
+  } else if (RegExp(r'\b(mahasiswa|mhs|nim|nama|angkatan|prodi|ipk)\b')
+      .hasMatch(t)) {
     intent = AssistIntent.cariMahasiswa;
   } else {
     intent = AssistIntent.takDikenal;

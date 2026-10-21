@@ -11,6 +11,11 @@ Future<void> loadAcademicPreviewFonts() async {
   await (FontLoader(
     'MaterialIcons',
   )..addFont(rootBundle.load('fonts/MaterialIcons-Regular.otf'))).load();
+  for (final family in ['Inter', 'PlusJakartaSans', 'JetBrainsMono']) {
+    await (FontLoader(
+      family,
+    )..addFont(rootBundle.load('assets/fonts/$family.ttf'))).load();
+  }
   if (!const bool.fromEnvironment('WRITE_PREVIEWS')) return;
   final configFile = File('.dart_tool/package_config.json');
   final config =

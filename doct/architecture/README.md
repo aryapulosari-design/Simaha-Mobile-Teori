@@ -27,7 +27,7 @@ Tidak ada backend/REST API pada alur ini. Database produksi menggunakan executor
 | `lib/data/local/app_database.dart` | Schema/migrasi, query, persistence CRUD, FTS dan trigger. |
 | `lib/data/local/connection` | Pengelolaan key dan executor SQLCipher. |
 | `lib/core/config/app_runtime.dart` | Flag compile-time SIMAHA_DEMO dan nama database demo. |
-| `lib/data/local/seed/demo_seed.dart` | Seeder atomik/idempoten untuk 22 akun, 5 dosen, 10 mahasiswa, dan seluruh relasinya. |
+| `lib/data/local/seed/demo_seed.dart` | Seeder atomik/idempoten untuk 62 akun, 5 dosen, 50 mahasiswa, dan seluruh relasinya. |
 | `lib/data/local/seed` | Data dummy deterministik dengan pembuatan payload di isolate. |
 | `lib/data/services/auth_service.dart` | Setup, PIN, lockout, recovery, pengelolaan/pengaitan akun. |
 | `lib/data/services/academic_service.dart` | Batas akses mahasiswa/nilai, izin mutasi, validasi input. |
@@ -79,3 +79,9 @@ IPS tersedia pada domain melalui kelompok semester. Batas SKS domain: semester p
 ## Menambah fitur
 
 Fitur baru perlu mendefinisikan scope dan permission, mengotorisasi di service, menjaga transaksi multi-tabel, menyediakan loading/error/empty state, dan menguji akses di luar scope. Pengembangan schema perlu migrasi, bukan menghapus database pengguna. Status harus diperbarui pada fitur dan audit setelah alur benar-benar terhubung.
+
+## Struktur kandidat 21 Oktober 2026
+
+`WorkspaceStorage` mengatur berkas, executor dan store sesuai mode; `DemoStore` hanya untuk data sintetis. `InsightsService` menyusun metrik dari pembacaan AcademicService yang dibatasi scope; `CampusService` menangani pengumuman, sesi/presensi dan audit; `StudyExportService` menghasilkan PDF setelah otorisasi. Komponen `BentoCard`, `BentoGrid`, `MetricTile` dan `ContextTag` dipakai ulang pada presentasi. Domain `StudentInsight` tidak bergantung Flutter atau Drift.
+
+PDF report dibangun secara reproduktif dari `tools/build_project_report.py`, membaca log tes/build aktual. Paket yang belum dipakai dihapus dari dependensi langsung; fondasi domain yang belum menjadi fitur pengguna tetap dicatat sebagai gap.

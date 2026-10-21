@@ -1,53 +1,47 @@
-# Hasil verifikasi — 20 Oktober 2026
+﻿# Hasil verifikasi 21 Oktober 2026
 
-Pembaruan login: pengguna kini memilih role dan akun aktif dari daftar, kemudian memasukkan PIN. Tidak perlu mengetik username. Akun terakhir diingat.
-
-## Hasil yang dijalankan
-
-| Pemeriksaan | Hasil |
+| Pemeriksaan | Hasil dan bukti |
 |---|---|
-| `flutter analyze --no-pub` | **Lulus — No issues found**, exit 0. |
-| `flutter test --no-pub --reporter expanded` | **118 tes lulus**, exit 0; tidak ada tes gagal. |
-| Tes scope akademik | 15 skenario: lima role, direct ID, pencarian, nilai kelas lain, mutasi terlarang, akun nonaktif, linking, FTS hapus/pulih, NaN/infinity, seeder saat seluruh data diarsipkan, daftar akun aktif untuk login. |
-| Tes pemilih akun | 7 skenario: lima role, role tanpa akun, akun terakhir, pemilihan akun/PIN, login valid, retry, layar sempit dengan teks 160%. |
-| Tes workspace | 10 skenario: desktop, mobile terang/gelap, teks 160% pada lebar 320, tablet, restricted deep links/tema tidak mereset route. |
-| Tes scope layar aman | Proteksi tetap aktif saat dua route sensitif bertumpuk dan baru dilepas sesudah scope terakhir ditutup. Mock MethodChannel; bukan uji screenshot Android fisik. |
-| Build Windows release audit awal | **Berhasil** pada implementasi audit awal, di `build/windows/x64/runner/Release/`. Pembaruan pemilih akun dijalankan melalui build debug `flutter run -d windows`. |
-| Pratinjau UI | PNG dari widget aktual pada [folder preview](../design/README.md), diperiksa secara visual. |
+| Suite lengkap | **136 tes lulus**, runner success=true, bukti/tests.jsonl |
+| Analyzer | **No issues found**, bukti/analyze.log |
+| Regresi UI dan domain terkait | **38 tes lulus**, bukti/widget-previews.log |
+| Dataset dan hubungan | 50 mahasiswa, 5 dosen, 5 kelas, 62 akun, 250 KRS/nilai, 750 presensi awal dan 50 catatan bimbingan |
+| Semua akun | Seluruh 62 PIN awal dan role diverifikasi melalui AuthService |
+| Antarperan | Nilai, catatan bimbingan dan presensi terbaca melalui akun terkait; akses pihak lain ditolak |
+| Penyimpanan demo | Reopen mempertahankan data, file mode biasa tetap utuh, kunci hilang gagal aman |
+| Build APK ARM64 | Berhasil, release kandidat demo versi 1.1.0, minimum API 26; file artifacts/SIMAHA-1.1.0-rc-demo-arm64.apk |
+| Tanda tangan APK | apksigner verify lulus, skema v2, sertifikat Android Debug; belum signing distribusi |
+| Manifest APK | Package id.ac.uin.simaha, versi ABI 2002, target/compile API 36, native-code arm64-v8a |
+| Build Windows | Hasil akhir pada bukti/build-windows.log; jangan menyamakan build dengan uji interaktif lengkap |
+| Preview | PNG widget aktual, font lokal, desktop/ponsel/tablet/gelap/teks 160 persen |
+| Uji calon pengguna | **Belum dilaksanakan**, 0 responden aktual; 50 mahasiswa demo bukan responden |
 
-SDK: Dart 3.13.2 stable pada Windows. Perintah Flutter dijalankan dengan `dart.exe .../flutter_tools.snapshot <subcommand>` untuk mengatasi akses lock/cache launcher SDK pada lingkungan terkelola. Tidak ada penggantian implementasi produksi dengan mock untuk analyzer/build. Widget preview memakai data dummy; test service memakai database sementara.
+CSV hasil setiap tes dibuat otomatis saat laporan dibangun pada doct/laporan/hasil_pengujian_otomatis.csv. Data pada widget preview adalah fixture sintetis untuk layout, sedangkan service test menggunakan database sementara.
 
-## Bukti hasil dan cara reproduksi
+## Reproduksi
 
-```text
-flutter analyze: No issues found!
-flutter test: +118: All tests passed!
-flutter build windows: Built build\windows\x64\runner\Release\simaha.exe
-```
+Jalankan berurutan karena perintah Flutter memperbarui file plugin yang sama:
 
 ```sh
+flutter pub get
+flutter test --no-pub --reporter json
 flutter analyze --no-pub
-flutter test --no-pub --reporter expanded
-flutter test test/widget/workspace_test.dart --no-pub --dart-define=WRITE_PREVIEWS=true
-flutter build windows --release --no-pub
+flutter build apk --release --no-pub --dart-define=SIMAHA_DEMO=true --target-platform android-arm64 --split-per-abi
+flutter build windows --debug --no-pub --dart-define=SIMAHA_DEMO=true
 ```
 
-Untuk menjalankan/memindahkan build Windows, gunakan isi folder Release secara lengkap, termasuk `data/` dan DLL, bukan hanya berkas EXE.
+Untuk UI preview:
 
-## Batas pengujian
+```sh
+flutter test test/widget/workspace_test.dart test/widget/academic_pages_test.dart test/widget/login_picker_test.dart test/widget/campus_pages_test.dart test/stage4_regression_test.dart test/risk_score_test.dart --dart-define=SIMAHA_DEMO=true --dart-define=WRITE_PREVIEWS=true
+```
 
-- Build Windows membuktikan kompilasi; sesi GUI Windows produksi belum diuji secara interaktif dalam audit ini.
-- Belum build/uji APK Android, perangkat fisik, iOS/macOS/Linux, screenshot/recent apps Android, biometrik, notifikasi nyata.
-- Belum ada integration test end-to-end, uji kehilangan key/perangkat, benchmark 10.000 mahasiswa, pengukuran cold start perangkat, ukuran APK, SUS, atau coverage logika inti ≥70%.
-- Kelulusan unit test QR/backup/sync/parser hanya membuktikan fungsi yang diuji; tidak mengubah status modul tersebut menjadi fitur aplikasi lengkap.
-- Target PRD yang belum selesai tercatat pada [audit FR/NFR](README.md).
+Pada lingkungan terkelola, perintah memakai dart.exe dan flutter_tools.snapshot dari SDK yang sama untuk menghindari launcher lock. Runtime folder demo dapat diarahkan melalui SIMAHA_DEMO_DIRECTORY tanpa mengubah penyimpanan mode biasa.
 
-## Perubahan perilaku utama yang diperiksa
+## Batas bukti
 
-1. Mahasiswa A tidak dapat membaca mahasiswa B melalui query atau ID.
-2. Dosen Pengampu tidak dapat membaca/mengubah nilai kelas dosen lain.
-3. Wali hanya mendapat mahasiswa bimbingan dan tidak dapat menulis nilai.
-4. Data arsip hilang dari pencarian/count, kembali setelah restore, dan indeks FTS tetap konsisten.
-5. Mengarsipkan seluruh mahasiswa tidak menjalankan seeder ulang saat pembukaan aplikasi.
-6. Profil yang sudah ditempati akun lain tidak dapat diambil alih; linking dibatasi Super Admin.
-7. URL admin ditolak bagi mahasiswa dan navigasi tetap pada halaman aktif ketika tema berubah.
+Belum ada uji Android fisik, uji calon pengguna, penilaian SUS, uji pembaca layar, benchmark 10000 mahasiswa, ataupun pengujian kehilangan perangkat. Penyimpanan serta pemulihan data produksi lama belum diverifikasi ulang setelah temuan DPAPI. Build release APK masih memakai sertifikat debug. QR, backup/restore, sinkronisasi dan gap lain mengikuti matriks FR/NFR.
+
+Lihat [temuan dan perbaikan](temuan.md), [kasus uji](../testing/KASUS_UJI.md), dan [laporan Tahap 4 dan 5](../laporan/README.md).
+
+Windows smoke test terbaru mencapai halaman LockPage dengan total=50, aktif=50, prodi=1, dosen=5, kelas=5. Tidak ada BootError. Bukti terbatas pada startup dan struktur widget Flutter; belum merupakan uji interaktif lengkap oleh pengguna. Lihat bukti/windows-smoke.json.

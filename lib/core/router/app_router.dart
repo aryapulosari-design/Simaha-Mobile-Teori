@@ -1,3 +1,6 @@
+import 'package:simaha/presentation/features/campus/announcements_page.dart';
+import 'package:simaha/presentation/features/campus/attendance_page.dart';
+import 'package:simaha/presentation/features/campus/study_insight_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simaha/domain/security/roles.dart';
@@ -61,7 +64,7 @@ GoRouter buildRouter({required String dbPath}) {
             (role == null || !canRole(role, Permission.manageMaster))) {
           return '/';
         }
-        if (loc == '/users' &&
+        if ((loc == '/users' || loc == '/audit') &&
             (role == null || !canRole(role, Permission.manageUsers))) {
           return '/';
         }
@@ -75,6 +78,26 @@ GoRouter buildRouter({required String dbPath}) {
       ShellRoute(
         builder: (context, state, child) => AppShell(child: child),
         routes: [
+          GoRoute(
+            path: '/pengumuman',
+            builder: (context, state) => const AnnouncementsPage(),
+          ),
+          GoRoute(
+            path: '/audit',
+            builder: (context, state) => const AuditTrailPage(),
+          ),
+          GoRoute(
+            path: '/presensi/:id',
+            builder: (context, state) => AttendancePage(
+              classId: int.tryParse(state.pathParameters['id'] ?? '') ?? 0,
+            ),
+          ),
+          GoRoute(
+            path: '/studi/:id',
+            builder: (context, state) => StudyInsightPage(
+              studentId: int.tryParse(state.pathParameters['id'] ?? '') ?? 0,
+            ),
+          ),
           GoRoute(path: '/', builder: (context, state) => const HomePage()),
           GoRoute(
             path: '/akademik',

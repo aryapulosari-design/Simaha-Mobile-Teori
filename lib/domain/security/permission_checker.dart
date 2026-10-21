@@ -20,10 +20,15 @@ class PermissionChecker {
   }
 
   bool canManageUsers(Role role) => hasPermission(role, Permission.manageUsers);
-  bool canManageMaster(Role role) => hasPermission(role, Permission.manageMaster);
+  bool canManageMaster(Role role) =>
+      hasPermission(role, Permission.manageMaster);
   bool canManageNilai(Role role) => hasPermission(role, Permission.manageNilai);
-  bool canViewAllMahasiswa(Role role) => hasPermission(role, Permission.viewAllMahasiswa);
-  bool canManageBimbingan(Role role) => hasPermission(role, Permission.manageBimbingan);
-  bool canViewAnalytics(Role role) => hasPermission(role, Permission.viewAnalytics);
-  bool canBackupRestore(Role role) => hasPermission(role, Permission.backupRestore);
+  bool canViewAllMahasiswa(Role role) =>
+      hasPermission(role, Permission.viewAllMahasiswa);
+  bool canManageBimbingan(Role role) =>
+      hasPermission(role, Permission.manageBimbingan);
+  bool canViewAnalytics(Role role) =>
+      hasPermission(role, Permission.viewAnalytics);
+  bool canBackupRestore(Role role) =>
+      hasPermission(role, Permission.backupRestore);
 }

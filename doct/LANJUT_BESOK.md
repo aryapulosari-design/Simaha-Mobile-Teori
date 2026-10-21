@@ -1,3 +1,5 @@
+> Riwayat checkpoint 20 Oktober 2026. Pekerjaan sudah dilanjutkan pada 21 Oktober; lihat doct/laporan/README.md dan audit terkini untuk status sekarang.
+
 ﻿# Catatan lanjut — 20 Oktober 2026
 
 Pekerjaan dihentikan sementara atas permintaan pengguna dan disimpan ke GitHub. Implementasi desain Stitch belum selesai.

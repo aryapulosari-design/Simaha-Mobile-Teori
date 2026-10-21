@@ -2,7 +2,11 @@
 
 Aplikasi Flutter untuk mengelola data mahasiswa di perangkat dengan database SQLCipher terenkripsi, tanpa backend atau REST API.
 
-**Status 20 Oktober 2026:** lima role tersedia dengan pemilih akun, halaman kelas/jadwal/rekap kehadiran, nilai/IPK, dan catatan bimbingan yang saling terhubung. Ruang demo berisi 5 dosen dan 10 mahasiswa siap login. Seluruh rancangan PRD belum selesai; input presensi, PDF, backup aplikasi, sinkronisasi, serta asisten masih memerlukan pengembangan.
+**Status 21 Oktober 2026:** UI mengikuti referensi Stitch dengan lima dashboard, 50 mahasiswa demo dan 5 dosen yang saling terhubung. Tersedia pemilih akun, nilai/IPK, jadwal, presensi manual dan rekap, bimbingan, pengumuman, insight studi, audit terbatas, serta PDF hasil studi. Seluruh PRD belum selesai; QR, backup/restore, sinkronisasi, CRUD master dan asisten masih memerlukan pengembangan.
+
+## Laporan Tahap 4 dan Tahap 5
+
+[Laporan dan matriks luaran](doct/laporan/README.md) memuat kasus uji, hasil aktual, temuan/perbaikan, rancangan uji pengguna, bahan presentasi, dan naskah video. Uji calon pengguna belum dilaksanakan; 50 mahasiswa demo bukan responden.
 
 ## Dokumentasi
 
@@ -26,7 +30,7 @@ Mulai dari **[doct/README.md](doct/README.md)**.
 flutter run -d windows --dart-define=SIMAHA_DEMO=true
 ```
 
-Pilih role dan nama akun, lalu klik **Masuk akun demo**. PIN awal seluruh akun **123456**. Isi demo: 5 dosen, 10 mahasiswa, 5 kelas, nilai, rekap kehadiran, dan catatan bimbingan. Lihat [semua akun dan hubungan datanya](doct/demo/README.md). Gunakan **Ganti akun** dan **Semua fungsi peran** pada beranda.
+Pilih role dan nama akun, lalu klik **Masuk akun demo**. PIN awal seluruh akun **123456**. Isi demo: 5 dosen, 50 mahasiswa, 5 kelas, nilai, rekap kehadiran, dan catatan bimbingan. Lihat [semua akun dan hubungan datanya](doct/demo/README.md). Gunakan **Ganti akun** dan **Semua fungsi peran** pada beranda.
 
 ## Jalankan mode biasa
 

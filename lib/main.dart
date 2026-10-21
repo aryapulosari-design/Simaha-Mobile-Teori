@@ -1,3 +1,5 @@
+import 'package:simaha/data/local/connection/workspace_storage.dart';
+
 // SIMAHA Offline bootstrap (Tahap A).
 // Opens SQLCipher-encrypted Drift DB, seeds 100 dummy students on first run,
 // then starts Material3 + Riverpod + go_router app. 100% offline.
@@ -12,13 +14,10 @@ import 'package:simaha/data/local/seed/demo_seed.dart';
 import 'package:simaha/core/security/gate.dart';
 import 'package:simaha/core/theme/app_theme.dart';
 import 'package:simaha/data/local/app_database.dart';
-import 'package:simaha/data/local/connection/database_key_manager.dart';
 import 'package:simaha/data/local/connection/encrypted_connection.dart';
 import 'package:simaha/data/local/seed/seed_data.dart';
 import 'package:simaha/data/services/auth_service.dart';
 import 'package:simaha/data/services/crypto_service.dart';
-import 'package:simaha/data/services/secure_store.dart';
-import 'package:simaha/domain/security/string_store.dart';
 import 'package:simaha/presentation/providers/app_providers.dart';
 import 'package:simaha/presentation/providers/session_providers.dart';
 import 'package:simaha/services/audit/audit_logger.dart';
@@ -30,17 +29,13 @@ Future<void> main() async {
 
   try {
     final bootSw = Stopwatch()..start();
-    final keyManager = DatabaseKeyManager();
-    final normalFile = await defaultDatabaseFile();
-    final file = AppRuntime.isDemo
-        ? File.fromUri(
-            normalFile.parent.uri.resolve(AppRuntime.demoDatabaseName),
-          )
-        : normalFile;
-    final executor = await openProductionExecutor(
-      keyManager: keyManager,
-      overrideFile: file,
+    final storage = await openWorkspaceStorage(
+      demo: AppRuntime.isDemo,
+      demoDirectory: Platform.environment['SIMAHA_DEMO_DIRECTORY'],
     );
+    final file = storage.file;
+    final secureStore = storage.authStore;
+    final executor = storage.executor;
     final db = AppDatabase(executor);
     if (AppRuntime.isDemo) await ensureDemoSeeded(db);
     final stats = AppRuntime.isDemo ? null : await ensureSeeded(db);
@@ -65,10 +60,6 @@ Future<void> main() async {
     // Login mudah-aman: setup sekali (PIN 6 digit) lalu kunci PIN tiap
     // cold start. Mudah karena username terisi otomatis + numpad + recovery;
     // aman karena hash PBKDF2, lockout eskalasi, DB SQLCipher di Keystore.
-    final platformStore = SecureStore();
-    final StringStore secureStore = AppRuntime.isDemo
-        ? NamespacedStringStore(platformStore, 'simaha_demo:')
-        : platformStore;
     final authService = AuthService(
       db: db,
       crypto: CryptoService(),
@@ -141,6 +132,16 @@ class _BootSplash extends StatelessWidget {
                 'Membuka database terenkripsi…',
                 style: TextStyle(color: Colors.white70, fontSize: 13),
               ),
+              SizedBox(height: 12),
+              if (AppRuntime.isDemo)
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 32),
+                  child: Text(
+                    'Pembukaan pertama menyiapkan 62 akun dan 50 mahasiswa. Proses ini dapat memerlukan beberapa menit.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white70, fontSize: 12),
+                  ),
+                ),
               SizedBox(height: 24),
               SizedBox(
                 width: 28,

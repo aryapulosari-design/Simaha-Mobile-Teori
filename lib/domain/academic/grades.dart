@@ -42,7 +42,7 @@ double hitungNilaiAkhir(
     throw ArgumentError('Total bobot harus 100% (dapat $total).');
   }
   for (final v in [tugas, uts, uas]) {
-    if (v < 0 || v > 100) {
+    if (!v.isFinite || v < 0 || v > 100) {
       throw ArgumentError('Nilai harus 0-100 (dapat $v).');
     }
   }

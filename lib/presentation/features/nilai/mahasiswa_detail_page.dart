@@ -1,3 +1,6 @@
+import 'package:go_router/go_router.dart';
+import 'package:simaha/presentation/features/campus/export_study_button.dart';
+import 'package:simaha/presentation/providers/campus_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simaha/data/local/app_database.dart';
@@ -52,7 +55,8 @@ class MahasiswaDetailPage extends ConsumerWidget {
               ref
                 ..invalidate(_mhsProvider(mahasiswaId))
                 ..invalidate(_nilaiProvider(mahasiswaId))
-                ..invalidate(_syaratSksProvider);
+                ..invalidate(_syaratSksProvider)
+                ..invalidate(workspaceOverviewProvider);
             },
           ),
         ],
@@ -110,6 +114,21 @@ class MahasiswaDetailPage extends ConsumerWidget {
                 padding: const EdgeInsets.fromLTRB(16, 8, 16, 96),
                 children: [
                   _BioCard(m: m),
+                  if (role != Role.dosenPengampu) ...[
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        ExportStudyButton(studentId: mahasiswaId),
+                        TextButton.icon(
+                          onPressed: () => context.push('/studi/$mahasiswaId'),
+                          icon: const Icon(Icons.insights_outlined),
+                          label: const Text('Perkembangan studi'),
+                        ),
+                      ],
+                    ),
+                  ],
                   const SizedBox(height: 12),
                   if (role != Role.dosenPengampu)
                     _RingkasanCard(
@@ -177,7 +196,8 @@ class MahasiswaDetailPage extends ConsumerWidget {
   Future<void> _refresh(WidgetRef ref) async {
     ref
       ..invalidate(_nilaiProvider(mahasiswaId))
-      ..invalidate(_syaratSksProvider);
+      ..invalidate(_syaratSksProvider)
+      ..invalidate(workspaceOverviewProvider);
   }
 
   Future<void> _showEdit(

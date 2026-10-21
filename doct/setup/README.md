@@ -25,7 +25,7 @@ Pilih ID dari `flutter devices`, misalnya `windows`. Target utama Android; direk
 flutter run -d windows --dart-define=SIMAHA_DEMO=true
 ```
 
-Pilih role, pilih nama, lalu Masuk akun demo. PIN awal 123456. Database simaha_demo.db dibuat terpisah, bersama preferensi/pemulihan yang terpisah. Pembuatan pertama sekitar 20 detik; berikutnya memakai data yang sama. Panduan lengkap: [demo](../demo/README.md).
+Pilih role, pilih nama, lalu Masuk akun demo. PIN awal 123456. Database simaha_demo_50.db dibuat terpisah, bersama preferensi demo khusus data sintetis. Pembuatan pertama hingga beberapa menit pada perangkat lambat; berikutnya memakai data yang sama. Panduan lengkap: [demo](../demo/README.md).
 
 ## Pemasangan pertama pada mode biasa
 
@@ -71,4 +71,4 @@ Hasil build yang benar-benar dijalankan dicatat di [pengujian](../testing/README
 | Lupa PIN Super Admin | Gunakan kode pemulihan satu kali, kemudian reset PIN di Kelola akun. |
 | Tidak ada tombol backup | UI backup/restore belum dibuat; service baru mengenkripsi/dekripsi bytes. |
 
-Mode biasa masih memakai seeder awal 100 mahasiswa bila kosong. Mode demo terpisah memakai 10 mahasiswa dan 5 dosen. Belum ada tombol reset seluruh data.
+Mode biasa masih memakai seeder awal 100 mahasiswa bila kosong. Mode demo terpisah memakai 50 mahasiswa dan 5 dosen. Belum ada tombol reset seluruh data.

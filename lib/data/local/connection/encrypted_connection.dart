@@ -62,8 +62,11 @@ Future<QueryExecutor> openProductionExecutor({
   bool logStatements = false,
 }) async {
   final km = keyManager ?? DatabaseKeyManager();
-  final key = await km.getOrCreateDbKey();
   final file = overrideFile ?? await defaultDatabaseFile();
+  if (await file.exists() && await km.readDbKey() == null) {
+    throw StateError('Kunci database tidak ditemukan. Data dipertahankan; jangan hapus database.');
+  }
+  final key = await km.getOrCreateDbKey();
   return openEncryptedExecutor(
     file: file,
     rawHexKey: key,

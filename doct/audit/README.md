@@ -1,6 +1,6 @@
 # Audit kesesuaian README dan implementasi
 
-Tanggal: **20 Oktober 2026**. Acuan kebutuhan: [PRD asli](../prd/README.md). Acuan kondisi aktual: kode, route, wiring provider/service, serta tes yang benar-benar dijalankan.
+Tanggal: **21 Oktober 2026**. Acuan kebutuhan: [PRD asli](../prd/README.md). Acuan kondisi aktual: kode, route, wiring provider/service, serta tes yang benar-benar dijalankan.
 
 **Hasil: belum seluruhnya sesuai PRD.** Tabel/service/dependency tanpa alur pengguna tidak dinilai sebagai fitur lengkap. README utama sekarang menjelaskan kemampuan aktual; seluruh kebutuhan lama tetap disimpan sebagai target di arsip.
 
@@ -24,18 +24,18 @@ Tanggal: **20 Oktober 2026**. Acuan kebutuhan: [PRD asli](../prd/README.md). Acu
 | FR-14 | Prasyarat/bentrok | Fondasi | Fungsi cek bentrok dan tabel prasyarat; belum terhubung ke KRS. |
 | FR-15 | Nilai berbobot/huruf | Tersedia | 30/30/40; nilai terbatas 0–100 di service; dosen dibatasi kelas. |
 | FR-16 | IPS/IPK/total SKS | Sebagian | IPK/SKS UI tersedia; IPS per semester baru fungsi domain. |
-| FR-17 | KHS/transkrip PDF | Belum | Dependency PDF tidak disertai template/export UI. |
+| FR-17 | KHS/transkrip PDF | Sebagian | PDF ringkasan hasil studi lokal tersedia; format KHS per semester dan pengesahan kampus belum ada. |
 | FR-18 | Kalender jadwal mingguan | Sebagian | Jadwal per kelas, hari/jam/ruangan tersedia di Akademik; kalender mingguan visual belum ada. |
 | FR-19 | Sesi dan QR dosen | Fondasi | Token HMAC dan tabel; belum sesi/QR UI. |
 | FR-20 | Scan QR mahasiswa | Belum | Dependency mobile_scanner belum terhubung ke alur. |
-| FR-21 | Presensi manual | Fondasi | Tabel; belum form/service penyimpanan presensi. |
+| FR-21 | Presensi manual | Tersedia | Pertemuan, input/edit hadir/izin/sakit/alpa, validasi scope dan rekap persisten. |
 | FR-22 | Rekap kehadiran | Tersedia | Query persisten dan UI detail kelas menampilkan hadir/izin/sakit/alpa sesuai scope; input manual/QR masih terpisah. |
-| FR-23 | Dashboard analitik lengkap | Sebagian | Jumlah mahasiswa/aktif/prodi; belum distribusi/tren/rata-rata IPK. |
-| FR-24 | Early warning | Fondasi | Fungsi risiko/level; belum data nyata, daftar dan tindak lanjut. |
-| FR-25 | Skor risiko transparan | Fondasi | Fungsi hitung dan test; belum hasil per mahasiswa pada aplikasi. |
+| FR-23 | Dashboard analitik lengkap | Sebagian | Dashboard role, IPK, progres, kelengkapan nilai dan kehadiran nyata; grafik distribusi/tren lengkap belum ada. |
+| FR-24 | Early warning | Sebagian | Prioritas pendampingan dari data dan halaman insight; notifikasi serta penanganan peringatan belum lengkap. |
+| FR-25 | Skor risiko transparan | Sebagian | Rumus diperbaiki sesuai aturan; skor per mahasiswa dari IPK/kehadiran/tren; target SKS tertinggal belum ditetapkan. |
 | FR-26 | Catatan bimbingan | Tersedia | Tambah catatan/tindak lanjut oleh Wali/Super Admin, riwayat dibaca mahasiswa terkait; scope dan audit diuji. |
 | FR-27 | Impor CSV/Excel preview | Fondasi | Parser CSV/validasi; belum picker/preview UI/commit; Excel belum ada. |
-| FR-28 | Ekspor CSV/Excel/PDF | Belum | Belum alur export. |
+| FR-28 | Ekspor CSV/Excel/PDF | Sebagian | Simpan PDF hasil studi tersedia; CSV/Excel belum ada. |
 | FR-29 | Backup database `.simaha` | Fondasi | Enkripsi bytes AES-GCM; belum ekstraksi/snapshot DB dan simpan file. |
 | FR-30 | Restore/integritas | Fondasi | Dekripsi/checksum bytes; belum restore database/key secara atomik. |
 | FR-31 | Sync antarperangkat | Fondasi | Merge domain; belum transport/paket delta/penerapan DB. |
@@ -49,7 +49,7 @@ Tanggal: **20 Oktober 2026**. Acuan kebutuhan: [PRD asli](../prd/README.md). Acu
 | FR-39 | Tema dan ID/EN | Sebagian | Tema terang/gelap; bahasa Indonesia, EN/l10n belum ada. |
 | FR-40 | Pengaturan timeout/ambang/bobot | Sebagian | Syarat SKS bisa disimpan; timeout/risiko/bobot masih informasi/konstanta. |
 
-Modul tambahan dalam schema (pengumuman, agenda, ujian, prestasi, EDOM, arsip dokumen) juga masih fondasi tanpa halaman pengguna.
+Pengumuman sudah mempunyai alur penerbitan, penghapusan dan pembacaan lintas role. Agenda, ujian, prestasi, EDOM dan arsip masih fondasi.
 
 ## Kebutuhan nonfungsional
 
@@ -86,7 +86,7 @@ Modul tambahan dalam schema (pengumuman, agenda, ujian, prestasi, EDOM, arsip do
 
 ## Pembaruan demo dan role
 
-- Ruang demo terpisah: 22 akun login, 5 dosen, 10 mahasiswa, 5 kelas, 50 KRS/nilai, 15 pertemuan, 150 presensi, 10 catatan bimbingan.
+- Ruang demo terpisah: 62 akun login, 5 dosen, 50 mahasiswa, 5 kelas, 250 KRS/nilai, 15 pertemuan, 750 presensi, 50 catatan bimbingan.
 - Satu profil dosen mendukung akun Pengampu dan Wali dengan schema/migrasi v5.
 - Nilai dan catatan dipakai bersama lintas role; scope kelas/wali/mahasiswa diuji.
 - Login demo cukup pilih role dan nama lalu Masuk akun demo; PIN awal 123456 tetap diverifikasi.
@@ -105,3 +105,7 @@ Modul tambahan dalam schema (pengumuman, agenda, ujian, prestasi, EDOM, arsip do
 8. Uji Android, signing distribusi, benchmark 10.000, coverage, SUS, ukuran APK.
 
 Lihat [hasil verifikasi](verification.md) untuk perintah yang selesai dan batas pengujian.
+
+## Luaran akademik Tahap 4 dan 5
+
+Laporan, matriks luaran, kasus uji, hasil otomatis, temuan/perbaikan, formulir uji pengguna, bahan presentasi dan naskah video tersedia pada [laporan](../laporan/README.md). Hasil pengguna nyata dan video demonstrasi tidak direkayasa. Build APK kandidat dibedakan dari kesiapan produksi dan penutupan seluruh PRD.

@@ -1,0 +1,11 @@
+# Preserve binary assets and document byte offsets across Windows checkouts.
+*.pdf binary
+*.png binary
+*.ico binary
+*.ttf binary
+*.zip binary
+*.apk binary
+
+# Machine-generated verification output retains its original spacing.
+bukti/*.log -whitespace
+bukti/*.jsonl -whitespace

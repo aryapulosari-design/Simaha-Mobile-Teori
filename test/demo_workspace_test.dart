@@ -1,3 +1,6 @@
+@Timeout(Duration(minutes: 5))
+library;
+
 import 'package:drift/native.dart';
 import 'package:drift/drift.dart' show driftRuntimeOptions;
 import 'package:flutter_test/flutter_test.dart';
@@ -7,6 +10,10 @@ import 'package:simaha/core/config/app_runtime.dart';
 import 'package:simaha/data/local/app_database.dart';
 import 'package:simaha/data/local/seed/demo_seed.dart';
 import 'package:simaha/data/services/academic_service.dart';
+import 'package:simaha/data/services/campus_service.dart';
+import 'package:simaha/data/services/insights_service.dart';
+import 'package:simaha/data/services/study_export_service.dart';
+import 'package:simaha/domain/security/roles.dart';
 import 'package:simaha/data/services/auth_service.dart';
 import 'package:simaha/data/services/crypto_service.dart';
 import 'package:simaha/domain/security/string_store.dart';
@@ -38,16 +45,16 @@ void main() {
     Future<int> count(String table) async =>
         (await db.customSelect('SELECT COUNT(*) AS n FROM $table').getSingle())
             .read<int>('n');
-    expect(await count('users'), 22);
+    expect(await count('users'), 62);
     expect(await count('dosens'), 5);
-    expect(await count('mahasiswa'), 10);
+    expect(await count('mahasiswa'), 50);
     expect(await count('mata_kuliah'), 5);
     expect(await count('kelas'), 5);
-    expect(await count('krs'), 50);
-    expect(await count('nilai'), 50);
+    expect(await count('krs'), 250);
+    expect(await count('nilai'), 250);
     expect(await count('sesi_presensi'), 15);
-    expect(await count('presensi'), 150);
-    expect(await count('catatan_bimbingan'), 10);
+    expect(await count('presensi'), 750);
+    expect(await count('catatan_bimbingan'), 50);
     expect(await db.customSelect('PRAGMA foreign_key_check').get(), isEmpty);
     expect(
       (await db.listDosen()).every(
@@ -63,9 +70,9 @@ void main() {
     );
   });
 
-  test('all 22 demo accounts can log in with the documented PIN and their real role', () async {
+  test('all 62 demo accounts can log in with the documented PIN and their real role', () async {
     final picker = await auth.listLoginAccounts();
-    expect(picker.length, 22);
+    expect(picker.length, 62);
     for (final account in demoAccounts) {
       final result = await auth.verifyPin(account.username, AppRuntime.demoPin);
       expect(result.isOk, isTrue, reason: account.username);
@@ -74,49 +81,46 @@ void main() {
     expect((await auth.verifyPin('superadmin', '000000')).isErr, isTrue);
   }, timeout: const Timeout(Duration(minutes: 2)));
 
-  test(
-    'five lecturers each teach all students but own exactly one distinct class',
-    () async {
-      final classes = <int>{};
-      for (final teacher in demoLecturers) {
-        final service = asUser('pengampu.${teacher.slug}');
-        expect((await service.students()).length, 10);
-        final own = (await service.classes()).single;
-        expect(own.studentCount, 10);
-        classes.add(own.id);
-        final detail = await service.classDetail(own.id);
-        expect(detail.students.length, 10);
-        expect(
-          detail.students.every((s) => s.score != null && s.meetings == 3),
-          isTrue,
-        );
-        expect((await service.grades(alya)).length, 1);
-      }
-      expect(classes.length, 5);
-    },
-  );
+  test('five lecturers each teach all 50 students but own exactly one distinct class', () async {
+    final classes = <int>{};
+    for (final teacher in demoLecturers) {
+      final service = asUser('pengampu.${teacher.slug}');
+      expect((await service.students(limit: 1000)).length, 50);
+      final own = (await service.classes()).single;
+      expect(own.studentCount, 50);
+      classes.add(own.id);
+      final detail = await service.classDetail(own.id);
+      expect(detail.students.length, 50);
+      expect(
+        detail.students.every((s) => s.score != null && s.meetings == 3),
+        isTrue,
+      );
+      expect((await service.grades(alya)).length, 1);
+    }
+    expect(classes.length, 5);
+  });
 
-  test('same five lecturer profiles advise two students each using separate wali accounts', () async {
+  test('same five lecturer profiles advise ten students each using separate wali accounts', () async {
     final covered = <int>{};
     for (final lecturer in demoLecturers) {
       final service = asUser('wali.${lecturer.slug}');
-      final students = await service.students();
-      expect(students.length, 2);
+      final students = await service.students(limit: 1000);
+      expect(students.length, 10);
       expect(students.any((s) => covered.contains(s.id)), isFalse);
       covered.addAll(students.map((s) => s.id));
       final classes = await service.classes();
       expect(classes.length, 5);
-      expect(classes.every((c) => c.studentCount == 2), isTrue);
-      expect((await service.classDetail(classes.first.id)).students.length, 2);
+      expect(classes.every((c) => c.studentCount == 10), isTrue);
+      expect((await service.classDetail(classes.first.id)).students.length, 10);
       expect(await service.advisingNotes(students.first.id), isNotEmpty);
     }
-    expect(covered.length, 10);
+    expect(covered.length, 50);
   });
 
   test('each student has five courses, only their own attendance, and readable advising', () async {
     for (final student in demoStudents) {
       final service = asUser('mhs.${student.slug}');
-      final profile = (await service.students()).single;
+      final profile = (await service.students(limit: 1000)).single;
       final classes = await service.classes();
       expect(classes.length, 5);
       expect(classes.every((c) => c.studentCount == 1), isTrue);
@@ -229,7 +233,7 @@ void main() {
 
   test('administrators see all classes and students, and demo seeding preserves edits', () async {
     for (final username in ['superadmin', 'akademik']) {
-      expect((await asUser(username).students()).length, 10);
+      expect((await asUser(username).students(limit: 1000)).length, 50);
       expect((await asUser(username).classes()).length, 5);
     }
     final grade = (await asUser('pengampu.rahma').grades(alya)).single;
@@ -244,7 +248,7 @@ void main() {
             .akhir,
         70,
       );
-      expect((await db.select(db.users).get()).length, 22);
+      expect((await db.select(db.users).get()).length, 62);
       expect((await db.select(db.catatanBimbingan).get()).length, noteCount);
     } finally {
       await asUser('pengampu.rahma').saveNilai(
@@ -288,4 +292,124 @@ void main() {
       }
     },
   );
+  test('manual attendance reaches student and wali, rejects unrelated teacher and invalid status', () async {
+    final teacher = CampusService(asUser('pengampu.rahma'));
+    final cls = (await asUser('pengampu.rahma').classes()).single;
+    final session = await teacher.createSession(cls.id, DateTime.now());
+    await teacher.saveAttendance(session, {alya: 'hadir'});
+    expect(
+      (await CampusService(asUser('mhs.alya')).attendance(session))[alya],
+      'hadir',
+    );
+    expect(
+      (await CampusService(asUser('wali.rahma')).attendance(session))[alya],
+      'hadir',
+    );
+    await teacher.saveAttendance(session, {alya: 'izin'});
+    expect(
+      (await CampusService(asUser('mhs.alya')).attendance(session))[alya],
+      'izin',
+    );
+    final rows = await db
+        .customSelect(
+          'SELECT COUNT(*) AS n FROM presensi WHERE sesi_id = $session AND mahasiswa_id = $alya',
+        )
+        .getSingle();
+    expect(rows.read<int>('n'), 1);
+    await expectLater(
+      CampusService(asUser('pengampu.budi'))
+          .saveAttendance(session, {alya: 'hadir'}),
+      throwsA(isA<ForbiddenFailure>()),
+    );
+    await expectLater(
+      CampusService(asUser('wali.rahma'))
+          .saveAttendance(session, {alya: 'hadir'}),
+      throwsA(isA<ForbiddenFailure>()),
+    );
+    await expectLater(
+      CampusService(asUser('mhs.alya'))
+          .saveAttendance(session, {alya: 'hadir'}),
+      throwsA(isA<ForbiddenFailure>()),
+    );
+    await expectLater(
+      teacher.saveAttendance(session, {alya: 'invalid'}),
+      throwsA(isA<ValidationFailure>()),
+    );
+    await expectLater(
+      teacher.saveAttendance(session, {999999: 'hadir'}),
+      throwsA(isA<ValidationFailure>()),
+    );
+  });
+  test(
+    'announcements persist across roles and only administrators publish',
+    () async {
+      final staff = CampusService(asUser('akademik'));
+      await staff.publish(
+        'Informasi bimbingan',
+        'Bimbingan berikutnya dilaksanakan pada hari Senin.',
+        'akademik',
+      );
+      final rows = await CampusService(asUser('mhs.alya')).announcements();
+      expect(rows.first.judul, 'Informasi bimbingan');
+      await expectLater(
+        CampusService(asUser('mhs.alya'))
+            .publish('Judul valid', 'Isi pengumuman cukup panjang.', 'umum'),
+        throwsA(isA<ForbiddenFailure>()),
+      );
+      await expectLater(
+        staff.publish('x', 'y', 'umum'),
+        throwsA(isA<ValidationFailure>()),
+      );
+      await staff.deleteAnnouncement(rows.first.id);
+      expect(
+        (await staff.announcements()).any((p) => p.id == rows.first.id),
+        isFalse,
+      );
+    },
+  );
+  test(
+    'insights respect role scopes and teacher does not receive cumulative GPA',
+    () async {
+      final own = await InsightsService(asUser('mhs.alya'))
+          .overview(Role.mahasiswa);
+      expect(own.students.single.id, alya);
+      expect(own.students.single.registeredCredits, 15);
+      expect(own.students.single.semesters.length, 1);
+      final wali = await InsightsService(asUser('wali.rahma'))
+          .overview(Role.dosenWali);
+      expect(wali.students.length, 10);
+      final teacher = await InsightsService(asUser('pengampu.rahma'))
+          .overview(Role.dosenPengampu);
+      expect(teacher.classes.length, 1);
+      expect(teacher.students, isEmpty);
+    },
+  );
+  test(
+    'PDF export is real PDF bytes and denies cross-student and teacher access',
+    () async {
+      final bytes = await StudyExportService(asUser('mhs.alya'))
+          .transcript(alya);
+      expect(String.fromCharCodes(bytes.take(5)), '%PDF-');
+      expect(bytes.length, greaterThan(1000));
+      await expectLater(
+        StudyExportService(asUser('mhs.arif')).transcript(alya),
+        throwsA(isA<ForbiddenFailure>()),
+      );
+      await expectLater(
+        StudyExportService(asUser('pengampu.rahma')).transcript(alya),
+        throwsA(isA<ForbiddenFailure>()),
+      );
+    },
+  );
+  test('audit trail is restricted to Super Admin', () async {
+    expect(await CampusService(asUser('superadmin')).auditTrail(), isNotEmpty);
+    await expectLater(
+      CampusService(asUser('akademik')).auditTrail(),
+      throwsA(isA<ForbiddenFailure>()),
+    );
+    await expectLater(
+      CampusService(asUser('mhs.alya')).auditTrail(),
+      throwsA(isA<ForbiddenFailure>()),
+    );
+  });
 }

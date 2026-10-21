@@ -49,3 +49,15 @@ app.*.map.json
 
 # Local developer configs
 opencode.json
+
+# Local demo data and build deliverables
+.local-demo/
+artifacts/*.apk
+artifacts/windows/
+*.db
+*.db-wal
+*.db-shm
+*.db.preferences.json
+
+# Retained verification evidence
+!bukti/*.log
