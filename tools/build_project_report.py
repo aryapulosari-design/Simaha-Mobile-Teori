@@ -4,7 +4,7 @@ Run with: uv run --with reportlab --with pymupdf python tools/build_project_repo
 from pathlib import Path
 import json, csv, html, hashlib
 from collections import Counter
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, Image, KeepTogether
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, Image, KeepTogether, Flowable
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
@@ -26,16 +26,27 @@ def read(path):
     return b.decode('utf-16' if b.startswith(b'\xff\xfe') else 'utf-8-sig', errors='replace')
 
 records = []
-for line in read('bukti/tests.jsonl').splitlines():
-    try: records.append(json.loads(line))
-    except (ValueError, TypeError): pass
+runner_results = []
+for prefix, log in enumerate(['bukti/tests.jsonl', 'bukti/registration-tests.jsonl']):
+    for line in read(log).splitlines():
+        try:
+            record = json.loads(line)
+            for key in ['test', 'suite']:
+                if key in record:
+                    for field in ['id', 'suiteID']:
+                        if field in record[key]: record[key][field] = f'{prefix}:{record[key][field]}'
+            if 'testID' in record: record['testID'] = f'{prefix}:{record["testID"]}'
+            if record.get('type') == 'done': runner_results.append(record.get('success', False))
+            records.append(record)
+        except (ValueError, TypeError): pass
 names = {r['test']['id']:r['test'] for r in records if r.get('type') == 'testStart'}
 suites = {r['suite']['id']:r['suite']['path'] for r in records if r.get('type') == 'suite'}
 results = [r for r in records if r.get('type') == 'testDone' and not r.get('hidden')]
 counts = Counter(r['result'] for r in results)
 done = next((r for r in reversed(records) if r.get('type')=='done'), {})
+done['success'] = len(runner_results) == 2 and all(runner_results)
 with (OUT/'hasil_pengujian_otomatis.csv').open('w', encoding='utf-8-sig', newline='') as f:
-    w=csv.writer(f); w.writerow(['ID','Kasus pengujian aktual','Berkas','Hasil'])
+    w=csv.writer(f, lineterminator='\n'); w.writerow(['ID','Kasus pengujian aktual','Berkas','Hasil'])
     for i,r in enumerate(results,1):
         t=names.get(r['testID'],{}); p=suites.get(t.get('suiteID'),'')
         w.writerow([f'AUTO-{i:03}',t.get('name',''), p.split('/simaha/')[-1],r['result']])
@@ -59,7 +70,8 @@ section('1 Pendahuluan dan ruang lingkup',[
 
 section('2 Rancangan integrasi dan implementasi Flutter',[
  'Integrasi mengikuti alur presentasi, layanan aplikasi, logika domain, dan penyimpanan. Widget menampilkan status serta menerima masukan; Riverpod mengelola dependensi dan pembaruan data; go_router mengelola navigasi; layanan memeriksa akun aktif dan batas data sebelum menjalankan transaksi Drift pada SQLCipher.',
- 'AcademicService menjadi batas akses untuk mahasiswa, kelas, dan nilai. CampusService menangani pengumuman, sesi serta presensi manual, dan pembacaan audit. InsightsService menyusun ringkasan dari pembacaan yang sudah diotorisasi. StudyExportService menghasilkan PDF setelah memeriksa izin dan lingkup mahasiswa.',
+ 'AcademicService menjadi batas akses untuk mahasiswa, kelas, dan nilai. MasterDataService menghubungkan form prodi, dosen, tahun ajaran, mata kuliah, prasyarat dan kelas untuk kedua role admin. CampusService menangani pengumuman, sesi serta presensi manual, dan pembacaan audit. InsightsService menyusun ringkasan dari pembacaan yang sudah diotorisasi. StudyExportService menghasilkan PDF setelah memeriksa izin dan lingkup mahasiswa.',
+ 'Penyelesaian kandidat difokuskan pada fungsi yang terhubung dan isi kelima role. Data master dibuka dari menu Akademik. KRS baru mengikuti semester kelas aktif, program studi, IPS semester sebelumnya, batas SKS, prasyarat dan bentrok jadwal. Data yang sudah dipakai dilindungi dari penghapusan atau perubahan struktur; ruang kelas tetap dapat diperbarui.',
  'Logika perhitungan IPK, SKS, simulasi dan risiko dipisahkan pada domain Dart. Komponen BentoCard, MetricTile, BentoGrid, ContextTag, dan WorkspacePage digunakan kembali agar warna, jarak, dan perilaku responsif konsisten. Direktori mahasiswa dipisahkan dari kartu dashboard untuk mengurangi kepadatan HomePage.',
  'Pada mode biasa, kunci SQLCipher tetap berasal dari secure storage platform. Mode demo menggunakan file database baru simaha_demo_50.db dan preferensi khusus dengan kunci acak yang disimpan bersama preferensi demo. Penyimpanan demo ditujukan hanya untuk data sintetis yang terbuka dan tidak memiliki tingkat perlindungan yang sama dengan mode biasa. Demo tidak membuka secure storage produksi.',
 ],['Komponen','Tanggung jawab'],[
@@ -76,7 +88,7 @@ section('3 Hubungan lima peran dan data demonstrasi',[
  'Login demo cukup memilih role serta nama akun dari daftar, kemudian menggunakan PIN awal 123456. Terdapat 62 akun: satu Super Admin, satu Admin Akademik, lima Pengampu, lima Wali, dan 50 Mahasiswa. Seeder berjalan sekali; perubahan tersimpan ketika aplikasi dibuka kembali.',
 ],['Peran','Fungsi dan batas akses'],[
  ['Super Admin','Kelola akun, reset PIN, hubungkan profil, seluruh data akademik, bimbingan, serta audit.'],
- ['Admin Akademik','Kelola mahasiswa, KRS/nilai, seluruh kelas, presensi dan pengumuman. Tidak mengelola akun atau catatan bimbingan.'],
+ ['Admin Akademik','Kelola master prodi/dosen/semester/mata kuliah/kelas, mahasiswa, KRS/nilai, presensi dan pengumuman. Tidak mengelola akun atau catatan bimbingan.'],
  ['Dosen Pengampu','Kelas sendiri, nilai peserta, sesi dan presensi kelas sendiri. Tidak membaca IPK kumulatif atau catatan wali.'],
  ['Dosen Wali','Profil, nilai, IPK, insight dan kehadiran 10 mahasiswa bimbingan; menulis catatan serta tindak lanjut.'],
  ['Mahasiswa','Profil, mata kuliah, jadwal, nilai, insight, rekap kehadiran dan catatan wali sendiri; unduh PDF hasil studi.'],
@@ -109,10 +121,10 @@ section('5 Tahap 4 Tabel hasil pengujian',[
  f'Pada bukti pengujian yang dipakai saat laporan dibangun tercatat {counts.get("success",0)} tes berhasil, {counts.get("error",0)+counts.get("failure",0)} tes gagal atau error, dan {counts.get("skipped",0)} tes berstatus skipped. Status akhir runner adalah {"lulus" if done.get("success") else "belum lulus atau belum lengkap"}. Angka ini berasal dari log, bukan jumlah skenario manual.',
  'Kelulusan tes otomatis menunjukkan perilaku dalam kondisi uji yang didefinisikan. Pengujian perangkat fisik, pemindai QR, kehilangan perangkat, pemulihan kunci produksi, benchmark 10000 mahasiswa, pembaca layar, serta evaluasi calon pengguna belum dapat dianggap lulus tanpa bukti tambahan.',
 ],['Pemeriksaan','Hasil atau bukti'],[
- ['Unit dan integrasi layanan',f'{counts.get("success",0)} berhasil; rincian pada CSV dan bukti/tests.jsonl.'],
+ ['Unit dan integrasi layanan',f'{counts.get("success",0)} berhasil; rincian pada CSV, bukti/tests.jsonl dan bukti/registration-tests.jsonl.'],
  ['Analisis statis','Bersih' if 'No issues found' in analysis else 'Lihat bukti/analyze.log; hasil belum dinyatakan bersih.'],
  ['Widget responsif','Lihat bukti/widget-previews.log dan PNG pada doct/design/previews.'],
- ['Build Windows','Berhasil' if ('Built build' in build_win) else 'Lihat bukti/build-windows.log.'],
+ ['Build Windows','Build sebelumnya berhasil; belum diulang setelah penambahan form master.' if ('Built build' in build_win) else 'Lihat bukti/build-windows.log.'],
  ['Build Android kandidat',apk_status],
  ['Uji calon pengguna','Belum dilaksanakan. Jumlah responden yang sudah menguji: 0.'],
  ['Uji Android fisik','Belum ada bukti pengujian langsung pada perangkat fisik.'],
@@ -147,7 +159,35 @@ section('8 Tahap 4 Penyempurnaan antarmuka',[
  'Acuan visual berasal dari folder Stitch yang disediakan pengguna. Prinsip yang diterapkan adalah latar abu kebiruan #F8F9FF, kartu putih, teal #00685F, aksen indigo, garis pembatas halus, grid berjarak konsisten, dan tipografi lokal. Plus Jakarta Sans digunakan untuk judul, Inter untuk teks, serta JetBrains Mono untuk label kode.',
  'Dashboard dibedakan berdasarkan tugas. Mahasiswa melihat IPK, beban studi, progres dan kehadiran pribadi. Pengampu melihat kelas serta kelengkapan nilai. Wali melihat bimbingan dan prioritas pendampingan. Admin memperoleh ringkasan lintas kelas dan akses pengelolaan.',
  'Navigasi ponsel menggunakan empat tujuan utama; pengelolaan akun dan database tetap dapat diakses admin melalui halaman terkait. Komponen menyediakan status loading, data kosong, kesalahan dan percobaan ulang. Elemen interaktif mengarah ke fungsi yang sudah terhubung; tampilan referensi tidak digunakan untuk mengklaim fitur yang belum dibuat.',
-], image='doct/design/previews/role-mahasiswa.png')
+])
+
+mobile_gallery = [
+ ('Dashboard pengelola', 'Super Admin dan Admin Akademik memperoleh ringkasan serta akses pengelolaan sesuai tugasnya.', [
+   ('mobile-role-super_admin', 'Dashboard Super Admin', 'Ringkasan data akademik dan akses pengelolaan sistem.'),
+   ('mobile-role-admin_akademik', 'Dashboard Admin Akademik', 'Ringkasan administrasi mahasiswa dan perkuliahan.')]),
+ ('Dashboard dosen', 'Tampilan ponsel membedakan pekerjaan pengampu dan wali tanpa mengubah batas akses masing-masing.', [
+   ('mobile-role-dosen_pengampu', 'Dashboard Dosen Pengampu', 'Ringkasan kelas yang diajar dan kelengkapan nilai.'),
+   ('mobile-role-dosen_wali', 'Dashboard Dosen Wali', 'Ringkasan mahasiswa bimbingan dan pendampingan studi.')]),
+ ('Dashboard mahasiswa dan direktori', 'Mahasiswa memantau studi sendiri, sedangkan admin mengakses data mahasiswa melalui bagian bawah beranda.', [
+   ('mobile-role-mahasiswa', 'Dashboard Mahasiswa', 'Ringkasan IPK, SKS dan progres studi pribadi.'),
+   ('mobile-role-super_admin-suite', 'Beranda Super Admin setelah digulir', 'Bagian lanjutan beranda pada layar ponsel yang sama.')]),
+ ('Rincian beranda akademik', 'Halaman yang panjang digulir secara vertikal. Screenshot berikut memperlihatkan bagian lanjutan pada ukuran layar ponsel.', [
+   ('mobile-role-admin_akademik-suite', 'Beranda Admin Akademik setelah digulir', 'Konten lanjutan untuk administrasi akademik.'),
+   ('mobile-role-dosen_pengampu-suite', 'Beranda Pengampu setelah digulir', 'Konten lanjutan yang mengikuti lingkup kelas pengampu.')]),
+ ('Pemantauan studi pada ponsel', 'Konten lanjutan mengikuti lingkup akun wali dan mahasiswa; screenshot diambil sesudah menggulir beranda.', [
+   ('mobile-role-dosen_wali-suite', 'Beranda Wali setelah digulir', 'Informasi lanjutan pendampingan mahasiswa bimbingan.'),
+   ('mobile-role-mahasiswa-suite', 'Beranda Mahasiswa setelah digulir', 'Informasi lanjutan studi pribadi dan navigasi fitur.')]),
+ ('Kelas, jadwal dan hasil studi', 'Pengampu melihat kelas yang diajarnya. Mahasiswa membaca hasil serta rekap kehadiran dirinya pada kelas terkait.', [
+   ('mobile-kelas-pengampu', 'Kelas Dosen Pengampu', 'Mata kuliah, dosen, jadwal, ruang dan jumlah peserta dalam akses akun.'),
+   ('mobile-kelas-mahasiswa', 'Detail kelas Mahasiswa', 'Nilai dan rekap kehadiran pribadi pada mata kuliah yang dipilih.')]),
+ ('Bimbingan akademik', 'Wali menulis catatan dan tindak lanjut; mahasiswa membaca catatan yang ditujukan kepadanya.', [
+   ('mobile-bimbingan-wali', 'Catatan dari sisi Dosen Wali', 'Riwayat bimbingan dan catatan tindak lanjut yang sudah disimpan.'),
+   ('mobile-bimbingan-mahasiswa', 'Catatan dari sisi Mahasiswa', 'Mahasiswa membaca catatan wali tanpa tombol penulisan.')]),
+]
+for i, (title, description, shots) in enumerate(mobile_gallery, 1):
+    section(f'8.{i} Dokumentasi mobile: {title}', [description,
+        'Render widget Flutter aktual pada viewport 390 x 844 piksel dengan data sintetis. Gambar diperkecil secara proporsional dalam bingkai ponsel untuk dokumentasi; bukan foto pengujian pada perangkat Android fisik.'])
+    sections[-1]['screenshots'] = shots
 
 section('9 Tahap 5 Finalisasi dan paket penyerahan',[
  'Paket penyerahan memuat kode sumber Flutter, dokumentasi peran dan arsitektur, bukti pengujian, APK kandidat bila build berhasil, serta laporan ini. Repositori proyek menggunakan tautan yang diberikan kelompok. Artefak yang belum mempunyai bukti diberi status belum dilaksanakan atau belum tersedia.',
@@ -180,6 +220,8 @@ section('10 Transparansi sumber dan kesiapan presentasi',[
 ])
 
 sections[5]['rows'].extend([
+ ['BUG-10','Data master belum mempunyai form yang dapat dipakai kedua admin.','Form tambah/ubah/hapus disambungkan ke layanan, transaksi, audit, dan proteksi data yang masih dipakai.'],
+ ['BUG-11','Penambahan KRS menebak semester aktif global dan belum memeriksa aturan per semester.','Semester diambil dari kelas; service memeriksa status/prodi, IPS sebelumnya, batas SKS, prasyarat, duplikat dan jadwal. Tes regresi tersedia pada master_data_test.dart dan registration_policy_test.dart.'],
  ['BUG-07','Konfigurasi desugaring Android belum tersedia untuk dependensi notifikasi.','Konfigurasi diperbaiki dan paket/izin yang belum dipakai dihapus. Build diulang dari dependensi aktif.'],
  ['BUG-08','Build release memuat plugin integration_test yang tidak tersedia.','Dependensi yang belum dipakai dilepas, registrant diregenerasi dan verifikasi Flutter dijalankan berurutan.'],
  ['BUG-09','Desktop terkelola menolak penulisan demo ke Documents.','Folder demo dapat diarahkan melalui SIMAHA_DEMO_DIRECTORY; tes membuktikan file mode biasa tidak berubah.'],
@@ -194,8 +236,28 @@ styles.add(ParagraphStyle(name='CellReport',fontName='Report',fontSize=9,leading
 styles.add(ParagraphStyle(name='HeaderReport',fontName='ReportBold',fontSize=9,leading=12,textColor=colors.white))
 styles.add(ParagraphStyle(name='CoverReport',fontName='ReportBold',fontSize=17,leading=25,alignment=TA_CENTER,spaceAfter=16))
 styles.add(ParagraphStyle(name='CenterReport',fontName='Report',fontSize=12,leading=19,alignment=TA_CENTER,spaceAfter=10))
+styles.add(ParagraphStyle(name='HeaderMobile',fontName='ReportBold',fontSize=10,leading=13,alignment=TA_CENTER,spaceAfter=6))
+styles.add(ParagraphStyle(name='CaptionMobile',fontName='Report',fontSize=9,leading=12,alignment=TA_CENTER,spaceAfter=6))
 
 def P(text,style='BodyReport'): return Paragraph(html.escape(str(text)),styles[style])
+
+class PhoneScreenshot(Flowable):
+    def __init__(self, path):
+        Flowable.__init__(self)
+        self.path = path
+        self.width = 180
+        self.height = 380
+        from reportlab.lib.utils import ImageReader
+        self.reader = ImageReader(str(path))
+        if self.reader.getSize() != (390, 844):
+            raise ValueError(f'Mobile screenshot must be 390x844: {path}')
+    def draw(self):
+        c = self.canv
+        c.setFillColor(colors.HexColor('#1C2530'))
+        c.roundRect(0, 0, self.width, self.height, 15, stroke=0, fill=1)
+        c.drawImage(self.reader, 5, 9, width=170, height=170*844/390)
+        c.setFillColor(colors.HexColor('#C7CED6'))
+        c.roundRect(73, 3, 34, 2, 1, stroke=0, fill=1)
 def footer(canvas,doc):
     if doc.page==1:return
     canvas.saveState();canvas.setFont('Report',9);canvas.setFillColor(colors.HexColor('#555555'))
@@ -216,6 +278,16 @@ for index,s in enumerate(sections):
         flow.append(table)
     if s['image'] and (ROOT/s['image']).exists():
         flow.append(Spacer(1,12)); flow.append(Image(str(ROOT/s['image']),width=width,height=width*1000/1440));flow.append(Spacer(1,8));flow.append(P('Gambar antarmuka Flutter aktual dengan fixture data sintetis untuk pemeriksaan layout.','CellReport'))
+    if s.get('screenshots'):
+        cells = []
+        for j, (name, title, caption) in enumerate(s['screenshots']):
+            number = (int(s['title'].split('.')[1].split()[0])-1)*2+j+1
+            shot = ROOT/'doct/design/previews'/f'{name}.png'
+            if not shot.exists(): raise FileNotFoundError(shot)
+            cells.append([PhoneScreenshot(shot), Spacer(1,12), P(f'Gambar {number}. {title}', 'HeaderMobile'), P(caption, 'CaptionMobile')])
+        grid = Table([cells], colWidths=[width/2]*2)
+        grid.setStyle(TableStyle([('VALIGN',(0,0),(-1,-1),'TOP'),('ALIGN',(0,0),(-1,-1),'CENTER'),('LEFTPADDING',(0,0),(-1,-1),12),('RIGHTPADDING',(0,0),(-1,-1),12)]))
+        flow.append(Spacer(1,12)); flow.append(grid)
     if index != len(sections)-1:flow.append(PageBreak())
 path=OUT/'Laporan_Tahap_4_dan_5_SIMAHA.pdf'
 SimpleDocTemplate(str(path),pagesize=A4,leftMargin=78,rightMargin=78,topMargin=68,bottomMargin=60,title='Laporan Tahap 4 dan Tahap 5 SIMAHA',author='; '.join(n for n,_ in AUTHORS)).build(flow,onFirstPage=footer,onLaterPages=footer)
@@ -223,7 +295,9 @@ md=['# TUGAS PERTEMUAN','## Laporan Tahap 4 dan Tahap 5 SIMAHA Offline','',*[f'-
 for s in sections:
     md += ['## '+s['title'],'',*sum(([p,''] for p in s['paragraphs']),[])]
     if s['headers']:md += ['| '+' | '.join(s['headers'])+' |','| '+' | '.join(['---']*len(s['headers']))+' |',*['| '+' | '.join(str(v).replace('|','/') for v in row)+' |' for row in s['rows']],'']
-(OUT/'LAPORAN_TAHAP_4_DAN_5.md').write_text('\n'.join(md),encoding='utf-8')
+    for name, title, caption in s.get('screenshots', []):
+        md += [f'![{title}](../design/previews/{name}.png)', '', f'**{title}.** {caption}', '']
+(OUT/'LAPORAN_TAHAP_4_DAN_5.md').write_text('\n'.join(md),encoding='utf-8',newline='\n')
 import pymupdf as fitz
 pdf=fitz.open(path); qa=ROOT/'.dart_tool'/'report-qa';qa.mkdir(parents=True,exist_ok=True)
 for i,page in enumerate(pdf):page.get_pixmap(matrix=fitz.Matrix(1.25,1.25)).save(qa/f'page-{i+1:02}.png')

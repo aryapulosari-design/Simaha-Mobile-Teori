@@ -2,7 +2,7 @@
 
 Aplikasi Flutter untuk mengelola data mahasiswa di perangkat dengan database SQLCipher terenkripsi, tanpa backend atau REST API.
 
-**Status 21 Oktober 2026:** UI mengikuti referensi Stitch dengan lima dashboard, 50 mahasiswa demo dan 5 dosen yang saling terhubung. Tersedia pemilih akun, nilai/IPK, jadwal, presensi manual dan rekap, bimbingan, pengumuman, insight studi, audit terbatas, serta PDF hasil studi. Seluruh PRD belum selesai; QR, backup/restore, sinkronisasi, CRUD master dan asisten masih memerlukan pengembangan.
+**Status 21 Oktober 2026:** Lima dashboard, 50 mahasiswa demo dan 5 dosen saling terhubung. Tersedia pemilih akun, nilai/IPK, jadwal, presensi manual dan rekap, bimbingan, pengumuman, insight studi, audit terbatas, PDF hasil studi, serta CRUD master melalui Akademik → Data master. Penambahan KRS memeriksa semester, IPS sebelumnya, batas SKS, prasyarat dan bentrok jadwal. Scope kandidat berfokus pada alur lima role yang bisa dipakai; QR, backup/restore, sinkronisasi dan asisten masih di luar alur lengkap.
 
 ## Laporan Tahap 4 dan Tahap 5
 

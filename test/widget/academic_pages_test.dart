@@ -76,6 +76,9 @@ void main() {
     Size size = const Size(1000, 1100),
     double scale = 1,
   }) async {
+    if (const bool.fromEnvironment('MOBILE_REPORT') && scale == 1) {
+      size = const Size(390, 844);
+    }
     tester.view.physicalSize = size;
     tester.view.devicePixelRatio = 1;
     tester.platformDispatcher.textScaleFactorTestValue = scale;
@@ -111,7 +114,13 @@ void main() {
       expect(find.text('Dosen: Rahma Hidayati'), findsOneWidget);
       expect(find.text('10 mahasiswa dalam akses Anda'), findsOneWidget);
       expect(tester.takeException(), isNull);
-      await writeAcademicPreview(tester, previewKey, 'kelas-pengampu');
+      await writeAcademicPreview(
+        tester,
+        previewKey,
+        const bool.fromEnvironment('MOBILE_REPORT')
+            ? 'mobile-kelas-pengampu'
+            : 'kelas-pengampu',
+      );
       await tester.pumpWidget(const SizedBox());
     },
   );
@@ -140,7 +149,13 @@ void main() {
     expect(find.text('Alya Putri'), findsOneWidget);
     expect(find.text('Hadir 3/3 pertemuan'), findsOneWidget);
     expect(tester.takeException(), isNull);
-    await writeAcademicPreview(tester, previewKey, 'kelas-mahasiswa');
+    await writeAcademicPreview(
+      tester,
+      previewKey,
+      const bool.fromEnvironment('MOBILE_REPORT')
+          ? 'mobile-kelas-mahasiswa'
+          : 'kelas-mahasiswa',
+    );
     await tester.pumpWidget(const SizedBox());
   });
 
@@ -158,7 +173,13 @@ void main() {
     expect(find.text(note.content), findsOneWidget);
     expect(find.text('Tambah catatan bimbingan'), findsNothing);
     expect(tester.takeException(), isNull);
-    await writeAcademicPreview(tester, previewKey, 'bimbingan-mahasiswa');
+    await writeAcademicPreview(
+      tester,
+      previewKey,
+      const bool.fromEnvironment('MOBILE_REPORT')
+          ? 'mobile-bimbingan-mahasiswa'
+          : 'bimbingan-mahasiswa',
+    );
     await tester.pumpWidget(const SizedBox());
   });
 
@@ -218,7 +239,13 @@ void main() {
     expect(tester.takeException(), isNull);
     await tester.pump(const Duration(seconds: 5));
     await tester.pumpAndSettle();
-    await writeAcademicPreview(tester, previewKey, 'bimbingan-wali');
+    await writeAcademicPreview(
+      tester,
+      previewKey,
+      const bool.fromEnvironment('MOBILE_REPORT')
+          ? 'mobile-bimbingan-wali'
+          : 'bimbingan-wali',
+    );
     await tester.pumpWidget(const SizedBox());
   });
 

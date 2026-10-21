@@ -17,11 +17,11 @@ Tanggal: **21 Oktober 2026**. Acuan kebutuhan: [PRD asli](../prd/README.md). Acu
 | FR-07 | CRUD mahasiswa lengkap termasuk foto | Sebagian | Field utama tersedia; pemilih foto belum ada. |
 | FR-08 | Validasi mahasiswa | Tersedia | Form/service dan NIM unik DB; email/HP/rentang angkatan. |
 | FR-09 | Sampah/pemulihan | Tersedia | Soft delete/restore; FTS dan counts diuji setelah mutasi. |
-| FR-10 | CRUD master | Fondasi | Schema dan seed; hanya daftar pilihan master, belum halaman CRUD. |
+| FR-10 | CRUD master | Tersedia | Akademik → Data master: prodi, dosen, tahun ajaran, mata kuliah/prasyarat dan kelas. Kedua admin dapat tambah/ubah/hapus; data terpakai dilindungi. |
 | FR-11 | FTS dan filter multikriteria | Sebagian | Cari nama/NIM, scope/pagination; UI filter angkatan/prodi/status belum ada. |
 | FR-12 | Filter favorit | Fondasi | Tabel saved_filters; belum alur simpan/pakai filter. |
-| FR-13 | KRS, batas dari IPS sebelumnya | Sebagian | Tambah/hapus KRS; UI masih validasi sederhana IPK/total SKS, belum per semester di service. |
-| FR-14 | Prasyarat/bentrok | Fondasi | Fungsi cek bentrok dan tabel prasyarat; belum terhubung ke KRS. |
+| FR-13 | KRS, batas dari IPS sebelumnya | Tersedia pada penambahan | Service memeriksa semester kelas aktif, prodi/status mahasiswa, IPS semester sebelumnya dan SKS semester tujuan dalam transaksi. Nilai semester sebelumnya harus lengkap. |
+| FR-14 | Prasyarat/bentrok | Tersedia pada alur aktif | Form prasyarat menolak siklus; KRS memeriksa kelulusan sebelumnya dan bentrok jadwal. Master kelas menolak bentrok dosen/ruang. |
 | FR-15 | Nilai berbobot/huruf | Tersedia | 30/30/40; nilai terbatas 0–100 di service; dosen dibatasi kelas. |
 | FR-16 | IPS/IPK/total SKS | Sebagian | IPK/SKS UI tersedia; IPS per semester baru fungsi domain. |
 | FR-17 | KHS/transkrip PDF | Sebagian | PDF ringkasan hasil studi lokal tersedia; format KHS per semester dan pengesahan kampus belum ada. |
@@ -95,9 +95,9 @@ Pengumuman sudah mempunyai alur penerbitan, penghapusan dan pembacaan lintas rol
 
 ## Prioritas tersisa
 
-1. KRS per semester dari IPS sebelumnya; validasi prasyarat/bentrok di service dan transaksi.
-2. CRUD master dan pengaitan kelas/dosen melalui UI.
-3. Presensi manual/QR lengkap serta rekap persisten.
+1. Alur utama lima role, CRUD master, dan validasi penambahan KRS sudah tersambung; pertahankan scope kandidat demo.
+2. Uji pengguna langsung untuk alur admin → pengampu → wali → mahasiswa.
+3. Presensi QR; presensi manual dan rekap persisten sudah tersedia.
 4. Snapshot backup/restore aplikasi, integritas, key/recovery dan uji kehilangan perangkat.
 5. KHS/transkrip PDF, impor/ekspor, audit mutasi akademik.
 6. Risiko otomatis, kalender visual/notifikasi nyata, asisten terhubung database.

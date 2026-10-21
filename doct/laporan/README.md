@@ -2,6 +2,8 @@
 
 Status diperbarui dari bukti aktual. Laporan utama: [PDF](Laporan_Tahap_4_dan_5_SIMAHA.pdf) dan [sumber Markdown](LAPORAN_TAHAP_4_DAN_5.md).
 
+Pembaruan kandidat 21 Oktober 2026: alur lima role terisi, CRUD master tersambung dari menu Akademik, dan validasi KRS per semester diterapkan pada service. Bukti otomatis mencakup 143 tes lulus dari `bukti/tests.jsonl` dan `bukti/registration-tests.jsonl`; analyzer bersih. Revisi dokumentasi mobile memuat **14 screenshot viewport 390 × 844**, diperkecil proporsional dalam bingkai ponsel, dua gambar per halaman dengan caption. PDF menjadi **18 halaman**. Render berasal dari widget Flutter aktual dengan fixture sintetis, bukan foto pengujian Android fisik. Run khusus pembentukan screenshot lulus 21 tes; log ada pada `bukti/mobile-report-previews.log`. Fokus penyerahan adalah kandidat demo yang terhubung; uji pengguna nyata tetap belum dilaksanakan.
+
 | Tahap | Luaran | Lokasi dan batas kesiapan |
 |---|---|---|
 | 4 | Aplikasi versi lengkap | Kandidat sesuai alur aktif; seluruh PRD belum selesai. Lihat ../audit/README.md. |

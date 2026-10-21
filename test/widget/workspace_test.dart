@@ -5,7 +5,6 @@ import 'academic_preview_helpers.dart';
 
 import 'dart:io';
 
-
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -61,6 +60,15 @@ void main() {
     ),
   );
   for (final scene in [
+    if (const bool.fromEnvironment('MOBILE_REPORT'))
+      for (final role in Role.values)
+        (
+          name: 'mobile-role-${role.storageKey}',
+          size: const Size(390, 844),
+          role: role,
+          dark: false,
+          scale: 1.0,
+        ),
     (
       name: 'role-admin-akademik',
       size: const Size(1440, 1000),
@@ -208,6 +216,9 @@ void main() {
       await tester.drag(find.byType(ListView).first, const Offset(0, -650));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
+      if (scene.name.startsWith('mobile-role-')) {
+        await writeAcademicPreview(tester, key, '${scene.name}-suite');
+      }
       await tester.pumpWidget(const SizedBox());
     });
   }

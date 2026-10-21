@@ -32,6 +32,12 @@ class AcademicWorkspacePage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Akademik'),
         actions: [
+          if (role != null && canRole(role, Permission.manageMaster))
+            TextButton.icon(
+              onPressed: () => context.push('/master'),
+              icon: const Icon(Icons.edit_note),
+              label: const Text('Data master'),
+            ),
           IconButton(
             tooltip: 'Muat ulang',
             onPressed: () => ref.invalidate(academicClassesProvider),

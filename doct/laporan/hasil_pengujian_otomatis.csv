@@ -1,137 +1,144 @@
 ﻿ID,Kasus pengujian aktual,Berkas,Hasil
-AUTO-001,grade bands cover 0-100 with exact PRD weights,test/academic_constants_test.dart,success
-AUTO-002,SKS caps follow PRD IPS thresholds,test/academic_constants_test.dart,success
-AUTO-003,Result sealed type pattern matching works,test/academic_constants_test.dart,success
-AUTO-004,hitungNilaiAkhir default weights 30/30/40,test/academic_engine_test.dart,success
-AUTO-005,hitungNilaiAkhir rejects bad weights and range,test/academic_engine_test.dart,success
-AUTO-006,konversiHuruf follows grade bands,test/academic_engine_test.dart,success
-AUTO-007,batasSks follows IPS thresholds,test/academic_engine_test.dart,success
-AUTO-008,hitungIpk uses best grade for repeats,test/academic_engine_test.dart,success
-AUTO-009,simulasiIpk detects unreachable target,test/academic_engine_test.dart,success
-AUTO-010,progresKelulusan and estimasiSisaSemester,test/academic_engine_test.dart,success
-AUTO-011,validators accept valid and reject invalid input,test/academic_engine_test.dart,success
-AUTO-012,jadwalUjianBentrok detects overlap only same date,test/academic_engine_test.dart,success
-AUTO-013,both administrators see all current students,test/academic_access_test.dart,success
-AUTO-014,"student scope applies to directory, counts, direct ID, and search",test/academic_access_test.dart,success
-AUTO-015,unlinked accounts and missing sessions never inherit global access,test/academic_access_test.dart,success
-AUTO-016,teacher can only read and grade their own classes,test/academic_access_test.dart,success
-AUTO-017,wali sees only advisees and cannot change grades,test/academic_access_test.dart,success
-AUTO-018,"non-administrators cannot mutate students, trash, or settings",test/academic_access_test.dart,success
-AUTO-019,account deactivation is rechecked on each service request,test/academic_access_test.dart,success
-AUTO-020,preview validasi per baris + lapor error,test/csv_notify_test.dart,success
-AUTO-021,header tanpa nim/nama ditolak,test/csv_notify_test.dart,success
-AUTO-022,NoopNotifications menyimpan tanpa plugin,test/csv_notify_test.dart,success
-AUTO-023,hash then verify succeeds; wrong PIN fails,test/crypto_test.dart,success
-AUTO-024,delete and restore keep FTS and dashboard counts consistent,test/academic_access_test.dart,success
-AUTO-025,PIN benar membuka sesi,test/auth_flow_test.dart,success
-AUTO-026,"scores reject NaN, infinity, and out of range at application boundary",test/academic_access_test.dart,success
-AUTO-027,salts are random: same PIN gives different hashes,test/crypto_test.dart,success
-AUTO-028,malformed hash throws FormatException,test/crypto_test.dart,success
-AUTO-029,"recovery code format XXXX-XXXX-XXXX, unambiguous chars",test/crypto_test.dart,success
-AUTO-030,profile linking requires superadmin and cannot steal an occupied profile,test/academic_access_test.dart,success
-AUTO-031,a teacher cannot link a different profile through the service,test/academic_access_test.dart,success
-AUTO-032,"PIN salah menampilkan pesan, sesi tetap terkunci",test/auth_flow_test.dart,success
-AUTO-033,FTS special characters are treated as input instead of query syntax,test/academic_access_test.dart,success
-AUTO-034,setup creates superadmin + recovery code shown once,test/auth_test.dart,success
-AUTO-035,archived students do not cause seeding to run again,test/academic_access_test.dart,success
-AUTO-036,login picker exposes active account names and uses linked profiles,test/academic_access_test.dart,success
-AUTO-037,one lecturer can have teaching and advising accounts without duplicate profiles,test/academic_access_test.dart,success
-AUTO-038,contoh PRD: angkatan + IPK bawah,test/intent_parser_test.dart,success
-AUTO-039,deteksi intent hitung / ringkas / presensi,test/intent_parser_test.dart,success
-AUTO-040,ekstraksi prodi + status,test/intent_parser_test.dart,success
-AUTO-041,template + NoopLlm tanpa nama/NIM,test/intent_parser_test.dart,success
-AUTO-042,"5 wrong PINs lock 30s, then doubles (60s, 120s), capped 15 min",test/auth_test.dart,success
-AUTO-043,encrypted DB round-trips with correct key,test/encryption_test.dart,success
-AUTO-044,"token stabil dalam 1 interval, beda antar interval",test/qr_token_test.dart,success
-AUTO-045,"verifikasi ok dalam jendela +/-1, tolak di luar & secret salah",test/qr_token_test.dart,success
-AUTO-046,rekap persentase hadir,test/qr_token_test.dart,success
-AUTO-047,opening encrypted DB with wrong key fails,test/encryption_test.dart,success
-AUTO-048,unknown username gives same message as wrong PIN,test/auth_test.dart,success
-AUTO-049,mahasiswa ideal -> skor 0 Aman,test/risk_score_test.dart,success
-AUTO-050,raw open without PRAGMA key cannot read tables,test/encryption_test.dart,success
-AUTO-051,generated key is 64 lowercase hex chars,test/encryption_test.dart,success
-AUTO-052,mahasiswa kritis -> skor >60 Kritis,test/risk_score_test.dart,success
-AUTO-053,batas level 30 dan 60,test/risk_score_test.dart,success
-AUTO-054,bobot tidak 1.0 ditolak,test/risk_score_test.dart,success
-AUTO-055,upgrade v1 -> v3 preserves rows and adds sync columns,test/migration_test.dart,success
-AUTO-056,"recovery code works once, then rejected",test/auth_test.dart,success
-AUTO-057,fresh v3 database exposes sync columns with defaults,test/migration_test.dart,success
-AUTO-058,demo preferences persist independently and serialize concurrent writes,test/stage4_regression_test.dart,success
-AUTO-059,corrupt demo preferences fail without overwriting stored data,test/stage4_regression_test.dart,success
-AUTO-060,missing study data is explicit and does not create risk warnings,test/stage4_regression_test.dart,success
-AUTO-061,"semester history, repeated-course GPA and passed credits use academic rules",test/stage4_regression_test.dart,success
-AUTO-062,risk normalization matches approved formulas,test/stage4_regression_test.dart,success
-AUTO-063,non-finite numeric input rejected by validator and grade engine,test/stage4_regression_test.dart,success
-AUTO-064,FTS operator query falls back to LIKE instead of throwing,test/migration_test.dart,success
-AUTO-065,v4 to v5 preserves teacher and advisor accounts in separate profile slots,test/migration_test.dart,success
-AUTO-066,RBAC: only superadmin manages users; self-deactivation blocked,test/auth_test.dart,success
-AUTO-067,RBAC matrix matches PRD 5 roles,test/auth_test.dart,success
-AUTO-068,"LWW: yang lebih baru menang, seri deviceId terbesar",test/sync_backup_test.dart,success
-AUTO-069,merge idempoten + catat konflik,test/sync_backup_test.dart,success
-AUTO-070,backup round-trip; password salah & modifikasi ditolak,test/sync_backup_test.dart,success
-AUTO-071,seed creates 100 mahasiswa + academic data,test/seed_test.dart,success
-AUTO-072,Step 1: Database Encryption & Security DB opens with key and stores encrypted data unreadable by raw SQLite,test/unit/step1_foundation_test.dart,success
-AUTO-073,Step 1: Database Encryption & Security Foreign key enforcement is active (PRAGMA foreign_keys = ON),test/unit/step1_foundation_test.dart,success
-AUTO-074,ensureSeeded is idempotent,test/seed_test.dart,success
-AUTO-075,Step 1: Database Encryption & Security CRUD on SavedFilters table works properly,test/unit/step1_foundation_test.dart,success
-AUTO-076,Step 1: Core Services & Abstractions Clock abstraction returns current time and allows advancing in FakeClock,test/unit/step1_foundation_test.dart,success
-AUTO-077,Step 1: Core Services & Abstractions DeviceIdService generates persistent UUID v4 and caches it,test/unit/step1_foundation_test.dart,success
-AUTO-078,Step 1: Core Services & Abstractions DbAuditLogger writes structured audit records to database,test/unit/step1_foundation_test.dart,success
-AUTO-079,FTS5 search <= 500ms and finds by NIM fragment,test/seed_test.dart,success
-AUTO-080,Step 1: Core Services & Abstractions SeedService populates dummy data in atomic transaction,test/unit/step1_foundation_test.dart,success
-AUTO-081,pagination returns stable pages,test/seed_test.dart,success
-AUTO-082,"teacher workspace shows linked lecturer, course, roster size, and schedule",test/widget/academic_pages_test.dart,success
-AUTO-083,overlapping secure routes stay protected until the last scope closes,test/widget/secure_scope_test.dart,success
-AUTO-084,student class detail shows personal grade and attendance,test/widget/academic_pages_test.dart,success
-AUTO-085,student can read advisor notes without a write button,test/widget/academic_pages_test.dart,success
-AUTO-086,student reads announcement and cannot publish or delete,test/widget/campus_pages_test.dart,success
-AUTO-087,AppScaffold renders title and body with theme,test/widget/step1_widgets_test.dart,success
-AUTO-088,"EmptyState displays icon, message, and triggers action",test/widget/step1_widgets_test.dart,success
-AUTO-089,ErrorState displays error and triggers retry,test/widget/step1_widgets_test.dart,success
-AUTO-090,LoadingView displays message and progress indicator,test/widget/step1_widgets_test.dart,success
-AUTO-091,StatusChip renders appropriate colors and icon,test/widget/step1_widgets_test.dart,success
-AUTO-092,light and dark themes are Material3,test/widget_test.dart,success
-AUTO-093,router constructs with 3 shell destinations,test/widget_test.dart,success
-AUTO-094,"AppTextField handles input, validation, and obscure toggle",test/widget/step1_widgets_test.dart,success
-AUTO-095,wali can validate and save a note for the selected student,test/widget/academic_pages_test.dart,success
-AUTO-096,five roles are selectable with no username typing; empty roles cannot log in,test/widget/login_picker_test.dart,success
-AUTO-097,SectionCard renders header and child,test/widget/step1_widgets_test.dart,success
-AUTO-098,teaching role never requests or renders private advising notes,test/widget/academic_pages_test.dart,success
-AUTO-099,admin announcement validates form and calls authorized service,test/widget/campus_pages_test.dart,success
-AUTO-100,announcement load error offers working retry,test/widget/campus_pages_test.dart,success
-AUTO-101,last account restores the role and selected name,test/widget/login_picker_test.dart,success
-AUTO-102,all role functions remain readable on a narrow screen with large text,test/widget/academic_pages_test.dart,success
-AUTO-103,student cannot create attendance meeting,test/widget/campus_pages_test.dart,success
-AUTO-104,teacher can find attendance creation and empty state,test/widget/campus_pages_test.dart,success
-AUTO-105,"demo connection opens encrypted database, reopens changes and leaves normal file untouched",test/workspace_storage_test.dart,success
-AUTO-106,missing demo key fails safely without replacing existing database,test/workspace_storage_test.dart,success
-AUTO-107,settings page renders without DB,test/widget_test.dart,success
-AUTO-108,switching accounts clears partial PIN and uses the selected account for verification,test/widget/login_picker_test.dart,success
-AUTO-109,selecting a role still needs a valid PIN and unlocks the verified user,test/widget/login_picker_test.dart,success
-AUTO-110,failed account loading can be retried,test/widget/login_picker_test.dart,success
-AUTO-111,role and account chooser fits a narrow screen with enlarged text,test/widget/login_picker_test.dart,success
-AUTO-112,demo shortcut is mode-specific and verifies the selected account PIN,test/widget/login_picker_test.dart,success
-AUTO-113,role-admin-akademik: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
-AUTO-114,role-pengampu: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-001,both administrators see all current students,test/academic_access_test.dart,success
+AUTO-002,"student scope applies to directory, counts, direct ID, and search",test/academic_access_test.dart,success
+AUTO-003,unlinked accounts and missing sessions never inherit global access,test/academic_access_test.dart,success
+AUTO-004,teacher can only read and grade their own classes,test/academic_access_test.dart,success
+AUTO-005,wali sees only advisees and cannot change grades,test/academic_access_test.dart,success
+AUTO-006,"non-administrators cannot mutate students, trash, or settings",test/academic_access_test.dart,success
+AUTO-007,account deactivation is rechecked on each service request,test/academic_access_test.dart,success
+AUTO-008,delete and restore keep FTS and dashboard counts consistent,test/academic_access_test.dart,success
+AUTO-009,"scores reject NaN, infinity, and out of range at application boundary",test/academic_access_test.dart,success
+AUTO-010,profile linking requires superadmin and cannot steal an occupied profile,test/academic_access_test.dart,success
+AUTO-011,a teacher cannot link a different profile through the service,test/academic_access_test.dart,success
+AUTO-012,grade bands cover 0-100 with exact PRD weights,test/academic_constants_test.dart,success
+AUTO-013,SKS caps follow PRD IPS thresholds,test/academic_constants_test.dart,success
+AUTO-014,Result sealed type pattern matching works,test/academic_constants_test.dart,success
+AUTO-015,FTS special characters are treated as input instead of query syntax,test/academic_access_test.dart,success
+AUTO-016,archived students do not cause seeding to run again,test/academic_access_test.dart,success
+AUTO-017,login picker exposes active account names and uses linked profiles,test/academic_access_test.dart,success
+AUTO-018,one lecturer can have teaching and advising accounts without duplicate profiles,test/academic_access_test.dart,success
+AUTO-019,hitungNilaiAkhir default weights 30/30/40,test/academic_engine_test.dart,success
+AUTO-020,hitungNilaiAkhir rejects bad weights and range,test/academic_engine_test.dart,success
+AUTO-021,konversiHuruf follows grade bands,test/academic_engine_test.dart,success
+AUTO-022,batasSks follows IPS thresholds,test/academic_engine_test.dart,success
+AUTO-023,hitungIpk uses best grade for repeats,test/academic_engine_test.dart,success
+AUTO-024,simulasiIpk detects unreachable target,test/academic_engine_test.dart,success
+AUTO-025,progresKelulusan and estimasiSisaSemester,test/academic_engine_test.dart,success
+AUTO-026,validators accept valid and reject invalid input,test/academic_engine_test.dart,success
+AUTO-027,jadwalUjianBentrok detects overlap only same date,test/academic_engine_test.dart,success
+AUTO-028,hash then verify succeeds; wrong PIN fails,test/crypto_test.dart,success
+AUTO-029,salts are random: same PIN gives different hashes,test/crypto_test.dart,success
+AUTO-030,malformed hash throws FormatException,test/crypto_test.dart,success
+AUTO-031,"recovery code format XXXX-XXXX-XXXX, unambiguous chars",test/crypto_test.dart,success
+AUTO-032,PIN benar membuka sesi,test/auth_flow_test.dart,success
+AUTO-033,setup creates superadmin + recovery code shown once,test/auth_test.dart,success
+AUTO-034,"PIN salah menampilkan pesan, sesi tetap terkunci",test/auth_flow_test.dart,success
+AUTO-035,preview validasi per baris + lapor error,test/csv_notify_test.dart,success
+AUTO-036,header tanpa nim/nama ditolak,test/csv_notify_test.dart,success
+AUTO-037,NoopNotifications menyimpan tanpa plugin,test/csv_notify_test.dart,success
+AUTO-038,"5 wrong PINs lock 30s, then doubles (60s, 120s), capped 15 min",test/auth_test.dart,success
+AUTO-039,unknown username gives same message as wrong PIN,test/auth_test.dart,success
+AUTO-040,"recovery code works once, then rejected",test/auth_test.dart,success
+AUTO-041,RBAC: only superadmin manages users; self-deactivation blocked,test/auth_test.dart,success
+AUTO-042,RBAC matrix matches PRD 5 roles,test/auth_test.dart,success
+AUTO-043,contoh PRD: angkatan + IPK bawah,test/intent_parser_test.dart,success
+AUTO-044,deteksi intent hitung / ringkas / presensi,test/intent_parser_test.dart,success
+AUTO-045,ekstraksi prodi + status,test/intent_parser_test.dart,success
+AUTO-046,template + NoopLlm tanpa nama/NIM,test/intent_parser_test.dart,success
+AUTO-047,master -> class -> KRS stays connected and preserves used data,test/master_data_test.dart,success
+AUTO-048,master access denied for all three non-admin roles,test/master_data_test.dart,success
+AUTO-049,staff can manage master; conflicting schedule and prerequisite cycles rejected,test/master_data_test.dart,success
+AUTO-050,encrypted DB round-trips with correct key,test/encryption_test.dart,success
+AUTO-051,"token stabil dalam 1 interval, beda antar interval",test/qr_token_test.dart,success
+AUTO-052,"verifikasi ok dalam jendela +/-1, tolak di luar & secret salah",test/qr_token_test.dart,success
+AUTO-053,rekap persentase hadir,test/qr_token_test.dart,success
+AUTO-054,mahasiswa ideal -> skor 0 Aman,test/risk_score_test.dart,success
+AUTO-055,mahasiswa kritis -> skor >60 Kritis,test/risk_score_test.dart,success
+AUTO-056,batas level 30 dan 60,test/risk_score_test.dart,success
+AUTO-057,bobot tidak 1.0 ditolak,test/risk_score_test.dart,success
+AUTO-058,opening encrypted DB with wrong key fails,test/encryption_test.dart,success
+AUTO-059,upgrade v1 -> v3 preserves rows and adds sync columns,test/migration_test.dart,success
+AUTO-060,raw open without PRAGMA key cannot read tables,test/encryption_test.dart,success
+AUTO-061,generated key is 64 lowercase hex chars,test/encryption_test.dart,success
+AUTO-062,fresh v3 database exposes sync columns with defaults,test/migration_test.dart,success
+AUTO-063,demo preferences persist independently and serialize concurrent writes,test/stage4_regression_test.dart,success
+AUTO-064,corrupt demo preferences fail without overwriting stored data,test/stage4_regression_test.dart,success
+AUTO-065,missing study data is explicit and does not create risk warnings,test/stage4_regression_test.dart,success
+AUTO-066,"semester history, repeated-course GPA and passed credits use academic rules",test/stage4_regression_test.dart,success
+AUTO-067,risk normalization matches approved formulas,test/stage4_regression_test.dart,success
+AUTO-068,non-finite numeric input rejected by validator and grade engine,test/stage4_regression_test.dart,success
+AUTO-069,seed creates 100 mahasiswa + academic data,test/seed_test.dart,success
+AUTO-070,FTS operator query falls back to LIKE instead of throwing,test/migration_test.dart,success
+AUTO-071,"LWW: yang lebih baru menang, seri deviceId terbesar",test/sync_backup_test.dart,success
+AUTO-072,merge idempoten + catat konflik,test/sync_backup_test.dart,success
+AUTO-073,backup round-trip; password salah & modifikasi ditolak,test/sync_backup_test.dart,success
+AUTO-074,v4 to v5 preserves teacher and advisor accounts in separate profile slots,test/migration_test.dart,success
+AUTO-075,ensureSeeded is idempotent,test/seed_test.dart,success
+AUTO-076,Step 1: Database Encryption & Security DB opens with key and stores encrypted data unreadable by raw SQLite,test/unit/step1_foundation_test.dart,success
+AUTO-077,FTS5 search <= 500ms and finds by NIM fragment,test/seed_test.dart,success
+AUTO-078,Step 1: Database Encryption & Security Foreign key enforcement is active (PRAGMA foreign_keys = ON),test/unit/step1_foundation_test.dart,success
+AUTO-079,Step 1: Database Encryption & Security CRUD on SavedFilters table works properly,test/unit/step1_foundation_test.dart,success
+AUTO-080,pagination returns stable pages,test/seed_test.dart,success
+AUTO-081,Step 1: Core Services & Abstractions Clock abstraction returns current time and allows advancing in FakeClock,test/unit/step1_foundation_test.dart,success
+AUTO-082,Step 1: Core Services & Abstractions DeviceIdService generates persistent UUID v4 and caches it,test/unit/step1_foundation_test.dart,success
+AUTO-083,Step 1: Core Services & Abstractions DbAuditLogger writes structured audit records to database,test/unit/step1_foundation_test.dart,success
+AUTO-084,Step 1: Core Services & Abstractions SeedService populates dummy data in atomic transaction,test/unit/step1_foundation_test.dart,success
+AUTO-085,overlapping secure routes stay protected until the last scope closes,test/widget/secure_scope_test.dart,success
+AUTO-086,five roles are selectable with no username typing; empty roles cannot log in,test/widget/login_picker_test.dart,success
+AUTO-087,last account restores the role and selected name,test/widget/login_picker_test.dart,success
+AUTO-088,switching accounts clears partial PIN and uses the selected account for verification,test/widget/login_picker_test.dart,success
+AUTO-089,selecting a role still needs a valid PIN and unlocks the verified user,test/widget/login_picker_test.dart,success
+AUTO-090,failed account loading can be retried,test/widget/login_picker_test.dart,success
+AUTO-091,role and account chooser fits a narrow screen with enlarged text,test/widget/login_picker_test.dart,success
+AUTO-092,demo shortcut is mode-specific and verifies the selected account PIN,test/widget/login_picker_test.dart,success
+AUTO-093,"demo connection opens encrypted database, reopens changes and leaves normal file untouched",test/workspace_storage_test.dart,success
+AUTO-094,light and dark themes are Material3,test/widget_test.dart,success
+AUTO-095,router constructs with 3 shell destinations,test/widget_test.dart,success
+AUTO-096,"teacher workspace shows linked lecturer, course, roster size, and schedule",test/widget/academic_pages_test.dart,success
+AUTO-097,missing demo key fails safely without replacing existing database,test/workspace_storage_test.dart,success
+AUTO-098,student class detail shows personal grade and attendance,test/widget/academic_pages_test.dart,success
+AUTO-099,student can read advisor notes without a write button,test/widget/academic_pages_test.dart,success
+AUTO-100,AppScaffold renders title and body with theme,test/widget/step1_widgets_test.dart,success
+AUTO-101,"EmptyState displays icon, message, and triggers action",test/widget/step1_widgets_test.dart,success
+AUTO-102,ErrorState displays error and triggers retry,test/widget/step1_widgets_test.dart,success
+AUTO-103,LoadingView displays message and progress indicator,test/widget/step1_widgets_test.dart,success
+AUTO-104,student reads announcement and cannot publish or delete,test/widget/campus_pages_test.dart,success
+AUTO-105,StatusChip renders appropriate colors and icon,test/widget/step1_widgets_test.dart,success
+AUTO-106,role-admin-akademik: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-107,wali can validate and save a note for the selected student,test/widget/academic_pages_test.dart,success
+AUTO-108,teaching role never requests or renders private advising notes,test/widget/academic_pages_test.dart,success
+AUTO-109,all role functions remain readable on a narrow screen with large text,test/widget/academic_pages_test.dart,success
+AUTO-110,settings page renders without DB,test/widget_test.dart,success
+AUTO-111,"AppTextField handles input, validation, and obscure toggle",test/widget/step1_widgets_test.dart,success
+AUTO-112,SectionCard renders header and child,test/widget/step1_widgets_test.dart,success
+AUTO-113,role-pengampu: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-114,admin announcement validates form and calls authorized service,test/widget/campus_pages_test.dart,success
 AUTO-115,role-wali: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
-AUTO-116,role-mahasiswa: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
-AUTO-117,desktop-light: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
-AUTO-118,mobile-light: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
-AUTO-119,mobile-dark: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
-AUTO-120,mobile-large-text: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
-AUTO-121,tablet: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
-AUTO-122,restricted deep links redirect and theme changes preserve current route,test/widget/workspace_test.dart,success
-AUTO-123,compact demo has complete links and exact initial counts,test/demo_workspace_test.dart,success
-AUTO-124,all 62 demo accounts can log in with the documented PIN and their real role,test/demo_workspace_test.dart,success
-AUTO-125,five lecturers each teach all 50 students but own exactly one distinct class,test/demo_workspace_test.dart,success
-AUTO-126,same five lecturer profiles advise ten students each using separate wali accounts,test/demo_workspace_test.dart,success
-AUTO-127,"each student has five courses, only their own attendance, and readable advising",test/demo_workspace_test.dart,success
-AUTO-128,"a grade update is shared by teacher, student, wali, and academic admin",test/demo_workspace_test.dart,success
-AUTO-129,wali notes reach the right student and are denied to unrelated accounts,test/demo_workspace_test.dart,success
-AUTO-130,"administrators see all classes and students, and demo seeding preserves edits",test/demo_workspace_test.dart,success
-AUTO-131,demo recovery cannot consume the normal workspace recovery code,test/demo_workspace_test.dart,success
-AUTO-132,"manual attendance reaches student and wali, rejects unrelated teacher and invalid status",test/demo_workspace_test.dart,success
-AUTO-133,announcements persist across roles and only administrators publish,test/demo_workspace_test.dart,success
-AUTO-134,insights respect role scopes and teacher does not receive cumulative GPA,test/demo_workspace_test.dart,success
-AUTO-135,PDF export is real PDF bytes and denies cross-student and teacher access,test/demo_workspace_test.dart,success
-AUTO-136,audit trail is restricted to Super Admin,test/demo_workspace_test.dart,success
+AUTO-116,announcement load error offers working retry,test/widget/campus_pages_test.dart,success
+AUTO-117,student cannot create attendance meeting,test/widget/campus_pages_test.dart,success
+AUTO-118,teacher can find attendance creation and empty state,test/widget/campus_pages_test.dart,success
+AUTO-119,role-mahasiswa: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-120,desktop-light: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-121,mobile-light: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-122,mobile-dark: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-123,mobile-large-text: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-124,tablet: dashboard fits and respects role actions,test/widget/workspace_test.dart,success
+AUTO-125,restricted deep links redirect and theme changes preserve current route,test/widget/workspace_test.dart,success
+AUTO-126,compact demo has complete links and exact initial counts,test/demo_workspace_test.dart,success
+AUTO-127,all 62 demo accounts can log in with the documented PIN and their real role,test/demo_workspace_test.dart,success
+AUTO-128,five lecturers each teach all 50 students but own exactly one distinct class,test/demo_workspace_test.dart,success
+AUTO-129,same five lecturer profiles advise ten students each using separate wali accounts,test/demo_workspace_test.dart,success
+AUTO-130,"each student has five courses, only their own attendance, and readable advising",test/demo_workspace_test.dart,success
+AUTO-131,"a grade update is shared by teacher, student, wali, and academic admin",test/demo_workspace_test.dart,success
+AUTO-132,wali notes reach the right student and are denied to unrelated accounts,test/demo_workspace_test.dart,success
+AUTO-133,"administrators see all classes and students, and demo seeding preserves edits",test/demo_workspace_test.dart,success
+AUTO-134,demo recovery cannot consume the normal workspace recovery code,test/demo_workspace_test.dart,success
+AUTO-135,"manual attendance reaches student and wali, rejects unrelated teacher and invalid status",test/demo_workspace_test.dart,success
+AUTO-136,announcements persist across roles and only administrators publish,test/demo_workspace_test.dart,success
+AUTO-137,insights respect role scopes and teacher does not receive cumulative GPA,test/demo_workspace_test.dart,success
+AUTO-138,PDF export is real PDF bytes and denies cross-student and teacher access,test/demo_workspace_test.dart,success
+AUTO-139,audit trail is restricted to Super Admin,test/demo_workspace_test.dart,success
+AUTO-140,budget uses previous term IPS rather than cumulative GPA,test/registration_policy_test.dart,success
+AUTO-141,ungraded previous semester does not receive first semester allowance,test/registration_policy_test.dart,success
+AUTO-142,prerequisite must be passed in an earlier term and schedule must fit,test/registration_policy_test.dart,success
+AUTO-143,first semester limit and schedule format are enforced,test/registration_policy_test.dart,success

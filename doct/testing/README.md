@@ -1,5 +1,11 @@
 # Pengujian dan verifikasi
 
+## Pembaruan kandidat 21 Oktober 2026
+
+Analyzer terakhir bersih. Suite utama 139 tes lulus pada `bukti/tests.jsonl`; empat tes aturan KRS tambahan lulus pada `bukti/registration-tests.jsonl` (total 143). Tabel laporan menggabungkan kedua log dengan ID terpisah. Tes master memeriksa alur prodi → dosen → semester → mata kuliah → kelas → KRS, proteksi data terpakai, audit, bentrok jadwal, siklus prasyarat dan penolakan tiga role non-admin. Tes demo yang sudah ada memeriksa 62 akun, 50 mahasiswa, isi setiap role, perubahan nilai/bimbingan/presensi lintas akun serta batas akses.
+
+Build Windows dalam bukti terdahulu mendahului penambahan halaman master; build Android diperbarui untuk kandidat ini. Pengujian otomatis tidak menggantikan uji perangkat fisik atau calon pengguna.
+
 Tanggal audit: **20 Oktober 2026**, lingkungan Windows dengan Dart 3.13.2 dan Flutter SDK yang terpasang pada mesin pengembangan.
 
 ## Perintah

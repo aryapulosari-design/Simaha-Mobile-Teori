@@ -2,7 +2,7 @@
 
 Dokumentasi implementasi per **20 Oktober 2026**. Folder ini bernama `doct` sesuai permintaan.
 
-**Untuk langsung mencoba lima role:** buka [akun demo terisi](demo/README.md). Semua PIN awal 123456; lima dosen dan sepuluh mahasiswa sudah saling terhubung.
+**Untuk langsung mencoba lima role:** buka [akun demo terisi](demo/README.md). Semua PIN awal 123456; lima dosen dan 50 mahasiswa sudah saling terhubung.
 
 ## Urutan membaca
 

@@ -1,0 +1,15 @@
+﻿{"protocolVersion":"0.1.1","runnerVersion":null,"pid":15156,"type":"start","time":0}
+{"suite":{"id":0,"platform":"vm","path":"C:/File Arya/uin S1/simaha/test/registration_policy_test.dart"},"type":"suite","time":0}
+{"test":{"id":1,"name":"loading C:/File Arya/uin S1/simaha/test/registration_policy_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":3}
+{"count":1,"time":15,"type":"allSuites"}
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":9359}
+{"group":{"id":2,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":9365}
+{"test":{"id":3,"name":"budget uses previous term IPS rather than cumulative GPA","suiteID":0,"groupIDs":[2],"metadata":{"skip":false,"skipReason":null},"line":22,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/registration_policy_test.dart"},"type":"testStart","time":9366}
+{"testID":3,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":9432}
+{"test":{"id":4,"name":"ungraded previous semester does not receive first semester allowance","suiteID":0,"groupIDs":[2],"metadata":{"skip":false,"skipReason":null},"line":35,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/registration_policy_test.dart"},"type":"testStart","time":9433}
+{"testID":4,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":9444}
+{"test":{"id":5,"name":"prerequisite must be passed in an earlier term and schedule must fit","suiteID":0,"groupIDs":[2],"metadata":{"skip":false,"skipReason":null},"line":49,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/registration_policy_test.dart"},"type":"testStart","time":9445}
+{"testID":5,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":9456}
+{"test":{"id":6,"name":"first semester limit and schedule format are enforced","suiteID":0,"groupIDs":[2],"metadata":{"skip":false,"skipReason":null},"line":95,"column":3,"url":"file:///C:/File%20Arya/uin%20S1/simaha/test/registration_policy_test.dart"},"type":"testStart","time":9456}
+{"testID":6,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":9466}
+{"success":true,"type":"done","time":9551}

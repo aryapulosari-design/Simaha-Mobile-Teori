@@ -417,3 +417,11 @@ test/
 - Uji calon pengguna belum dilaksanakan. Lima puluh mahasiswa demo tidak dihitung sebagai responden. Video demonstrasi nyata dan demonstrasi langsung belum dilaksanakan. Status seluruh PRD tetap mengikuti audit.
 
 Laporan PDF akhir telah dirender menjadi 11 halaman dan seluruh halaman diperiksa secara visual. Suite akhir 136 tes lulus, 38 regresi UI/domain terkait lulus, analyzer bersih, APK ARM64 kandidat 24,6 MiB berhasil dibangun dan apksigner verify lulus. Build Windows berhasil; smoke test mencapai halaman login dengan 50 mahasiswa dan tanpa BootError. Bukti tersedia pada bukti/ serta doct/laporan/.
+
+## Penyelesaian kandidat terhubung — 21 Oktober 2026
+
+Mengikuti scope pengguna: cukup alur terhubung dan setiap role terisi, tanpa mengejar seluruh PRD. Melanjutkan perubahan data master dan kebijakan KRS yang sudah ada di working tree, kemudian menyambungkan halaman Akademik → Data master bagi Super Admin/Admin Akademik. Form mencakup prodi, dosen, semester, mata kuliah/prasyarat dan kelas; perubahan melalui transaksi dan audit. Data terpakai dilindungi dari hapus/perubahan struktur dan bentrok dosen/ruang ditolak.
+
+Validasi KRS dipusatkan di AcademicService: status/prodi mahasiswa, semester kelas aktif, duplikat MK, IPS semester sebelumnya, SKS per semester, kelulusan prasyarat dan bentrok jadwal. Pemeriksaan total SKS/IPK lama di tampilan dihapus. Pengujian master mencakup transaksi dan penolakan akses tiga role non-admin. Dataset demo lima role yang sudah ada dipertahankan, termasuk perubahan nilai, presensi dan bimbingan lintas akun.
+
+Verifikasi akhir: analyzer bersih; suite utama 139 tes serta empat tes kebijakan KRS lulus (143 total). APK ARM64 demo terbaru berhasil dibangun, apksigner verify lulus, artefak/checksum diperbarui. PDF Tahap 4/5 diperbarui menjadi 11 halaman dan diperiksa melalui render; tabel CSV berasal dari dua log tes aktual. Build Windows terdahulu belum diulang untuk form master. Uji pengguna nyata dan Android fisik belum dilaksanakan. Detail pemasangan APK/versi tersedia di artifacts/README.md.

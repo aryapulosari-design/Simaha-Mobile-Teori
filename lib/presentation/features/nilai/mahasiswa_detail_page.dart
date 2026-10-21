@@ -260,37 +260,6 @@ class MahasiswaDetailPage extends ConsumerWidget {
       builder: (ctx) => _TambahDialog(opsi: tersedia),
     );
     if (res == null || !context.mounted) return;
-    // Validasi batas SKS sederhana: total SKS + baru <= batas berbasis IPK.
-    final items = await db.grades(mahasiswaId);
-    final courses = items
-        .where((e) => e.adaNilai)
-        .map(
-          (e) => engine.GradedCourse(
-            mkKode: e.mkKode,
-            sks: e.sks,
-            nilaiAkhir: e.akhir,
-            huruf: e.huruf,
-            bobot: e.bobot,
-          ),
-        )
-        .toList();
-    final ipk = engine.hitungIpk(courses);
-    final sksSekarang = items.fold<int>(0, (s, e) => s + e.sks);
-    final sksBaru = tersedia.firstWhere((o) => o.kelasId == res.kelasId).sks;
-    final batas = engine.batasSks(ipk);
-    if (sksSekarang + sksBaru > batas) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Melebihi batas SKS ($batas) untuk IPK ${ipk.toStringAsFixed(2)}. '
-              'Sekarang $sksSekarang + $sksBaru SKS.',
-            ),
-          ),
-        );
-      }
-      return;
-    }
     try {
       await db.addKrsNilai(
         mahasiswaId: mahasiswaId,

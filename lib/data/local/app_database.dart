@@ -486,7 +486,11 @@ class AppDatabase extends _$AppDatabase {
     required double uas,
   }) {
     return transaction(() async {
-      final taId = await activeTahunAjaranId();
+      // The selected class owns the term; never infer it from a global flag.
+      final selected = await (select(
+        kelas,
+      )..where((k) => k.id.equals(kelasId))).getSingle();
+      final taId = selected.taId;
       final now = DateTime.now();
       final krsId = await into(krs).insert(
         KrsCompanion.insert(

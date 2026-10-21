@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 import 'package:simaha/core/errors/failures.dart';
 import 'package:simaha/data/local/app_database.dart';
 import 'package:simaha/domain/academic/validations.dart';
+import 'package:simaha/domain/academic/registration_policy.dart';
 import 'package:simaha/domain/security/roles.dart';
 import 'package:simaha/domain/academic/academic_overview.dart';
 import 'package:simaha/services/audit/audit_logger.dart';
@@ -87,8 +88,7 @@ class AcademicService {
             start: r.read<String>('jam_mulai'),
             end: r.read<String>('jam_selesai'),
             room: r.read<String>('ruang'),
-            term:
-                '${r.read<String>('tahun')} / ${r.read<int>('semester') == 1 ? 'Gasal' : 'Genap'}',
+            term: termLabel(r.read<String>('tahun'), r.read<int>('semester')),
             studentCount: r.read<int>('peserta'),
             average: r.readNullable<double>('rerata'),
           ),
@@ -365,7 +365,16 @@ class AcademicService {
   }) async {
     await _requireGrade(krsId);
     _validateScores(tugas, uts, uas);
-    await db.saveNilai(krsId: krsId, tugas: tugas, uts: uts, uas: uas);
+    await db.transaction(() async {
+      await db.saveNilai(krsId: krsId, tugas: tugas, uts: uts, uas: uas);
+      await DbAuditLogger(db).log(
+        aksi: 'UPDATE',
+        entitas: 'NILAI',
+        entitasId: '$krsId',
+        userId: actorId,
+        sesudah: 'Tugas $tugas, UTS $uts, UAS $uas',
+      );
+    });
   }
 
   Future<int> addKrsNilai({
@@ -377,25 +386,101 @@ class AcademicService {
   }) async {
     // Adding/removing registrations is an academic administrator operation.
     await require(Permission.manageMaster);
-    await student(mahasiswaId);
     _validateScores(tugas, uts, uas);
-    if ((await db.listNilaiMahasiswa(mahasiswaId))
-        .any((k) => k.kelasId == kelasId)) {
-      throw const ValidationFailure('Kelas sudah diambil.');
-    }
-    return db.addKrsNilai(
-      mahasiswaId: mahasiswaId,
-      kelasId: kelasId,
-      tugas: tugas,
-      uts: uts,
-      uas: uas,
-    );
+    return db.transaction(() async {
+      final profile = (await student(mahasiswaId))!;
+      if (profile.status != 'aktif') {
+        throw const ValidationFailure(
+          'KRS hanya untuk mahasiswa berstatus aktif.',
+        );
+      }
+      final selected = await db
+          .customSelect(
+            'SELECT kl.*, mk.prodi_id, mk.sks, ta.tahun, ta.semester, ta.is_active '
+            'FROM kelas kl JOIN mata_kuliah mk ON mk.id = kl.mk_id '
+            'JOIN tahun_ajaran ta ON ta.id = kl.ta_id WHERE kl.id = ?',
+            variables: [Variable.withInt(kelasId)],
+          )
+          .getSingleOrNull();
+      if (selected == null) {
+        throw const ValidationFailure('Kelas tidak ditemukan.');
+      }
+      if (!selected.read<bool>('is_active')) {
+        throw const ValidationFailure(
+          'KRS baru hanya dapat ditambahkan pada semester aktif.',
+        );
+      }
+      if (selected.read<int>('prodi_id') != profile.prodiId) {
+        throw const ValidationFailure(
+          'Program studi mata kuliah berbeda dengan mahasiswa.',
+        );
+      }
+      final historyRows = await db
+          .customSelect(
+            'SELECT kl.mk_id, mk.sks, ta.tahun, ta.semester, kl.hari, kl.jam_mulai, '
+            'kl.jam_selesai, n.bobot FROM krs r JOIN kelas kl ON kl.id = r.kelas_id '
+            'JOIN mata_kuliah mk ON mk.id = kl.mk_id JOIN tahun_ajaran ta ON ta.id = kl.ta_id '
+            "LEFT JOIN nilai n ON n.krs_id = r.id WHERE r.mahasiswa_id = ? AND r.status IN ('draft','diambil','disetujui')",
+            variables: [Variable.withInt(mahasiswaId)],
+          )
+          .get();
+      RegistrationCourse course(QueryRow r) => RegistrationCourse(
+        courseId: r.read<int>('mk_id'),
+        credits: r.read<int>('sks'),
+        term: termOrder(r.read<String>('tahun'), r.read<int>('semester')),
+        day: r.read<String>('hari'),
+        start: r.read<String>('jam_mulai'),
+        end: r.read<String>('jam_selesai'),
+      );
+      final history = historyRows
+          .map(
+            (r) => RegistrationCourse(
+              courseId: r.read<int>('mk_id'),
+              credits: r.read<int>('sks'),
+              term: termOrder(r.read<String>('tahun'), r.read<int>('semester')),
+              day: r.read<String>('hari'),
+              start: r.read<String>('jam_mulai'),
+              end: r.read<String>('jam_selesai'),
+              weight: r.readNullable<double>('bobot'),
+            ),
+          )
+          .toList();
+      final requirements = await (db.select(
+        db.prasyaratMk,
+      )..where((p) => p.mkId.equals(selected.read<int>('mk_id')))).get();
+      final error = registrationError(
+        candidate: course(selected),
+        history: history,
+        prerequisites: requirements.map((r) => r.prasyaratMkId).toSet(),
+      );
+      if (error != null) throw ValidationFailure(error);
+      final id = await db.addKrsNilai(
+        mahasiswaId: mahasiswaId,
+        kelasId: kelasId,
+        tugas: tugas,
+        uts: uts,
+        uas: uas,
+      );
+      await DbAuditLogger(db).log(
+        aksi: 'CREATE',
+        entitas: 'KRS',
+        entitasId: '$id',
+        userId: actorId,
+        sesudah: 'Mahasiswa $mahasiswaId, kelas $kelasId',
+      );
+      return id;
+    });
   }
 
   Future<void> deleteKrs(int id) async {
     await require(Permission.manageMaster);
     await _requireGrade(id);
-    await db.deleteKrs(id);
+    await db.transaction(() async {
+      await db.deleteKrs(id);
+      await DbAuditLogger(
+        db,
+      ).log(aksi: 'DELETE', entitas: 'KRS', entitasId: '$id', userId: actorId);
+    });
   }
 
   Future<List<MahasiswaRow>> trash() async {

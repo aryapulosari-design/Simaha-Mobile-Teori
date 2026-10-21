@@ -48,8 +48,8 @@ Foto belum memiliki pemilih/unggah. Master prodi/dosen/MK/tahun ajaran/kelas ber
 
 ## Batasan akademik
 
-- KRS masih memakai validasi sederhana total SKS/IPK di UI; belum batas per semester dari IPS sebelumnya di service.
-- Fungsi bentrok jadwal tersedia terpisah; prasyarat/bentrok belum dihubungkan ke KRS.
+- KRS baru divalidasi dalam transaksi service: semester aktif kelas, prodi/status mahasiswa, duplikat MK, IPS sebelumnya, batas SKS per semester, prasyarat dan bentrok jadwal.
+- Admin menyiapkan prodi, dosen, tahun ajaran, mata kuliah/prasyarat dan kelas melalui **Akademik → Data master**. Data yang sudah dipakai tidak dapat dihapus; struktur akademik terpakai dilindungi agar riwayat tetap konsisten.
 - Fungsi IPS per semester ada pada domain; UI belum menampilkan riwayat semester.
 - SKS lulus saat ini menganggap semua huruf selain E lulus, termasuk D; aturan kampus lain belum diterapkan.
 - Indikator kelulusan hanya berdasarkan SKS/IPK/status; belum memeriksa syarat administratif/tugas akhir.

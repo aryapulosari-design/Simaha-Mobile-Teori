@@ -1,4 +1,4 @@
-﻿# Lima role dan seluruh fungsi yang tersedia
+# Lima role dan seluruh fungsi yang tersedia
 
 Cara termudah memahami role adalah [mencoba akun demo yang sudah terisi](../demo/README.md). Semua PIN awal demo **123456**. Di aplikasi, gunakan tombol **Semua fungsi peran** untuk melihat panduan ini, dan **Ganti akun** untuk berpindah.
 
@@ -82,8 +82,12 @@ Penegakan ada pada AuthService/AcademicService, router, dan UI. Memilih role pad
 
 ## Yang masih belum tersedia
 
-CRUD master melalui form, validasi KRS penuh per semester, presensi QR, KHS per semester dan transkrip resmi PDF, backup/restore aplikasi, sinkronisasi, risiko otomatis, notifikasi nyata, dan asisten belum menjadi alur lengkap. Lihat [audit](../audit/README.md); keberadaan permission atau tabel tidak membuat modul tersebut selesai.
+Presensi QR, KHS per semester dan transkrip resmi PDF, backup/restore aplikasi, sinkronisasi, risiko otomatis, notifikasi nyata, dan asisten belum menjadi alur lengkap. Lihat [audit](../audit/README.md); keberadaan permission atau tabel tidak membuat modul tersebut selesai.
 
 ## Penambahan fitur pada versi kandidat
 
 Semua role membaca pengumuman. Super Admin dan Admin Akademik menerbitkan/menghapus pengumuman serta mengelola presensi seluruh kelas; Pengampu hanya kelas sendiri. Wali, Mahasiswa dan admin melihat insight studi sesuai lingkupnya dan menyimpan PDF hasil studi lokal. Super Admin mempunyai halaman audit 100 aktivitas terakhir. Jumlah bimbingan tiap dosen kini 10 mahasiswa; daftar lengkap ada pada panduan demo.
+
+## Data master dan KRS terhubung
+
+Super Admin dan Admin Akademik membuka **Akademik → Data master** untuk menambah, mengubah atau menghapus prodi, dosen, semester, mata kuliah/prasyarat dan kelas. Hubungkan akun dosen melalui **Kelola akun** dan tambahkan peserta melalui KRS pada profil mahasiswa. Data terpakai dilindungi dari penghapusan dan perubahan struktur; ruang kelas masih dapat diperbarui. Penambahan KRS memeriksa IPS semester sebelumnya, batas SKS, semester aktif, prodi, prasyarat dan bentrok jadwal.

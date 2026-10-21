@@ -1,4 +1,5 @@
 import 'package:simaha/presentation/features/campus/announcements_page.dart';
+import 'package:simaha/presentation/features/academic/master_data_page.dart';
 import 'package:simaha/presentation/features/campus/attendance_page.dart';
 import 'package:simaha/presentation/features/campus/study_insight_page.dart';
 import 'package:go_router/go_router.dart';
@@ -56,6 +57,7 @@ GoRouter buildRouter({required String dbPath}) {
           listen: false,
         ).read(sessionProvider).role;
         final masterPage =
+            loc == '/master' ||
             loc == '/db' ||
             loc == '/trash' ||
             loc == '/mahasiswa/baru' ||
@@ -78,6 +80,10 @@ GoRouter buildRouter({required String dbPath}) {
       ShellRoute(
         builder: (context, state, child) => AppShell(child: child),
         routes: [
+          GoRoute(
+            path: '/master',
+            builder: (context, state) => const MasterDataPage(),
+          ),
           GoRoute(
             path: '/pengumuman',
             builder: (context, state) => const AnnouncementsPage(),

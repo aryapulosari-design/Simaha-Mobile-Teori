@@ -29,7 +29,9 @@ Data demonstrasi bersifat sintetis: 50 mahasiswa, 5 dosen, 5 kelas, 250 KRS bese
 
 Integrasi mengikuti alur presentasi, layanan aplikasi, logika domain, dan penyimpanan. Widget menampilkan status serta menerima masukan; Riverpod mengelola dependensi dan pembaruan data; go_router mengelola navigasi; layanan memeriksa akun aktif dan batas data sebelum menjalankan transaksi Drift pada SQLCipher.
 
-AcademicService menjadi batas akses untuk mahasiswa, kelas, dan nilai. CampusService menangani pengumuman, sesi serta presensi manual, dan pembacaan audit. InsightsService menyusun ringkasan dari pembacaan yang sudah diotorisasi. StudyExportService menghasilkan PDF setelah memeriksa izin dan lingkup mahasiswa.
+AcademicService menjadi batas akses untuk mahasiswa, kelas, dan nilai. MasterDataService menghubungkan form prodi, dosen, tahun ajaran, mata kuliah, prasyarat dan kelas untuk kedua role admin. CampusService menangani pengumuman, sesi serta presensi manual, dan pembacaan audit. InsightsService menyusun ringkasan dari pembacaan yang sudah diotorisasi. StudyExportService menghasilkan PDF setelah memeriksa izin dan lingkup mahasiswa.
+
+Penyelesaian kandidat difokuskan pada fungsi yang terhubung dan isi kelima role. Data master dibuka dari menu Akademik. KRS baru mengikuti semester kelas aktif, program studi, IPS semester sebelumnya, batas SKS, prasyarat dan bentrok jadwal. Data yang sudah dipakai dilindungi dari penghapusan atau perubahan struktur; ruang kelas tetap dapat diperbarui.
 
 Logika perhitungan IPK, SKS, simulasi dan risiko dipisahkan pada domain Dart. Komponen BentoCard, MetricTile, BentoGrid, ContextTag, dan WorkspacePage digunakan kembali agar warna, jarak, dan perilaku responsif konsisten. Direktori mahasiswa dipisahkan dari kartu dashboard untuk mengurangi kepadatan HomePage.
 
@@ -54,7 +56,7 @@ Login demo cukup memilih role serta nama akun dari daftar, kemudian menggunakan 
 | Peran | Fungsi dan batas akses |
 | --- | --- |
 | Super Admin | Kelola akun, reset PIN, hubungkan profil, seluruh data akademik, bimbingan, serta audit. |
-| Admin Akademik | Kelola mahasiswa, KRS/nilai, seluruh kelas, presensi dan pengumuman. Tidak mengelola akun atau catatan bimbingan. |
+| Admin Akademik | Kelola master prodi/dosen/semester/mata kuliah/kelas, mahasiswa, KRS/nilai, presensi dan pengumuman. Tidak mengelola akun atau catatan bimbingan. |
 | Dosen Pengampu | Kelas sendiri, nilai peserta, sesi dan presensi kelas sendiri. Tidak membaca IPK kumulatif atau catatan wali. |
 | Dosen Wali | Profil, nilai, IPK, insight dan kehadiran 10 mahasiswa bimbingan; menulis catatan serta tindak lanjut. |
 | Mahasiswa | Profil, mata kuliah, jadwal, nilai, insight, rekap kehadiran dan catatan wali sendiri; unduh PDF hasil studi. |
@@ -84,16 +86,16 @@ Kasus disusun dengan prasyarat, langkah, hasil yang diharapkan, serta bukti. Daf
 
 ## 5 Tahap 4 Tabel hasil pengujian
 
-Pada bukti pengujian yang dipakai saat laporan dibangun tercatat 136 tes berhasil, 0 tes gagal atau error, dan 0 tes berstatus skipped. Status akhir runner adalah lulus. Angka ini berasal dari log, bukan jumlah skenario manual.
+Pada bukti pengujian yang dipakai saat laporan dibangun tercatat 143 tes berhasil, 0 tes gagal atau error, dan 0 tes berstatus skipped. Status akhir runner adalah lulus. Angka ini berasal dari log, bukan jumlah skenario manual.
 
 Kelulusan tes otomatis menunjukkan perilaku dalam kondisi uji yang didefinisikan. Pengujian perangkat fisik, pemindai QR, kehilangan perangkat, pemulihan kunci produksi, benchmark 10000 mahasiswa, pembaca layar, serta evaluasi calon pengguna belum dapat dianggap lulus tanpa bukti tambahan.
 
 | Pemeriksaan | Hasil atau bukti |
 | --- | --- |
-| Unit dan integrasi layanan | 136 berhasil; rincian pada CSV dan bukti/tests.jsonl. |
+| Unit dan integrasi layanan | 143 berhasil; rincian pada CSV, bukti/tests.jsonl dan bukti/registration-tests.jsonl. |
 | Analisis statis | Bersih |
 | Widget responsif | Lihat bukti/widget-previews.log dan PNG pada doct/design/previews. |
-| Build Windows | Berhasil |
+| Build Windows | Build sebelumnya berhasil; belum diulang setelah penambahan form master. |
 | Build Android kandidat | Berhasil; lihat manifest artefak. |
 | Uji calon pengguna | Belum dilaksanakan. Jumlah responden yang sudah menguji: 0. |
 | Uji Android fisik | Belum ada bukti pengujian langsung pada perangkat fisik. |
@@ -111,6 +113,8 @@ Masalah dicatat berdasarkan temuan pada kode, kompilasi, atau pemeriksaan visual
 | BUG-04 | Validator angka menerima NaN karena perbandingan rentang saja tidak mencukupi. | Pemeriksaan isFinite pada validator dan mesin nilai; kasus NaN dan Infinity ditolak. |
 | BUG-05 | Kartu metrik berbeda tinggi dan kartu jadwal menyusut pada desktop. | Grid menyamakan tinggi per baris dan jadwal membentang mengikuti lebar kartu. Diperiksa pada preview aktual. |
 | BUG-06 | Penghapusan atau perubahan data perlu memperbarui ringkasan lintas halaman. | Provider ringkasan studi diinvalidasi setelah simpan nilai dan presensi, lalu membaca ulang data terotorisasi. |
+| BUG-10 | Data master belum mempunyai form yang dapat dipakai kedua admin. | Form tambah/ubah/hapus disambungkan ke layanan, transaksi, audit, dan proteksi data yang masih dipakai. |
+| BUG-11 | Penambahan KRS menebak semester aktif global dan belum memeriksa aturan per semester. | Semester diambil dari kelas; service memeriksa status/prodi, IPS sebelumnya, batas SKS, prasyarat, duplikat dan jadwal. Tes regresi tersedia pada master_data_test.dart dan registration_policy_test.dart. |
 | BUG-07 | Konfigurasi desugaring Android belum tersedia untuk dependensi notifikasi. | Konfigurasi diperbaiki dan paket/izin yang belum dipakai dihapus. Build diulang dari dependensi aktif. |
 | BUG-08 | Build release memuat plugin integration_test yang tidak tersedia. | Dependensi yang belum dipakai dilepas, registrant diregenerasi dan verifikasi Flutter dijalankan berurutan. |
 | BUG-09 | Desktop terkelola menolak penulisan demo ke Documents. | Folder demo dapat diarahkan melalui SIMAHA_DEMO_DIRECTORY; tes membuktikan file mode biasa tidak berubah. |
@@ -140,6 +144,104 @@ Acuan visual berasal dari folder Stitch yang disediakan pengguna. Prinsip yang d
 Dashboard dibedakan berdasarkan tugas. Mahasiswa melihat IPK, beban studi, progres dan kehadiran pribadi. Pengampu melihat kelas serta kelengkapan nilai. Wali melihat bimbingan dan prioritas pendampingan. Admin memperoleh ringkasan lintas kelas dan akses pengelolaan.
 
 Navigasi ponsel menggunakan empat tujuan utama; pengelolaan akun dan database tetap dapat diakses admin melalui halaman terkait. Komponen menyediakan status loading, data kosong, kesalahan dan percobaan ulang. Elemen interaktif mengarah ke fungsi yang sudah terhubung; tampilan referensi tidak digunakan untuk mengklaim fitur yang belum dibuat.
+
+## 8.1 Dokumentasi mobile: Dashboard pengelola
+
+Super Admin dan Admin Akademik memperoleh ringkasan serta akses pengelolaan sesuai tugasnya.
+
+Render widget Flutter aktual pada viewport 390 x 844 piksel dengan data sintetis. Gambar diperkecil secara proporsional dalam bingkai ponsel untuk dokumentasi; bukan foto pengujian pada perangkat Android fisik.
+
+![Dashboard Super Admin](../design/previews/mobile-role-super_admin.png)
+
+**Dashboard Super Admin.** Ringkasan data akademik dan akses pengelolaan sistem.
+
+![Dashboard Admin Akademik](../design/previews/mobile-role-admin_akademik.png)
+
+**Dashboard Admin Akademik.** Ringkasan administrasi mahasiswa dan perkuliahan.
+
+## 8.2 Dokumentasi mobile: Dashboard dosen
+
+Tampilan ponsel membedakan pekerjaan pengampu dan wali tanpa mengubah batas akses masing-masing.
+
+Render widget Flutter aktual pada viewport 390 x 844 piksel dengan data sintetis. Gambar diperkecil secara proporsional dalam bingkai ponsel untuk dokumentasi; bukan foto pengujian pada perangkat Android fisik.
+
+![Dashboard Dosen Pengampu](../design/previews/mobile-role-dosen_pengampu.png)
+
+**Dashboard Dosen Pengampu.** Ringkasan kelas yang diajar dan kelengkapan nilai.
+
+![Dashboard Dosen Wali](../design/previews/mobile-role-dosen_wali.png)
+
+**Dashboard Dosen Wali.** Ringkasan mahasiswa bimbingan dan pendampingan studi.
+
+## 8.3 Dokumentasi mobile: Dashboard mahasiswa dan direktori
+
+Mahasiswa memantau studi sendiri, sedangkan admin mengakses data mahasiswa melalui bagian bawah beranda.
+
+Render widget Flutter aktual pada viewport 390 x 844 piksel dengan data sintetis. Gambar diperkecil secara proporsional dalam bingkai ponsel untuk dokumentasi; bukan foto pengujian pada perangkat Android fisik.
+
+![Dashboard Mahasiswa](../design/previews/mobile-role-mahasiswa.png)
+
+**Dashboard Mahasiswa.** Ringkasan IPK, SKS dan progres studi pribadi.
+
+![Beranda Super Admin setelah digulir](../design/previews/mobile-role-super_admin-suite.png)
+
+**Beranda Super Admin setelah digulir.** Bagian lanjutan beranda pada layar ponsel yang sama.
+
+## 8.4 Dokumentasi mobile: Rincian beranda akademik
+
+Halaman yang panjang digulir secara vertikal. Screenshot berikut memperlihatkan bagian lanjutan pada ukuran layar ponsel.
+
+Render widget Flutter aktual pada viewport 390 x 844 piksel dengan data sintetis. Gambar diperkecil secara proporsional dalam bingkai ponsel untuk dokumentasi; bukan foto pengujian pada perangkat Android fisik.
+
+![Beranda Admin Akademik setelah digulir](../design/previews/mobile-role-admin_akademik-suite.png)
+
+**Beranda Admin Akademik setelah digulir.** Konten lanjutan untuk administrasi akademik.
+
+![Beranda Pengampu setelah digulir](../design/previews/mobile-role-dosen_pengampu-suite.png)
+
+**Beranda Pengampu setelah digulir.** Konten lanjutan yang mengikuti lingkup kelas pengampu.
+
+## 8.5 Dokumentasi mobile: Pemantauan studi pada ponsel
+
+Konten lanjutan mengikuti lingkup akun wali dan mahasiswa; screenshot diambil sesudah menggulir beranda.
+
+Render widget Flutter aktual pada viewport 390 x 844 piksel dengan data sintetis. Gambar diperkecil secara proporsional dalam bingkai ponsel untuk dokumentasi; bukan foto pengujian pada perangkat Android fisik.
+
+![Beranda Wali setelah digulir](../design/previews/mobile-role-dosen_wali-suite.png)
+
+**Beranda Wali setelah digulir.** Informasi lanjutan pendampingan mahasiswa bimbingan.
+
+![Beranda Mahasiswa setelah digulir](../design/previews/mobile-role-mahasiswa-suite.png)
+
+**Beranda Mahasiswa setelah digulir.** Informasi lanjutan studi pribadi dan navigasi fitur.
+
+## 8.6 Dokumentasi mobile: Kelas, jadwal dan hasil studi
+
+Pengampu melihat kelas yang diajarnya. Mahasiswa membaca hasil serta rekap kehadiran dirinya pada kelas terkait.
+
+Render widget Flutter aktual pada viewport 390 x 844 piksel dengan data sintetis. Gambar diperkecil secara proporsional dalam bingkai ponsel untuk dokumentasi; bukan foto pengujian pada perangkat Android fisik.
+
+![Kelas Dosen Pengampu](../design/previews/mobile-kelas-pengampu.png)
+
+**Kelas Dosen Pengampu.** Mata kuliah, dosen, jadwal, ruang dan jumlah peserta dalam akses akun.
+
+![Detail kelas Mahasiswa](../design/previews/mobile-kelas-mahasiswa.png)
+
+**Detail kelas Mahasiswa.** Nilai dan rekap kehadiran pribadi pada mata kuliah yang dipilih.
+
+## 8.7 Dokumentasi mobile: Bimbingan akademik
+
+Wali menulis catatan dan tindak lanjut; mahasiswa membaca catatan yang ditujukan kepadanya.
+
+Render widget Flutter aktual pada viewport 390 x 844 piksel dengan data sintetis. Gambar diperkecil secara proporsional dalam bingkai ponsel untuk dokumentasi; bukan foto pengujian pada perangkat Android fisik.
+
+![Catatan dari sisi Dosen Wali](../design/previews/mobile-bimbingan-wali.png)
+
+**Catatan dari sisi Dosen Wali.** Riwayat bimbingan dan catatan tindak lanjut yang sudah disimpan.
+
+![Catatan dari sisi Mahasiswa](../design/previews/mobile-bimbingan-mahasiswa.png)
+
+**Catatan dari sisi Mahasiswa.** Mahasiswa membaca catatan wali tanpa tombol penulisan.
 
 ## 9 Tahap 5 Finalisasi dan paket penyerahan
 
