@@ -8,7 +8,7 @@ Pembaruan 21 Oktober 2026: **50 mahasiswa, 5 dosen, 5 kelas, 62 akun**. Seluruh 
 flutter run -d windows --dart-define=SIMAHA_DEMO=true
 ```
 
-Pilih role, pilih nama akun, lalu Masuk akun demo atau masukkan PIN. Gunakan Ganti akun untuk mencoba role lain. PIN yang sudah diubah harus menggunakan PIN baru. Pembuatan awal 62 hash akun dapat memerlukan beberapa menit pada perangkat lambat; proses berikutnya memakai data yang sama.
+Pilih role, buka pemilih akun, lalu cari nama atau username jika diperlukan. Pilih akun dan klik **Masuk akun demo** atau masukkan PIN. Gunakan **Ganti akun** untuk mencoba role lain. PIN yang sudah diubah harus menggunakan PIN baru. Pembuatan awal 62 hash akun dapat memerlukan beberapa menit pada perangkat lambat; proses berikutnya memakai data yang sama.
 
 Pada desktop terkelola yang tidak mengizinkan penulisan Documents, gunakan folder kerja melalui variabel lingkungan SIMAHA_DEMO_DIRECTORY, khusus demo:
 

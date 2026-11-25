@@ -1,5 +1,31 @@
 # Pengujian dan verifikasi
 
+## QA Windows 25 November 2026
+
+Mode demo dijalankan pada Windows dengan database tersendiri. Dataset yang diverifikasi memuat **50 akun mahasiswa, 5 akun dosen pengampu, 5 akun dosen wali, dan 2 akun admin**. Lima dosen memiliki akun terpisah untuk masing-masing peran. [Daftar akun dan cara menjalankan demo](../demo/README.md).
+
+| Pemeriksaan | Hasil |
+|---|---|
+| Suite lengkap sebelum perubahan | 143 tes lulus, termasuk verifikasi PIN awal dan peran semua 62 akun demo. |
+| QA langsung di Windows | Adnan Fikri masuk dan membuka hasil studi. Akun Pengampu Budi Santoso melihat kelas Basis Data dengan 50 peserta. Setelah pemilih akun diperbarui, pencarian `z` menampilkan Zaki Maulana dan akun tersebut berhasil masuk. |
+| Regresi setelah perubahan | 19 tes mode demo lulus, termasuk pencarian dalam daftar 50 mahasiswa, batas peran, pengosongan PIN saat akun diganti, dan dashboard. Analyzer pada dua file Dart yang diubah bersih. |
+| Waktu mulai dan tata letak | Inisialisasi demo pertama lambat pada sesi ini. Pembukaan ulang dengan database yang sudah ada tercatat 2,6 detik. Pada jendela setinggi sekitar 720 piksel, keypad PIN baru terlihat setelah menggulir. |
+
+Perintah untuk mengulang tes regresi:
+
+```sh
+flutter test --no-pub -r expanded --dart-define=SIMAHA_DEMO=true test/widget/login_picker_test.dart test/auth_flow_test.dart test/widget/workspace_test.dart
+```
+
+### Prioritas setelah QA
+
+1. **Pengajuan KRS dan persetujuan dosen wali.** Saat ini penambahan KRS dilakukan admin. Mahasiswa perlu bisa mengajukan KRS, melihat statusnya, dan memperbaiki usulan jika diminta wali. [Pedoman Pendidikan UIN Suska Riau](https://fst.uin-suska.ac.id/wp-content/uploads/2025/08/DOC-20250827-WA0059.pdf)
+2. **KHS per semester.** Tambahkan pemilihan semester, tampilan IPS, dan unduhan KHS. Aplikasi saat ini menyediakan PDF ringkasan hasil studi. [Panduan SIAKADU Universitas Lampung](https://tik.unila.ac.id/layanan/panduan-siakad-mahasiswa)
+3. **Backup dan pemulihan data lokal.** Sediakan alur untuk membuat, memeriksa, dan memulihkan cadangan sebelum memakai data nyata.
+4. **Data demo yang lebih beragam.** Bagi 50 mahasiswa ke beberapa kelas atau semester dan tambahkan contoh nilai kosong, mata kuliah yang diulang, serta kehadiran rendah.
+
+QA langsung kali ini mencakup Windows. Android fisik dan pemulihan cadangan belum diuji.
+
 ## Pembaruan kandidat 21 Oktober 2026
 
 Analyzer terakhir bersih. Suite utama 139 tes lulus pada `bukti/tests.jsonl`; empat tes aturan KRS tambahan lulus pada `bukti/registration-tests.jsonl` (total 143). Tabel laporan menggabungkan kedua log dengan ID terpisah. Tes master memeriksa alur prodi → dosen → semester → mata kuliah → kelas → KRS, proteksi data terpakai, audit, bentrok jadwal, siklus prasyarat dan penolakan tiga role non-admin. Tes demo yang sudah ada memeriksa 62 akun, 50 mahasiswa, isi setiap role, perubahan nilai/bimbingan/presensi lintas akun serta batas akses.
@@ -26,7 +52,7 @@ Hasil akhir run audit dicatat di [hasil verifikasi](../audit/verification.md).
 | Area | Berkas |
 |---|---|
 | Rumus nilai, IPS/IPK, simulasi, validasi | `academic_engine_test.dart`, `academic_constants_test.dart` |
-| Pilih role/akun tanpa mengetik, akun terakhir, PIN, retry, layar kecil | `widget/login_picker_test.dart` |
+| Pilih peran, cari akun, pulihkan pilihan terakhir, verifikasi PIN, coba lagi, layar kecil | `widget/login_picker_test.dart` |
 | Setup/PIN/lockout/recovery/RBAC akun | `auth_test.dart`, `auth_flow_test.dart`, `crypto_test.dart` |
 | Enkripsi SQLCipher | `encryption_test.dart` |
 | Migrasi/seed/FTS/pagination | `migration_test.dart`, `seed_test.dart`, `unit/step1_foundation_test.dart` |

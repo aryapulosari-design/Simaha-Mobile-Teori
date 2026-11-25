@@ -91,11 +91,64 @@ class _LockPageState extends ConsumerState<LockPage> {
     });
   }
 
-  void _chooseAccount(int? id) {
+  Future<void> _chooseAccount() async {
+    final accounts = _accounts.where((a) => a.role == _role).toList();
+    var query = '';
+    final selected = await showDialog<LoginAccount>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setDialogState) {
+          final matches = accounts
+              .where((a) => a.label.toLowerCase().contains(query))
+              .toList();
+          return AlertDialog(
+            title: const Text('Pilih akun'),
+            content: SizedBox(
+              width: 400,
+              height: 360,
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: const InputDecoration(
+                      labelText: 'Cari nama atau username',
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                    onChanged: (value) => setDialogState(
+                      () => query = value.trim().toLowerCase(),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Expanded(
+                    child: matches.isEmpty
+                        ? const Center(child: Text('Akun tidak ditemukan.'))
+                        : ListView.builder(
+                            itemCount: matches.length,
+                            itemBuilder: (context, index) {
+                              final account = matches[index];
+                              return ListTile(
+                                title: Text(account.label),
+                                selected: account.id == _account?.id,
+                                onTap: () => Navigator.pop(context, account),
+                              );
+                            },
+                          ),
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Batal'),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+    if (!mounted || selected == null) return;
     setState(() {
-      _account = _accounts
-          .where((a) => a.id == id && a.role == _role)
-          .firstOrNull;
+      _account = selected;
       _pin = '';
       _message = null;
     });
@@ -226,7 +279,6 @@ class _LockPageState extends ConsumerState<LockPage> {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
-    final accounts = _accounts.where((a) => a.role == _role).toList();
     return SecureScope(
       child: Scaffold(
         backgroundColor: scheme.surfaceContainerLow,
@@ -348,26 +400,25 @@ class _LockPageState extends ConsumerState<LockPage> {
                         ),
                       )
                     else ...[
-                      DropdownButtonFormField<int>(
+                      Text('Pilih akun', style: text.titleSmall),
+                      const SizedBox(height: 8),
+                      OutlinedButton(
                         key: ValueKey('login-account-${_role.storageKey}'),
-                        initialValue: _account!.id,
-                        isExpanded: true,
-                        decoration: const InputDecoration(
-                          labelText: 'Pilih akun',
-                          prefixIcon: Icon(Icons.person_outline),
-                        ),
-                        items: [
-                          for (final account in accounts)
-                            DropdownMenuItem(
-                              value: account.id,
+                        onPressed: _busy ? null : _chooseAccount,
+                        child: Row(
+                          children: [
+                            const Icon(Icons.person_outline),
+                            const SizedBox(width: 8),
+                            Expanded(
                               child: Text(
-                                account.label,
-                                maxLines: 1,
+                                _account!.label,
+                                maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                        ],
-                        onChanged: _busy ? null : _chooseAccount,
+                            const Icon(Icons.expand_more),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 24),
                       if (AppRuntime.isDemo) ...[

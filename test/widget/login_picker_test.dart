@@ -124,26 +124,46 @@ void main() {
       find.byKey(const ValueKey('login-role-mahasiswa')),
     );
     expect(chip.selected, isTrue);
-    final field = tester.widget<DropdownButtonFormField<int>>(
-      find.byKey(const ValueKey('login-account-mahasiswa')),
+    final field = find.byKey(const ValueKey('login-account-mahasiswa'));
+    expect(
+      find.descendant(of: field, matching: find.text(accounts[2].label)),
+      findsOneWidget,
     );
-    expect(field.initialValue, 3);
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(const SizedBox());
   });
 
   testWidgets(
-    'switching accounts clears partial PIN and uses the selected account for verification',
+    'searching 50 student accounts selects the right account and clears the partial PIN',
     (tester) async {
       when(() => auth.verifyPin('mahasiswa.b', '123456')).thenAnswer(
         (_) async => const Err<UserRow, AppFailure>(AuthFailure('PIN salah.')),
+      );
+      when(() => auth.listLoginAccounts()).thenAnswer(
+        (_) async => [
+          ...accounts.take(2),
+          for (var id = 4; id <= 51; id++)
+            LoginAccount(
+              id: id,
+              username: 'mahasiswa.$id',
+              displayName: 'Mahasiswa $id',
+              role: Role.mahasiswa,
+            ),
+          accounts[2],
+        ],
       );
       await mount(tester);
       await chooseRole(tester, Role.mahasiswa);
       await typePin(tester, '12');
       await tester.tap(find.byKey(const ValueKey('login-account-mahasiswa')));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Bima Putra · mahasiswa.b').last);
+      final search = find.byType(TextField);
+      await tester.enterText(search, 'superadmin');
+      await tester.pumpAndSettle();
+      expect(find.text('Akun tidak ditemukan.'), findsOneWidget);
+      await tester.enterText(search, '  BIMA  ');
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(accounts[2].label));
       await tester.pumpAndSettle();
       expect(
         find.bySemanticsLabel('0 dari 6 digit PIN terisi'),

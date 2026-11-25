@@ -1,6 +1,6 @@
 # Dokumentasi SIMAHA Offline
 
-Dokumentasi implementasi per **20 Oktober 2026**. Folder ini bernama `doct` sesuai permintaan.
+Dokumentasi implementasi dan [hasil QA Windows 25 November 2026](testing/README.md#qa-windows-25-november-2026).
 
 **Untuk langsung mencoba lima role:** buka [akun demo terisi](demo/README.md). Semua PIN awal 123456; lima dosen dan 50 mahasiswa sudah saling terhubung.
 
